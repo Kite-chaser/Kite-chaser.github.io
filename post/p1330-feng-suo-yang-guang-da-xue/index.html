@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>P1330 封锁阳光大学 | Kite-chaser</title>
+<meta name="description" content="This is my blog.">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico">
+<link rel="stylesheet" href="https://Kite-chaser.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://Kite-chaser.github.io">
+        <img src="https://Kite-chaser.github.io/images/avatar.png" class="site-logo">
+        <h1 class="site-title">Kite-chaser</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://Kite-chaser.github.io/post/guan-yu/" class="site-nav">
+            关于
+          </a>
+        
+      
+        
+          <a href="https://Kite-chaser.github.io/post/you-lian/" class="site-nav">
+            友链
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="site-description">
+      This is my blog.
+    </div>
+    <div class="site-footer">
+      Powered by Hve Notes
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">P1330 封锁阳光大学</h2>
+            <div class="post-date">2019-08-18</div>
+            
+              <div class="feature-container" style="background-image: url('https://Kite-chaser.github.io/post-images/p1330-feng-suo-yang-guang-da-xue.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <h4 id="题目描述">题目描述</h4>
+<p>曹是一只爱刷街的老曹，暑假期间，他每天都欢快地在阳光大学的校园里刷街。河蟹看到欢快的曹，感到不爽。河蟹决定封锁阳光大学，不让曹刷街。</p>
+<!-- more -->
+<p>阳光大学的校园是一张由N个点构成的无向图，N个点之间由M条道路连接。每只河蟹可以对一个点进行封锁，当某个点被封锁后，与这个点相连的道路就被封锁了，曹就无法在与这些道路上刷街了。非常悲剧的一点是，河蟹是一种不和谐的生物，当两只河蟹封锁了相邻的两个点时，他们会发生冲突。</p>
+<p>询问：最少需要多少只河蟹，可以封锁所有道路并且不发生冲突。</p>
+<blockquote>
+<p><a href="https://www.luogu.org/problem/P1330">原题链接</a></p>
+</blockquote>
+<h1 id="solution">Solution</h1>
+<p>简单说，就是将给定的图（不一定联通）进行“染色”。因为“当两只河蟹封锁了相邻的两个点时，他们会发生冲突”，所以用两种颜色。</p>
+<p>注意：给定的图不一定是联通的</p>
+<p>判联通：</p>
+<p>方法一：并查集，父节点相同的为一张图（<a href="https://five-shifts-forever.blog.luogu.org/bing-zha-ji">可参考蒟蒻的OI笔记</a>）</p>
+<p>方法二：Floyd</p>
+<p>AC代码：</p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;vector&gt;
+using namespace std;
+int n,m,sum1,sum2,ans;  //n为节点数，m为边数，sum1.sum2用于染色点的统计，ans为最后答案
+int f[10001],vis[10001],du[10001];   //f用于并查集判联通，vis用于染色（1，2分别是两种颜色），du用于统计节点的度数
+bool flag;   //flag用于判是否有解.false表有解.true无解
+vector&lt;int&gt; g[10001];  //vector玄学建图
+//并查集
+int find(int x){
+    if(x!=f[x]) f[x]=find(f[x]);
+    return f[x];
+}
+void dfs(int x){
+    if(vis[x]==1) sum1++;
+    if(vis[x]==2) sum2++;  //记录色数
+    if(flag==true) return ; 
+    for(int i=0;i&lt;g[x].size();i++){
+        if(vis[x]!=vis[g[x][i]]&amp;&amp;vis[g[x][i]]!=0) continue; //已经染好，跳过
+        if(vis[x]==vis[g[x][i]]){ //与之前有冲突，无解
+            flag=true;
+            break;
+        }
+        vis[g[x][i]]=3-vis[x];
+        dfs(g[x][i]);
+    }
+}
+int main()
+{
+    cin&gt;&gt;n&gt;&gt;m;
+    for(int i=1;i&lt;=n;i++) f[i]=i;
+    for(int i=1;i&lt;=m;i++){
+        int u,v;
+        cin&gt;&gt;u&gt;&gt;v;
+        int x=find(u);
+        int y=find(v);
+        if(x!=y) f[y]=x;  //并查集
+        g[u].push_back(v);
+        g[v].push_back(u);  //无向图，双向建边
+        du[u]++;
+        du[v]++;   //记录度数
+    }
+    for(int i=1;i&lt;=n;i++){
+        sum1=0,sum2=0;  //sum1.sum2表每张图的两种色数，搜索前清零
+        if(f[i]==i&amp;&amp;du[i]&gt;0){  //搜索每张独立且有边的图
+            vis[i]=1;  //起点色别其实无所谓，效果都一样
+            dfs(i);
+            ans+=min(sum1,sum2);
+        }
+        if(flag==true){
+            cout&lt;&lt;&quot;Impossible&quot;;
+            return 0;
+        }
+    }
+    cout&lt;&lt;ans;
+    return 0;
+}
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="tag">
+                    OI
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://Kite-chaser.github.io/post/bing-cha-ji">
+                  <h3 class="post-title">
+                    并查集
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '761ba32522ad16d2134b',
+        clientSecret: 'd5634ea03ca976d589a06f88c4e9fb23c928e5f9',
+        repo: 'Kite-chaser.github.io',
+        owner: 'Kite-chaser',
+        admin: ['Kite-chaser'],
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
