@@ -7,203 +7,338 @@
 <meta name="description" content="This is my blog.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1566171907916">
 
-<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://Kite-chaser.github.io/styles/main.css">
 
 
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
 
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 
   </head>
   <body>
-    <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="https://Kite-chaser.github.io">
-        <img src="https://Kite-chaser.github.io/images/avatar.png" class="site-logo">
-        <h1 class="site-title">Kite-chaser</h1>
-      </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
-    </div>
-    <div>
-      
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://Kite-chaser.github.io">Kite-chaser</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
         
-          <a href="/" class="site-nav">
-            首页
-          </a>
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
         
-      
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
         
-          <a href="/archives" class="site-nav">
-            归档
-          </a>
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
         
-      
+          <li>
+            
+              <a href="https://Kite-chaser.github.io/post/guan-yu/" class="menu">
+                关于
+              </a>
+            
+          </li>
         
-          <a href="/tags" class="site-nav">
-            标签
-          </a>
+          <li>
+            
+              <a href="https://Kite-chaser.github.io/post/you-lian/" class="menu">
+                友链
+              </a>
+            
+          </li>
         
-      
-        
-          <a href="https://Kite-chaser.github.io/post/guan-yu/" class="site-nav">
-            关于
-          </a>
-        
-      
-        
-          <a href="https://Kite-chaser.github.io/post/you-lian/" class="site-nav">
-            友链
-          </a>
-        
-      
+      </ul>
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="site-description">
-      This is my blog.
-    </div>
-    <div class="site-footer">
-      Powered by Hve Notes
-    </div>
-  </div>
-</div>
+</nav>
 
-
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
           <h2 class="current-tag">标签: OI</h2>
           
-            <article class="post-item">
-              <div class="left">
-                <a href="https://Kite-chaser.github.io/post/p3088-usaco13novji-nai-niu-crowded-cows">
-                  <h2 class="post-title">P3088 [USACO13NOV]挤奶牛Crowded Cows</h2>
-                </a>
-                <div class="post-date">
-                  2019-08-18
-                </div>
-                <div class="post-abstract">
-                  <h4 id="题目描述">题目描述</h4>
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://Kite-chaser.github.io/post/p3088-usaco13novji-nai-niu-crowded-cows">P3088 [USACO13NOV]挤奶牛Crowded Cows</a>
+    </h2>
+    <p class="article-meta">
+      2019-08-18
+      
+        <a href="https://Kite-chaser.github.io/tag/92gh9uu1i" class="badge secondary">
+          单调队列
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge ">
+          OI
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <h4 id="题目描述">题目描述</h4>
 <p>Farmer John's N cows (1 &lt;= N &lt;= 50,000) are grazing along a one-dimensional fence. Cow i is standing at location x(i) and has height h(i) (1 &lt;= x(i),h(i) &lt;= 1,000,000,000).</p>
 
-                </div>
-              </div>
-              
-                <a class="right" href="https://Kite-chaser.github.io/post/p3088-usaco13novji-nai-niu-crowded-cows">
-                  <div class="feature-container" style="background-image: url('https://Kite-chaser.github.io/post-images/p3088-usaco13novji-nai-niu-crowded-cows.jpg')">
-                  </div>
-                </a>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://Kite-chaser.github.io/post/p4879-ycz-de-mei-zi">
-                  <h2 class="post-title">P4879 ycz的妹子</h2>
-                </a>
-                <div class="post-date">
-                  2019-08-18
-                </div>
-                <div class="post-abstract">
-                  <h4 id="题目背景">题目背景</h4>
+    </p>
+    <div class="row">
+      <a href="https://Kite-chaser.github.io/post/p3088-usaco13novji-nai-niu-crowded-cows" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://Kite-chaser.github.io/post/p4879-ycz-de-mei-zi">P4879 ycz的妹子</a>
+    </h2>
+    <p class="article-meta">
+      2019-08-18
+      
+        <a href="https://Kite-chaser.github.io/tag/2kgafuTx9" class="badge success">
+          线段树
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge success">
+          OI
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <h4 id="题目背景">题目背景</h4>
 <p>ycz有很多很多的妹子（ycz：瞎说）</p>
 <h4 id="题目描述">题目描述</h4>
 <p>机房神犇ycz有n个青梅竹马，她们分别住在1~n号城市中。小时候的她们美丽可爱，但是由于女大十八变，有些妹子的颜值发生了变化，但是十分重感情的ycz神犇不忍心抛弃她们，于是记录下来了她们颜值变化的值，我们用C, x, y表示第x个城市的妹子的颜值下降了y。长大之后的ycz非常有魅力，有许多妹子被ycz迷得神魂颠倒，我们用I, x, y表示第x个城市有一个妹子喜欢上了ycz，她的颜值为y（y有可能是负数，但是ycz来者不拒）。但在中途有一些妹子和ycz吵架了，于是就分手了，我们用D, x表示第x个妹子和ycz分手了。</p>
 
-                </div>
-              </div>
-              
-                <a class="right" href="https://Kite-chaser.github.io/post/p4879-ycz-de-mei-zi">
-                  <div class="feature-container" style="background-image: url('https://Kite-chaser.github.io/post-images/p4879-ycz-de-mei-zi.jpg')">
-                  </div>
-                </a>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://Kite-chaser.github.io/post/p1330-feng-suo-yang-guang-da-xue">
-                  <h2 class="post-title">P1330 封锁阳光大学</h2>
-                </a>
-                <div class="post-date">
-                  2019-08-18
-                </div>
-                <div class="post-abstract">
-                  <h4 id="题目描述">题目描述</h4>
+    </p>
+    <div class="row">
+      <a href="https://Kite-chaser.github.io/post/p4879-ycz-de-mei-zi" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://Kite-chaser.github.io/post/p1330-feng-suo-yang-guang-da-xue">P1330 封锁阳光大学</a>
+    </h2>
+    <p class="article-meta">
+      2019-08-18
+      
+        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge ">
+          OI
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <h4 id="题目描述">题目描述</h4>
 <p>曹是一只爱刷街的老曹，暑假期间，他每天都欢快地在阳光大学的校园里刷街。河蟹看到欢快的曹，感到不爽。河蟹决定封锁阳光大学，不让曹刷街。</p>
 
-                </div>
-              </div>
-              
-                <a class="right" href="https://Kite-chaser.github.io/post/p1330-feng-suo-yang-guang-da-xue">
-                  <div class="feature-container" style="background-image: url('https://Kite-chaser.github.io/post-images/p1330-feng-suo-yang-guang-da-xue.jpg')">
-                  </div>
-                </a>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://Kite-chaser.github.io/post/bing-cha-ji">
-                  <h2 class="post-title">并查集</h2>
-                </a>
-                <div class="post-date">
-                  2019-08-18
-                </div>
-                <div class="post-abstract">
-                  <h1 id="rt">RT</h1>
+    </p>
+    <div class="row">
+      <a href="https://Kite-chaser.github.io/post/p1330-feng-suo-yang-guang-da-xue" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://Kite-chaser.github.io/post/bing-cha-ji">并查集</a>
+    </h2>
+    <p class="article-meta">
+      2019-08-18
+      
+        <a href="https://Kite-chaser.github.io/tag/ksq4_sfEo" class="badge secondary">
+          并查集
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge warning">
+          OI
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <h1 id="rt">RT</h1>
 <p>并查集是一种树型的数据结构，用于处理一些不相交集合的合并及查询问题，常常在使用中以森林来表示（一般用数组实现）。</p>
 
-                </div>
-              </div>
-              
-                <a class="right" href="https://Kite-chaser.github.io/post/bing-cha-ji">
-                  <div class="feature-container" style="background-image: url('https://Kite-chaser.github.io/post-images/bing-cha-ji.jpg')">
-                  </div>
-                </a>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://Kite-chaser.github.io/post/zui-xiao-zhi-pei-ji">
-                  <h2 class="post-title">最小支配集</h2>
-                </a>
-                <div class="post-date">
-                  2019-08-18
-                </div>
-                <div class="post-abstract">
-                  <h2 id="rt">RT</h2>
+    </p>
+    <div class="row">
+      <a href="https://Kite-chaser.github.io/post/bing-cha-ji" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://Kite-chaser.github.io/post/zui-xiao-zhi-pei-ji">最小支配集</a>
+    </h2>
+    <p class="article-meta">
+      2019-08-18
+      
+        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge secondary">
+          OI
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <h2 id="rt">RT</h2>
 <p>1.支配集(DS,dominating set)？</p>
 <p>支配集的定义如下：给定无向图G =（V , E）,其中V是点集， E是边集， 称V的一个子集S称为支配集当且仅当对于V-S中任何一个点v, 都有S中的某个点u, 使得(u, v) ∈E。</p>
 
-                </div>
-              </div>
-              
-                <a class="right" href="https://Kite-chaser.github.io/post/zui-xiao-zhi-pei-ji">
-                  <div class="feature-container" style="background-image: url('https://Kite-chaser.github.io/post-images/zui-xiao-zhi-pei-ji.jpg')">
-                  </div>
-                </a>
-              
-            </article>
-          
+    </p>
+    <div class="row">
+      <a href="https://Kite-chaser.github.io/post/zui-xiao-zhi-pei-ji" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
 
-          <div class="pagination-container">
+
+        </div>
+        <div class="row flex-edges">
   
   
 </div>
 
-        </div>
       </div>
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://Kite-chaser.github.io/images/avatar.png?v=1566171907916" class="no-responsive avatar">
+    <div class="text-muted">This is my blog.</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/p3088-usaco13novji-nai-niu-crowded-cows">P3088 [USACO13NOV]挤奶牛Crowded Cows</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/p4879-ycz-de-mei-zi">P4879 ycz的妹子</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/p1330-feng-suo-yang-guang-da-xue">P1330 封锁阳光大学</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/bing-cha-ji">并查集</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/zui-xiao-zhi-pei-ji">最小支配集</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/hello-hve-notes">Hello Hve Notes</a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://Kite-chaser.github.io/tag/92gh9uu1i" class="badge ">
+          单调队列
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge secondary">
+          OI
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/2kgafuTx9" class="badge secondary">
+          线段树
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/ksq4_sfEo" class="badge success">
+          并查集
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/hvenotes" class="badge warning">
+          HveNotes
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by Hve Notes | <a class="rss" href="https://Kite-chaser.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
     </div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -213,13 +348,6 @@
 AOS.init();
 
 hljs.initHighlightingOnLoad()
-
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
 
 </script>
 
