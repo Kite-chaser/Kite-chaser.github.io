@@ -1,135 +1,101 @@
+<!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" >
 
-<head>
-    <meta charset="utf-8" />
-<meta name="description" content="" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>
-    最小支配集 | Kite-chaser
-</title>
-<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1566131371115">
-<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
-<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<title>最小支配集 | Kite-chaser</title>
+<meta name="description" content="This is my blog.">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico">
 <link rel="stylesheet" href="https://Kite-chaser.github.io/styles/main.css">
-<!-- js -->
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://Kite-chaser.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 
-        
-            
-                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-                <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-                
+  </head>
+  <body>
+    <div id="app" class="main">
 
-                    
-                            
-</head>
-
-<body>
-    <div class="main">
-        <div class="header">
-    <div class="nav">
-        <div class="logo">
-            <a href="https://Kite-chaser.github.io">
-                <img class="avatar" src="https://Kite-chaser.github.io/images/avatar.png?v=1566131371115" alt="">
-            </a>
-            <div class="site-title">
-                <h1>
-                    Kite-chaser
-                </h1>
-            </div>
-        </div>
-        <span class="menu-btn fa fa-align-justify"></span>
-        <div class="menu-container">
-            <ul>
-                
-                    
-                            <li>
-                                <a href="/" class="menu">
-                                    首页
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="/archives" class="menu">
-                                    归档
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="/tags" class="menu">
-                                    标签
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="https://Kite-chaser.github.io/post/guan-yu/" class="menu">
-                                    关于
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="https://Kite-chaser.github.io/post/you-lian/" class="menu">
-                                    友链
-                                </a>
-                            </li>
-                            
-                                
-            </ul>
-        </div>
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://Kite-chaser.github.io">
+        <img src="https://Kite-chaser.github.io/images/avatar.png" class="site-logo">
+        <h1 class="site-title">Kite-chaser</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://Kite-chaser.github.io/post/guan-yu/" class="site-nav">
+            关于
+          </a>
+        
+      
+        
+          <a href="https://Kite-chaser.github.io/post/you-lian/" class="site-nav">
+            友链
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="site-description">
+      This is my blog.
+    </div>
+    <div class="site-footer">
+      Powered by Hve Notes
+    </div>
+  </div>
 </div>
 
-<script>
-    $(document).ready(function() {
-        $(".menu-btn").click(function() {
-            $(".menu-container").slideToggle();
-        });
-        $(window).resize(function() {
 
-            if (window.matchMedia('(min-width: 960px)').matches) {
-                $(".menu-container").css('display', 'block')
-            } else {
-                $(".menu-container").css('display', 'none')
-            }
-
-        });
-    });
-</script>
-
-            <div id="main-content" class="post-detail main-container">
-                <!-- left -->
-                <div id="content" class="main-container-left">
-                    <article class="post i-card">
-                        <h2 class="post-title">
-                            最小支配集
-                        </h2>
-                        <div class="post-info">
-                            <time class="post-time">2019-08-18</time>
-                            
-                                <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
-                            i-tag-success">
-                            #OI
-                        </a>
-                                
-                        </div>
-                        
-                            <div class="post-feature-image" style="background-image: url('https://Kite-chaser.github.io/post-images/zui-xiao-zhi-pei-ji.jpg')"></div>
-                            
-                                <div class="post-content">
-                                    <h2 id="rt">RT</h2>
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">最小支配集</h2>
+            <div class="post-date">2019-08-18</div>
+            
+              <div class="feature-container" style="background-image: url('https://Kite-chaser.github.io/post-images/zui-xiao-zhi-pei-ji.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <h2 id="rt">RT</h2>
 <p>1.支配集(DS,dominating set)？</p>
 <p>支配集的定义如下：给定无向图G =（V , E）,其中V是点集， E是边集， 称V的一个子集S称为支配集当且仅当对于V-S中任何一个点v, 都有S中的某个点u, 使得(u, v) ∈E。</p>
 <!--more-->
@@ -195,123 +161,83 @@ int main()
 <h2 id="相关题目">相关题目</h2>
 <p><a href="https://www.luogu.org/problem/P2899">P2899 [USACO08JAN]手机网络Cell Phone Network</a></p>
 
-                                </div>
-                    </article>
-                    <!--  -->
-                    
-                        <div class="next-post">
-                            <div class="next">下一篇</div>
-                            <a href="https://Kite-chaser.github.io/post/hello-hve-notes">
-                                <h3 class="post-title">
-                                    Hello Hve Notes
-                                </h3>
-                            </a>
-                        </div>
-                        
-                            <div id="disqus_thread"></div>
-                            <div id="gitalk-container"></div>
-                </div>
-                <!-- middle -->
-                <div class="main-container-middle"></div>
-                <!-- right -->
-                <div id="sidebar" class="main-container-right">
-                    
-                        <!-- toc -->
-                        
-    <div class="toc-card i-card ">
-        <div class="toc-title i-card-title">目录</div>
-        <div class="toc-content">
-            <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#rt">RT</a></li>
-<li><a href="#slove">Slove</a>
-<ul>
-<li><a href="#%E8%B4%AA%E5%BF%83%E7%AD%96%E7%95%A5">贪心策略</a></li>
-<li><a href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0">具体实现</a></li>
-</ul>
-</li>
-<li><a href="#tip">Tip：</a></li>
-<li><a href="#code">Code</a></li>
-<li><a href="#%E7%9B%B8%E5%85%B3%E9%A2%98%E7%9B%AE">相关题目</a></li>
-</ul>
-</li>
-</ul>
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="tag">
+                    OI
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://Kite-chaser.github.io/post/hello-hve-notes">
+                  <h3 class="post-title">
+                    Hello Hve Notes
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
 
         </div>
-        <script>
-            function locateCatelogList() {
-                /*获取文章目录集合,可通过:header过滤器*/
-                var alis = $('.post-content :header');
-                /*获取侧边栏目录列表集合**/
-                var sidebar_alis = $('.markdownIt-TOC a');
-                /*获取滚动条到顶部的距离*/
-                var scroll_height = $(window).scrollTop();
-                for (var i = 0; i < alis.length; i++) {
-                    /*获取锚点集合中的元素分别到顶点的距离*/
-                    var a_height = $(alis[i]).offset().top;
-                    if (a_height < scroll_height) {
-                        /*高亮显示*/
-                        sidebar_alis.removeClass('on');
-                        $(sidebar_alis[i]).addClass('on');
-                    }
-                }
-            }
-            $(function() {
-                /*绑定滚动事件 */
-                $(window).bind('scroll', locateCatelogList);
-            });
-        </script>
+      </div>
     </div>
-    
-                            
 
-                </div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
+<script type="application/javascript">
 
+AOS.init();
 
+hljs.initHighlightingOnLoad()
 
-            </div>
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
 
-
-            <div class="site-footer">
-  Powered by Hve Notes | 
-  <a class="rss" href="https://Kite-chaser.github.io/atom.xml" target="_blank">RSS</a>
-</div>
-
-<script>
-  hljs.initHighlightingOnLoad()
 </script>
 
 
-    </div>
+  
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
     <script>
-        $('#sidebar').stickySidebar({
-            topSpacing: 80,
-            // bottomSpacing: 60
-        });
+
+      var gitalk = new Gitalk({
+        clientID: '761ba32522ad16d2134b',
+        clientSecret: 'd5634ea03ca976d589a06f88c4e9fb23c928e5f9',
+        repo: 'Kite-chaser.github.io',
+        owner: 'Kite-chaser',
+        admin: ['Kite-chaser'],
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
     </script>
-    
-        
-            <script>
-    window.onload = function() {
-        var gitalk = new Gitalk({
-            clientID: '761ba32522ad16d2134b',
-            clientSecret: 'd5634ea03ca976d589a06f88c4e9fb23c928e5f9',
-            repo: 'Kite-chaser.github.io',
-            owner: 'Kite-chaser',
-            admin: ['Kite-chaser'],
-            id: (location.pathname).substring(0, 49), // Ensure uniqueness and length less than 50
-            distractionFreeMode: false // Facebook-like distraction free mode
-        })
+  
 
-        gitalk.render('gitalk-container')
-    }
-</script>
-                
+  
 
-                    
-                                
-</body>
 
+
+
+  </body>
 </html>
