@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Kite-chaser</title>
+<title>P4879 ycz的妹子 | Kite-chaser</title>
 <meta name="description" content="This is my blog.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -11,6 +11,12 @@
 <link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico">
 <link rel="stylesheet" href="https://Kite-chaser.github.io/styles/main.css">
 
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
 
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -75,63 +81,36 @@
 
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://Kite-chaser.github.io/post/p4879-ycz-de-mei-zi">
-                  <h2 class="post-title">P4879 ycz的妹子</h2>
-                </a>
-                <div class="post-date">
-                  2019-08-18
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
+          <div class="post-detail">
+            <h2 class="post-title">P4879 ycz的妹子</h2>
+            <div class="post-date">2019-08-18</div>
+            
+            <div class="post-content">
+              <!-- more -->
+<p>机房神犇yczyczycz有n个青梅竹马，她们分别住在1~n号城市中。小时候的她们美丽可爱，但是由于女大十八变，有些妹子的颜值发生了变化，但是十分重感情的yczyczycz神犇不忍心抛弃她们，于是记录下来了她们颜值变化的值</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
                 <a href="https://Kite-chaser.github.io/post/p1330-feng-suo-yang-guang-da-xue">
-                  <h2 class="post-title">P1330 封锁阳光大学</h2>
+                  <h3 class="post-title">
+                    P1330 封锁阳光大学
+                  </h3>
                 </a>
-                <div class="post-date">
-                  2019-08-18
-                </div>
-                <div class="post-abstract">
-                  <p>曹是一只爱刷街的老曹，暑假期间，他每天都欢快地在阳光大学的校园里刷街。河蟹看到欢快的曹，感到不爽。河蟹决定封锁阳光大学，不让曹刷街。</p>
-
-                </div>
               </div>
-              
-                <a class="right" href="https://Kite-chaser.github.io/post/p1330-feng-suo-yang-guang-da-xue">
-                  <div class="feature-container" style="background-image: url('https://Kite-chaser.github.io/post-images/p1330-feng-suo-yang-guang-da-xue.jpg')">
-                  </div>
-                </a>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://Kite-chaser.github.io/post/zui-xiao-zhi-pei-ji">
-                  <h2 class="post-title">最小支配集</h2>
-                </a>
-                <div class="post-date">
-                  2019-08-18
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
+            
 
-          <div class="pagination-container">
-  
-  
-</div>
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
 
         </div>
       </div>
@@ -153,6 +132,29 @@ var app = new Vue({
 })
 
 </script>
+
+
+  
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '761ba32522ad16d2134b',
+        clientSecret: 'd5634ea03ca976d589a06f88c4e9fb23c928e5f9',
+        repo: 'Kite-chaser.github.io',
+        owner: 'Kite-chaser',
+        admin: ['Kite-chaser'],
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
 
 
 
