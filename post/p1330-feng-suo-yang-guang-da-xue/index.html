@@ -1,104 +1,77 @@
-
-<!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
-
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>P1330 封锁阳光大学 | Kite-chaser</title>
-<meta name="description" content="This is my blog.">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-
 <link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico">
 <link rel="stylesheet" href="https://Kite-chaser.github.io/styles/main.css">
 
-
-  
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
-  
-
-  
-
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
   </head>
   <body>
-    <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="https://Kite-chaser.github.io">
-        <img class="avatar" src="https://Kite-chaser.github.io/images/avatar.png" alt="" width="32px" height="32px">
-      </a>
-      <a href="https://Kite-chaser.github.io">
-        <h1 class="site-title">Kite-chaser</h1>
-      </a>
-    </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://Kite-chaser.github.io">
+  <img class="avatar" src="https://Kite-chaser.github.io/images/avatar.png" alt="" width="80px" height="80px">
+  </a>
+  <h1 class="site-title">
+    Kite-chaser
+  </h1>
+  <p class="site-description">
+    This is my blog.
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://Kite-chaser.github.io/post/you-lian/" class="menu">
+          友链
+        </a>
+      
+    
   </div>
 </div>
 
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
       
-        
-          <a href="/" class="menu purple-link">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="menu purple-link">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="menu purple-link">
-            标签
-          </a>
-        
-      
-        
-          <a href="https://Kite-chaser.github.io/post/you-lian/" class="menu purple-link">
-            友链
-          </a>
-        
-      
-    </div>
-  </div>
-</transition>
-
-
-      <div class="content-container">
         <div class="post-detail">
-          <h2 class="post-title">P1330 封锁阳光大学</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2019-08-18</span>
-            
-              <span>
-                <i class="icon-pricetags-outline"></i>
-                
-                  <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u">
-                    OI
-                    
-                  </a>
-                
-              </span>
-            
-          </div>
-          <div class="post-content">
-            <p><a href="https://www.luogu.org/problem/P1330">原题链接</a></p>
+          <article class="post">
+            <h2 class="post-title">
+              P1330 封锁阳光大学
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-08-18 ·
+              </time>
+              
+                <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tags">
+                  # OI
+                </a>
+              
+            </div>
+            <div class="post-content">
+              <p><a href="https://www.luogu.org/problem/P1330">原题链接</a></p>
 <h4 id="题目描述">题目描述</h4><p>曹是一只爱刷街的老曹，暑假期间，他每天都欢快地在阳光大学的校园里刷街。河蟹看到欢快的曹，感到不爽。河蟹决定封锁阳光大学，不让曹刷街。</p>
 <p>阳光大学的校园是一张由N个点构成的无向图，N个点之间由M条道路连接。每只河蟹可以对一个点进行封锁，当某个点被封锁后，与这个点相连的道路就被封锁了，曹就无法在与这些道路上刷街了。非常悲剧的一点是，河蟹是一种不和谐的生物，当两只河蟹封锁了相邻的两个点时，他们会发生冲突。</p>
 <p>询问：最少需要多少只河蟹，可以封锁所有道路并且不发生冲突。</p>
@@ -169,73 +142,58 @@ int main()
     return 0;
 }</code></pre>
 
-          </div>
+            </div>
+          </article>
         </div>
-
+    
         
           <div class="next-post">
-            <a class="purple-link" href="https://Kite-chaser.github.io/post/zui-xiao-zhi-pei-ji">
+            <div class="next">下一篇</div>
+            <a href="https://Kite-chaser.github.io/post/zui-xiao-zhi-pei-ji">
               <h3 class="post-title">
-                下一篇：最小支配集
+                最小支配集
               </h3>
             </a>
-          </div>
+          </div>  
+        
+
+        
           
-      </div>
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 
-      
-        
-          <div id="gitalk-container"></div>
-        
+<div id="gitalk-container"></div>
 
-        
-      
+<script>
 
-      <div class="site-footer">
-  <div class="slogan">This is my blog.</div>
-  Powered by Hve Notes
-</div>
+  var gitalk = new Gitalk({
+    clientID: '761ba32522ad16d2134b',
+    clientSecret: 'd5634ea03ca976d589a06f88c4e9fb23c928e5f9',
+    repo: 'Kite-chaser.github.io',
+    owner: 'Kite-chaser',
+    admin: ['Kite-chaser'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
 
-
-    </div>
-    <script type="application/javascript">
-
-hljs.initHighlightingOnLoad()
-
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
+  gitalk.render('gitalk-container')
 
 </script>
 
+          
 
-  
-  
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    <script>
+          
+        
+    
+        <div class="site-footer">
+  Powered by Hve Notes
+</div>
 
-      var gitalk = new Gitalk({
-        clientID: '761ba32522ad16d2134b',
-        clientSecret: 'd5634ea03ca976d589a06f88c4e9fb23c928e5f9',
-        repo: 'Kite-chaser.github.io',
-        owner: 'Kite-chaser',
-        admin: ['Kite-chaser'],
-        id: location.pathname,      // Ensure uniqueness and length less than 50
-        distractionFreeMode: false  // Facebook-like distraction free mode
-      })
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
 
-      gitalk.render('gitalk-container')
-
-    </script>
-  
-
-  
-
-
-
-
+      </div>
+    </div>
   </body>
 </html>

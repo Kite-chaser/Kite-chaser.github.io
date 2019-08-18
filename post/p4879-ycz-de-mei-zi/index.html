@@ -1,104 +1,77 @@
-
-<!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
-
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>P4879 ycz的妹子 | Kite-chaser</title>
-<meta name="description" content="This is my blog.">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-
 <link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico">
 <link rel="stylesheet" href="https://Kite-chaser.github.io/styles/main.css">
 
-
-  
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
-  
-
-  
-
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
   </head>
   <body>
-    <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="https://Kite-chaser.github.io">
-        <img class="avatar" src="https://Kite-chaser.github.io/images/avatar.png" alt="" width="32px" height="32px">
-      </a>
-      <a href="https://Kite-chaser.github.io">
-        <h1 class="site-title">Kite-chaser</h1>
-      </a>
-    </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://Kite-chaser.github.io">
+  <img class="avatar" src="https://Kite-chaser.github.io/images/avatar.png" alt="" width="80px" height="80px">
+  </a>
+  <h1 class="site-title">
+    Kite-chaser
+  </h1>
+  <p class="site-description">
+    This is my blog.
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://Kite-chaser.github.io/post/you-lian/" class="menu">
+          友链
+        </a>
+      
+    
   </div>
 </div>
 
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
       
-        
-          <a href="/" class="menu purple-link">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="menu purple-link">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="menu purple-link">
-            标签
-          </a>
-        
-      
-        
-          <a href="https://Kite-chaser.github.io/post/you-lian/" class="menu purple-link">
-            友链
-          </a>
-        
-      
-    </div>
-  </div>
-</transition>
-
-
-      <div class="content-container">
         <div class="post-detail">
-          <h2 class="post-title">P4879 ycz的妹子</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2019-08-18</span>
-            
-              <span>
-                <i class="icon-pricetags-outline"></i>
-                
-                  <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u">
-                    OI
-                    
-                  </a>
-                
-              </span>
-            
-          </div>
-          <div class="post-content">
-            <p><a href="https://www.luogu.org/problem/P4879">原题链接</a></p>
+          <article class="post">
+            <h2 class="post-title">
+              P4879 ycz的妹子
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-08-18 ·
+              </time>
+              
+                <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tags">
+                  # OI
+                </a>
+              
+            </div>
+            <div class="post-content">
+              <p><a href="https://www.luogu.org/problem/P4879">原题链接</a></p>
 <h4 id="题目背景">题目背景</h4><p>yczyczycz有很多很多的妹子（yczyczycz：瞎说）</p>
 <h4 id="题目描述">题目描述</h4><p>机房神犇yczyczycz有n个青梅竹马，她们分别住在1~n号城市中。小时候的她们美丽可爱，但是由于女大十八变，有些妹子的颜值发生了变化，但是十分重感情的yczyczycz神犇不忍心抛弃她们，于是记录下来了她们颜值变化的值，我们用CxyC, x, yCxy表示第xxx个城市的妹子的颜值下降了yyy。长大之后的yczyczycz非常有魅力，有许多妹子被yczyczycz迷得神魂颠倒，我们用IxyI, x, yIxy表示第xxx个城市有一个妹子喜欢上了yczyczycz，她的颜值为yyy（yyy有可能是负数，但是yczyczycz来者不拒）。但在中途有一些妹子和yczyczycz吵架了，于是就分手了，我们用DxD, xDx表示第xxx个妹子和yczyczycz分手了。</p>
 <p>最近神犇yczyczycz要去全国各地找他的妹子们，为了方便计算，我们珂以把yczyczycz的妹子所在的城市当作是一条直线，并且挨在一起。神犇yczyczycz由于忙于和他的妹子们联系此时已经很累了，于是交给你一个这样的任务：他想知道他在某个时间去找他的所有妹子们珂以获得多大的愉悦度，这个愉悦度为他找的妹子的颜值数，你要做的就是求出这个愉悦度之和（注意长大后妹子们的颜值可能为负数/滑稽）。</p>
@@ -201,73 +174,58 @@ int main()
 }</code></pre>
 <p><del>自认为简洁的代码</del></p>
 
-          </div>
+            </div>
+          </article>
         </div>
-
+    
         
           <div class="next-post">
-            <a class="purple-link" href="https://Kite-chaser.github.io/post/p1330-feng-suo-yang-guang-da-xue">
+            <div class="next">下一篇</div>
+            <a href="https://Kite-chaser.github.io/post/p1330-feng-suo-yang-guang-da-xue">
               <h3 class="post-title">
-                下一篇：P1330 封锁阳光大学
+                P1330 封锁阳光大学
               </h3>
             </a>
-          </div>
+          </div>  
+        
+
+        
           
-      </div>
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 
-      
-        
-          <div id="gitalk-container"></div>
-        
+<div id="gitalk-container"></div>
 
-        
-      
+<script>
 
-      <div class="site-footer">
-  <div class="slogan">This is my blog.</div>
-  Powered by Hve Notes
-</div>
+  var gitalk = new Gitalk({
+    clientID: '761ba32522ad16d2134b',
+    clientSecret: 'd5634ea03ca976d589a06f88c4e9fb23c928e5f9',
+    repo: 'Kite-chaser.github.io',
+    owner: 'Kite-chaser',
+    admin: ['Kite-chaser'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
 
-
-    </div>
-    <script type="application/javascript">
-
-hljs.initHighlightingOnLoad()
-
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
+  gitalk.render('gitalk-container')
 
 </script>
 
+          
 
-  
-  
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    <script>
+          
+        
+    
+        <div class="site-footer">
+  Powered by Hve Notes
+</div>
 
-      var gitalk = new Gitalk({
-        clientID: '761ba32522ad16d2134b',
-        clientSecret: 'd5634ea03ca976d589a06f88c4e9fb23c928e5f9',
-        repo: 'Kite-chaser.github.io',
-        owner: 'Kite-chaser',
-        admin: ['Kite-chaser'],
-        id: location.pathname,      // Ensure uniqueness and length less than 50
-        distractionFreeMode: false  // Facebook-like distraction free mode
-      })
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
 
-      gitalk.render('gitalk-container')
-
-    </script>
-  
-
-  
-
-
-
-
+      </div>
+    </div>
   </body>
 </html>
