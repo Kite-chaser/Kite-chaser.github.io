@@ -1,12 +1,15 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>P1330 封锁阳光大学 | Kite-chaser</title>
 <meta name="description" content="This is my blog.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico">
 <link rel="stylesheet" href="https://Kite-chaser.github.io/styles/main.css">
@@ -22,74 +25,80 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
 
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="https://Kite-chaser.github.io">
-        <img src="https://Kite-chaser.github.io/images/avatar.png" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://Kite-chaser.github.io">
+        <img class="avatar" src="https://Kite-chaser.github.io/images/avatar.png" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://Kite-chaser.github.io">
         <h1 class="site-title">Kite-chaser</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="https://Kite-chaser.github.io/post/you-lian/" class="site-nav">
+          <a href="https://Kite-chaser.github.io/post/you-lian/" class="menu purple-link">
             友链
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="site-description">
-      This is my blog.
-    </div>
-    <div class="site-footer">
-      Powered by Hve Notes
-    </div>
-  </div>
-</div>
+</transition>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">P1330 封锁阳光大学</h2>
-            <div class="post-date">2019-08-18</div>
+      <div class="content-container">
+        <div class="post-detail">
+          <h2 class="post-title">P1330 封锁阳光大学</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2019-08-18</span>
             
-              <div class="feature-container" style="background-image: url('https://Kite-chaser.github.io/post-images/p1330-feng-suo-yang-guang-da-xue.jpg')">
-              </div>
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u">
+                    OI
+                    
+                  </a>
+                
+              </span>
             
-            <div class="post-content">
-              <p><a href="https://www.luogu.org/problem/P1330">原题链接</a></p>
+          </div>
+          <div class="post-content">
+            <p><a href="https://www.luogu.org/problem/P1330">原题链接</a></p>
 <h4 id="题目描述">题目描述</h4><p>曹是一只爱刷街的老曹，暑假期间，他每天都欢快地在阳光大学的校园里刷街。河蟹看到欢快的曹，感到不爽。河蟹决定封锁阳光大学，不让曹刷街。</p>
 <p>阳光大学的校园是一张由N个点构成的无向图，N个点之间由M条道路连接。每只河蟹可以对一个点进行封锁，当某个点被封锁后，与这个点相连的道路就被封锁了，曹就无法在与这些道路上刷街了。非常悲剧的一点是，河蟹是一种不和谐的生物，当两只河蟹封锁了相邻的两个点时，他们会发生冲突。</p>
 <p>询问：最少需要多少只河蟹，可以封锁所有道路并且不发生冲突。</p>
@@ -160,46 +169,36 @@ int main()
     return 0;
 }</code></pre>
 
-            </div>
-            
-              <div class="tag-container">
-                
-                  <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="tag">
-                    OI
-                  </a>
-                
-              </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="https://Kite-chaser.github.io/post/zui-xiao-zhi-pei-ji">
-                  <h3 class="post-title">
-                    最小支配集
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-              
-                <div id="gitalk-container" data-aos="fade-in"></div>
-              
-
-              
-            
-
           </div>
-
         </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://Kite-chaser.github.io/post/zui-xiao-zhi-pei-ji">
+              <h3 class="post-title">
+                下一篇：最小支配集
+              </h3>
+            </a>
+          </div>
+          
       </div>
+
+      
+        
+          <div id="gitalk-container"></div>
+        
+
+        
+      
+
+      <div class="site-footer">
+  <div class="slogan">This is my blog.</div>
+  Powered by Hve Notes
+</div>
+
+
     </div>
-
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-
-<script type="application/javascript">
-
-AOS.init();
+    <script type="application/javascript">
 
 hljs.initHighlightingOnLoad()
 
