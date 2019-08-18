@@ -95,29 +95,44 @@
               </div>
             
             <div class="post-content">
-              <h1 id="rt">RT</h1><p>并查集是一种树型的数据结构，用于处理一些不相交集合的合并及查询问题，常常在使用中以森林来表示（一般用数组实现）。</p>
+              <h1 id="rt">RT</h1>
+<p>并查集是一种树型的数据结构，用于处理一些不相交集合的合并及查询问题，常常在使用中以森林来表示（一般用数组实现）。</p>
 <!--more-->
-
-<h1 id="实现核心">实现核心</h1><h4 id="1.初始化：">1.初始化：</h4><p>把每个点所在集合初始化为其自身。</p>
+<h1 id="实现核心">实现核心</h1>
+<h4 id="1初始化">1.初始化：</h4>
+<p>把每个点所在集合初始化为其自身。</p>
 <p>通常来说，这个步骤在每次使用该数据结构时只需要执行一次，无论何种实现方式，时间复杂度均为O(N)。</p>
-<h4 id="2.查找">2.查找</h4><p>查找元素所在的集合，即根节点。</p>
-<h4 id="3.合并">3.合并</h4><p>将两个元素所在的集合合并为一个集合。<br>通常来说，合并之前，应先判断两个元素是否属于同一集合，这可用上面的“查找”操作实现。</p>
-<h1 id="代码实现">代码实现</h1><h4 id="1.初始化">1.初始化</h4><pre><code class="language-cpp">int f[];  //定义数组f,f[i]表示节点i的父节点
-for(int i=1;i&lt;=n;i++) f[i]=i;  //n为节点数</code></pre>
-<h4 id="2.查找">2.查找</h4><p>首先，我们需要引入一个路径压缩的概念。</p>
+<h4 id="2查找">2.查找</h4>
+<p>查找元素所在的集合，即根节点。</p>
+<h4 id="3合并">3.合并</h4>
+<p>将两个元素所在的集合合并为一个集合。<br>
+通常来说，合并之前，应先判断两个元素是否属于同一集合，这可用上面的“查找”操作实现。</p>
+<h1 id="代码实现">代码实现</h1>
+<h4 id="1初始化-2">1.初始化</h4>
+<pre><code class="language-cpp">int f[];  //定义数组f,f[i]表示节点i的父节点
+for(int i=1;i&lt;=n;i++) f[i]=i;  //n为节点数
+</code></pre>
+<h4 id="2查找-2">2.查找</h4>
+<p>首先，我们需要引入一个路径压缩的概念。</p>
 <p>如果，查找中路径较长（形成一个长长的链），时间复杂度就会比较高。</p>
-<h5 id="思想">思想</h5><p>每次查找的时候，如果路径较长，则修改信息，以便下次查找的时候速度更快。</p>
-<h5 id="实现">实现</h5><p>1.找到根结点。</p>
+<h5 id="思想">思想</h5>
+<p>每次查找的时候，如果路径较长，则修改信息，以便下次查找的时候速度更快。</p>
+<h5 id="实现">实现</h5>
+<p>1.找到根结点。</p>
 <p>2.修改查找路径上的所有节点，将它们都指向根结点。</p>
 <pre><code class="language-cpp">int find(int s){  //查找节点s
-    if(f[s]!=s) f[s]=find(f[s]);
-    return f[s];
-}</code></pre>
-<h4 id="3.合并">3.合并</h4><pre><code class="language-cpp">int u,v;  //需要合并的节点u和节点v
+	if(f[s]!=s) f[s]=find(f[s]);
+	return f[s];
+}
+</code></pre>
+<h4 id="3合并-2">3.合并</h4>
+<pre><code class="language-cpp">int u,v;  //需要合并的节点u和节点v
 int x=find(u);
 int y=find(v);  //x,y为节点u和节点v的父节点
-if（x!=y) f[y]=x;  //或f[x]=y;</code></pre>
-<h3 id="相关题目">相关题目</h3><p><a href="https://www.luogu.org/problemnew/show/P3367">P3367 【模板】并查集</a></p>
+if（x!=y) f[y]=x;  //或f[x]=y;
+</code></pre>
+<h3 id="相关题目">相关题目</h3>
+<p><a href="https://www.luogu.org/problemnew/show/P3367">P3367 【模板】并查集</a></p>
 <p><a href="https://www.luogu.org/problemnew/show/P2024">P2024 [NOI2001]食物链</a></p>
 <p><a href="https://www.luogu.org/problemnew/show/P1197">P1197 [JSOI2008]星球大战</a></p>
 <p><a href="https://www.luogu.org/problemnew/show/P2323">P2323 [HNOI2006]公路修建问题</a></p>
