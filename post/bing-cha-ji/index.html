@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>并查集 | Kite-chaser</title>
+<meta name="description" content="This is my blog.">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico">
+<link rel="stylesheet" href="https://Kite-chaser.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://Kite-chaser.github.io">
+        <img src="https://Kite-chaser.github.io/images/avatar.png" class="site-logo">
+        <h1 class="site-title">Kite-chaser</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://Kite-chaser.github.io/post/you-lian/" class="site-nav">
+            友链
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="site-description">
+      This is my blog.
+    </div>
+    <div class="site-footer">
+      Powered by Hve Notes
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">并查集</h2>
+            <div class="post-date">2019-08-18</div>
+            
+            <div class="post-content">
+              <h1 id="rt">RT</h1><p>并查集是一种树型的数据结构，用于处理一些不相交集合的合并及查询问题，常常在使用中以森林来表示（一般用数组实现）。</p>
+<h1 id="实现核心">实现核心</h1><h4 id="1.初始化：">1.初始化：</h4><p>把每个点所在集合初始化为其自身。</p>
+<p>通常来说，这个步骤在每次使用该数据结构时只需要执行一次，无论何种实现方式，时间复杂度均为O(N)。</p>
+<h4 id="2.查找">2.查找</h4><p>查找元素所在的集合，即根节点。</p>
+<h4 id="3.合并">3.合并</h4><p>将两个元素所在的集合合并为一个集合。<br>通常来说，合并之前，应先判断两个元素是否属于同一集合，这可用上面的“查找”操作实现。</p>
+<h1 id="代码实现">代码实现</h1><h4 id="1.初始化">1.初始化</h4><pre><code class="language-cpp">int f[];  //定义数组f,f[i]表示节点i的父节点
+for(int i=1;i&lt;=n;i++) f[i]=i;  //n为节点数</code></pre>
+<h4 id="2.查找">2.查找</h4><p>首先，我们需要引入一个路径压缩的概念。</p>
+<p>如果，查找中路径较长（形成一个长长的链），时间复杂度就会比较高。</p>
+<h5 id="思想">思想</h5><p>每次查找的时候，如果路径较长，则修改信息，以便下次查找的时候速度更快。</p>
+<h5 id="实现">实现</h5><p>1.找到根结点。</p>
+<p>2.修改查找路径上的所有节点，将它们都指向根结点。</p>
+<pre><code class="language-cpp">int find(int s){  //查找节点s
+    if(f[s]!=s) f[s]=find(f[s]);
+    return f[s];
+}</code></pre>
+<h4 id="3.合并">3.合并</h4><pre><code class="language-cpp">int u,v;  //需要合并的节点u和节点v
+int x=find(u);
+int y=find(v);  //x,y为节点u和节点v的父节点
+if（x!=y) f[y]=x;  //或f[x]=y;</code></pre>
+<h3 id="相关题目">相关题目</h3><p><a href="https://www.luogu.org/problemnew/show/P3367">P3367 【模板】并查集</a></p>
+<p><a href="https://www.luogu.org/problemnew/show/P2024">P2024 [NOI2001]食物链</a></p>
+<p><a href="https://www.luogu.org/problemnew/show/P1197">P1197 [JSOI2008]星球大战</a></p>
+<p><a href="https://www.luogu.org/problemnew/show/P2323">P2323 [HNOI2006]公路修建问题</a></p>
+<p><a href="https://www.luogu.org/problemnew/show/P2835">P2835 刻录光盘</a></p>
+<p><a href="https://www.luogu.org/problemnew/show/P3958">P3958 奶酪</a></p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://Kite-chaser.github.io/tag/ksq4_sfEo" class="tag">
+                    并查集
+                  </a>
+                
+                  <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="tag">
+                    OI
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://Kite-chaser.github.io/post/zui-xiao-zhi-pei-ji">
+                  <h3 class="post-title">
+                    最小支配集
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '761ba32522ad16d2134b',
+        clientSecret: 'd5634ea03ca976d589a06f88c4e9fb23c928e5f9',
+        repo: 'Kite-chaser.github.io',
+        owner: 'Kite-chaser',
+        admin: ['Kite-chaser'],
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
