@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Kite-chaser.github.io</id>
     <title>Kite-chaser</title>
-    <updated>2019-08-18T23:54:41.342Z</updated>
+    <updated>2019-08-18T23:55:27.184Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Kite-chaser.github.io"/>
     <link rel="self" href="https://Kite-chaser.github.io/atom.xml"/>
@@ -80,12 +80,5 @@
 <p>1.支配集(DS,dominating set)？</p>
 <p>支配集的定义如下：给定无向图G =（V , E）,其中V是点集， E是边集， 称V的一个子集S称为支配集当且仅当对于V-S中任何一个点v, 都有S中的某个点u, 使得(u, v) ∈E。</p>
 ]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Hello Hve Notes]]></title>
-        <id>https://Kite-chaser.github.io/post/hello-hve-notes</id>
-        <link href="https://Kite-chaser.github.io/post/hello-hve-notes">
-        </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
     </entry>
 </feed>
