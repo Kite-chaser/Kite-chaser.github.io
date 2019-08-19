@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Kite-chaser.github.io</id>
     <title>Kite-chaser</title>
-    <updated>2019-08-19T05:46:43.706Z</updated>
+    <updated>2019-08-19T05:57:30.679Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Kite-chaser.github.io"/>
     <link rel="self" href="https://Kite-chaser.github.io/atom.xml"/>
@@ -107,6 +107,10 @@
         <link href="https://Kite-chaser.github.io/post/p2323-hnoi2006gong-lu-xiu-jian-wen-ti">
         </link>
         <updated>2019-08-19T03:03:06.000Z</updated>
+        <summary type="html"><![CDATA[<p>其实我只是为了不让文字显示太多才写的摘要。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>其实我只是为了不让文字显示太多才写的摘要。</p>
+]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Kruskal]]></title>
