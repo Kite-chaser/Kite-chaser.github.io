@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    友链 | Kite-chaser
+    P1194 买礼物 | Kite-chaser
 </title>
 <link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1566191059567">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -114,37 +114,111 @@
                 <div id="content" class="main-container-left">
                     <article class="post i-card">
                         <h2 class="post-title">
-                            友链
+                            P1194 买礼物
                         </h2>
                         <div class="post-info">
-                            <time class="post-time">2019-08-18</time>
+                            <time class="post-time">2019-08-19</time>
                             
+                                <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="post-tag i-tag
+                            i-tag-primary">
+                            #图论
+                        </a>
+                                
+                                <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
+                            i-tag-other_1">
+                            #OI
+                        </a>
+                                
                         </div>
                         
+                            <div class="post-feature-image" style="background-image: url('https://Kite-chaser.github.io/post-images/p1194-mai-li-wu.jpg')"></div>
+                            
                                 <div class="post-content">
-                                    <h2 id="巨佬">巨佬</h2>
+                                    <h4 id="题目描述">题目描述</h4>
+<p>又到了一年一度的明明生日了，明明想要买BBB样东西，巧的是，这BBB样东西价格都是AAA元。</p>
+<!--more-->
+<p>但是，商店老板说最近有促销活动，也就是：</p>
+<p>如果你买了第III样东西，再买第JJJ样，那么就可以只花KI,JK_{I,J}KI,J​元，更巧的是，KI,JK_{I,J}KI,J​竟然等于KJ,IK_{J,I}KJ,I​。</p>
+<p>现在明明想知道，他最少要花多少钱。</p>
 <blockquote>
-<p><a href="https://big-news.cn/">big-news</a><br>
-<a href="https://langlangago.xyz/">langlangago</a><br>
-<a href="https://www.cnblogs.com/h-lka/">Refined_heart</a><br>
-<a href="https://wflight.github.io/">wfight</a><br>
-<a href="http://47.92.113.238/newblog/Shu_Yu_Mo/index.html">Shu_Yu_Mo</a><br>
-<a href="https://barnett-ren-796.github.io/">Barnett_Ren</a><br>
-<a href="http://101.200.56.58/">COUPDETAT</a></p>
+<p><a href="https://www.luogu.org/problem/P1194">原题链接</a></p>
 </blockquote>
-<h2 id="建图">建图</h2>
-<blockquote>
-<p><a href="https://csacademy.com/app/graph_editor/">Graph</a></p>
-</blockquote>
-<h2 id="其他">其他</h2>
-<blockquote>
-<p><a href="https://oi-wiki.org/">OI WIKI</a></p>
-</blockquote>
+<h3 id="solve">Solve</h3>
+<p>用<a href="https://kite-chaser.github.io/post/kruskal">Kruskal</a>建立最小生成树（MST）。</p>
+<p>1.将每件物品视作一个节点，物品之间的优惠或费用为边的权值。</p>
+<p>2 . <strong>设置一个序号为零的节点（精髓所在）</strong> ， 此点直接连接的节点即为通过花费a元直接购买的物品。</p>
+<p>3.每一样物品都可通过直接花费a元来购买，所以从节点零向每一个节点连接一条权值为a的边。</p>
+<p>4.正常建边，正常Kruskal</p>
+<h3 id="tips">Tips</h3>
+<p>如果每个优惠都<s>太实惠</s>太小了，会导致没有物品通过直接购买的方式取得么？</p>
+<p>不会的，Kruskal是不会放过一条边的，一定会将节点零加入的。</p>
+<h3 id="code">Code</h3>
+<pre><code class="language-cpp">
+#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+using namespace std;  //标准开头
+const int N=1000;
+int a,b;
+struct note{
+	int u,r,w;
+}d[N*N];  //每条边的信息，u,r——端点，w——权值
+int f[N];  //f[i]表示节点i的父节点
+int num,cnt,ans;  //cnt——边数，ans——答案
+int e,r;
+bool cmp(const note &amp;x,const note &amp;y){  //排序
+	return x.w&lt;y.w;
+}
+int find(int s){
+	if(s!=f[s]) f[s]=find(f[s]);
+	return f[s];
+}
+int main()
+{
+	cin&gt;&gt;a&gt;&gt;b;
+	for(int i=0;i&lt;=b;i++) f[i]=i;
+	for(int i=1;i&lt;=b;i++){
+		d[++cnt].u=0;
+		d[cnt].r=i;
+		d[cnt].w=a;
+	}
+	for(int i=1;i&lt;=b;i++){
+		for(int j=1;j&lt;=b;j++){
+			cin&gt;&gt;num;
+			if(num!=0){
+				d[++cnt].u=i;
+				d[cnt].r=j;
+				d[cnt].w=num;
+			}
+		}
+	}
+	sort(d+1,d+cnt+1,cmp);
+	for(int i=1;i&lt;=cnt;i++){
+		e=find(d[i].u);
+		r=find(d[i].r);
+		if(e!=r){
+			ans+=d[i].w;
+			f[r]=e;
+		}
+	}
+	cout&lt;&lt;ans;
+	return 0;
+}
+</code></pre>
 
                                 </div>
                     </article>
                     <!--  -->
                     
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://Kite-chaser.github.io/post/p2323-hnoi2006gong-lu-xiu-jian-wen-ti">
+                                <h3 class="post-title">
+                                    P2323 [HNOI2006]公路修建问题
+                                </h3>
+                            </a>
+                        </div>
+                        
                             <div id="disqus_thread"></div>
                             <div id="gitalk-container"></div>
                 </div>
@@ -161,9 +235,18 @@
             <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E5%B7%A8%E4%BD%AC">巨佬</a></li>
-<li><a href="#%E5%BB%BA%E5%9B%BE">建图</a></li>
-<li><a href="#%E5%85%B6%E4%BB%96">其他</a></li>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0">题目描述</a></li>
+</ul>
+</li>
+<li><a href="#solve">Solve</a></li>
+<li><a href="#tips">Tips</a></li>
+<li><a href="#code">Code</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
