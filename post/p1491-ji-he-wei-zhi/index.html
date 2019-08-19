@@ -1,0 +1,390 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    P1491 集合位置  | Kite-chaser
+</title>
+<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1566193183213">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://Kite-chaser.github.io/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://Kite-chaser.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+            
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+                
+
+                    
+                            
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://Kite-chaser.github.io">
+                <img class="avatar" src="https://Kite-chaser.github.io/images/avatar.png?v=1566193183213" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    Kite-chaser
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="https://Kite-chaser.github.io/post/guan-yu/" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="https://Kite-chaser.github.io/post/you-lian/" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            P1491 集合位置 
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-08-19</time>
+                            
+                                <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="post-tag i-tag
+                            i-tag-other_4">
+                            #题解
+                        </a>
+                                
+                                <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="post-tag i-tag
+                            i-tag-warning">
+                            #图论
+                        </a>
+                                
+                                <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
+                            i-tag-banana">
+                            #OI
+                        </a>
+                                
+                        </div>
+                        
+                            <div class="post-feature-image" style="background-image: url('https://Kite-chaser.github.io/post-images/p1491-ji-he-wei-zhi.png')"></div>
+                            
+                                <div class="post-content">
+                                    <h4 id="题目描述">题目描述</h4>
+<p>每次有大的活动，大家都要在一起“聚一聚”，不管是去好乐迪，还是避风塘，或者汤姆熊，大家都要玩的痛快。</p>
+<!--more-->
+<p>还记得心语和花儿在跳舞机上的激情与释放，还记得草草的投篮技艺是如此的高超，还记得狗狗的枪法永远是'S'……还有不能忘了，胖子的歌声永远是让我们惊叫的！！</p>
+<p>今天是野猫的生日，所以想到这些也正常，只是因为是上学日，没法一起去玩了。但回忆一下那时的甜蜜总是一种幸福嘛。。。</p>
+<p>但是每次集合的时候都会出现问题！野猫是公认的“路盲”，野猫自己心里也很清楚，每次都提前出门，但还是经常迟到，这点让大家很是无奈。后来，野猫在每次出门前，都会向花儿咨询一下路径，根据已知的路径中，总算能按时到了。</p>
+<p>现在提出这样的一个问题：给出n个点的坐标，其中第一个为野猫的出发位置，最后一个为大家的集合位置，并给出哪些位置点是相连的。野猫从出发点到达集合点，总会挑一条最近的路走，如果野猫没找到最近的路，他就会走第二近的路。请帮野猫求一下这条第二最短路径长度。</p>
+<blockquote>
+<p><a href="https://www.luogu.org/problem/P1491">原题链接</a></p>
+</blockquote>
+<h2 id="solve">Solve</h2>
+<p>1.次短路+SPFA。</p>
+<p>2.SPFA找最短路，并记录路径。</p>
+<p>3.删去最短路径中的一条边，并用SPFA寻找最短路。</p>
+<p>4.重复3的步骤，其中最小值即为答案。</p>
+<h2 id="tip">Tip</h2>
+<p>1.此题并不是严格次短路，即答案可能与最短路的值相同。</p>
+<p>2.步骤3中SPFA完成之后别忘了还原回去。</p>
+<h2 id="code">Code</h2>
+<pre><code class="language-cpp">
+#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;queue&gt;
+#include&lt;cmath&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+#define maxn 336860180  //定义一个最大范围
+#define N 100000 
+using namespace std;  //标准开头
+int n,m,len;  //n,m-同题，len-邻接表边数
+double x[N],y[N],dis[N],ans1,ans2=maxn;  //x,y-点的坐标，dis-最短路，ans1-最短路，ans2-步骤3中的最小值
+int e,r;  //边的两点
+int first[N],next[N],f[N][3];  //first,next-邻接表，f[i][1]-节点i的前驱边，f[i][2]-节点i的前驱点
+bool vis[N];  //SPFA中的bool数组
+struct note{  //邻接表
+   int v;
+   double w;
+   bool fb;  //若fb为true,则此边已删
+}d[N];
+double dist(double x1,double y1,double x2,double y2){  //两点求距离
+   return sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
+}
+void add(int e,int r,double distt){  //建立邻接表
+   d[++len].v=r;
+   d[len].w=distt;
+   next[len]=first[e];
+   first[e]=len;
+}
+void spfa()  //步骤2的SPFA
+{
+   for(int i=1;i&lt;=n;i++) dis[i]=maxn;
+   memset(vis,false,sizeof(vis));
+   dis[1]=0;
+   queue&lt;int&gt; q;
+   q.push(1);
+   while(!q.empty()){
+   	int e=q.front();
+   	q.pop();
+   	vis[e]=false;
+   	for(int i=first[e];i!=-1;i=next[i]){
+   		if(dis[d[i].v]&gt;dis[e]+d[i].w){
+   			f[d[i].v][1]=e;
+   			f[d[i].v][2]=i;
+   			dis[d[i].v]=dis[e]+d[i].w;
+   			if(!vis[d[i].v]){
+   				vis[d[i].v]=true;
+   				q.push(d[i].v);
+   			}
+   		}
+   	}
+   }
+}
+void spfaa()  //步骤3中的SFPA
+{
+   for(int i=1;i&lt;=n;i++) dis[i]=maxn;
+   memset(vis,false,sizeof(vis));
+   dis[1] = 0;
+   queue&lt;int&gt; q;
+   q.push(1);
+   while(!q.empty()){
+   	int e=q.front();
+   	q.pop();
+   	vis[e]=false;
+   	for(int i=first[e];i!=-1;i=next[i]){
+   		if(dis[d[i].v]&gt;dis[e]+d[i].w&amp;&amp;!d[i].fb){
+   			dis[d[i].v]=dis[e]+d[i].w;
+   			if(!vis[d[i].v]){
+   				vis[d[i].v]=true;
+   				q.push(d[i].v);
+   			}
+   		}
+   	}
+   }
+}
+int main()
+{
+   scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+   for(int i=1;i&lt;=n;i++) cin&gt;&gt;x[i]&gt;&gt;y[i],first[i]=-1;
+   for(int i=1;i&lt;=m;i++){
+   	scanf(&quot;%d%d&quot;,&amp;e,&amp;r);
+   	add(e,r,dist(x[e],y[e],x[r],y[r]));
+   	add(r,e,dist(x[e],y[e],x[r],y[r]));
+   }
+   spfa();
+   int s=n;
+   ans1=dis[n];
+   if(ans1==maxn){
+   	cout&lt;&lt;&quot;-1&quot;;
+   	return 0;
+   }
+   while(s!=1){
+   	d[f[s][2]].fb=true;
+   	spfaa();
+   	if(ans1==dis[n]){
+   		printf(&quot;%.2lf&quot;,ans1);
+   		return 0;
+   	}
+   	d[f[s][2]].fb=false;  //还原
+   	s=f[s][1];
+   	ans2=min(ans2,dis[n]);
+   }
+   if(ans2==maxn) cout&lt;&lt;&quot;-1&quot;;
+   else printf(&quot;%.2lf&quot;,ans2);
+   return 0;
+}
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://Kite-chaser.github.io/post/p2829-da-tao-chi">
+                                <h3 class="post-title">
+                                    P2829 大逃离
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0">题目描述</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#solve">Solve</a></li>
+<li><a href="#tip">Tip</a></li>
+<li><a href="#code">Code</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by Hve Notes | 
+  <a class="rss" href="https://Kite-chaser.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+        
+            <script>
+    window.onload = function() {
+        var gitalk = new Gitalk({
+            clientID: '761ba32522ad16d2134b',
+            clientSecret: 'd5634ea03ca976d589a06f88c4e9fb23c928e5f9',
+            repo: 'Kite-chaser.github.io',
+            owner: 'Kite-chaser',
+            admin: ['Kite-chaser'],
+            id: (location.pathname).substring(0, 49), // Ensure uniqueness and length less than 50
+            distractionFreeMode: false // Facebook-like distraction free mode
+        })
+
+        gitalk.render('gitalk-container')
+    }
+</script>
+                
+
+                    
+                                
+</body>
+
+</html>

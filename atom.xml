@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Kite-chaser.github.io</id>
     <title>Kite-chaser</title>
-    <updated>2019-08-19T05:29:11.647Z</updated>
+    <updated>2019-08-19T05:39:45.861Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Kite-chaser.github.io"/>
     <link rel="self" href="https://Kite-chaser.github.io/atom.xml"/>
@@ -10,6 +10,19 @@
     <logo>https://Kite-chaser.github.io/images/avatar.png</logo>
     <icon>https://Kite-chaser.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Kite-chaser</rights>
+    <entry>
+        <title type="html"><![CDATA[P1491 集合位置 ]]></title>
+        <id>https://Kite-chaser.github.io/post/p1491-ji-he-wei-zhi</id>
+        <link href="https://Kite-chaser.github.io/post/p1491-ji-he-wei-zhi">
+        </link>
+        <updated>2019-08-19T05:31:51.000Z</updated>
+        <summary type="html"><![CDATA[<h4 id="题目描述">题目描述</h4>
+<p>每次有大的活动，大家都要在一起“聚一聚”，不管是去好乐迪，还是避风塘，或者汤姆熊，大家都要玩的痛快。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h4 id="题目描述">题目描述</h4>
+<p>每次有大的活动，大家都要在一起“聚一聚”，不管是去好乐迪，还是避风塘，或者汤姆熊，大家都要玩的痛快。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[P2829 大逃离]]></title>
         <id>https://Kite-chaser.github.io/post/p2829-da-tao-chi</id>
@@ -119,19 +132,6 @@
 ]]></summary>
         <content type="html"><![CDATA[<h2 id="rt">RT</h2>
 <p>Prim算法主要应用于建立最小生成树（MST），同理的还有<a href="https://kite-chaser.github.io/post/kruskal/">Kruskal</a>算法。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[P3088 [USACO13NOV]挤奶牛Crowded Cows]]></title>
-        <id>https://Kite-chaser.github.io/post/p3088-usaco13novji-nai-niu-crowded-cows</id>
-        <link href="https://Kite-chaser.github.io/post/p3088-usaco13novji-nai-niu-crowded-cows">
-        </link>
-        <updated>2019-08-18T11:55:27.000Z</updated>
-        <summary type="html"><![CDATA[<h4 id="题目描述">题目描述</h4>
-<p>Farmer John's N cows (1 &lt;= N &lt;= 50,000) are grazing along a one-dimensional fence. Cow i is standing at location x(i) and has height h(i) (1 &lt;= x(i),h(i) &lt;= 1,000,000,000).</p>
-]]></summary>
-        <content type="html"><![CDATA[<h4 id="题目描述">题目描述</h4>
-<p>Farmer John's N cows (1 &lt;= N &lt;= 50,000) are grazing along a one-dimensional fence. Cow i is standing at location x(i) and has height h(i) (1 &lt;= x(i),h(i) &lt;= 1,000,000,000).</p>
 ]]></content>
     </entry>
 </feed>
