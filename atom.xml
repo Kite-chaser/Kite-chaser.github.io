@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Kite-chaser.github.io</id>
     <title>Kite-chaser</title>
-    <updated>2019-08-19T03:09:45.992Z</updated>
+    <updated>2019-08-19T03:11:15.986Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Kite-chaser.github.io"/>
     <link rel="self" href="https://Kite-chaser.github.io/atom.xml"/>
@@ -16,6 +16,24 @@
         <link href="https://Kite-chaser.github.io/post/p2323-hnoi2006gong-lu-xiu-jian-wen-ti">
         </link>
         <updated>2019-08-19T03:03:06.000Z</updated>
+        <summary type="html"><![CDATA[<h4 id="题目描述">题目描述</h4>
+<p><img src="https://cdn.luogu.org/upload/pic/1384.png" alt=""></p>
+<blockquote>
+<p><a href="https://www.luogu.org/problem/P2323">原题链接</a></p>
+</blockquote>
+<h3 id="slove">Slove</h3>
+<p>用<a href="https://kite-chaser.github.io/post/kruskal">Kruskal</a>建立最小生成树（MST)</p>
+<p>1.一级公路是一定要修的，而且最少为k个。所以，把所有的边先按一级公路权值从小到大排序。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h4 id="题目描述">题目描述</h4>
+<p><img src="https://cdn.luogu.org/upload/pic/1384.png" alt=""></p>
+<blockquote>
+<p><a href="https://www.luogu.org/problem/P2323">原题链接</a></p>
+</blockquote>
+<h3 id="slove">Slove</h3>
+<p>用<a href="https://kite-chaser.github.io/post/kruskal">Kruskal</a>建立最小生成树（MST)</p>
+<p>1.一级公路是一定要修的，而且最少为k个。所以，把所有的边先按一级公路权值从小到大排序。</p>
+]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Kruskal]]></title>
