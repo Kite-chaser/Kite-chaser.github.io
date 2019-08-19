@@ -7,7 +7,7 @@
 <title>
     P2323 [HNOI2006]公路修建问题 | Kite-chaser
 </title>
-<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1566184311987">
+<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1566184375549">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -35,7 +35,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://Kite-chaser.github.io">
-                <img class="avatar" src="https://Kite-chaser.github.io/images/avatar.png?v=1566184311987" alt="">
+                <img class="avatar" src="https://Kite-chaser.github.io/images/avatar.png?v=1566184375549" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -120,17 +120,17 @@
                             <time class="post-time">2019-08-19</time>
                             
                                 <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="post-tag i-tag
-                            i-tag-error">
+                            i-tag-other_4">
                             #题解
                         </a>
                                 
                                 <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="post-tag i-tag
-                            i-tag-other_4">
+                            i-tag-primary">
                             #图论
                         </a>
                                 
                                 <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
-                            i-tag-error">
+                            i-tag-other_1">
                             #OI
                         </a>
                                 
@@ -139,7 +139,8 @@
                             <div class="post-feature-image" style="background-image: url('https://Kite-chaser.github.io/post-images/p2323-hnoi2006gong-lu-xiu-jian-wen-ti.jpg')"></div>
                             
                                 <div class="post-content">
-                                    <h4 id="题目描述">题目描述</h4>
+                                    <!--more-->
+<h4 id="题目描述">题目描述</h4>
 <p><img src="https://cdn.luogu.org/upload/pic/1384.png" alt=""></p>
 <blockquote>
 <p><a href="https://www.luogu.org/problem/P2323">原题链接</a></p>
@@ -147,7 +148,6 @@
 <h3 id="slove">Slove</h3>
 <p>用<a href="https://kite-chaser.github.io/post/kruskal">Kruskal</a>建立最小生成树（MST)</p>
 <p>1.一级公路是一定要修的，而且最少为k个。所以，把所有的边先按一级公路权值从小到大排序。</p>
-<!--more-->
 <p>2.连接前k个“安全边”，即在Kruskal算法中可以加入的边。</p>
 <p>3.把后几条边，按二级公路的权值从小到大排序。</p>
 <p>4.继续Kruskal。</p>

@@ -7,7 +7,7 @@
 <title>
     OI | Kite-chaser
 </title>
-<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1566184311987">
+<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1566184375549">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://Kite-chaser.github.io">
-                <img class="avatar" src="https://Kite-chaser.github.io/images/avatar.png?v=1566184311987" alt="">
+                <img class="avatar" src="https://Kite-chaser.github.io/images/avatar.png?v=1566184375549" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -120,17 +120,17 @@
                     <time class="post-time">2019-08-19</time>
                     
                         <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="post-tag i-tag
-                            i-tag-">
+                            i-tag-info">
             #题解
         </a>
                         
                         <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="post-tag i-tag
-                            i-tag-other_2">
+                            i-tag-other_1">
             #图论
         </a>
                         
                         <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
-                            i-tag-success">
+                            i-tag-info">
             #OI
         </a>
                         
@@ -142,18 +142,95 @@
                         
                             <div class="post-content">
                                 
-                                    <div class="post-content-abstract">
-                                        <h4 id="题目描述">题目描述</h4>
-<p><img src="https://cdn.luogu.org/upload/pic/1384.png" alt=""></p>
-<blockquote>
-<p><a href="https://www.luogu.org/problem/P2323">原题链接</a></p>
-</blockquote>
-<h3 id="slove">Slove</h3>
-<p>用<a href="https://kite-chaser.github.io/post/kruskal">Kruskal</a>建立最小生成树（MST)</p>
-<p>1.一级公路是一定要修的，而且最少为k个。所以，把所有的边先按一级公路权值从小到大排序。</p>
+                                        <div class="post-content-content">
+                                            
+题目描述
 
-                                    </div>
-                                    
+
+原题链接
+
+Slove
+用Kruskal建立最小生成树（MST)
+1.一级公路是一定要修的，而且最少为k个。所以，把所有的边先按一级公路权值从小到大排序。
+2.连接前k个“安全边”，即在Kruskal算法中可以加入的边。
+3.把后几条边，按二级公路的权值从小到大排序。
+4.继续Kruskal。
+Tips
+1.为什么步骤3中排序直接忽略了一级公路的权值呢？
+“一级公路上的车速快，但修路的花费要大一些（摘自题目描述的第六行）”也就是说对于同一条边，一般来说，一级公路的权值是要大于二级公路的，所以选二级一定不比选一级差（当然，此题有SJ,不影响结果的话，选一级也是可以的）。
+2.在实际评测时，将只会有m-1行公路（我也不知道为啥要少一条）
+Code
+#include&amp;lt;iostream&amp;gt;
+#include&amp;lt;cstdio&amp;gt;
+#include&amp;lt;cstring&amp;gt;
+#include&amp;lt;algorithm&amp;gt;
+using namespace std;  //标准开头
+const int N=20010;
+int n,m,k;  //同题
+int f[N];  //f[i]——节点i的父节点
+struct note{
+	int u,r,c1,c2,num;
+}d[N];  //同题，u，r——端点，num——序号
+int s[N];  //记录每条边的情况
+int ans;  //答案
+int cnt;  //记录前k个安全边
+bool cmp1(const note &amp;amp;a,const note &amp;amp;b){  //排序1
+	return a.c1&amp;lt;b.c1;
+}
+bool cmp2(const note &amp;amp;a,const note &amp;amp;b){  //排序2
+	return a.c2&amp;lt;b.c2;
+}
+int find(int h){
+	if(h!=f[h]) f[h]=find(f[h]);
+	return f[h];
+}
+int main()
+{
+	cin&amp;gt;&amp;gt;n&amp;gt;&amp;gt;k&amp;gt;&amp;gt;m;
+	m--;
+	for(int i=1;i&amp;lt;=n;i++) f[i]=i;
+	for(int i=1;i&amp;lt;=m;i++){
+		cin&amp;gt;&amp;gt;d[i].u&amp;gt;&amp;gt;d[i].r&amp;gt;&amp;gt;d[i].c1&amp;gt;&amp;gt;d[i].c2;
+		d[i].num=i;
+	}
+	sort(d+1,d+1+m,cmp1);
+	for(int i=1;i&amp;lt;=m;i++){
+		int x,y;
+		x=find(d[i].u);
+		y=find(d[i].r);
+		if(x!=y){
+			f[y]=x;
+			ans=max(ans,d[i].c1);
+			s[d[i].num]=1;
+			cnt++;
+		}
+		if(cnt==k){
+			k=i;
+			break;
+		}
+	}
+	sort(d+k+1,d+1+m,cmp2);
+	for(int i=k+1;i&amp;lt;=m;i++){
+		int x,y;
+		x=find(d[i].u);
+		y=find(d[i].r);
+		if(x!=y){
+			f[y]=x;
+			ans=max(ans,d[i].c2);
+			s[d[i].num]=2;
+		}
+	}
+	cout&amp;lt;&amp;lt;ans&amp;lt;&amp;lt;endl;
+	for(int i=1;i&amp;lt;=m;i++){  //完美输出
+		if(s[i]&amp;gt;=1) cout&amp;lt;&amp;lt;i&amp;lt;&amp;lt;&amp;quot; &amp;quot;&amp;lt;&amp;lt;s[i]&amp;lt;&amp;lt;endl;
+	}
+	return 0;
+}
+
+话说为啥这么个题都是蓝的
+
+                                        </div>
+                                        
                                             <a class="btn btn-text" href="https://Kite-chaser.github.io/post/p2323-hnoi2006gong-lu-xiu-jian-wen-ti">Read More ~</a>
                             </div>
                 </div>
@@ -169,12 +246,12 @@
                     <time class="post-time">2019-08-19</time>
                     
                         <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="post-tag i-tag
-                            i-tag-error">
+                            i-tag-other_3">
             #图论
         </a>
                         
                         <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
-                            i-tag-banana">
+                            i-tag-other_1">
             #OI
         </a>
                         
@@ -207,12 +284,12 @@
                     <time class="post-time">2019-08-19</time>
                     
                         <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="post-tag i-tag
-                            i-tag-primary">
+                            i-tag-other_2">
             #图论
         </a>
                         
                         <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
-                            i-tag-warning">
+                            i-tag-banana">
             #OI
         </a>
                         
@@ -245,17 +322,17 @@
                     <time class="post-time">2019-08-18</time>
                     
                         <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="post-tag i-tag
-                            i-tag-">
+                            i-tag-info">
             #题解
         </a>
                         
                         <a href="https://Kite-chaser.github.io/tag/92gh9uu1i" class="post-tag i-tag
-                            i-tag-other_4">
+                            i-tag-other_3">
             #单调队列
         </a>
                         
                         <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
-                            i-tag-warning">
+                            i-tag-error">
             #OI
         </a>
                         
@@ -288,17 +365,17 @@
                     <time class="post-time">2019-08-18</time>
                     
                         <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="post-tag i-tag
-                            i-tag-other_2">
+                            i-tag-other_3">
             #题解
         </a>
                         
                         <a href="https://Kite-chaser.github.io/tag/2kgafuTx9" class="post-tag i-tag
-                            i-tag-">
+                            i-tag-error">
             #线段树
         </a>
                         
                         <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
-                            i-tag-">
+                            i-tag-success">
             #OI
         </a>
                         
@@ -333,12 +410,12 @@
                     <time class="post-time">2019-08-18</time>
                     
                         <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="post-tag i-tag
-                            i-tag-banana">
+                            i-tag-">
             #题解
         </a>
                         
                         <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
-                            i-tag-primary">
+                            i-tag-warning">
             #OI
         </a>
                         
@@ -371,12 +448,12 @@
                     <time class="post-time">2019-08-18</time>
                     
                         <a href="https://Kite-chaser.github.io/tag/ksq4_sfEo" class="post-tag i-tag
-                            i-tag-info">
+                            i-tag-other_3">
             #并查集
         </a>
                         
                         <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
-                            i-tag-banana">
+                            i-tag-other_2">
             #OI
         </a>
                         
@@ -409,7 +486,7 @@
                     <time class="post-time">2019-08-18</time>
                     
                         <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
-                            i-tag-info">
+                            i-tag-">
             #OI
         </a>
                         
@@ -444,7 +521,7 @@
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://Kite-chaser.github.io/images/avatar.png?v=1566184311987)">
+        <div class="id_card-avatar" style="background-image: url(https://Kite-chaser.github.io/images/avatar.png?v=1566184375549)">
         </div>
         <h1 class="id_card-title">
             Kite-chaser
