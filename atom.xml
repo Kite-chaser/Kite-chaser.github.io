@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Kite-chaser.github.io</id>
     <title>Kite-chaser</title>
-    <updated>2019-08-19T13:04:09.302Z</updated>
+    <updated>2019-08-19T13:40:46.514Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Kite-chaser.github.io"/>
     <link rel="self" href="https://Kite-chaser.github.io/atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://Kite-chaser.github.io/images/avatar.png</logo>
     <icon>https://Kite-chaser.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Kite-chaser</rights>
+    <entry>
+        <title type="html"><![CDATA[动态规划中的树形DP]]></title>
+        <id>https://Kite-chaser.github.io/post/dong-tai-gui-hua-zhong-de-shu-xing-dp</id>
+        <link href="https://Kite-chaser.github.io/post/dong-tai-gui-hua-zhong-de-shu-xing-dp">
+        </link>
+        <updated>2019-08-19T13:10:44.000Z</updated>
+        <summary type="html"><![CDATA[<p>~~树形DP还是比较简单的。~~因为这是蒟蒻唯一可以搞明白的DP惹。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>~~树形DP还是比较简单的。~~因为这是蒟蒻唯一可以搞明白的DP惹。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[动态规划中的背包问题]]></title>
         <id>https://Kite-chaser.github.io/post/dong-tai-gui-hua-zhong-de-bei-bao-wen-ti</id>
@@ -121,17 +132,6 @@
 ]]></summary>
         <content type="html"><![CDATA[<h4 id="题目描述">题目描述</h4>
 <p>又到了一年一度的明明生日了，明明想要买B样东西，巧的是，这B样东西价格都是A元。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[P2323 [HNOI2006]公路修建问题]]></title>
-        <id>https://Kite-chaser.github.io/post/p2323-hnoi2006gong-lu-xiu-jian-wen-ti</id>
-        <link href="https://Kite-chaser.github.io/post/p2323-hnoi2006gong-lu-xiu-jian-wen-ti">
-        </link>
-        <updated>2019-08-19T03:03:06.000Z</updated>
-        <summary type="html"><![CDATA[<p>其实我只是为了不让文字显示太多才写的摘要。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>其实我只是为了不让文字显示太多才写的摘要。</p>
 ]]></content>
     </entry>
 </feed>
