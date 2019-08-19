@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    P2323 [HNOI2006]公路修建问题 | Kite-chaser
+    P1395 【会议】 | Kite-chaser
 </title>
 <link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1566191590261">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -114,116 +114,104 @@
                 <div id="content" class="main-container-left">
                     <article class="post i-card">
                         <h2 class="post-title">
-                            P2323 [HNOI2006]公路修建问题
+                            P1395 【会议】
                         </h2>
                         <div class="post-info">
                             <time class="post-time">2019-08-19</time>
                             
                                 <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="post-tag i-tag
-                            i-tag-other_3">
+                            i-tag-info">
                             #题解
                         </a>
                                 
                                 <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="post-tag i-tag
-                            i-tag-error">
+                            i-tag-other_4">
                             #图论
                         </a>
                                 
                                 <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
-                            i-tag-other_4">
+                            i-tag-">
                             #OI
                         </a>
                                 
                         </div>
                         
-                            <div class="post-feature-image" style="background-image: url('https://Kite-chaser.github.io/post-images/p2323-hnoi2006gong-lu-xiu-jian-wen-ti.jpg')"></div>
+                            <div class="post-feature-image" style="background-image: url('https://Kite-chaser.github.io/post-images/p1395-hui-yi.jpg')"></div>
                             
                                 <div class="post-content">
-                                    <!--more-->
-<h4 id="题目描述">题目描述</h4>
-<p><img src="https://cdn.luogu.org/upload/pic/1384.png" alt=""></p>
+                                    <h4 id="题目描述">题目描述</h4>
+<p>有一个村庄居住着n个村民，有n-1条路径使得这n个村民的家联通，每条路径的长度都为1。</p>
+<!--more-->
+<p>现在村长希望在某个村民家中召开一场会议，村长希望所有村民到会议地点的距离之和最小，那么村长应该要把会议地点设置在哪个村民的家中，并且这个距离总和最小是多少？若有多个节点都满足条件，则选择节点编号最小的那个点。</p>
 <blockquote>
-<p><a href="https://www.luogu.org/problem/P2323">原题链接</a></p>
+<p><a href="https://www.luogu.org/problem/P1395">原题链接</a></p>
 </blockquote>
-<h3 id="slove">Slove</h3>
-<p>用<a href="https://kite-chaser.github.io/post/kruskal">Kruskal</a>建立最小生成树（MST)</p>
-<p>1.一级公路是一定要修的，而且最少为k个。所以，把所有的边先按一级公路权值从小到大排序。</p>
-<p>2.连接前k个“安全边”，即在Kruskal算法中可以加入的边。</p>
-<p>3.把后几条边，按二级公路的权值从小到大排序。</p>
-<p>4.继续Kruskal。</p>
-<h3 id="tips">Tips</h3>
-<p>1.为什么步骤3中排序直接忽略了一级公路的权值呢？</p>
-<p>“一级公路上的车速快，但修路的花费要大一些（摘自题目描述的第六行）”也就是说对于同一条边，一般来说，一级公路的权值是要大于二级公路的，所以选二级一定不比选一级差（当然，此题有SJ,不影响结果的话，选一级也是可以的）。</p>
-<p>2.在实际评测时，将只会有m-1行公路（我也不知道为啥要少一条）</p>
-<h3 id="code">Code</h3>
-<pre><code class="language-cpp">#include&lt;iostream&gt;
+<h2 id="solve">Solve</h2>
+<p>1.每个村民的家都为一个节点，所有的边权值为1，而且这是一个树。</p>
+<p>2.找到<a href="https://kite-chaser.github.io/post/shu-de-chong-xin">树的重心</a>。</p>
+<p>3.以树的重心为源点，求出其与各个节点的距离和（使用BFS）。</p>
+<h2 id="tips">Tips</h2>
+<p>1.什么是树的重心？</p>
+<p>链接Blog<s>较为详细地</s>描述了树的重心的概念。</p>
+<p>2.为什么会议地点就是树的重心？</p>
+<p><img src="https://cdn.luogu.org/upload/pic/61390.png" alt=""></p>
+<p>这是树的重心的性质运用。</p>
+<h2 id="code">Code</h2>
+<pre><code class="language-cpp">
+#include&lt;iostream&gt;
 #include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;algorithm&gt;
+#include&lt;vector&gt;
+#include&lt;queue&gt;
 using namespace std;  //标准开头
-const int N=20010;
-int n,m,k;  //同题
-int f[N];  //f[i]——节点i的父节点
-struct note{
-	int u,r,c1,c2,num;
-}d[N];  //同题，u，r——端点，num——序号
-int s[N];  //记录每条边的情况
-int ans;  //答案
-int cnt;  //记录前k个安全边
-bool cmp1(const note &amp;a,const note &amp;b){  //排序1
-	return a.c1&lt;b.c1;
-}
-bool cmp2(const note &amp;a,const note &amp;b){  //排序2
-	return a.c2&lt;b.c2;
-}
-int find(int h){
-	if(h!=f[h]) f[h]=find(f[h]);
-	return f[h];
+const int N=50010;  //节点数
+int n,ans;  //n——节点数，ans为树的重心
+int maxn=10000000;
+int u,r,sum;  //u，r边的两端点，sum——距离之和
+int d[N],dis[N];  //dis[i]为节点i到源点（树的重心）的距离
+vector&lt;int&gt; G[N];  //vector建图
+queue&lt;int&gt; q;  //BFS必备队列
+bool vis[N];  //BFS中已经遍历的点
+void dfs(int s,int f){  //求树的重心
+    d[s]=1;
+    int res=0;
+    for(int i=0;i&lt;G[s].size();i++){
+        if(G[s][i]==f) continue;
+        dfs(G[s][i],s);
+        d[s]+=d[G[s][i]];
+        res=max(res,d[G[s][i]]);
+    }
+    res=max(res,n-d[s]);
+    if(res&lt;maxn||(res==maxn&amp;&amp;ans&gt;s)){
+        maxn=res;
+        ans=s;
+    }
 }
 int main()
 {
-	cin&gt;&gt;n&gt;&gt;k&gt;&gt;m;
-	m--;
-	for(int i=1;i&lt;=n;i++) f[i]=i;
-	for(int i=1;i&lt;=m;i++){
-		cin&gt;&gt;d[i].u&gt;&gt;d[i].r&gt;&gt;d[i].c1&gt;&gt;d[i].c2;
-		d[i].num=i;
-	}
-	sort(d+1,d+1+m,cmp1);
-	for(int i=1;i&lt;=m;i++){
-		int x,y;
-		x=find(d[i].u);
-		y=find(d[i].r);
-		if(x!=y){
-			f[y]=x;
-			ans=max(ans,d[i].c1);
-			s[d[i].num]=1;
-			cnt++;
-		}
-		if(cnt==k){
-			k=i;
-			break;
-		}
-	}
-	sort(d+k+1,d+1+m,cmp2);
-	for(int i=k+1;i&lt;=m;i++){
-		int x,y;
-		x=find(d[i].u);
-		y=find(d[i].r);
-		if(x!=y){
-			f[y]=x;
-			ans=max(ans,d[i].c2);
-			s[d[i].num]=2;
-		}
-	}
-	cout&lt;&lt;ans&lt;&lt;endl;
-	for(int i=1;i&lt;=m;i++){  //完美输出
-		if(s[i]&gt;=1) cout&lt;&lt;i&lt;&lt;&quot; &quot;&lt;&lt;s[i]&lt;&lt;endl;
-	}
-	return 0;
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i=1;i&lt;=n-1;i++){
+        scanf(&quot;%d%d&quot;,&amp;u,&amp;r);
+        G[u].push_back(r);
+        G[r].push_back(u);
+    }
+    dfs(1,0);
+    q.push(ans);
+    while(!q.empty()){  //标准BFS
+        int e=q.front();
+        q.pop();
+        vis[e]=true;
+        sum+=dis[e];
+        for(int i=0;i&lt;G[e].size();i++){
+            if(!vis[G[e][i]]){
+                q.push(G[e][i]);
+                dis[G[e][i]]=dis[e]+1;
+            }
+        }
+    }
+    printf(&quot;%d %d&quot;,ans,sum);  //完美输出
+    return 0;
 }
 </code></pre>
-<p><s>话说为啥这么个题都是蓝的</s></p>
 
                                 </div>
                     </article>
@@ -231,9 +219,9 @@ int main()
                     
                         <div class="next-post">
                             <div class="next">下一篇</div>
-                            <a href="https://Kite-chaser.github.io/post/kruskal">
+                            <a href="https://Kite-chaser.github.io/post/shu-de-chong-xin">
                                 <h3 class="post-title">
-                                    Kruskal
+                                    树的重心
                                 </h3>
                             </a>
                         </div>
@@ -261,11 +249,11 @@ int main()
 <li><a href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0">题目描述</a></li>
 </ul>
 </li>
-<li><a href="#slove">Slove</a></li>
-<li><a href="#tips">Tips</a></li>
-<li><a href="#code">Code</a></li>
 </ul>
 </li>
+<li><a href="#solve">Solve</a></li>
+<li><a href="#tips">Tips</a></li>
+<li><a href="#code">Code</a></li>
 </ul>
 </li>
 </ul>
