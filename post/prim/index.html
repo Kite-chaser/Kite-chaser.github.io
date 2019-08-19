@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    友链 | Kite-chaser
+    Prim | Kite-chaser
 </title>
 <link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1566178498426">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -114,26 +114,98 @@
                 <div id="content" class="main-container-left">
                     <article class="post i-card">
                         <h2 class="post-title">
-                            友链
+                            Prim
                         </h2>
                         <div class="post-info">
-                            <time class="post-time">2019-08-18</time>
+                            <time class="post-time">2019-08-19</time>
                             
                         </div>
                         
                                 <div class="post-content">
-                                    <h2 id="巨佬">巨佬</h2>
-<blockquote>
-<p><a href="https://big-news.cn/">big-news</a><br>
-<a href="https://langlangago.xyz/">langlangago</a><br>
-<a href="https://www.cnblogs.com/h-lka/">Refined_heart</a><br>
-<a href="https://wflight.github.io/">wfight</a></p>
-</blockquote>
+                                    <h2 id="rt">RT</h2>
+<p>Prim算法主要应用于建立最小生成树（MST），同理的还有<a href="https://five-shifts-forever.blog.luogu.org/kruskal">Kruskal</a>算法。</p>
+<!--more-->
+<h2 id="思想">思想</h2>
+<p>Prim算法主要应用了“蓝白点”的思想。即蓝点的未进树的节点，白点为已经进树的节点。</p>
+<p>1.标记起点（如无明确的起点，任意点都可以）为白点。</p>
+<p>2.将下一个离树最近的蓝点（也就是，与目前的白点距离最近的节点）标记为白点，同时不断更新距离（代码中有详细的描述），直至所有蓝点都标记成白点。</p>
+<h2 id="tips">Tips</h2>
+<p>1.为什么任意点都可以呢？</p>
+<p>因为，最小生成树需要把所有的节点都并进来，所以任意点都可以。一般以节点1为起点。</p>
+<p>2.为什么把当前离树最近的蓝点并进来就行呢？</p>
+<p>自己想想叭（滑稽.jpg）</p>
+<p>具体见代码</p>
+<h2 id="code">Code</h2>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+using namespace std;  //标准开头
+const int N=5001;  //N等于节点数
+int n,m;  //n——节点数，m——边数
+int mint[N];  //mint[i]——节点i与树的距离
+bool vis[N];  //true——为白点，false——为蓝点
+bool f[N][N];  //f[i][j]==true——i与j联通，否则不连
+int map[N][N];  //邻接矩阵存边
+int u,r,w;  //u,r——节点，w的权值
+int ans;  //权值和
+void init()  //初始化
+{
+	for(int i=1;i&lt;=n;i++){
+		mint[i]=0x3fff;
+		vis[i]=false;
+	}
+	for(int i=1;i&lt;=n;i++){
+		for(int j=1;j&lt;=n;j++){
+			map[i][j]=0x3fff;
+		}
+	}
+	return ;
+}
+int main()
+{
+	cin&gt;&gt;n&gt;&gt;m;
+	init();
+	for(int i=1;i&lt;=m;i++){
+		cin&gt;&gt;u&gt;&gt;r&gt;&gt;w;
+		map[u][r]=map[r][u]=min(map[u][r],w);
+		f[u][r]=f[r][u]=true;
+	}
+	mint[1]=0;  //如此赋值，就可使节点1为起点，还不影响结果
+	for(int i=1;i&lt;=n;i++){
+		int k,maxn=0x3fff;
+		for(int j=1;j&lt;=n;j++){  //寻找下一个离树最近的节点
+			if(!vis[j]&amp;&amp;maxn&gt;mint[j]){
+				k=j;
+				maxn=mint[j];
+			}
+		}
+		vis[k]=true;
+		if(maxn==0x3fff) break;
+		ans+=mint[k];
+		for(int j=1;j&lt;=n;j++){  //更新距离
+			if(f[k][j]&amp;&amp;mint[j]&gt;map[k][j]) mint[j]=map[k][j];
+		}
+	}
+	cout&lt;&lt;ans;
+	return 0;
+}
+</code></pre>
+<p>Prim的大体轮廓，但是还得具体情况具体分析</p>
+<h2 id="相关题目">相关题目</h2>
+<p><a href="https://www.luogu.org/fe/problem/P3366">P3366【模板】最小生成树</a></p>
 
                                 </div>
                     </article>
                     <!--  -->
                     
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://Kite-chaser.github.io/post/p3088-usaco13novji-nai-niu-crowded-cows">
+                                <h3 class="post-title">
+                                    P3088 [USACO13NOV]挤奶牛Crowded Cows
+                                </h3>
+                            </a>
+                        </div>
+                        
                             <div id="disqus_thread"></div>
                             <div id="gitalk-container"></div>
                 </div>
@@ -150,7 +222,11 @@
             <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E5%B7%A8%E4%BD%AC">巨佬</a></li>
+<li><a href="#rt">RT</a></li>
+<li><a href="#%E6%80%9D%E6%83%B3">思想</a></li>
+<li><a href="#tips">Tips</a></li>
+<li><a href="#code">Code</a></li>
+<li><a href="#%E7%9B%B8%E5%85%B3%E9%A2%98%E7%9B%AE">相关题目</a></li>
 </ul>
 </li>
 </ul>
