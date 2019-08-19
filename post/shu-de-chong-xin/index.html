@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    P1330 封锁阳光大学 | Kite-chaser
+    树的重心 | Kite-chaser
 </title>
 <link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1566191343358">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -114,99 +114,86 @@
                 <div id="content" class="main-container-left">
                     <article class="post i-card">
                         <h2 class="post-title">
-                            P1330 封锁阳光大学
+                            树的重心
                         </h2>
                         <div class="post-info">
-                            <time class="post-time">2019-08-18</time>
+                            <time class="post-time">2019-08-19</time>
                             
-                                <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="post-tag i-tag
-                            i-tag-other_2">
-                            #题解
-                        </a>
-                                
                                 <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
-                            i-tag-error">
+                            i-tag-other_2">
                             #OI
                         </a>
                                 
                         </div>
                         
-                            <div class="post-feature-image" style="background-image: url('https://Kite-chaser.github.io/post-images/p1330-feng-suo-yang-guang-da-xue.jpg')"></div>
+                            <div class="post-feature-image" style="background-image: url('https://Kite-chaser.github.io/post-images/shu-de-chong-xin.png')"></div>
                             
                                 <div class="post-content">
-                                    <h4 id="题目描述">题目描述</h4>
-<p>曹是一只爱刷街的老曹，暑假期间，他每天都欢快地在阳光大学的校园里刷街。河蟹看到欢快的曹，感到不爽。河蟹决定封锁阳光大学，不让曹刷街。</p>
-<!-- more -->
-<p>阳光大学的校园是一张由N个点构成的无向图，N个点之间由M条道路连接。每只河蟹可以对一个点进行封锁，当某个点被封锁后，与这个点相连的道路就被封锁了，曹就无法在与这些道路上刷街了。非常悲剧的一点是，河蟹是一种不和谐的生物，当两只河蟹封锁了相邻的两个点时，他们会发生冲突。</p>
-<p>询问：最少需要多少只河蟹，可以封锁所有道路并且不发生冲突。</p>
-<blockquote>
-<p><a href="https://www.luogu.org/problem/P1330">原题链接</a></p>
-</blockquote>
-<h1 id="solution">Solution</h1>
-<p>简单说，就是将给定的图（不一定联通）进行“染色”。因为“当两只河蟹封锁了相邻的两个点时，他们会发生冲突”，所以用两种颜色。</p>
-<p>注意：给定的图不一定是联通的</p>
-<p>判联通：</p>
-<p>方法一：并查集，父节点相同的为一张图（<a href="https://five-shifts-forever.blog.luogu.org/bing-zha-ji">可参考蒟蒻的OI笔记</a>）</p>
-<p>方法二：Floyd</p>
-<p>AC代码：</p>
-<pre><code class="language-cpp">#include&lt;iostream&gt;
+                                    <h2 id="rt">RT</h2>
+<h2 id="概念">概念</h2>
+<p>树的重心也叫树的质心。对于一棵树n个节点的无根树，找到一个点，使得把树变成以该点为根的有根树时，最大子树的结点数最小。换句话说，删除这个点后最大连通块（一定是树）的结点数最小。</p>
+<!--more-->
+<h2 id="性质">性质</h2>
+<p><strong>1.树中所有点到某个点的距离和中，到重心的距离和是最小的（实际应用中经常用到此性质）。</strong></p>
+<p>2.把两棵树通过一条边相连，新的树的重心在原来两棵树重心的连线上。</p>
+<p>3.一棵树添加或者删除一个节点，树的重心最多只移动一条边的位置。</p>
+<p>4.一棵树最多有两个重心，且相邻。</p>
+<h2 id="slove">Slove</h2>
+<p>求树的重心运用动态规划的思想，也就是树上跑DP。</p>
+<p>先任选一个结点作为根节点，把无根树变成有根树，然后设d(i)表示以i为根的子树的结点的个数。不难发现d(i)=∑d(j)+1，j∈s（i）。s（i）为i结点的所有儿子结点的编号的集合。程序也十分简单：只需要DFS一次，在无根树有根数的同时计算即可，连记忆化都不需要——因为本来就没有重复计算。<br>
+那么，删除结点i后，最大的连通块有多少个呢？结点i的子树中最大有max{d（j）}个结点，i的“上方子树”中有n-d（i）个结点，<br>
+如图9-13。这样，在动态规划的过程中就可以找出树的重心了。</p>
+<p><img src="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike72%2C5%2C5%2C72%2C24/sign=39255736d033c895b2739029b07a1895/242dd42a2834349b353a4e24c0ea15ce36d3be56.jpg" alt=""></p>
+<h2 id="tips">Tips</h2>
+<p>树的重点可以说是树的平衡点，其使以它为根的树中所有的子树的节点数相近。</p>
+<h2 id="code">Code</h2>
+<pre><code class="language-cpp">
+#include&lt;iostream&gt;
 #include&lt;cstdio&gt;
 #include&lt;vector&gt;
 using namespace std;
-int n,m,sum1,sum2,ans;  //n为节点数，m为边数，sum1.sum2用于染色点的统计，ans为最后答案
-int f[10001],vis[10001],du[10001];   //f用于并查集判联通，vis用于染色（1，2分别是两种颜色），du用于统计节点的度数
-bool flag;   //flag用于判是否有解.false表有解.true无解
-vector&lt;int&gt; g[10001];  //vector玄学建图
-//并查集
-int find(int x){
-    if(x!=f[x]) f[x]=find(f[x]);
-    return f[x];
-}
-void dfs(int x){
-    if(vis[x]==1) sum1++;
-    if(vis[x]==2) sum2++;  //记录色数
-    if(flag==true) return ; 
-    for(int i=0;i&lt;g[x].size();i++){
-        if(vis[x]!=vis[g[x][i]]&amp;&amp;vis[g[x][i]]!=0) continue; //已经染好，跳过
-        if(vis[x]==vis[g[x][i]]){ //与之前有冲突，无解
-            flag=true;
-            break;
-        }
-        vis[g[x][i]]=3-vis[x];
-        dfs(g[x][i]);
+const int N=110;  //N为节点数
+int n,ans,res;  //n——节点数，ans树的重心，res最大子树的节点数
+int maxn=0x3fff;
+int u,r;
+int d[N];
+vector&lt;int&gt; G[N];
+void dfs(int s,int f){
+	d[s]=1;
+	int res=0;
+	for(int i=0;i&lt;G[s].size();i++){
+		if(G[s][i]==f) continue;
+		dfs(G[s][i],s);
+		d[s]+=d[G[s][i]];
+		res=max(res,d[G[s][i]]);
+	}
+	res=max(res,n-d[s]);
+	if(res&lt;maxn){
+		maxn=res;
+		ans=s;
+	}
+    /* 若选取序号较小的节点，可将代码更改成这样
+    if(res&lt;maxn||(res==maxn&amp;&amp;ans&gt;s)){
+        maxn=res;
+        ans=s;
     }
+    */
 }
 int main()
 {
-    cin&gt;&gt;n&gt;&gt;m;
-    for(int i=1;i&lt;=n;i++) f[i]=i;
-    for(int i=1;i&lt;=m;i++){
-        int u,v;
-        cin&gt;&gt;u&gt;&gt;v;
-        int x=find(u);
-        int y=find(v);
-        if(x!=y) f[y]=x;  //并查集
-        g[u].push_back(v);
-        g[v].push_back(u);  //无向图，双向建边
-        du[u]++;
-        du[v]++;   //记录度数
-    }
-    for(int i=1;i&lt;=n;i++){
-        sum1=0,sum2=0;  //sum1.sum2表每张图的两种色数，搜索前清零
-        if(f[i]==i&amp;&amp;du[i]&gt;0){  //搜索每张独立且有边的图
-            vis[i]=1;  //起点色别其实无所谓，效果都一样
-            dfs(i);
-            ans+=min(sum1,sum2);
-        }
-        if(flag==true){
-            cout&lt;&lt;&quot;Impossible&quot;;
-            return 0;
-        }
-    }
-    cout&lt;&lt;ans;
-    return 0;
+	scanf(&quot;%d&quot;,&amp;n);
+	for(int i=1;i&lt;n;i++){
+		scanf(&quot;%d%d&quot;,&amp;u,&amp;r);
+		G[u].push_back(r);
+		G[r].push_back(u);
+	}
+	dfs(1,0);
+	printf(&quot;%d&quot;,ans);
+	return 0;
 }
 </code></pre>
+<h2 id="相关题目">相关题目</h2>
+<p><a href="https://www.luogu.org/problemnew/show/P1395">P1395 会议</a></p>
 
                                 </div>
                     </article>
@@ -214,9 +201,9 @@ int main()
                     
                         <div class="next-post">
                             <div class="next">下一篇</div>
-                            <a href="https://Kite-chaser.github.io/post/bing-cha-ji">
+                            <a href="https://Kite-chaser.github.io/post/p1907-she-ji-dao-lu">
                                 <h3 class="post-title">
-                                    并查集
+                                    P1907 设计道路
                                 </h3>
                             </a>
                         </div>
@@ -237,18 +224,15 @@ int main()
             <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0">题目描述</a></li>
+<li><a href="#rt">RT</a></li>
+<li><a href="#%E6%A6%82%E5%BF%B5">概念</a></li>
+<li><a href="#%E6%80%A7%E8%B4%A8">性质</a></li>
+<li><a href="#slove">Slove</a></li>
+<li><a href="#tips">Tips</a></li>
+<li><a href="#code">Code</a></li>
+<li><a href="#%E7%9B%B8%E5%85%B3%E9%A2%98%E7%9B%AE">相关题目</a></li>
 </ul>
 </li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#solution">Solution</a></li>
 </ul>
 
         </div>
