@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    P1395 【会议】 | Kite-chaser
+    P2866 [USACO06NOV]糟糕的一天Bad Hair Day | Kite-chaser
 </title>
 <link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1566192344978">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -114,102 +114,84 @@
                 <div id="content" class="main-container-left">
                     <article class="post i-card">
                         <h2 class="post-title">
-                            P1395 【会议】
+                            P2866 [USACO06NOV]糟糕的一天Bad Hair Day
                         </h2>
                         <div class="post-info">
                             <time class="post-time">2019-08-19</time>
                             
                                 <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="post-tag i-tag
-                            i-tag-error">
+                            i-tag-">
                             #题解
                         </a>
                                 
-                                <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="post-tag i-tag
-                            i-tag-success">
-                            #图论
-                        </a>
-                                
                                 <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
-                            i-tag-other_4">
+                            i-tag-error">
                             #OI
                         </a>
                                 
                         </div>
                         
-                            <div class="post-feature-image" style="background-image: url('https://Kite-chaser.github.io/post-images/p1395-hui-yi.jpg')"></div>
+                            <div class="post-feature-image" style="background-image: url('https://Kite-chaser.github.io/post-images/p2866-usaco06novzao-gao-de-yi-tian-bad-hair-day.jpg')"></div>
                             
                                 <div class="post-content">
-                                    <h4 id="题目描述">题目描述</h4>
-<p>有一个村庄居住着n个村民，有n-1条路径使得这n个村民的家联通，每条路径的长度都为1。</p>
+                                    <p>不会打数学公式，只能扣图了……</p>
 <!--more-->
-<p>现在村长希望在某个村民家中召开一场会议，村长希望所有村民到会议地点的距离之和最小，那么村长应该要把会议地点设置在哪个村民的家中，并且这个距离总和最小是多少？若有多个节点都满足条件，则选择节点编号最小的那个点。</p>
+<h4 id="题目翻译">题目翻译</h4>
+<p><img src="https://cdn.luogu.org/upload/pic/73259.png" alt=""></p>
+<h4 id="题目描述">题目描述</h4>
+<p>Some of Farmer John's N cows (1 ≤ N ≤ 80,000) are having a bad hair day! Since each cow is self-conscious about her messy hairstyle, FJ wants to count the number of other cows that can see the top of other cows' heads.</p>
+<p>Each cow i has a specified height hi (1 ≤ hi ≤ 1,000,000,000) and is standing in a line of cows all facing east (to the right in our diagrams). Therefore, cow i can see the tops of the heads of cows in front of her (namely cows i+1, i+2, and so on), for as long as these cows are strictly shorter than cow i.</p>
+<p>Consider this example:</p>
+<p>=</p>
+<p>=       =</p>
+<p>=   -   =         Cows facing right --&gt;</p>
+<p>=   =   =</p>
+<p>= - = = =</p>
+<p>= = = = = =</p>
+<p>1 2 3 4 5 6 Cow#1 can see the hairstyle of cows #2, 3, 4</p>
+<p>Cow#2 can see no cow's hairstyle</p>
+<p>Cow#3 can see the hairstyle of cow #4</p>
+<p>Cow#4 can see no cow's hairstyle</p>
+<p>Cow#5 can see the hairstyle of cow 6</p>
+<p>Cow#6 can see no cows at all!</p>
+<p>Let ci denote the number of cows whose hairstyle is visible from cow i; please compute the sum of c1 through cN.For this example, the desired is answer 3 + 0 + 1 + 0 + 1 + 0 = 5.</p>
 <blockquote>
-<p><a href="https://www.luogu.org/problem/P1395">原题链接</a></p>
+<p><a href="https://www.luogu.org/problem/P2866">原题链接</a></p>
 </blockquote>
 <h2 id="solve">Solve</h2>
-<p>1.每个村民的家都为一个节点，所有的边权值为1，而且这是一个树。</p>
-<p>2.找到<a href="https://kite-chaser.github.io/post/shu-de-chong-xin">树的重心</a>。</p>
-<p>3.以树的重心为源点，求出其与各个节点的距离和（使用BFS）。</p>
-<h2 id="tips">Tips</h2>
-<p>1.什么是树的重心？</p>
-<p>链接Blog<s>较为详细地</s>描述了树的重心的概念。</p>
-<p>2.为什么会议地点就是树的重心？</p>
-<p><img src="https://cdn.luogu.org/upload/pic/61390.png" alt=""></p>
-<p>这是树的重心的性质运用。</p>
+<p>1.单调队列。</p>
+<p>2.既然是找比自己高度小的，就用单调递减。</p>
+<p>3.每找到一个比自己高度小的，c[]加1，并加上其的c[];</p>
+<h2 id="tip">Tip</h2>
+<p>1.单调递减，所以不会找到比自己高度小的奶牛的高度更小的奶牛(向队首遍历)，从而解释了Slove中的步骤3.</p>
+<p>2.不开long long 见祖宗。</p>
 <h2 id="code">Code</h2>
 <pre><code class="language-cpp">
 #include&lt;iostream&gt;
 #include&lt;cstdio&gt;
-#include&lt;vector&gt;
-#include&lt;queue&gt;
+#define N 80010
+#define ll long long
 using namespace std;  //标准开头
-const int N=50010;  //节点数
-int n,ans;  //n——节点数，ans为树的重心
-int maxn=10000000;
-int u,r,sum;  //u，r边的两端点，sum——距离之和
-int d[N],dis[N];  //dis[i]为节点i到源点（树的重心）的距离
-vector&lt;int&gt; G[N];  //vector建图
-queue&lt;int&gt; q;  //BFS必备队列
-bool vis[N];  //BFS中已经遍历的点
-void dfs(int s,int f){  //求树的重心
-    d[s]=1;
-    int res=0;
-    for(int i=0;i&lt;G[s].size();i++){
-        if(G[s][i]==f) continue;
-        dfs(G[s][i],s);
-        d[s]+=d[G[s][i]];
-        res=max(res,d[G[s][i]]);
-    }
-    res=max(res,n-d[s]);
-    if(res&lt;maxn||(res==maxn&amp;&amp;ans&gt;s)){
-        maxn=res;
-        ans=s;
-    }
-}
+ll n,ans;  //n-奶牛数，ans-答案
+ll q[N][3],h[N],c[N];  //q-队列 q[][1]表示奶牛的高度 q[][2]表示奶牛的序号，h-高度，c-同题中的c[]
+ll head=1,tail=0;  //头指针，尾指针
 int main()
 {
-    scanf(&quot;%d&quot;,&amp;n);
-    for(int i=1;i&lt;=n-1;i++){
-        scanf(&quot;%d%d&quot;,&amp;u,&amp;r);
-        G[u].push_back(r);
-        G[r].push_back(u);
-    }
-    dfs(1,0);
-    q.push(ans);
-    while(!q.empty()){  //标准BFS
-        int e=q.front();
-        q.pop();
-        vis[e]=true;
-        sum+=dis[e];
-        for(int i=0;i&lt;G[e].size();i++){
-            if(!vis[G[e][i]]){
-                q.push(G[e][i]);
-                dis[G[e][i]]=dis[e]+1;
-            }
-        }
-    }
-    printf(&quot;%d %d&quot;,ans,sum);  //完美输出
-    return 0;
+	scanf(&quot;%lld&quot;,&amp;n);
+	for(ll i=1;i&lt;=n;i++) scanf(&quot;%lld&quot;,&amp;h[i]);
+	for(ll i=n;i&gt;=1;i--){
+		while(head&lt;=tail&amp;&amp;h[i]&gt;q[tail][1]){
+			c[i]++;
+			c[i]+=c[q[tail][2]];
+			tail--;
+		}
+		tail++;
+		q[tail][1]=h[i];
+		q[tail][2]=i;
+		ans+=c[i];
+	}
+	printf(&quot;%lld&quot;,ans);  //完美输出
+	return 0;
 }
 </code></pre>
 
@@ -219,9 +201,9 @@ int main()
                     
                         <div class="next-post">
                             <div class="next">下一篇</div>
-                            <a href="https://Kite-chaser.github.io/post/shu-de-chong-xin">
+                            <a href="https://Kite-chaser.github.io/post/p1395-hui-yi">
                                 <h3 class="post-title">
-                                    树的重心
+                                    P1395 【会议】
                                 </h3>
                             </a>
                         </div>
@@ -246,13 +228,14 @@ int main()
 <ul>
 <li>
 <ul>
+<li><a href="#%E9%A2%98%E7%9B%AE%E7%BF%BB%E8%AF%91">题目翻译</a></li>
 <li><a href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0">题目描述</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#solve">Solve</a></li>
-<li><a href="#tips">Tips</a></li>
+<li><a href="#tip">Tip</a></li>
 <li><a href="#code">Code</a></li>
 </ul>
 </li>
