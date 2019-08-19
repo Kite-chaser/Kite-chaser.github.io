@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Kite-chaser.github.io</id>
     <title>Kite-chaser</title>
-    <updated>2019-08-19T05:13:15.699Z</updated>
+    <updated>2019-08-19T05:15:45.328Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Kite-chaser.github.io"/>
     <link rel="self" href="https://Kite-chaser.github.io/atom.xml"/>
@@ -58,10 +58,10 @@
         </link>
         <updated>2019-08-19T05:01:01.000Z</updated>
         <summary type="html"><![CDATA[<h4 id="题目描述">题目描述</h4>
-<p>又到了一年一度的明明生日了，明明想要买BBB样东西，巧的是，这BBB样东西价格都是AAA元。</p>
+<p>又到了一年一度的明明生日了，明明想要买B样东西，巧的是，这BBB样东西价格都是A元。</p>
 ]]></summary>
         <content type="html"><![CDATA[<h4 id="题目描述">题目描述</h4>
-<p>又到了一年一度的明明生日了，明明想要买BBB样东西，巧的是，这BBB样东西价格都是AAA元。</p>
+<p>又到了一年一度的明明生日了，明明想要买B样东西，巧的是，这BBB样东西价格都是A元。</p>
 ]]></content>
     </entry>
     <entry>
