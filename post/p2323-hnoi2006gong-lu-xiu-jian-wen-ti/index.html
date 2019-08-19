@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    并查集 | Kite-chaser
+    P2323 [HNOI2006]公路修建问题 | Kite-chaser
 </title>
 <link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1566184183397">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -114,69 +114,115 @@
                 <div id="content" class="main-container-left">
                     <article class="post i-card">
                         <h2 class="post-title">
-                            并查集
+                            P2323 [HNOI2006]公路修建问题
                         </h2>
                         <div class="post-info">
-                            <time class="post-time">2019-08-18</time>
+                            <time class="post-time">2019-08-19</time>
                             
-                                <a href="https://Kite-chaser.github.io/tag/ksq4_sfEo" class="post-tag i-tag
-                            i-tag-banana">
-                            #并查集
+                                <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="post-tag i-tag
+                            i-tag-other_2">
+                            #题解
+                        </a>
+                                
+                                <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="post-tag i-tag
+                            i-tag-error">
+                            #图论
                         </a>
                                 
                                 <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
-                            i-tag-warning">
+                            i-tag-other_2">
                             #OI
                         </a>
                                 
                         </div>
                         
-                            <div class="post-feature-image" style="background-image: url('https://Kite-chaser.github.io/post-images/bing-cha-ji.jpg')"></div>
+                            <div class="post-feature-image" style="background-image: url('https://Kite-chaser.github.io/post-images/p2323-hnoi2006gong-lu-xiu-jian-wen-ti.jpg')"></div>
                             
                                 <div class="post-content">
-                                    <h1 id="rt">RT</h1>
-<p>并查集是一种树型的数据结构，用于处理一些不相交集合的合并及查询问题，常常在使用中以森林来表示（一般用数组实现）。</p>
-<!--more-->
-<h1 id="实现核心">实现核心</h1>
-<h4 id="1初始化">1.初始化：</h4>
-<p>把每个点所在集合初始化为其自身。</p>
-<p>通常来说，这个步骤在每次使用该数据结构时只需要执行一次，无论何种实现方式，时间复杂度均为O(N)。</p>
-<h4 id="2查找">2.查找</h4>
-<p>查找元素所在的集合，即根节点。</p>
-<h4 id="3合并">3.合并</h4>
-<p>将两个元素所在的集合合并为一个集合。<br>
-通常来说，合并之前，应先判断两个元素是否属于同一集合，这可用上面的“查找”操作实现。</p>
-<h1 id="代码实现">代码实现</h1>
-<h4 id="1初始化-2">1.初始化</h4>
-<pre><code class="language-cpp">int f[];  //定义数组f,f[i]表示节点i的父节点
-for(int i=1;i&lt;=n;i++) f[i]=i;  //n为节点数
-</code></pre>
-<h4 id="2查找-2">2.查找</h4>
-<p>首先，我们需要引入一个路径压缩的概念。</p>
-<p>如果，查找中路径较长（形成一个长长的链），时间复杂度就会比较高。</p>
-<h5 id="思想">思想</h5>
-<p>每次查找的时候，如果路径较长，则修改信息，以便下次查找的时候速度更快。</p>
-<h5 id="实现">实现</h5>
-<p>1.找到根结点。</p>
-<p>2.修改查找路径上的所有节点，将它们都指向根结点。</p>
-<pre><code class="language-cpp">int find(int s){  //查找节点s
-	if(f[s]!=s) f[s]=find(f[s]);
-	return f[s];
+                                    <h4 id="题目描述">题目描述</h4>
+<p><img src="https://cdn.luogu.org/upload/pic/1384.png" alt=""></p>
+<blockquote>
+<p><a href="https://www.luogu.org/problem/P2323">原题链接</a></p>
+</blockquote>
+<h3 id="slove">Slove</h3>
+<p>用<a href="https://kite-chaser.github.io/post/kruskal">Kruskal</a>建立最小生成树（MST)</p>
+<p>1.一级公路是一定要修的，而且最少为k个。所以，把所有的边先按一级公路权值从小到大排序。</p>
+<p>2.连接前k个“安全边”，即在Kruskal算法中可以加入的边。</p>
+<p>3.把后几条边，按二级公路的权值从小到大排序。</p>
+<p>4.继续Kruskal。</p>
+<h3 id="tips">Tips</h3>
+<p>1.为什么步骤3中排序直接忽略了一级公路的权值呢？</p>
+<p>“一级公路上的车速快，但修路的花费要大一些（摘自题目描述的第六行）”也就是说对于同一条边，一般来说，一级公路的权值是要大于二级公路的，所以选二级一定不比选一级差（当然，此题有SJ,不影响结果的话，选一级也是可以的）。</p>
+<p>2.在实际评测时，将只会有m-1行公路（我也不知道为啥要少一条）</p>
+<h3 id="code">Code</h3>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+using namespace std;  //标准开头
+const int N=20010;
+int n,m,k;  //同题
+int f[N];  //f[i]——节点i的父节点
+struct note{
+	int u,r,c1,c2,num;
+}d[N];  //同题，u，r——端点，num——序号
+int s[N];  //记录每条边的情况
+int ans;  //答案
+int cnt;  //记录前k个安全边
+bool cmp1(const note &amp;a,const note &amp;b){  //排序1
+	return a.c1&lt;b.c1;
+}
+bool cmp2(const note &amp;a,const note &amp;b){  //排序2
+	return a.c2&lt;b.c2;
+}
+int find(int h){
+	if(h!=f[h]) f[h]=find(f[h]);
+	return f[h];
+}
+int main()
+{
+	cin&gt;&gt;n&gt;&gt;k&gt;&gt;m;
+	m--;
+	for(int i=1;i&lt;=n;i++) f[i]=i;
+	for(int i=1;i&lt;=m;i++){
+		cin&gt;&gt;d[i].u&gt;&gt;d[i].r&gt;&gt;d[i].c1&gt;&gt;d[i].c2;
+		d[i].num=i;
+	}
+	sort(d+1,d+1+m,cmp1);
+	for(int i=1;i&lt;=m;i++){
+		int x,y;
+		x=find(d[i].u);
+		y=find(d[i].r);
+		if(x!=y){
+			f[y]=x;
+			ans=max(ans,d[i].c1);
+			s[d[i].num]=1;
+			cnt++;
+		}
+		if(cnt==k){
+			k=i;
+			break;
+		}
+	}
+	sort(d+k+1,d+1+m,cmp2);
+	for(int i=k+1;i&lt;=m;i++){
+		int x,y;
+		x=find(d[i].u);
+		y=find(d[i].r);
+		if(x!=y){
+			f[y]=x;
+			ans=max(ans,d[i].c2);
+			s[d[i].num]=2;
+		}
+	}
+	cout&lt;&lt;ans&lt;&lt;endl;
+	for(int i=1;i&lt;=m;i++){  //完美输出
+		if(s[i]&gt;=1) cout&lt;&lt;i&lt;&lt;&quot; &quot;&lt;&lt;s[i]&lt;&lt;endl;
+	}
+	return 0;
 }
 </code></pre>
-<h4 id="3合并-2">3.合并</h4>
-<pre><code class="language-cpp">int u,v;  //需要合并的节点u和节点v
-int x=find(u);
-int y=find(v);  //x,y为节点u和节点v的父节点
-if（x!=y) f[y]=x;  //或f[x]=y;
-</code></pre>
-<h3 id="相关题目">相关题目</h3>
-<p><a href="https://www.luogu.org/problemnew/show/P3367">P3367 【模板】并查集</a></p>
-<p><a href="https://www.luogu.org/problemnew/show/P2024">P2024 [NOI2001]食物链</a></p>
-<p><a href="https://www.luogu.org/problemnew/show/P1197">P1197 [JSOI2008]星球大战</a></p>
-<p><a href="https://www.luogu.org/problemnew/show/P2323">P2323 [HNOI2006]公路修建问题</a></p>
-<p><a href="https://www.luogu.org/problemnew/show/P2835">P2835 刻录光盘</a></p>
-<p><a href="https://www.luogu.org/problemnew/show/P3958">P3958 奶酪</a></p>
+<p><s>话说为啥这么个题都是蓝的</s></p>
 
                                 </div>
                     </article>
@@ -184,9 +230,9 @@ if（x!=y) f[y]=x;  //或f[x]=y;
                     
                         <div class="next-post">
                             <div class="next">下一篇</div>
-                            <a href="https://Kite-chaser.github.io/post/zui-xiao-zhi-pei-ji">
+                            <a href="https://Kite-chaser.github.io/post/kruskal">
                                 <h3 class="post-title">
-                                    最小支配集
+                                    Kruskal
                                 </h3>
                             </a>
                         </div>
@@ -205,23 +251,20 @@ if（x!=y) f[y]=x;  //或f[x]=y;
         <div class="toc-title i-card-title">目录</div>
         <div class="toc-content">
             <ul class="markdownIt-TOC">
-<li><a href="#rt">RT</a></li>
-<li><a href="#%E5%AE%9E%E7%8E%B0%E6%A0%B8%E5%BF%83">实现核心</a><br>
-*<br>
-*<br>
-* <a href="#1%E5%88%9D%E5%A7%8B%E5%8C%96">1.初始化：</a><br>
-* <a href="#2%E6%9F%A5%E6%89%BE">2.查找</a><br>
-* <a href="#3%E5%90%88%E5%B9%B6">3.合并</a></li>
-<li><a href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0">代码实现</a><br>
-*<br>
-*<br>
-* <a href="#1%E5%88%9D%E5%A7%8B%E5%8C%96-2">1.初始化</a><br>
-* <a href="#2%E6%9F%A5%E6%89%BE-2">2.查找</a><br>
-* <a href="#%E6%80%9D%E6%83%B3">思想</a><br>
-* <a href="#%E5%AE%9E%E7%8E%B0">实现</a><br>
-* <a href="#3%E5%90%88%E5%B9%B6-2">3.合并</a>
+<li>
 <ul>
-<li><a href="#%E7%9B%B8%E5%85%B3%E9%A2%98%E7%9B%AE">相关题目</a></li>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0">题目描述</a></li>
+</ul>
+</li>
+<li><a href="#slove">Slove</a></li>
+<li><a href="#tips">Tips</a></li>
+<li><a href="#code">Code</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
