@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    P1907 设计道路 | Kite-chaser
+    P2829 大逃离 | Kite-chaser
 </title>
 <link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1566192548796">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -114,95 +114,118 @@
                 <div id="content" class="main-container-left">
                     <article class="post i-card">
                         <h2 class="post-title">
-                            P1907 设计道路
+                            P2829 大逃离
                         </h2>
                         <div class="post-info">
                             <time class="post-time">2019-08-19</time>
                             
                                 <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="post-tag i-tag
-                            i-tag-other_3">
+                            i-tag-error">
                             #题解
                         </a>
                                 
                                 <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="post-tag i-tag
-                            i-tag-other_4">
+                            i-tag-info">
                             #图论
                         </a>
                                 
                                 <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
-                            i-tag-">
+                            i-tag-success">
                             #OI
                         </a>
                                 
                         </div>
                         
-                            <div class="post-feature-image" style="background-image: url('https://Kite-chaser.github.io/post-images/p1907-she-ji-dao-lu.jpg')"></div>
+                            <div class="post-feature-image" style="background-image: url('https://Kite-chaser.github.io/post-images/p2829-da-tao-chi.jpg')"></div>
                             
                                 <div class="post-content">
-                                    <h4 id="题目描述">题目描述</h4>
-<p>Caesar远征高卢回来后，对你大加赞赏，他亲自来到Genoa视察。</p>
+                                    <h4 id="题目背景">题目背景</h4>
+<p>zrz走进了一个奇葩的迷宫，他发现自己迷路了，想逃出来，他好不容易数完了所有的路，累的快晕了，只好叫你帮忙咯。</p>
 <!--more-->
-<p>Genoa在你的建设下变得无比繁荣，由于财政收入的增加，你为城市修建了交通系统。古罗马的交通系统由两部分组成——Dirt Road和Rome Road。两个路口间只可能是其中一种道路。在Rome Road上可以驾驶马车，而在Dirt Road上则不行。由于修建道路是一项浩大的工程，使得你无法将整个城市用Rome Road连接起来。</p>
-<p>现在Caesar已经到达码头，他要求去你家参观。Caesar由一个癖好，喜欢坐车而不喜欢走路。所以Caesar走Dirt Road时的不满值要比走Rome Road时大。</p>
-<p>为了不让Caesar过于不满而罢免你的职位，请设计路线使得Caesar的不满值最小。</p>
+<h4 id="题目描述">题目描述</h4>
+<p>这是一棵有n个节点的图，有m条双向边，每一条路有w个单位距离，zrz在1的位置，出口在n的位置，不过zrz脑子出了点bug，于是不想走最短的路，想走第2短的路，第2短路径允许与最短路径有重边，然后也可以重复通过一些节点和路，注意如果有多条路径都是最短路径，那么他们都不能叫第2短路径。但是zrz觉得如果接下来进入的一个节点所直接连接的地方小于k个（起点和终点除外），那么他就不敢进去。</p>
 <blockquote>
-<p><a href="https://www.luogu.org/problem/P1907">原题链接</a></p>
+<p><a href="https://www.luogu.org/problem/P2829">原题链接</a></p>
 </blockquote>
-<h3 id="solve">Solve</h3>
-<p>Dijkstra算法寻找最短路径</p>
-<p>1.路口，码头，家都作为节点。节点0为码头，节点n+1为家（建图关键）。</p>
-<p>2.跑一遍Dijkstra。</p>
-<h3 id="tips">Tips</h3>
-<p>1.本题数据范围较小，可以用邻接矩阵</p>
-<p>2.最大距离最好开大些，开0x3fff就WA了两个点，开1e6就A了</p>
-<h3 id="code">Code</h3>
+<h2 id="solve">Solve</h2>
+<p>1.次短路问题+SPFA。</p>
+<p>2.设起点为s,终点t。</p>
+<p>3.设dis1[i]为s到节点i的最短路，dis2[i]为t到节点2的最短路。</p>
+<p>4.设次短路ans。</p>
+<p>5.ans即为min{dis1[u]+w+dis2[v]}(u,v,w表示每条边的两侧端点和权值)，ans!=dis1[t]。</p>
+<h2 id="tip">Tip</h2>
+<p>1.蒟蒻的我并不会证明该过程的正确性。</p>
+<p>2.<img src="https://cdn.luogu.org/upload/pic/63781.png" alt="">此处指的是点数。</p>
+<h2 id="code">Code</h2>
 <pre><code class="language-cpp">
 #include&lt;iostream&gt;
 #include&lt;cstdio&gt;
-#include&lt;cmath&gt;
+#include&lt;queue&gt;
+#include&lt;cstring&gt;
+#define N 400010
 using namespace std;  //标准开头
-const int N=5000;
-double m[N][N];  //邻接矩阵存边
-int n;  //路口数
-double e,r;  //e——Dirt Road，r——Rome Road
-double x[N],y[N];  //节点信息
-double d[N];  //离码头的最短距离
-bool vis[N][N];  //vis[i][j]==true——i到j之间有Rome Road，false——没有
-bool f[N];  //Dijkstra遍历时是否访问过，true——是，false——否
-int dx,dy;  //dx到dy有Rome Road
-int main()
-{
-	cin&gt;&gt;e&gt;&gt;r&gt;&gt;n;
-	for(int i=1;i&lt;=n;i++) cin&gt;&gt;x[i]&gt;&gt;y[i];
-	while(cin&gt;&gt;dx&gt;&gt;dy&amp;&amp;dx!=0&amp;&amp;dy!=0){  //建立Rome Road
-		vis[dx][dy]=vis[dy][dx]=true;
-		m[dx][dy]=m[dy][dx]=r*sqrt((x[dx]-x[dy])*(x[dx]-x[dy])+(y[dx]-y[dy])*(y[dx]-y[dy]));
-	}
-	cin&gt;&gt;x[0]&gt;&gt;y[0]&gt;&gt;x[n+1]&gt;&gt;y[n+1];
-	for(int i=0;i&lt;=n+1;i++){  //建立Dirt Road
-		for(int j=0;j&lt;=i;j++){ 
-			if(!vis[i][j]) m[i][j]=m[j][i]=e*sqrt((x[i]-x[j])*(x[i]-x[j])+(y[i]-y[j])*(y[i]-y[j]));
-		}
-	}
-	d[0]=0;
-	for(int i=1;i&lt;=n+1;i++) d[i]=1e6;
-	for(int i=0;i&lt;=n+1;i++){  //核心Dijkstra
-		int k;
-		double maxn=1e6;
-		for(int j=0;j&lt;=n+1;j++){
-			if(!f[j]&amp;&amp;d[j]&lt;maxn){
-				maxn=d[j];
-				k=j;
+int n,m,k;  //同题
+int e,r,dist;  //输入时的端点，权值
+int ans=1e9;  //答案
+int du[N];  //直接连接的点数
+int dis1[N],dis2[N];  //同Solve
+int first[N],next[N],len;  //邻接表，len表示边数
+bool vis[N];
+int f[5001][5001];  //f[i][j]&gt;0,表示i与j直接相连
+struct note{  //邻接表
+	int u,v,w;
+}d[N];
+void add(int e,int r,int dist){  //邻接表
+	d[++len].u=e;
+	d[len].v=r;
+	d[len].w=dist;
+	next[len]=first[e];
+	first[e]=len;
+}
+void spfa(int s,int *dis){  //标准SPFA
+	memset(vis,false,sizeof(vis));
+	dis[s]=0;
+	queue&lt;int&gt; q;
+	q.push(s);
+	while(!q.empty()){
+		int e=q.front();
+		q.pop();
+		vis[e]=false;
+		for(int i=first[e];i!=-1;i=next[i]){
+			if(du[d[i].v]&lt;k&amp;&amp;d[i].v!=1&amp;&amp;d[i].v!=n) continue;  //排除度数小于k
+			if(dis[d[i].v]&gt;dis[e]+d[i].w){
+				dis[d[i].v]=dis[e]+d[i].w;
+				if(!vis[d[i].v]){
+					vis[d[i].v]=true;
+					q.push(d[i].v);
+				}
 			}
 		}
-		if(maxn==1e6) break;
-		f[k]=true;
-		for(int j=0;j&lt;=n+1;j++){
-			if(d[k]+m[k][j]&lt;d[j]) d[j]=d[k]+m[k][j];
-		}
 	}
-	printf(&quot;%.4lf&quot;,d[n+1]);  //完美输出
-	return 0;
+}
+int main()
+{
+	memset(first,-1,sizeof(first));
+	scanf(&quot;%d%d%d&quot;,&amp;n,&amp;m,&amp;k);
+	for(int i=1;i&lt;=n;i++) dis1[i]=dis2[i]=1e9;
+	for(int i=1;i&lt;=m;i++){
+		scanf(&quot;%d%d%d&quot;,&amp;e,&amp;r,&amp;dist);
+		f[e][r]++;
+		f[r][e]++;
+		add(e,r,dist);
+		add(r,e,dist);
+	}
+	for(int i=1;i&lt;=n;i++){
+		for(int j=1;j&lt;=n;j++) if(f[i][j]) du[i]++;
+	}
+	spfa(1,dis1);
+	spfa(n,dis2);
+	for(int i=1;i&lt;=len;i++){
+		if(dis1[d[i].u]+d[i].w+dis2[d[i].v]!=dis1[n]&amp;&amp;ans&gt;dis1[d[i].u]+d[i].w+dis2[d[i].v]) ans=dis1[d[i].u]+d[i].w+dis2[d[i].v]; 
+	}
+	if(ans==1e9) printf(&quot;-1&quot;);
+	else printf(&quot;%d&quot;,ans);
+	return 0; 
 }
 </code></pre>
 
@@ -212,9 +235,9 @@ int main()
                     
                         <div class="next-post">
                             <div class="next">下一篇</div>
-                            <a href="https://Kite-chaser.github.io/post/p1194-mai-li-wu">
+                            <a href="https://Kite-chaser.github.io/post/p2866-usaco06novzao-gao-de-yi-tian-bad-hair-day">
                                 <h3 class="post-title">
-                                    P1194 买礼物
+                                    P2866 [USACO06NOV]糟糕的一天Bad Hair Day
                                 </h3>
                             </a>
                         </div>
@@ -239,14 +262,15 @@ int main()
 <ul>
 <li>
 <ul>
+<li><a href="#%E9%A2%98%E7%9B%AE%E8%83%8C%E6%99%AF">题目背景</a></li>
 <li><a href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0">题目描述</a></li>
 </ul>
 </li>
-<li><a href="#solve">Solve</a></li>
-<li><a href="#tips">Tips</a></li>
-<li><a href="#code">Code</a></li>
 </ul>
 </li>
+<li><a href="#solve">Solve</a></li>
+<li><a href="#tip">Tip</a></li>
+<li><a href="#code">Code</a></li>
 </ul>
 </li>
 </ul>
