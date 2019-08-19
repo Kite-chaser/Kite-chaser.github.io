@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Kite-chaser.github.io</id>
     <title>Kite-chaser</title>
-    <updated>2019-08-19T06:03:05.139Z</updated>
+    <updated>2019-08-19T12:43:24.258Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Kite-chaser.github.io"/>
     <link rel="self" href="https://Kite-chaser.github.io/atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://Kite-chaser.github.io/images/avatar.png</logo>
     <icon>https://Kite-chaser.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Kite-chaser</rights>
+    <entry>
+        <title type="html"><![CDATA[数论]]></title>
+        <id>https://Kite-chaser.github.io/post/shu-lun</id>
+        <link href="https://Kite-chaser.github.io/post/shu-lun">
+        </link>
+        <updated>2019-08-19T12:23:24.000Z</updated>
+        <summary type="html"><![CDATA[<p>其实所有内容都是我们可爱的学姐lcr教授的，我只是借用了一下而已。<s>话说学OI的竟然还有学姐。</s></p>
+]]></summary>
+        <content type="html"><![CDATA[<p>其实所有内容都是我们可爱的学姐lcr教授的，我只是借用了一下而已。<s>话说学OI的竟然还有学姐。</s></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[P1491 集合位置 ]]></title>
         <id>https://Kite-chaser.github.io/post/p1491-ji-he-wei-zhi</id>
@@ -123,19 +134,6 @@
 ]]></summary>
         <content type="html"><![CDATA[<h2 id="rt">RT</h2>
 <p>Kruskal是一种用于建立最小生成树(MST)的算法，同理的还有<a href="https://kite-chaser.github.io/post/prim/">Prim</a>算法。与Kruskal算法相关的还有并查集，也就是说Kruskal的实现需要并查集（<a href="https://kite-chaser.github.io/post/bing-cha-ji/">可参考蒟蒻的OI笔记</a>）。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Prim]]></title>
-        <id>https://Kite-chaser.github.io/post/prim</id>
-        <link href="https://Kite-chaser.github.io/post/prim">
-        </link>
-        <updated>2019-08-19T01:33:57.000Z</updated>
-        <summary type="html"><![CDATA[<h2 id="rt">RT</h2>
-<p>Prim算法主要应用于建立最小生成树（MST），同理的还有<a href="https://kite-chaser.github.io/post/kruskal/">Kruskal</a>算法。</p>
-]]></summary>
-        <content type="html"><![CDATA[<h2 id="rt">RT</h2>
-<p>Prim算法主要应用于建立最小生成树（MST），同理的还有<a href="https://kite-chaser.github.io/post/kruskal/">Kruskal</a>算法。</p>
 ]]></content>
     </entry>
 </feed>
