@@ -7,7 +7,7 @@
 <title>
     动态规划中的树形DP | Kite-chaser
 </title>
-<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1566222081975">
+<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1566222472508">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -35,7 +35,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://Kite-chaser.github.io">
-                <img class="avatar" src="https://Kite-chaser.github.io/images/avatar.png?v=1566222081975" alt="">
+                <img class="avatar" src="https://Kite-chaser.github.io/images/avatar.png?v=1566222472508" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -120,7 +120,7 @@
                             <time class="post-time">2019-08-19</time>
                             
                                 <a href="https://Kite-chaser.github.io/tag/BCIKttOve" class="post-tag i-tag
-                            i-tag-success">
+                            i-tag-primary">
                             #动态规划，DP
                         </a>
                                 
@@ -148,7 +148,7 @@
 <ol>
 <li>设r[i]为i的点权，d[i]为以i为根节点的MIS，s[i]为i的所有儿子节点的d[]的总和，gs[i]为i的所有孙子节点的d[]总和。d[i]=max(r[i]+gs[t],s[t]);</li>
 <li>以一号节点为根节点，进行dfs，用dfn[]记录dfs序。</li>
-<li>从dfn[]的最后开始枚举，进行更新。答案就是d[1]。</li>
+<li>从dfn[]的倒序枚举，进行更新。答案就是d[1]。</li>
 </ol>
 <h4 id="code">Code</h4>
 <pre><code class="language-cpp">
