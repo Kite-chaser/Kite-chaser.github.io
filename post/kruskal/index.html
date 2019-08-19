@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    最小支配集 | Kite-chaser
+    Kruskal | Kite-chaser
 </title>
 <link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1566178713201">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -114,91 +114,80 @@
                 <div id="content" class="main-container-left">
                     <article class="post i-card">
                         <h2 class="post-title">
-                            最小支配集
+                            Kruskal
                         </h2>
                         <div class="post-info">
-                            <time class="post-time">2019-08-18</time>
+                            <time class="post-time">2019-08-19</time>
                             
                                 <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
-                            i-tag-warning">
+                            i-tag-">
                             #OI
                         </a>
                                 
                         </div>
                         
-                            <div class="post-feature-image" style="background-image: url('https://Kite-chaser.github.io/post-images/zui-xiao-zhi-pei-ji.jpg')"></div>
+                            <div class="post-feature-image" style="background-image: url('https://Kite-chaser.github.io/post-images/kruskal.jpg')"></div>
                             
                                 <div class="post-content">
                                     <h2 id="rt">RT</h2>
-<p>1.支配集(DS,dominating set)？</p>
-<p>支配集的定义如下：给定无向图G =（V , E）,其中V是点集， E是边集， 称V的一个子集S称为支配集当且仅当对于V-S中任何一个点v, 都有S中的某个点u, 使得(u, v) ∈E。</p>
-<!--more-->
-<p>2.最小支配集(MDS)?</p>
-<p>对于图G = (V, E) 来说,最小支配集指的是从 V 中取尽量少的点组成一个集合, 使得 V 中剩余的点都与取出来的点有边相连.也就是说,设 V' 是图的一个支配集,则对于图中的任意一个顶点 u ,要么属于集合 V', 要么与 V' 中的顶点相邻. 在 V' 中除去任何元素后 V' 不再是支配集, 则支配集 V' 是极小支配集.称G 的所有支配集中顶点个数最少的支配集为最小支配集,最小支配集中的顶点个数称为支配数.</p>
-<p><strong>tip:以上定义有点青涩难懂，但是康康几道例题就可以明白了</strong></p>
-<h2 id="slove">Slove</h2>
-<h3 id="贪心策略">贪心策略</h3>
-<p>首先选择一点为树根,再按照深度优先遍历得到遍历序列,按照所得序列的反向序列的顺序进行贪心,对于一个即不属于支配集也不与支配集中的点相连的点来说,如果他的父节点不属于支配集,将其父节点加入到支配集</p>
-<h3 id="具体实现">具体实现</h3>
-<p>1.设整型数组dfn,fa,布尔数组vis,st。dfn[i]表示dfs中出现的第i个节点，fa[i]表示dfs中节点i的父节点，vis[i]-false表示节点i不属于支配集也不与支配集中的点相连，st[i]-true表示节点i在MDS中。</p>
-<p>2.建图（邻接表）。</p>
-<p>3.dfs一遍树，确定dfn,fa。</p>
-<p>4.dfn逆序查找，确定vis,st,同时得出MDS。</p>
-<h2 id="tip">Tip：</h2>
-<p>1.Code中的代码，读者需根据题目的具体情况具体改动。</p>
-<p>2.听闻如此求MDS,时间复杂度为O（n）?</p>
-<p>3.听闻MSD还有树状DP的做法，但是蒟蒻的我不会。</p>
-<p>4.以上部分内容抠自<a href="https://baike.baidu.com/item/%E6%94%AF%E9%85%8D%E9%9B%86/3187787?fr=aladdin">度娘</a>。</p>
-<p><s>5.但是度娘的代码太诡异了。</s></p>
+<p>Kruskal是一种用于建立最小生成树(MST)的算法，同理的还有<a href="https://five-shifts-forever.blog.luogu.org/post-prim">Prim</a>算法。与Kruskal算法相关的还有并查集，也就是说Kruskal的实现需要并查集（<a href="https://kite-chaser.github.io/post/bing-cha-ji/">可参考蒟蒻的OI笔记</a>）。</p>
+<h2 id="思想">思想</h2>
+<p>1.将图中的所有边按权值从小到大排序</p>
+<p>2.遍历每一条边，检查两边的点是否在同一集合（或者说在同一棵树上）。如果在，则跳过；如果不在，就合并（此处充分的利用并查集的查找和合并两大功能），此时的这条边叫做“安全边”。</p>
+<h2 id="tips">Tips</h2>
+<p>为什么如此进行就可以建立最小生成树呢？</p>
+<p>每次遍历时，当前的边一定是最小的边（最起码当前是）。</p>
+<p>情况1：当前的边的两点在同一集合（或者说在同一棵树上），那么加入这条边则多此一举。</p>
+<p>情况2：当前的边的两点不在同一集合（或者说不在同一棵树上）。如果不加入这条边，还能建立完整的生成树的话，那么势必有一条或多条边来等效此边，但是此边是当前最小的，所以等效的部分一定是大于此边的；如果不加入这条边，建立不了完整的生成树，那就更不用说了（滑稽.jpg)。所以一定要加入此边。</p>
 <h2 id="code">Code</h2>
-<pre><code class="language-cpp">#include&lt;iostream&gt;
-#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#define N 10010
-using namespace std;  //标准开头
-int ans;  //ans-MDS的点数
-int first[N],next[N*2],len,to[N*2];
-int dfn[N],cnt,fa[N];
-bool vis[N],st[N];
-void add(int u,int v){  //邻接表建图
-	to[++len]=v;
-	next[len]=first[u];
-	first[u]=len;
+<pre><code class="language-cpp">int p[];  //p[i]表示i的父亲节点
+struct note{
+	int u,v,w;
+}d[];  //边的信息，u，v——端点，w——权值
+int n,m;  //n——点数，m——边数
+int ans;  //权值和
+bool cmp(const note &amp;a,const note &amp;b){
+	return a.w&lt;b.w;
 }
-void dfs(int s,int f){
-	dfn[++cnt]=s;
-	fa[s]=f;
-	for(int i=first[s];i!=-1;i=next[i]) if(to[i]!=f) dfs(to[i],s);
-}
-void MDS(){
-	for(int i=n;i&gt;=1;i--){
-		int s=dfn[i];
-		if(!vis[s]){  //不属于支配集也不与支配集中的点相连的点
-			if(!st[fa[s]]){  //父节点不属于支配集
-				st[fa[s]]=true;  //其父节点加入到支配集
-				ans++;
-			}
-			vis[s]=true;
-			vis[fa[s]]=true;
-			vis[fa[fa[s]]]=true;
-		}
-	}
+int find(int s){
+	if(s!=f[s]) f[s]=find(f[s]);
+	return f[s];
 }
 int main()
 {
-	// 建图  //
-	dfs(1,1);
-	MDS();
+	scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+	for(int i=1;i&lt;=n;i++) p[i]=i;
+	for(int i=1;i&lt;=m;i++) scanf(&quot;%d%d%d&quot;,&amp;d[i].u,&amp;d[i].v,&amp;d[i].w);
+	sort(d+1,d+1+n,cmp);
+	for(int i=1;i&lt;=m;i++){
+		int e,r;
+		e=find(d[i].u);
+		r=find(d[i].v);
+		if(e!=r) p[r]=e,ans+=d[i].w;
+	}
+	printf(&quot;%d&quot;,ans);
 	return 0;
-}
+} 
 </code></pre>
-<h2 id="相关题目">相关题目</h2>
-<p><a href="https://www.luogu.org/problem/P2899">P2899 [USACO08JAN]手机网络Cell Phone Network</a></p>
+<p>其实这只是Kruskal的大体轮廓，还得具体情况具体分析。</p>
+<h3 id="相关题目">相关题目</h3>
+<p><a href="https://www.luogu.org/fe/problem/P3366">P3366【模板】最小生成树</a></p>
+<p><a href="https://www.luogu.org/problemnew/show/P2323">P2323 [HNOI2006]公路修建问题</a></p>
+<p><a href="https://www.luogu.org/problemnew/show/P2573">P2573 [SCOI2012]滑雪</a></p>
 
                                 </div>
                     </article>
                     <!--  -->
                     
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://Kite-chaser.github.io/post/prim">
+                                <h3 class="post-title">
+                                    Prim
+                                </h3>
+                            </a>
+                        </div>
+                        
                             <div id="disqus_thread"></div>
                             <div id="gitalk-container"></div>
                 </div>
@@ -216,15 +205,13 @@ int main()
 <li>
 <ul>
 <li><a href="#rt">RT</a></li>
-<li><a href="#slove">Slove</a>
+<li><a href="#%E6%80%9D%E6%83%B3">思想</a></li>
+<li><a href="#tips">Tips</a></li>
+<li><a href="#code">Code</a>
 <ul>
-<li><a href="#%E8%B4%AA%E5%BF%83%E7%AD%96%E7%95%A5">贪心策略</a></li>
-<li><a href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0">具体实现</a></li>
+<li><a href="#%E7%9B%B8%E5%85%B3%E9%A2%98%E7%9B%AE">相关题目</a></li>
 </ul>
 </li>
-<li><a href="#tip">Tip：</a></li>
-<li><a href="#code">Code</a></li>
-<li><a href="#%E7%9B%B8%E5%85%B3%E9%A2%98%E7%9B%AE">相关题目</a></li>
 </ul>
 </li>
 </ul>
