@@ -7,7 +7,7 @@
 <title>
     Kite-chaser
 </title>
-<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1566178860272">
+<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1566178897671">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://Kite-chaser.github.io">
-                <img class="avatar" src="https://Kite-chaser.github.io/images/avatar.png?v=1566178860272" alt="">
+                <img class="avatar" src="https://Kite-chaser.github.io/images/avatar.png?v=1566178897671" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -115,7 +115,7 @@
                     <time class="post-time">2019-08-19</time>
                     
                         <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
-                            i-tag-other_4">
+                            i-tag-other_3">
             #OI
         </a>
                         
@@ -127,55 +127,12 @@
                         
                             <div class="post-content">
                                 
-                                        <div class="post-content-content">
-                                            RT
-Kruskal是一种用于建立最小生成树(MST)的算法，同理的还有Prim算法。与Kruskal算法相关的还有并查集，也就是说Kruskal的实现需要并查集（可参考蒟蒻的OI笔记）。
-思想
-1.将图中的所有边按权值从小到大排序
-2.遍历每一条边，检查两边的点是否在同一集合（或者说在同一棵树上）。如果在，则跳过；如果不在，就合并（此处充分的利用并查集的查找和合并两大功能），此时的这条边叫做“安全边”。
-Tips
-为什么如此进行就可以建立最小生成树呢？
-每次遍历时，当前的边一定是最小的边（最起码当前是）。
-情况1：当前的边的两点在同一集合（或者说在同一棵树上），那么加入这条边则多此一举。
-情况2：当前的边的两点不在同一集合（或者说不在同一棵树上）。如果不加入这条边，还能建立完整的生成树的话，那么势必有一条或多条边来等效此边，但是此边是当前最小的，所以等效的部分一定是大于此边的；如果不加入这条边，建立不了完整的生成树，那就更不用说了（滑稽.jpg)。所以一定要加入此边。
-Code
-int p[];  //p[i]表示i的父亲节点
-struct note{
-	int u,v,w;
-}d[];  //边的信息，u，v——端点，w——权值
-int n,m;  //n——点数，m——边数
-int ans;  //权值和
-bool cmp(const note &amp;amp;a,const note &amp;amp;b){
-	return a.w&amp;lt;b.w;
-}
-int find(int s){
-	if(s!=f[s]) f[s]=find(f[s]);
-	return f[s];
-}
-int main()
-{
-	scanf(&amp;quot;%d%d&amp;quot;,&amp;amp;n,&amp;amp;m);
-	for(int i=1;i&amp;lt;=n;i++) p[i]=i;
-	for(int i=1;i&amp;lt;=m;i++) scanf(&amp;quot;%d%d%d&amp;quot;,&amp;amp;d[i].u,&amp;amp;d[i].v,&amp;amp;d[i].w);
-	sort(d+1,d+1+n,cmp);
-	for(int i=1;i&amp;lt;=m;i++){
-		int e,r;
-		e=find(d[i].u);
-		r=find(d[i].v);
-		if(e!=r) p[r]=e,ans+=d[i].w;
-	}
-	printf(&amp;quot;%d&amp;quot;,ans);
-	return 0;
-} 
+                                    <div class="post-content-abstract">
+                                        <h2 id="rt">RT</h2>
+<p>Kruskal是一种用于建立最小生成树(MST)的算法，同理的还有<a href="https://kite-chaser.github.io/post/prim/">Prim</a>算法。与Kruskal算法相关的还有并查集，也就是说Kruskal的实现需要并查集（<a href="https://kite-chaser.github.io/post/bing-cha-ji/">可参考蒟蒻的OI笔记</a>）。</p>
 
-其实这只是Kruskal的大体轮廓，还得具体情况具体分析。
-相关题目
-P3366【模板】最小生成树
-P2323 [HNOI2006]公路修建问题
-P2573 [SCOI2012]滑雪
-
-                                        </div>
-                                        
+                                    </div>
+                                    
                                             <a class="btn btn-text" href="https://Kite-chaser.github.io/post/kruskal">Read More ~</a>
                             </div>
                 </div>
@@ -219,12 +176,12 @@ P2573 [SCOI2012]滑雪
                     <time class="post-time">2019-08-18</time>
                     
                         <a href="https://Kite-chaser.github.io/tag/92gh9uu1i" class="post-tag i-tag
-                            i-tag-primary">
+                            i-tag-other_4">
             #单调队列
         </a>
                         
                         <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
-                            i-tag-warning">
+                            i-tag-success">
             #OI
         </a>
                         
@@ -257,12 +214,12 @@ P2573 [SCOI2012]滑雪
                     <time class="post-time">2019-08-18</time>
                     
                         <a href="https://Kite-chaser.github.io/tag/2kgafuTx9" class="post-tag i-tag
-                            i-tag-primary">
+                            i-tag-other_1">
             #线段树
         </a>
                         
                         <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
-                            i-tag-other_3">
+                            i-tag-other_4">
             #OI
         </a>
                         
@@ -297,7 +254,7 @@ P2573 [SCOI2012]滑雪
                     <time class="post-time">2019-08-18</time>
                     
                         <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
-                            i-tag-warning">
+                            i-tag-success">
             #OI
         </a>
                         
@@ -330,12 +287,12 @@ P2573 [SCOI2012]滑雪
                     <time class="post-time">2019-08-18</time>
                     
                         <a href="https://Kite-chaser.github.io/tag/ksq4_sfEo" class="post-tag i-tag
-                            i-tag-info">
+                            i-tag-other_1">
             #并查集
         </a>
                         
                         <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
-                            i-tag-warning">
+                            i-tag-error">
             #OI
         </a>
                         
@@ -368,7 +325,7 @@ P2573 [SCOI2012]滑雪
                     <time class="post-time">2019-08-18</time>
                     
                         <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
-                            i-tag-info">
+                            i-tag-success">
             #OI
         </a>
                         
@@ -403,7 +360,7 @@ P2573 [SCOI2012]滑雪
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://Kite-chaser.github.io/images/avatar.png?v=1566178860272)">
+        <div class="id_card-avatar" style="background-image: url(https://Kite-chaser.github.io/images/avatar.png?v=1566178897671)">
         </div>
         <h1 class="id_card-title">
             Kite-chaser
