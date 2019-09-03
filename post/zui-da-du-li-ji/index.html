@@ -5,9 +5,9 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    动态规划中的树形DP | Kite-chaser
+    最大独立集 | Kite-chaser
 </title>
-<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1567500341244">
+<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1567500813650">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -35,7 +35,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://Kite-chaser.github.io">
-                <img class="avatar" src="https://Kite-chaser.github.io/images/avatar.png?v=1567500341244" alt="">
+                <img class="avatar" src="https://Kite-chaser.github.io/images/avatar.png?v=1567500813650" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -114,27 +114,32 @@
                 <div id="content" class="main-container-left">
                     <article class="post i-card">
                         <h2 class="post-title">
-                            动态规划中的树形DP
+                            最大独立集
                         </h2>
                         <div class="post-info">
-                            <time class="post-time">2019-08-19</time>
+                            <time class="post-time">2019-09-03</time>
                             
                                 <a href="https://Kite-chaser.github.io/tag/BCIKttOve" class="post-tag i-tag
-                            i-tag-other_2">
+                            i-tag-success">
                             #动态规划，DP
                         </a>
                                 
+                                <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="post-tag i-tag
+                            i-tag-other_4">
+                            #图论
+                        </a>
+                                
                                 <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
-                            i-tag-primary">
+                            i-tag-success">
                             #OI
                         </a>
                                 
                         </div>
                         
-                            <div class="post-feature-image" style="background-image: url('https://Kite-chaser.github.io/post-images/dong-tai-gui-hua-zhong-de-shu-xing-dp.jpg')"></div>
+                            <div class="post-feature-image" style="background-image: url('https://Kite-chaser.github.io/post-images/zui-da-du-li-ji.png')"></div>
                             
                                 <div class="post-content">
-                                    <p>~~树形DP还是比较简单的。~~因为这是蒟蒻唯一可以搞明白的DP惹。</p>
+                                    <p>最大独立集可以算是一种树形DP。</p>
 <!--more-->
 <h3 id="最大独立集mismaximum-independent-set">最大独立集（MIS,maximum independent set）</h3>
 <p>独立集是指图 G 中两两互不相邻的顶点构成的集合。任意有关图中团的性质都能很自然的转述成独立集的性质。一般而言，寻找图的最大团是 NP 困难的，从而寻找图的最大独立集也是 N-P 困难的。但是，对于二部图的情形，有多项式时间算法找出图的最大独立集。<br>
@@ -180,15 +185,6 @@ int main()
 </code></pre>
 <h4 id="相关题目">相关题目</h4>
 <p><a href="https://www.luogu.org/problem/P1352">P1352 没有上司的舞会</a></p>
-<h3 id="树的重心">树的重心</h3>
-<p>树的重心也叫树的质心。对于一棵树n个节点的无根树，找到一个点，使得把树变成以该点为根的有根树时，最大子树的结点数最小。换句话说，删除这个点后最大连通块（一定是树）的结点数最小。</p>
-<blockquote>
-<p><a href="https://kite-chaser.github.io/post/shu-de-chong-xin">RT</a></p>
-</blockquote>
-<h3 id="树的直径">树的直径</h3>
-<p>TO BE CONTINUE……</p>
-<h3 id="鸣谢">鸣谢</h3>
-<p>以上部分内容抠自度娘。</p>
 
                                 </div>
                     </article>
@@ -229,9 +225,6 @@ int main()
 <li><a href="#%E7%9B%B8%E5%85%B3%E9%A2%98%E7%9B%AE">相关题目</a></li>
 </ul>
 </li>
-<li><a href="#%E6%A0%91%E7%9A%84%E9%87%8D%E5%BF%83">树的重心</a></li>
-<li><a href="#%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84">树的直径</a></li>
-<li><a href="#%E9%B8%A3%E8%B0%A2">鸣谢</a></li>
 </ul>
 </li>
 </ul>
