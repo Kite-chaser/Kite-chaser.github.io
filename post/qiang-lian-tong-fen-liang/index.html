@@ -7,7 +7,7 @@
 <title>
     强连通分量 | Kite-chaser
 </title>
-<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1568106685121">
+<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1568106801151">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -35,7 +35,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://Kite-chaser.github.io">
-                <img class="avatar" src="https://Kite-chaser.github.io/images/avatar.png?v=1568106685121" alt="">
+                <img class="avatar" src="https://Kite-chaser.github.io/images/avatar.png?v=1568106801151" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -120,7 +120,7 @@
                             <time class="post-time">2019-09-03</time>
                             
                                 <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="post-tag i-tag
-                            i-tag-error">
+                            i-tag-info">
                             #图论
                         </a>
                                 
@@ -143,7 +143,7 @@
 <h4 id="slove">Slove</h4>
 <ol>
 <li>对整张图进行dfs，用一个栈维护dfs到的所有点，再记录一下每个点是否在栈里。</li>
-<li>每个点维护两个信息：dfn表示dfs到这个点的顺序，low表示这个点能沿着非树边回到的dfn最小的点。</li>
+<li>每个点维护两个信息：dfn表示dfs到这个点的顺序，low表示这个点能沿着非树边回到的dfn最小的点的dfn。</li>
 <li>一开始令low[u]=dfn[u]，并将u压入栈。</li>
 <li>到点u时，枚举出边(u,v)，如果没有访问到，就继续dfs点v，然后 low[u]=min(low[u],low[v])。</li>
 <li>否则，如果v当前在栈里，就令low[u]=min(low[u],dfn[v])。</li>
