@@ -7,7 +7,7 @@
 <title>
     OI | Kite-chaser
 </title>
-<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1568205666358">
+<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1568205783913">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://Kite-chaser.github.io">
-                <img class="avatar" src="https://Kite-chaser.github.io/images/avatar.png?v=1568205666358" alt="">
+                <img class="avatar" src="https://Kite-chaser.github.io/images/avatar.png?v=1568205783913" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -125,17 +125,17 @@
         </a>
                         
                         <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="post-tag i-tag
-                            i-tag-banana">
+                            i-tag-other_1">
             #题解
         </a>
                         
                         <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="post-tag i-tag
-                            i-tag-error">
+                            i-tag-other_3">
             #图论
         </a>
                         
                         <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
-                            i-tag-warning">
+                            i-tag-other_3">
             #OI
         </a>
                         
@@ -147,113 +147,11 @@
                         
                             <div class="post-content">
                                 
-                                        <div class="post-content-content">
-                                            这道题很迷，为什么呢？因为题面的封面很迷。
-题目描述
-给你一张有向图 G，求一个结点数最大的结点集，使得该结点集中的任意两个结点 u 和 v 满足：要么 u 可以达 v，要么 v 可以达 u（u,v相互可达也行）。
+                                    <div class="post-content-abstract">
+                                        <p>这道题很迷，为什么呢？因为题面的封面很迷。</p>
 
-原题链接
-
-Slove
-其实这个题就是个裸题，适宜初学tarjan的练习。
-强连通分量（tarjan）+缩点+DAG，DP。
-
-tarjan强连通分量缩点。
-DAG上跑DP。
-
-Code
-
-#include&amp;lt;iostream&amp;gt;
-#include&amp;lt;cstdio&amp;gt;
-#include&amp;lt;cstring&amp;gt;
-#include&amp;lt;stack&amp;gt;
-#define N 500001
-using namespace std;  //标准开头
-int t;
-int n,m;  //t，n，m同题
-int u,v;  //同题
-int x[N],y[N];  //数组存边
-int dis[N];  //dis[i]-从强连通分量节点为i最多能到节点数
-int st[N],num;  //st-栈
-int dfn[N],low[N],sz[N],cnt,sum;
-int first1[N],first2[N],nxt1[N],nxt2[N],to1[N],to2[N],len1,len2,fis[N];  //邻接表
-//fis[i]-节点i所在的强连通分量编号
-bool vis[N]; //是否在栈中
-bool mis[N];  //缩点后的点，是否有前驱
-void add1(int u,int v){
-   to1[++len1]=v;
-   nxt1[len1]=first1[u];
-   first1[u]=len1;
-}
-void add2(int u,int v){  //缩点邻接表
-   to2[++len2]=v;
-   nxt2[len2]=first2[u];
-   first2[u]=len2;
-}
-void tarjan(int s){
-   dfn[s]=low[s]=++sum;
-   st[++num]=s;
-   vis[s]=true;
-   for(int i=first1[s];i!=-1;i=nxt1[i]){
-   	if(!dfn[to1[i]]){
-   		tarjan(to1[i]);
-   		low[s]=min(low[s],low[to1[i]]);
-   	}
-   	else if(vis[to1[i]]) low[s]=min(low[s],dfn[to1[i]]);
-   }
-   if(dfn[s]==low[s]){
-   	int cur;
-   	cnt++;
-   	do{
-   		cur=st[num];
-   		sz[cnt]++;
-   		vis[cur]=false;
-   		fis[cur]=cnt;
-   		num--;
-   	}while(cur!=s);
-   }
-}
-int dp(int s){
-   if(dis[s]) return dis[s];
-   dis[s]+=sz[s];
-   int ans=0;
-   for(int i=first2[s];i!=-1;i=nxt2[i]) ans=max(ans,dp(to2[i]));
-   dis[s]+=ans;
-   return dis[s];
-}
-int main()
-{
-   scanf(&amp;quot;%d&amp;quot;,&amp;amp;t);
-   while(t--){
-   	len1=len2=num=cnt=sum=0;
-   	scanf(&amp;quot;%d%d&amp;quot;,&amp;amp;n,&amp;amp;m);
-   	for(int i=1;i&amp;lt;=n;i++){
-   		dfn[i]=low[i]=sz[i]=dis[i]=0;
-   		first1[i]=first2[i]=-1;
-   		vis[i]=false;
-   		mis[i]=false;
-   		st[i]=0;
-   	}
-   	for(int i=1;i&amp;lt;=m;i++){
-   		scanf(&amp;quot;%d%d&amp;quot;,&amp;amp;u,&amp;amp;v);
-   		add1(u,v);
-   		x[i]=u;
-   		y[i]=v;
-   	}
-   	for(int i=1;i&amp;lt;=n;i++) if(!dfn[i]) tarjan(i);
-   	for(int i=1;i&amp;lt;=m;i++){
-   		if(fis[x[i]]!=fis[y[i]]) add2(fis[x[i]],fis[y[i]]),mis[fis[y[i]]]=true;
-   	}
-   	int maxn=0;
-   	for(int i=1;i&amp;lt;=cnt;i++) if(!mis[i]) dp(i),maxn=max(maxn,dis[i]);
-   	printf(&amp;quot;%d\n&amp;quot;,maxn);
-   }
-   return 0;
-} 
-
-
-                                        </div>
-                                        
+                                    </div>
+                                    
                                             <a class="btn btn-text" href="https://Kite-chaser.github.io/post/uva11324-the-largest-clique">Read More ~</a>
                             </div>
                 </div>
@@ -269,7 +167,7 @@ int main()
                     <time class="post-time">2019-09-03</time>
                     
                         <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="post-tag i-tag
-                            i-tag-other_4">
+                            i-tag-primary">
             #图论
         </a>
                         
@@ -306,17 +204,17 @@ int main()
                     <time class="post-time">2019-09-03</time>
                     
                         <a href="https://Kite-chaser.github.io/tag/BCIKttOve" class="post-tag i-tag
-                            i-tag-banana">
+                            i-tag-">
             #动态规划，DP
         </a>
                         
                         <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="post-tag i-tag
-                            i-tag-other_2">
+                            i-tag-primary">
             #图论
         </a>
                         
                         <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
-                            i-tag-banana">
+                            i-tag-other_4">
             #OI
         </a>
                         
@@ -348,12 +246,12 @@ int main()
                     <time class="post-time">2019-08-19</time>
                     
                         <a href="https://Kite-chaser.github.io/tag/BCIKttOve" class="post-tag i-tag
-                            i-tag-other_1">
+                            i-tag-other_2">
             #动态规划，DP
         </a>
                         
                         <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
-                            i-tag-">
+                            i-tag-other_1">
             #OI
         </a>
                         
@@ -385,17 +283,17 @@ int main()
                     <time class="post-time">2019-08-19</time>
                     
                         <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="post-tag i-tag
-                            i-tag-info">
+                            i-tag-">
             #题解
         </a>
                         
                         <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="post-tag i-tag
-                            i-tag-info">
+                            i-tag-banana">
             #图论
         </a>
                         
                         <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
-                            i-tag-other_3">
+                            i-tag-primary">
             #OI
         </a>
                         
@@ -428,12 +326,12 @@ int main()
                     <time class="post-time">2019-08-19</time>
                     
                         <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="post-tag i-tag
-                            i-tag-primary">
+                            i-tag-info">
             #题解
         </a>
                         
                         <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="post-tag i-tag
-                            i-tag-">
+                            i-tag-info">
             #图论
         </a>
                         
@@ -471,7 +369,7 @@ int main()
                     <time class="post-time">2019-08-19</time>
                     
                         <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="post-tag i-tag
-                            i-tag-success">
+                            i-tag-error">
             #题解
         </a>
                         
@@ -508,17 +406,17 @@ int main()
                     <time class="post-time">2019-08-19</time>
                     
                         <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="post-tag i-tag
-                            i-tag-other_2">
+                            i-tag-other_3">
             #题解
         </a>
                         
                         <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="post-tag i-tag
-                            i-tag-other_2">
+                            i-tag-success">
             #图论
         </a>
                         
                         <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
-                            i-tag-info">
+                            i-tag-warning">
             #OI
         </a>
                         
@@ -551,12 +449,12 @@ int main()
                     <time class="post-time">2019-08-19</time>
                     
                         <a href="https://Kite-chaser.github.io/tag/kCU-ep_Aq" class="post-tag i-tag
-                            i-tag-">
+                            i-tag-success">
             #笔记
         </a>
                         
                         <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
-                            i-tag-other_1">
+                            i-tag-">
             #OI
         </a>
                         
@@ -589,17 +487,17 @@ int main()
                     <time class="post-time">2019-08-19</time>
                     
                         <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="post-tag i-tag
-                            i-tag-banana">
+                            i-tag-other_3">
             #题解
         </a>
                         
                         <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="post-tag i-tag
-                            i-tag-other_2">
+                            i-tag-">
             #图论
         </a>
                         
                         <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="post-tag i-tag
-                            i-tag-info">
+                            i-tag-">
             #OI
         </a>
                         
@@ -640,7 +538,7 @@ int main()
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://Kite-chaser.github.io/images/avatar.png?v=1568205666358)">
+        <div class="id_card-avatar" style="background-image: url(https://Kite-chaser.github.io/images/avatar.png?v=1568205783913)">
         </div>
         <h1 class="id_card-title">
             Kite-chaser
