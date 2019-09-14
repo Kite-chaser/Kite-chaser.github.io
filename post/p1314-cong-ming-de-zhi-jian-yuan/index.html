@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>P4879 ycz的妹子 | Kite-chaser</title>
+<title>P1314 聪明的质监员 | Kite-chaser</title>
 <meta name="description" content="This is my blog.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -95,139 +95,110 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>P4879 ycz的妹子</h1>
+            <h1>P1314 聪明的质监员</h1>
             <p class="article-meta">
-              2019-08-18
+              2019-09-14
               
-                <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge secondary">
+                <a href="https://Kite-chaser.github.io/tag/Q6VC_f0jg" class="badge secondary">
+                  二分答案
+                </a>
+              
+                <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge success">
                   题解
                 </a>
               
-                <a href="https://Kite-chaser.github.io/tag/2kgafuTx9" class="badge secondary">
-                  线段树
-                </a>
-              
-                <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge warning">
+                <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge success">
                   OI
                 </a>
               
             </p>
             
-              <img src="https://Kite-chaser.github.io/post-images/p4879-ycz-de-mei-zi.jpg" alt="P4879 ycz的妹子">
+              <img src="https://Kite-chaser.github.io/post-images/p1314-cong-ming-de-zhi-jian-yuan.jpg" alt="P1314 聪明的质监员">
             
             <div class="post-content">
-              <p>话说ycz是哪个神犇，为什么他会有很多很多的妹子？</p>
+              <p>我感受到了memset的力量。</p>
 <!--more-->
-<h4 id="题目背景">题目背景</h4>
-<p>ycz有很多很多的妹子（ycz：瞎说）</p>
-<h4 id="题目描述">题目描述</h4>
-<p>机房神犇ycz有n个青梅竹马，她们分别住在1~n号城市中。小时候的她们美丽可爱，但是由于女大十八变，有些妹子的颜值发生了变化，但是十分重感情的ycz神犇不忍心抛弃她们，于是记录下来了她们颜值变化的值，我们用C, x, y表示第x个城市的妹子的颜值下降了y。长大之后的ycz非常有魅力，有许多妹子被ycz迷得神魂颠倒，我们用I, x, y表示第x个城市有一个妹子喜欢上了ycz，她的颜值为y（y有可能是负数，但是ycz来者不拒）。但在中途有一些妹子和ycz吵架了，于是就分手了，我们用D, x表示第x个妹子和ycz分手了。</p>
-<!--more-->
-<p>最近神犇ycz要去全国各地找他的妹子们，为了方便计算，我们珂以把ycz的妹子所在的城市当作是一条直线，并且挨在一起。神犇ycz由于忙于和他的妹子们联系此时已经很累了，于是交给你一个这样的任务：他想知道他在某个时间去找他的所有妹子们珂以获得多大的愉悦度，这个愉悦度为他找的妹子的颜值数，你要做的就是求出这个愉悦度之和（注意长大后妹子们的颜值可能为负数/滑稽）。</p>
-<p>注意：每个城市只允许有一个妹子，也就是说后来喜欢上ycz的妹子会赶走之前这个城市喜欢ycz的妹子~~（一城不容二女）~~。</p>
-<p>UPD:</p>
-<p>青梅竹马都是喜欢ycz的。</p>
-<p>分手的第x个妹子不是第x城市的妹子，是指从前往后数第x个有妹子的城市的妹子</p>
-<p>青梅竹马长大后就是妹子</p>
-<p>修改的值y不为负数，但是颜值减去之后可能为负数</p>
+<h2 id="题目描述">题目描述</h2>
+<p>小T 是一名质量监督员，最近负责检验一批矿产的质量。这批矿产共有n个矿石，从1到n 逐一编号，每个矿石都有自己的重量 w_i 以及价值v_i。检验矿产的流程是：</p>
+<ol>
+<li>给定m个区间[L_i,R_i]；</li>
+<li>选出一个参数W；</li>
+<li>对于一个区间[L_i,R_i]，计算矿石在这个区间上的检验值Y_i：<br>
+<img src="https://cdn.luogu.com.cn/upload/image_hosting/jja14mqr.png" alt=""><br>
+这批矿产的检验结果Y为各个区间的检验值之和。即：Y_1+Y_2...+Y_m<br>
+若这批矿产的检验结果与所给标准值S相差太多，就需要再去检验另一批矿产。小T不想费时间去检验另一批矿产，所以他想通过调整参数W 的值，让检验结果尽可能的靠近标准值S，即使得S-Y的绝对值最小。请你帮忙求出这个最小值。</li>
+</ol>
 <blockquote>
-<p><a href="https://www.luogu.org/problem/P4879">原题链接</a></p>
+<p><a href="https://www.luogu.org/problem/P1314">原题链接</a></p>
 </blockquote>
-<h1 id="slove">Slove</h1>
-<p>其实这就是一个需要稍加变化的线段树。</p>
-<p>操作说明：</p>
-<p>C 单点修改</p>
-<p>I 同样是单点修改，但是需要一点变化</p>
-<p>D 还是单点修改，也需要一点变化（tip:这里的x指的不是第x个城市，而是从前往后第x个，两者还是有区别的）</p>
-<p>Q 区间查询，其实就是线段树里的节点一</p>
-<h1 id="code">code</h1>
-<pre><code class="language-cpp">#include&lt;iostream&gt;
+<h2 id="slove">Slove</h2>
+<p><strong>一,二分</strong><br>
+在每个区间内，只有w[]大于W的，才能被选上。<br>
+所以W减小，被选入的矿石增多，Y增加；反之Y减小。<br>
+条件：</p>
+<ul>
+<li>Y&gt;S,增大W，减小Y，以使|Y-S|减小。</li>
+<li>Y&lt;S,减小W，增大Y，以使|Y-S|减小。</li>
+<li>Y=S，完美。<br>
+<strong>二，前缀和</strong><br>
+使用前缀和以减少区间修改的时间。</li>
+<li>w[]&gt;=W,sum1[i]=sum1[i-1]+1,sum2[i]=sum2[i-1]+v[i],sum1表示公式中前者，sum2表示后者。</li>
+<li>w[]&lt;W,sum1[i]=sum1[i-1],sum2[i]=sum2[i-1]。</li>
+</ul>
+<h2 id="tip">Tip</h2>
+<ol>
+<li>答案初始值一定要设的非常大。</li>
+<li>不开longlong见祖宗。</li>
+</ol>
+<h2 id="code">Code</h2>
+<pre><code class="language-cpp">
+#include&lt;iostream&gt;
 #include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;cmath&gt;
+#define N 200010
+#define ll long long
 using namespace std;
-const int maxn=2000001;
-long long n,m;
-struct note{
-    long long l,r,w,cnt;   //l表左端点，r表右端点，w表颜值总和，cnt表妹子数（tip:这个cnt是很重要的）
-}d[maxn];
-long long a[maxn];   // tip:颜值的值一定要开longlong,包括上面的w;
-char c;
-int x,y;
-void build(int k,int s,int t){   //建树
-    d[k].l=s;
-    d[k].r=t;
-    if(s==t){
-        d[k].w=a[s];
-        if(a[s]&gt;0) d[k].cnt=1;
-        return ;
-    }
-    else{
-        build(k*2,s,(s+t)/2);
-        build(k*2+1,(s+t)/2+1,t);
-        d[k].w=d[k*2].w+d[k*2+1].w;
-        d[k].cnt=d[k*2].cnt+d[k*2+1].cnt;
-    }
-}
-void sub(int k){   //普通的单点修改
-    if(d[k].l==d[k].r){
-        d[k].w-=y;
-        return ;
-    }
-    int mid=(d[k].l+d[k].r)/2;
-    if(x&lt;=mid) sub(k*2);
-    else sub(k*2+1);
-    d[k].w=d[k*2].w+d[k*2+1].w;
-}
-void revise(int k){   //还是普通的单点修改
-    if(d[k].l==d[k].r){
-         d[k].w=y;
-         d[k].cnt=1;   //cnt=1,这样的话不管之前这个城市有没有妹子，都可以正确表示
-         return ;
-    }
-    int mid=(d[k].l+d[k].r)/2;
-    if(x&lt;=mid) revise(k*2);
-    else revise(k*2+1);
-    d[k].w=d[k*2].w+d[k*2+1].w;
-    d[k].cnt=d[k*2].cnt+d[k*2+1].cnt;
-}
-void leave(int k){  //本题最难处理的部分
-    if(d[k].l==d[k].r){
-        d[k].w=0;
-        d[k].cnt=0;
-        return ;
-    }
-    if(x&lt;=d[k*2].cnt) leave(k*2); //如果左子树的妹子数大于x,就向左子树寻找     
-    else{   //如果左子树的妹子数小于x,就向右子树寻找（tip:为什么x还要减去左子树的妹子数呢？想一想）
-        x-=d[k*2].cnt；
-        leave(k*2+1)；
-    }
-    d[k].cnt=d[k*2].cnt+d[k*2+1].cnt;
-    d[k].w=d[k*2].w+d[k*2+1].w;
+ll n,m,k;
+ll W;
+ll ans=999999999999999999,num;
+ll l=1,r,mid;
+ll s[N],t[N];
+ll sum1[N],sum2[N];
+ll w[N],v[N];
+bool sl(ll cnt){
+	ll num=0;
+	memset(sum1,0,sizeof(sum1));
+	memset(sum2,0,sizeof(sum2));
+	for(ll i=1;i&lt;=n;i++){
+		if(w[i]&gt;=cnt) sum1[i]=sum1[i-1]+1,sum2[i]=sum2[i-1]+v[i];
+		else sum1[i]=sum1[i-1],sum2[i]=sum2[i-1];
+	}
+	for(ll i=1;i&lt;=m;i++){
+		num+=(sum1[t[i]]-sum1[s[i]-1])*(sum2[t[i]]-sum2[s[i]-1]);
+	}
+	if(num&gt;k){
+		ans=min(ans,num-k);
+		return false;
+	}
+	ans=min(ans,k-num);
+	return true;
 }
 int main()
 {
-    cin&gt;&gt;n&gt;&gt;m;
-    for(int i=1;i&lt;=n;i++) cin&gt;&gt;a[i];
-    build(1,1,500000);
-    for(int i=1;i&lt;=m;i++){
-        cin&gt;&gt;c;
-        if(c=='C'){
-            cin&gt;&gt;x&gt;&gt;y;
-            sub(1);
-        }
-        else if(c=='I'){
-            cin&gt;&gt;x&gt;&gt;y;
-            revise(1);
-        }
-        else if(c=='D'){
-            cin&gt;&gt;x;
-            leave(1);
-        }
-        else if(c=='Q') cout&lt;&lt;d[1].w&lt;&lt;endl；
-    }
-    return 0;
+	scanf(&quot;%lld%lld%lld&quot;,&amp;n,&amp;m,&amp;k);
+	for(ll i=1;i&lt;=n;i++) scanf(&quot;%lld%lld&quot;,&amp;w[i],&amp;v[i]),r=max(r,w[i]);
+	for(ll i=1;i&lt;=m;i++) scanf(&quot;%lld%lld&quot;,&amp;s[i],&amp;t[i]);
+	r+=2;
+	while(l&lt;r){
+		mid=(l+r)/2;
+		if(sl(mid)) r=mid;
+		else l=mid+1;
+	}
+	printf(&quot;%lld&quot;,ans);
+	return 0;
 }
 </code></pre>
-<p><s>自认为简洁的代码</s></p>
 
             </div>
           </article>
@@ -238,9 +209,9 @@ int main()
               <div class="next">
                 下一篇
               </div>
-              <a href="https://Kite-chaser.github.io/post/p1330-feng-suo-yang-guang-da-xue">
+              <a href="https://Kite-chaser.github.io/post/p1083-jie-jiao-shi">
                 <h3 class="post-title">
-                  P1330 封锁阳光大学
+                  P1083 借教室
                 </h3>
               </a>
             </div>
@@ -387,11 +358,11 @@ int main()
           题解
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge ">
+        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge secondary">
           OI
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/Mh3k_Hqut" class="badge warning">
+        <a href="https://Kite-chaser.github.io/tag/Mh3k_Hqut" class="badge success">
           树形DP
         </a>
       
@@ -399,7 +370,7 @@ int main()
           动态规划，DP
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/kCU-ep_Aq" class="badge success">
+        <a href="https://Kite-chaser.github.io/tag/kCU-ep_Aq" class="badge secondary">
           笔记
         </a>
       
@@ -407,7 +378,7 @@ int main()
           图论
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/92gh9uu1i" class="badge warning">
+        <a href="https://Kite-chaser.github.io/tag/92gh9uu1i" class="badge ">
           单调队列
         </a>
       
@@ -415,7 +386,7 @@ int main()
           线段树
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/ksq4_sfEo" class="badge success">
+        <a href="https://Kite-chaser.github.io/tag/ksq4_sfEo" class="badge warning">
           并查集
         </a>
       
