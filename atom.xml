@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Kite-chaser.github.io</id>
     <title>Kite-chaser</title>
-    <updated>2019-09-14T01:14:49.133Z</updated>
+    <updated>2019-09-14T03:17:59.437Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Kite-chaser.github.io"/>
     <link rel="self" href="https://Kite-chaser.github.io/atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://Kite-chaser.github.io/images/avatar.png</logo>
     <icon>https://Kite-chaser.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Kite-chaser</rights>
+    <entry>
+        <title type="html"><![CDATA[P2014 选课]]></title>
+        <id>https://Kite-chaser.github.io/post/p2014-xuan-ke</id>
+        <link href="https://Kite-chaser.github.io/post/p2014-xuan-ke">
+        </link>
+        <updated>2019-09-14T02:59:29.000Z</updated>
+        <summary type="html"><![CDATA[<p>这道题使我对树形DP有了新认识。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>这道题使我对树形DP有了新认识。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[整除]]></title>
         <id>https://Kite-chaser.github.io/post/zheng-chu</id>
@@ -111,19 +122,6 @@
         <summary type="html"><![CDATA[<p>不会打数学公式，只能扣图了……</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>不会打数学公式，只能扣图了……</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[P1395 【会议】]]></title>
-        <id>https://Kite-chaser.github.io/post/p1395-hui-yi</id>
-        <link href="https://Kite-chaser.github.io/post/p1395-hui-yi">
-        </link>
-        <updated>2019-08-19T05:09:49.000Z</updated>
-        <summary type="html"><![CDATA[<h4 id="题目描述">题目描述</h4>
-<p>有一个村庄居住着n个村民，有n-1条路径使得这n个村民的家联通，每条路径的长度都为1。</p>
-]]></summary>
-        <content type="html"><![CDATA[<h4 id="题目描述">题目描述</h4>
-<p>有一个村庄居住着n个村民，有n-1条路径使得这n个村民的家联通，每条路径的长度都为1。</p>
 ]]></content>
     </entry>
 </feed>

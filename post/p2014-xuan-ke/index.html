@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>强连通分量 | Kite-chaser</title>
+<title>P2014 选课 | Kite-chaser</title>
 <meta name="description" content="This is my blog.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -95,68 +95,82 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>强连通分量</h1>
+            <h1>P2014 选课</h1>
             <p class="article-meta">
-              2019-09-03
+              2019-09-14
               
-                <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="badge secondary">
-                  图论
+                <a href="https://Kite-chaser.github.io/tag/BCIKttOve" class="badge warning">
+                  动态规划，DP
                 </a>
               
-                <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge warning">
+                <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge ">
+                  题解
+                </a>
+              
+                <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge ">
                   OI
                 </a>
               
             </p>
             
-              <img src="https://Kite-chaser.github.io/post-images/qiang-lian-tong-fen-liang.jpg" alt="强连通分量">
+              <img src="https://Kite-chaser.github.io/post-images/p2014-xuan-ke.jpg" alt="P2014 选课">
             
             <div class="post-content">
-              <p>tarjan真的不是一种算法。</p>
+              <p>这道题使我对树形DP有了新认识。</p>
 <!--more-->
-<h3 id="前言">前言</h3>
-<p>tarjan是一个计算机科学家，以LCA、强连通分量等算法闻名。所以tarjan发明的算法统称tarjan算法。</p>
-<h3 id="强连通分量strongly-connected-components">强连通分量(strongly connected components)</h3>
-<p>在有向图G中，如果两个顶点间至少存在一条路径，称两个顶点<strong>强连通</strong>。如果有向图G的每两个顶点都强连通，称G是一个<strong>强连通图</strong>。非强连通图有向图的极大强连通子图，称为<strong>强连通分量</strong>。</p>
-<h4 id="slove">Slove</h4>
-<ol>
-<li>对整张图进行dfs，用一个栈维护dfs到的所有点，再记录一下每个点是否在栈里。</li>
-<li>每个点维护两个信息：dfn表示dfs到这个点的顺序，low表示这个点能沿着非树边回到的dfn最小的点的dfn。</li>
-<li>一开始令low[u]=dfn[u]，并将u压入栈。</li>
-<li>到点u时，枚举出边(u,v)，如果没有访问到，就继续dfs点v，然后 low[u]=min(low[u],low[v])。</li>
-<li>否则，如果v当前在栈里，就令low[u]=min(low[u],dfn[v])。</li>
-<li>当u的出边枚举完时，如果low[u]=dfn[u]，就说明找到了一个强连通分量，弹栈直到弹出点u为止，这些点构成一个强连通分量。</li>
-</ol>
-<h4 id="code">Code</h4>
+<h2 id="题目描述">题目描述</h2>
+<p>在大学里每个学生，为了达到一定的学分，必须从很多课程里选择一些课程来学习，在课程里有些课程必须在某些课程之前学习，如高等数学总是在其它课程之前学习。现在有N门功课，每门课有个学分，每门课有一门或没有直接先修课（若课程a是课程b的先修课即只有学完了课程a，才能学习课程b）。一个学生要从这些课程里选择M门课程学习，问他能获得的最大学分是多少？</p>
+<blockquote>
+<p><a href="https://www.luogu.org/problem/P2014">原题链接</a></p>
+</blockquote>
+<h2 id="slove">Slove</h2>
+<p>每门课有一门或没有直接先修课，说明所有课程节点构成的图一定是树。<br>
+所以树形DP莽就完了。</p>
+<p>d[i][j]表示以i为根节点的子树包含j个节点（不含根节点）时最大价值。<br>
+sz[i]表示以i为根节点的子树的节点数。<br>
+u为父节点，v为u的子节点。<br>
+对于以i为根节点的子树，d值来自两部分，一棵子树的值（d[v][k]）和其他子树的值(d[u][j-k-1])的和。因为j里面实际不包含节点v，所以再-1。<br>
+则转移方程为d[u][j]=max(d[u][j],d[u][j-k-1]+d[v][k]+s[v])，j&lt;=sz[i],k&lt;=sz[v]。</p>
+<h2 id="code">Code</h2>
 <pre><code class="language-cpp">
-void tanjan(int s){
-	dfn[s]=low[s]=++sum;
-	st.push(s);  //stack&lt;int&gt; st
-	vis[s]=true;  //是否入栈
-	for(int i=first[s];i!=-1;i=next[i]){  //邻接表
-		if(!dfn[to[i]]){  //to[i]-v
-			tanjan(to[i]);
-			low[s]=min(low[s],low[to[i]]);
-		}
-		else if(vis[to[i]]) low[s]=min(low[s],dfn[to[i]]);
-	}
-	if(dfn[s]==low[s]){
-		int cur;
-		cnt++;  //强连通分量编号
-		do{
-			cur=st.top();
-			fis[cur]=cnt;
-			vis[cur]=false;
-			st.pop();
-		}while(cur!=s);
-	}
+#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#define N 400
+using namespace std;
+int n,m;
+int k[N],s[N];
+int d[N][N];
+int sz[N];
+int first[N],nxt[N],to[N],len;
+void add(int u,int v){
+   to[++len]=v;
+   nxt[len]=first[u];
+   first[u]=len;
+}
+void dfs(int u){
+   sz[u]=1;
+   for(int i=first[u];i!=-1;i=nxt[i]){
+   	dfs(to[i]);
+   	sz[u]+=sz[to[i]];
+   	for(int j=min(m,sz[u]);j&gt;=0;j--){
+   		for(int k=min(j-1,sz[to[i]]);k&gt;=0;k--) d[u][j]=max(d[u][j],d[u][j-k-1]+d[to[i]][k]+s[to[i]]);
+   	}
+   }
+}
+int main()
+{
+   memset(first,-1,sizeof(first));
+   scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+   for(int i=1;i&lt;=n;i++){
+   	scanf(&quot;%d%d&quot;,&amp;k[i],&amp;s[i]);
+   	add(k[i],i);
+   }
+   dfs(0);
+   printf(&quot;%d&quot;,d[0][m]);
+   return 0;
 }
 </code></pre>
-<h4 id="相关题目">相关题目</h4>
-<p><a href="https://www.luogu.org/problem/P2341">P2341 [HAOI2006]受欢迎的牛|【模板】强连通分量</a> //其实这题原先不是模板<br>
-<a href="https://www.luogu.org/problem/P2746">P2746 [USACO5.3]校园网Network of Schools</a></p>
-<h4 id="此外">此外</h4>
-<p>蒟蒻并不会证明此解的正确性。</p>
 
             </div>
           </article>
@@ -167,9 +181,9 @@ void tanjan(int s){
               <div class="next">
                 下一篇
               </div>
-              <a href="https://Kite-chaser.github.io/post/zui-da-du-li-ji">
+              <a href="https://Kite-chaser.github.io/post/zheng-chu">
                 <h3 class="post-title">
-                  最大独立集
+                  整除
                 </h3>
               </a>
             </div>
@@ -304,7 +318,7 @@ void tanjan(int s){
     </div>
     <div class="row">
       
-        <a href="https://Kite-chaser.github.io/tag/BCIKttOve" class="badge warning">
+        <a href="https://Kite-chaser.github.io/tag/BCIKttOve" class="badge success">
           动态规划，DP
         </a>
       
@@ -312,19 +326,19 @@ void tanjan(int s){
           题解
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge secondary">
+        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge ">
           OI
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/kCU-ep_Aq" class="badge ">
+        <a href="https://Kite-chaser.github.io/tag/kCU-ep_Aq" class="badge warning">
           笔记
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="badge ">
+        <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="badge secondary">
           图论
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/92gh9uu1i" class="badge ">
+        <a href="https://Kite-chaser.github.io/tag/92gh9uu1i" class="badge secondary">
           单调队列
         </a>
       
@@ -332,7 +346,7 @@ void tanjan(int s){
           线段树
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/ksq4_sfEo" class="badge ">
+        <a href="https://Kite-chaser.github.io/tag/ksq4_sfEo" class="badge success">
           并查集
         </a>
       
