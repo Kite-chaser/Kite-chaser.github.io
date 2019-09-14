@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>P2323 [HNOI2006]公路修建问题 | Kite-chaser</title>
+<title>树形DP | Kite-chaser</title>
 <meta name="description" content="This is my blog.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -15,12 +15,6 @@
 <link rel="stylesheet" href="https://Kite-chaser.github.io/styles/main.css">
 
 
-  
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
-  
-
-  
-
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
@@ -29,7 +23,6 @@
 
   </head>
   <body>
-  
     <nav class="navbar border fixed split-nav">
   <div class="nav-brand">
     <h3><a href="https://Kite-chaser.github.io">Kite-chaser</a></h3>
@@ -94,143 +87,53 @@
     <div id="top" class="row site">
       <div class="sm-12 md-8 col">
         <div class="paper">
-          <article class="article">
-            <h1>P2323 [HNOI2006]公路修建问题</h1>
-            <p class="article-meta">
-              2019-08-19
-              
-                <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge secondary">
-                  题解
-                </a>
-              
-                <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="badge secondary">
-                  图论
-                </a>
-              
-                <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge ">
-                  OI
-                </a>
-              
-            </p>
-            
-              <img src="https://Kite-chaser.github.io/post-images/p2323-hnoi2006gong-lu-xiu-jian-wen-ti.jpg" alt="P2323 [HNOI2006]公路修建问题">
-            
-            <div class="post-content">
-              <p>其实我只是为了不让文字显示太多才写的摘要。</p>
-<!--more-->
-<h4 id="题目描述">题目描述</h4>
-<p><img src="https://cdn.luogu.org/upload/pic/1384.png" alt=""></p>
-<blockquote>
-<p><a href="https://www.luogu.org/problem/P2323">原题链接</a></p>
-</blockquote>
-<h3 id="slove">Slove</h3>
-<p>用<a href="https://kite-chaser.github.io/post/kruskal">Kruskal</a>建立最小生成树（MST)</p>
-<p>1.一级公路是一定要修的，而且最少为k个。所以，把所有的边先按一级公路权值从小到大排序。</p>
-<p>2.连接前k个“安全边”，即在Kruskal算法中可以加入的边。</p>
-<p>3.把后几条边，按二级公路的权值从小到大排序。</p>
-<p>4.继续Kruskal。</p>
-<h3 id="tips">Tips</h3>
-<p>1.为什么步骤3中排序直接忽略了一级公路的权值呢？</p>
-<p>“一级公路上的车速快，但修路的花费要大一些（摘自题目描述的第六行）”也就是说对于同一条边，一般来说，一级公路的权值是要大于二级公路的，所以选二级一定不比选一级差（当然，此题有SJ,不影响结果的话，选一级也是可以的）。</p>
-<p>2.在实际评测时，将只会有m-1行公路（我也不知道为啥要少一条）</p>
-<h3 id="code">Code</h3>
-<pre><code class="language-cpp">#include&lt;iostream&gt;
-#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;algorithm&gt;
-using namespace std;  //标准开头
-const int N=20010;
-int n,m,k;  //同题
-int f[N];  //f[i]——节点i的父节点
-struct note{
-	int u,r,c1,c2,num;
-}d[N];  //同题，u，r——端点，num——序号
-int s[N];  //记录每条边的情况
-int ans;  //答案
-int cnt;  //记录前k个安全边
-bool cmp1(const note &amp;a,const note &amp;b){  //排序1
-	return a.c1&lt;b.c1;
-}
-bool cmp2(const note &amp;a,const note &amp;b){  //排序2
-	return a.c2&lt;b.c2;
-}
-int find(int h){
-	if(h!=f[h]) f[h]=find(f[h]);
-	return f[h];
-}
-int main()
-{
-	cin&gt;&gt;n&gt;&gt;k&gt;&gt;m;
-	m--;
-	for(int i=1;i&lt;=n;i++) f[i]=i;
-	for(int i=1;i&lt;=m;i++){
-		cin&gt;&gt;d[i].u&gt;&gt;d[i].r&gt;&gt;d[i].c1&gt;&gt;d[i].c2;
-		d[i].num=i;
-	}
-	sort(d+1,d+1+m,cmp1);
-	for(int i=1;i&lt;=m;i++){
-		int x,y;
-		x=find(d[i].u);
-		y=find(d[i].r);
-		if(x!=y){
-			f[y]=x;
-			ans=max(ans,d[i].c1);
-			s[d[i].num]=1;
-			cnt++;
-		}
-		if(cnt==k){
-			k=i;
-			break;
-		}
-	}
-	sort(d+k+1,d+1+m,cmp2);
-	for(int i=k+1;i&lt;=m;i++){
-		int x,y;
-		x=find(d[i].u);
-		y=find(d[i].r);
-		if(x!=y){
-			f[y]=x;
-			ans=max(ans,d[i].c2);
-			s[d[i].num]=2;
-		}
-	}
-	cout&lt;&lt;ans&lt;&lt;endl;
-	for(int i=1;i&lt;=m;i++){  //完美输出
-		if(s[i]&gt;=1) cout&lt;&lt;i&lt;&lt;&quot; &quot;&lt;&lt;s[i]&lt;&lt;endl;
-	}
-	return 0;
-}
-</code></pre>
-<p><s>话说为啥这么个题都是蓝的</s></p>
+          <h2 class="current-tag">标签: 树形DP</h2>
+          
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://Kite-chaser.github.io/post/p2014-xuan-ke">P2014 选课</a>
+    </h2>
+    <p class="article-meta">
+      2019-09-14
+      
+        <a href="https://Kite-chaser.github.io/tag/Mh3k_Hqut" class="badge secondary">
+          树形DP
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/BCIKttOve" class="badge warning">
+          动态规划，DP
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge ">
+          题解
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge secondary">
+          OI
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <p>这道题使我对树形DP有了新认识。</p>
 
-            </div>
-          </article>
-        </div>
-        <div class="paper" data-aos="fade-in">
-          
-            <div class="next-post">
-              <div class="next">
-                下一篇
-              </div>
-              <a href="https://Kite-chaser.github.io/post/kruskal">
-                <h3 class="post-title">
-                  Kruskal
-                </h3>
-              </a>
-            </div>
-          
-        </div>
-        
-          
-            <div class="paper" data-aos="fade-in">
-              <div id="gitalk-container"></div>
-            </div>
-          
+    </p>
+    <div class="row">
+      <a href="https://Kite-chaser.github.io/post/p2014-xuan-ke" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
 
-          
-        
+
+        </div>
+        <div class="row flex-edges">
+  
+  
+</div>
+
       </div>
-
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
     <img src="https://Kite-chaser.github.io/images/avatar.png?v=1568431237785" class="no-responsive avatar">
@@ -349,15 +252,15 @@ int main()
     </div>
     <div class="row">
       
-        <a href="https://Kite-chaser.github.io/tag/Mh3k_Hqut" class="badge secondary">
+        <a href="https://Kite-chaser.github.io/tag/Mh3k_Hqut" class="badge success">
           树形DP
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/BCIKttOve" class="badge ">
+        <a href="https://Kite-chaser.github.io/tag/BCIKttOve" class="badge warning">
           动态规划，DP
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge ">
+        <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge secondary">
           题解
         </a>
       
@@ -377,11 +280,11 @@ int main()
           单调队列
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/2kgafuTx9" class="badge secondary">
+        <a href="https://Kite-chaser.github.io/tag/2kgafuTx9" class="badge ">
           线段树
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/ksq4_sfEo" class="badge secondary">
+        <a href="https://Kite-chaser.github.io/tag/ksq4_sfEo" class="badge ">
           并查集
         </a>
       
@@ -391,7 +294,6 @@ int main()
     Powered by Hve Notes | <a class="rss" href="https://Kite-chaser.github.io/atom.xml" target="_blank">RSS</a>
   </div>
 </div>
-
 
     </div>
 
@@ -404,29 +306,6 @@ AOS.init();
 hljs.initHighlightingOnLoad()
 
 </script>
-
-
-
-  
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    <script>
-
-      var gitalk = new Gitalk({
-        clientID: '761ba32522ad16d2134b',
-        clientSecret: 'd5634ea03ca976d589a06f88c4e9fb23c928e5f9',
-        repo: 'Kite-chaser.github.io',
-        owner: 'Kite-chaser',
-        admin: ['Kite-chaser'],
-        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
-        distractionFreeMode: false  // Facebook-like distraction free mode
-      })
-
-      gitalk.render('gitalk-container')
-
-    </script>
-  
-
-  
 
 
 
