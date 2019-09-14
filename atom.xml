@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Kite-chaser.github.io</id>
     <title>Kite-chaser</title>
-    <updated>2019-09-14T08:45:09.921Z</updated>
+    <updated>2019-09-14T09:17:05.504Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Kite-chaser.github.io"/>
     <link rel="self" href="https://Kite-chaser.github.io/atom.xml"/>
@@ -52,74 +52,6 @@
         <summary type="html"><![CDATA[<p>只是一点关于整除的性质而已。</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>只是一点关于整除的性质而已。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[UVA11324 The Largest Clique]]></title>
-        <id>https://Kite-chaser.github.io/post/uva11324-the-largest-clique</id>
-        <link href="https://Kite-chaser.github.io/post/uva11324-the-largest-clique">
-        </link>
-        <updated>2019-09-11T11:52:12.000Z</updated>
-        <summary type="html"><![CDATA[<p>这道题很迷，为什么呢？因为题面的封面很迷。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>这道题很迷，为什么呢？因为题面的封面很迷。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[强连通分量]]></title>
-        <id>https://Kite-chaser.github.io/post/qiang-lian-tong-fen-liang</id>
-        <link href="https://Kite-chaser.github.io/post/qiang-lian-tong-fen-liang">
-        </link>
-        <updated>2019-09-03T09:19:34.000Z</updated>
-        <summary type="html"><![CDATA[<p>tarjan真的不是一种算法。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>tarjan真的不是一种算法。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[最大独立集]]></title>
-        <id>https://Kite-chaser.github.io/post/zui-da-du-li-ji</id>
-        <link href="https://Kite-chaser.github.io/post/zui-da-du-li-ji">
-        </link>
-        <updated>2019-09-03T08:46:58.000Z</updated>
-        <summary type="html"><![CDATA[<p>最大独立集可以算是一种树形DP。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>最大独立集可以算是一种树形DP。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[动态规划中的背包问题]]></title>
-        <id>https://Kite-chaser.github.io/post/dong-tai-gui-hua-zhong-de-bei-bao-wen-ti</id>
-        <link href="https://Kite-chaser.github.io/post/dong-tai-gui-hua-zhong-de-bei-bao-wen-ti">
-        </link>
-        <updated>2019-08-19T12:48:16.000Z</updated>
-        <summary type="html"><![CDATA[<p>~~众所周知，DP从入门到放弃。~~其实还是继续借用学姐的课件。因为蒟蒻的我啥也不会。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>~~众所周知，DP从入门到放弃。~~其实还是继续借用学姐的课件。因为蒟蒻的我啥也不会。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[数论]]></title>
-        <id>https://Kite-chaser.github.io/post/shu-lun</id>
-        <link href="https://Kite-chaser.github.io/post/shu-lun">
-        </link>
-        <updated>2019-08-19T12:23:24.000Z</updated>
-        <summary type="html"><![CDATA[<p>其实所有内容都是我们可爱的学姐lcr教授的，我只是借用了一下而已。~~话说学OI的竟然还有学姐。~~不知道为什么我的部分LaTeX废了，所以只能抠图了。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>其实所有内容都是我们可爱的学姐lcr教授的，我只是借用了一下而已。~~话说学OI的竟然还有学姐。~~不知道为什么我的部分LaTeX废了，所以只能抠图了。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[P1491 集合位置 ]]></title>
-        <id>https://Kite-chaser.github.io/post/p1491-ji-he-wei-zhi</id>
-        <link href="https://Kite-chaser.github.io/post/p1491-ji-he-wei-zhi">
-        </link>
-        <updated>2019-08-19T05:31:51.000Z</updated>
-        <summary type="html"><![CDATA[<h4 id="题目描述">题目描述</h4>
-<p>每次有大的活动，大家都要在一起“聚一聚”，不管是去好乐迪，还是避风塘，或者汤姆熊，大家都要玩的痛快。</p>
-]]></summary>
-        <content type="html"><![CDATA[<h4 id="题目描述">题目描述</h4>
-<p>每次有大的活动，大家都要在一起“聚一聚”，不管是去好乐迪，还是避风塘，或者汤姆熊，大家都要玩的痛快。</p>
 ]]></content>
     </entry>
 </feed>
