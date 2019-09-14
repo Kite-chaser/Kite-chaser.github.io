@@ -1,316 +1,475 @@
+<!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" >
 
-<head>
-    <meta charset="utf-8" />
-<meta name="description" content="" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>
-    Kite-chaser
-</title>
-<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1568273252067">
-<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
-<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<title>文章归档 | Kite-chaser</title>
+<meta name="description" content="This is my blog.">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1568419283196">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://Kite-chaser.github.io/styles/main.css">
-<!-- js -->
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://Kite-chaser.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
+
+
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
-</head>
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-<body>
-    <div class="main">
-        <div class="header">
-    <div class="nav">
-        <div class="logo">
-            <a href="https://Kite-chaser.github.io">
-                <img class="avatar" src="https://Kite-chaser.github.io/images/avatar.png?v=1568273252067" alt="">
-            </a>
-            <div class="site-title">
-                <h1>
-                    Kite-chaser
-                </h1>
-            </div>
-        </div>
-        <span class="menu-btn fa fa-align-justify"></span>
-        <div class="menu-container">
-            <ul>
-                
-                    
-                            <li>
-                                <a href="/" class="menu">
-                                    首页
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="/archives" class="menu">
-                                    归档
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="/tags" class="menu">
-                                    标签
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="https://Kite-chaser.github.io/post/guan-yu/" class="menu">
-                                    关于
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="https://Kite-chaser.github.io/post/you-lian/" class="menu">
-                                    友链
-                                </a>
-                            </li>
-                            
-                                
-            </ul>
-        </div>
+
+  </head>
+  <body>
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://Kite-chaser.github.io">Kite-chaser</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="https://Kite-chaser.github.io/post/guan-yu/" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="https://Kite-chaser.github.io/post/you-lian/" class="menu">
+                友链
+              </a>
+            
+          </li>
+        
+      </ul>
     </div>
+  </div>
+</nav>
+
+    
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          
+
+          <h2 class="archives-title">文章归档</h2>
+          <div class="archives-container">
+            
+              <h3 class="year" data-aos-delay="500">2019</h3>
+              
+                
+                  <article class="post">
+                    <a href="https://Kite-chaser.github.io/post/uva11324-the-largest-clique">
+                      <h4 class="post-title">
+                        UVA11324 The Largest Clique
+                      </h4>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="https://Kite-chaser.github.io/post/qiang-lian-tong-fen-liang">
+                      <h4 class="post-title">
+                        强连通分量
+                      </h4>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="https://Kite-chaser.github.io/post/zui-da-du-li-ji">
+                      <h4 class="post-title">
+                        最大独立集
+                      </h4>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="https://Kite-chaser.github.io/post/dong-tai-gui-hua-zhong-de-bei-bao-wen-ti">
+                      <h4 class="post-title">
+                        动态规划中的背包问题
+                      </h4>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="https://Kite-chaser.github.io/post/shu-lun">
+                      <h4 class="post-title">
+                        数论
+                      </h4>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="https://Kite-chaser.github.io/post/p1491-ji-he-wei-zhi">
+                      <h4 class="post-title">
+                        P1491 集合位置 
+                      </h4>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="https://Kite-chaser.github.io/post/p2829-da-tao-chi">
+                      <h4 class="post-title">
+                        P2829 大逃离
+                      </h4>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="https://Kite-chaser.github.io/post/p2866-usaco06novzao-gao-de-yi-tian-bad-hair-day">
+                      <h4 class="post-title">
+                        P2866 [USACO06NOV]糟糕的一天Bad Hair Day
+                      </h4>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="https://Kite-chaser.github.io/post/p1395-hui-yi">
+                      <h4 class="post-title">
+                        P1395 【会议】
+                      </h4>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="https://Kite-chaser.github.io/post/shu-de-chong-xin">
+                      <h4 class="post-title">
+                        树的重心
+                      </h4>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="https://Kite-chaser.github.io/post/p1907-she-ji-dao-lu">
+                      <h4 class="post-title">
+                        P1907 设计道路
+                      </h4>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="https://Kite-chaser.github.io/post/p1194-mai-li-wu">
+                      <h4 class="post-title">
+                        P1194 买礼物
+                      </h4>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="https://Kite-chaser.github.io/post/p2323-hnoi2006gong-lu-xiu-jian-wen-ti">
+                      <h4 class="post-title">
+                        P2323 [HNOI2006]公路修建问题
+                      </h4>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="https://Kite-chaser.github.io/post/kruskal">
+                      <h4 class="post-title">
+                        Kruskal
+                      </h4>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="https://Kite-chaser.github.io/post/prim">
+                      <h4 class="post-title">
+                        Prim
+                      </h4>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="https://Kite-chaser.github.io/post/p3088-usaco13novji-nai-niu-crowded-cows">
+                      <h4 class="post-title">
+                        P3088 [USACO13NOV]挤奶牛Crowded Cows
+                      </h4>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="https://Kite-chaser.github.io/post/p4879-ycz-de-mei-zi">
+                      <h4 class="post-title">
+                        P4879 ycz的妹子
+                      </h4>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="https://Kite-chaser.github.io/post/p1330-feng-suo-yang-guang-da-xue">
+                      <h4 class="post-title">
+                        P1330 封锁阳光大学
+                      </h4>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="https://Kite-chaser.github.io/post/bing-cha-ji">
+                      <h4 class="post-title">
+                        并查集
+                      </h4>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="https://Kite-chaser.github.io/post/zui-xiao-zhi-pei-ji">
+                      <h4 class="post-title">
+                        最小支配集
+                      </h4>
+                    </a>
+                  </article>
+                
+              
+            
+          </div>
+        </div>
+        <div class="row flex-edges">
+  
+  
 </div>
 
-<script>
-    $(document).ready(function() {
-        $(".menu-btn").click(function() {
-            $(".menu-container").slideToggle();
-        });
-        $(window).resize(function() {
-
-            if (window.matchMedia('(min-width: 960px)').matches) {
-                $(".menu-container").css('display', 'block')
-            } else {
-                $(".menu-container").css('display', 'none')
-            }
-
-        });
-    });
-</script>
-
-            
-
-    <div class="archives-container main-container">
-        <ul class="timeline">
-            
-                <li>
-                    <h3 class="year">
-                        2019
-                    </h3>
-                    <ul class="year-wrapper">
-                        
-                            
-                                <li>
-                                    <span class="date">2019-09-11</span>
-                                    <a class="title" href="https://Kite-chaser.github.io/post/uva11324-the-largest-clique">
-                                        <span>UVA11324 The Largest Clique</span>
-                                    </a>
-                                </li>
-                                
-                                    
-                            
-                                <li>
-                                    <span class="date">2019-09-03</span>
-                                    <a class="title" href="https://Kite-chaser.github.io/post/qiang-lian-tong-fen-liang">
-                                        <span>强连通分量</span>
-                                    </a>
-                                </li>
-                                
-                                    
-                            
-                                <li>
-                                    <span class="date">2019-09-03</span>
-                                    <a class="title" href="https://Kite-chaser.github.io/post/zui-da-du-li-ji">
-                                        <span>最大独立集</span>
-                                    </a>
-                                </li>
-                                
-                                    
-                            
-                                <li>
-                                    <span class="date">2019-08-19</span>
-                                    <a class="title" href="https://Kite-chaser.github.io/post/dong-tai-gui-hua-zhong-de-bei-bao-wen-ti">
-                                        <span>动态规划中的背包问题</span>
-                                    </a>
-                                </li>
-                                
-                                    
-                            
-                                <li>
-                                    <span class="date">2019-08-19</span>
-                                    <a class="title" href="https://Kite-chaser.github.io/post/shu-lun">
-                                        <span>数论</span>
-                                    </a>
-                                </li>
-                                
-                                    
-                            
-                                <li>
-                                    <span class="date">2019-08-19</span>
-                                    <a class="title" href="https://Kite-chaser.github.io/post/p1491-ji-he-wei-zhi">
-                                        <span>P1491 集合位置 </span>
-                                    </a>
-                                </li>
-                                
-                                    
-                            
-                                <li>
-                                    <span class="date">2019-08-19</span>
-                                    <a class="title" href="https://Kite-chaser.github.io/post/p2829-da-tao-chi">
-                                        <span>P2829 大逃离</span>
-                                    </a>
-                                </li>
-                                
-                                    
-                            
-                                <li>
-                                    <span class="date">2019-08-19</span>
-                                    <a class="title" href="https://Kite-chaser.github.io/post/p2866-usaco06novzao-gao-de-yi-tian-bad-hair-day">
-                                        <span>P2866 [USACO06NOV]糟糕的一天Bad Hair Day</span>
-                                    </a>
-                                </li>
-                                
-                                    
-                            
-                                <li>
-                                    <span class="date">2019-08-19</span>
-                                    <a class="title" href="https://Kite-chaser.github.io/post/p1395-hui-yi">
-                                        <span>P1395 【会议】</span>
-                                    </a>
-                                </li>
-                                
-                                    
-                            
-                                <li>
-                                    <span class="date">2019-08-19</span>
-                                    <a class="title" href="https://Kite-chaser.github.io/post/shu-de-chong-xin">
-                                        <span>树的重心</span>
-                                    </a>
-                                </li>
-                                
-                                    
-                            
-                                <li>
-                                    <span class="date">2019-08-19</span>
-                                    <a class="title" href="https://Kite-chaser.github.io/post/p1907-she-ji-dao-lu">
-                                        <span>P1907 设计道路</span>
-                                    </a>
-                                </li>
-                                
-                                    
-                            
-                                <li>
-                                    <span class="date">2019-08-19</span>
-                                    <a class="title" href="https://Kite-chaser.github.io/post/p1194-mai-li-wu">
-                                        <span>P1194 买礼物</span>
-                                    </a>
-                                </li>
-                                
-                                    
-                            
-                                <li>
-                                    <span class="date">2019-08-19</span>
-                                    <a class="title" href="https://Kite-chaser.github.io/post/p2323-hnoi2006gong-lu-xiu-jian-wen-ti">
-                                        <span>P2323 [HNOI2006]公路修建问题</span>
-                                    </a>
-                                </li>
-                                
-                                    
-                            
-                                <li>
-                                    <span class="date">2019-08-19</span>
-                                    <a class="title" href="https://Kite-chaser.github.io/post/kruskal">
-                                        <span>Kruskal</span>
-                                    </a>
-                                </li>
-                                
-                                    
-                            
-                                <li>
-                                    <span class="date">2019-08-19</span>
-                                    <a class="title" href="https://Kite-chaser.github.io/post/prim">
-                                        <span>Prim</span>
-                                    </a>
-                                </li>
-                                
-                                    
-                            
-                                <li>
-                                    <span class="date">2019-08-18</span>
-                                    <a class="title" href="https://Kite-chaser.github.io/post/p3088-usaco13novji-nai-niu-crowded-cows">
-                                        <span>P3088 [USACO13NOV]挤奶牛Crowded Cows</span>
-                                    </a>
-                                </li>
-                                
-                                    
-                            
-                                <li>
-                                    <span class="date">2019-08-18</span>
-                                    <a class="title" href="https://Kite-chaser.github.io/post/p4879-ycz-de-mei-zi">
-                                        <span>P4879 ycz的妹子</span>
-                                    </a>
-                                </li>
-                                
-                                    
-                            
-                                <li>
-                                    <span class="date">2019-08-18</span>
-                                    <a class="title" href="https://Kite-chaser.github.io/post/p1330-feng-suo-yang-guang-da-xue">
-                                        <span>P1330 封锁阳光大学</span>
-                                    </a>
-                                </li>
-                                
-                                    
-                            
-                                <li>
-                                    <span class="date">2019-08-18</span>
-                                    <a class="title" href="https://Kite-chaser.github.io/post/bing-cha-ji">
-                                        <span>并查集</span>
-                                    </a>
-                                </li>
-                                
-                                    
-                            
-                                <li>
-                                    <span class="date">2019-08-18</span>
-                                    <a class="title" href="https://Kite-chaser.github.io/post/zui-xiao-zhi-pei-ji">
-                                        <span>最小支配集</span>
-                                    </a>
-                                </li>
-                                
-                                    
-                    </ul>
-
-                </li>
-                
-        </ul>
+      </div>
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://Kite-chaser.github.io/images/avatar.png?v=1568419283196" class="no-responsive avatar">
+    <div class="text-muted">This is my blog.</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     </div>
-
-                
-
-                    <div class="site-footer">
-  Powered by Hve Notes | 
-  <a class="rss" href="https://Kite-chaser.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/uva11324-the-largest-clique">UVA11324 The Largest Clique</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/qiang-lian-tong-fen-liang">强连通分量</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/zui-da-du-li-ji">最大独立集</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/dong-tai-gui-hua-zhong-de-bei-bao-wen-ti">动态规划中的背包问题</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/shu-lun">数论</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/p1491-ji-he-wei-zhi">P1491 集合位置 </a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/p2829-da-tao-chi">P2829 大逃离</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/p2866-usaco06novzao-gao-de-yi-tian-bad-hair-day">P2866 [USACO06NOV]糟糕的一天Bad Hair Day</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/p1395-hui-yi">P1395 【会议】</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/shu-de-chong-xin">树的重心</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://Kite-chaser.github.io/tag/BCIKttOve" class="badge warning">
+          动态规划，DP
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge secondary">
+          题解
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="badge success">
+          图论
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge secondary">
+          OI
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/kCU-ep_Aq" class="badge ">
+          笔记
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/92gh9uu1i" class="badge secondary">
+          单调队列
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/2kgafuTx9" class="badge secondary">
+          线段树
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/ksq4_sfEo" class="badge warning">
+          并查集
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by Hve Notes | <a class="rss" href="https://Kite-chaser.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
 </div>
 
-<script>
-  hljs.initHighlightingOnLoad()
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
 </script>
 
-    </div>
-</body>
 
+
+
+  </body>
 </html>
