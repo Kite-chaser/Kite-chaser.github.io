@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>笔记 | Kite-chaser</title>
+<title>P1083 借教室 | Kite-chaser</title>
 <meta name="description" content="This is my blog.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -15,6 +15,12 @@
 <link rel="stylesheet" href="https://Kite-chaser.github.io/styles/main.css">
 
 
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
@@ -23,6 +29,7 @@
 
   </head>
   <body>
+  
     <nav class="navbar border fixed split-nav">
   <div class="nav-brand">
     <h3><a href="https://Kite-chaser.github.io">Kite-chaser</a></h3>
@@ -87,143 +94,120 @@
     <div id="top" class="row site">
       <div class="sm-12 md-8 col">
         <div class="paper">
-          <h2 class="current-tag">标签: 笔记</h2>
-          
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://Kite-chaser.github.io/post/zheng-chu">整除</a>
-    </h2>
-    <p class="article-meta">
-      2019-09-14
-      
-        <a href="https://Kite-chaser.github.io/tag/kCU-ep_Aq" class="badge secondary">
-          笔记
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge secondary">
-          OI
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>只是一点关于整除的性质而已。</p>
+          <article class="article">
+            <h1>P1083 借教室</h1>
+            <p class="article-meta">
+              2019-09-14
+              
+                <a href="https://Kite-chaser.github.io/tag/Q6VC_f0jg" class="badge warning">
+                  二分答案
+                </a>
+              
+                <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge warning">
+                  题解
+                </a>
+              
+                <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge success">
+                  OI
+                </a>
+              
+            </p>
+            
+              <img src="https://Kite-chaser.github.io/post-images/p1083-jie-jiao-shi.png" alt="P1083 借教室">
+            
+            <div class="post-content">
+              <p>二分答案是真的妙。</p>
+<!--more-->
+<h2 id="题目描述">题目描述</h2>
+<p>在大学期间，经常需要租借教室。大到院系举办活动，小到学习小组自习讨论，都需要向学校申请借教室。教室的大小功能不同，借教室人的身份不同，借教室的手续也不一样。<br>
+面对海量租借教室的信息，我们自然希望编程解决这个问题。<br>
+我们需要处理接下来n天的借教室信息，其中第i天学校有r_i个教室可供租借。共有m份订单，每份订单用三个正整数描述，分别为d_j,s_j,t_j表示某租借者需要从第s_j天到第t_j天租借教室（包括第s_j天和第t_j天），每天需要租借d_j个教室。<br>
+我们假定，租借者对教室的大小、地点没有要求。即对于每份订单，我们只需要每天提供d_j个教室，而它们具体是哪些教室，每天是否是相同的教室则不用考虑。</p>
+<p>借教室的原则是先到先得，也就是说我们要按照订单的先后顺序依次为每份订单分配教室。如果在分配的过程中遇到一份订单无法完全满足，则需要停止教室的分配，通知当前申请人修改订单。这里的无法满足指从第s_j 天到第t_j天中有至少一天剩余的教室数量不足d_j个。</p>
+<p>现在我们需要知道，是否会有订单无法完全满足。如果有，需要通知哪一个申请人修改订单。</p>
+<blockquote>
+<p><a href="https://www.luogu.org/problem/P1083">原题链接</a></p>
+</blockquote>
+<h2 id="slove">Slove</h2>
+<p>简简单单的二分。<br>
+二分天数。<br>
+可以的话取右区间。<br>
+不可以的话取左区间。<br>
+对于区间修改，使用差分就好啦。</p>
+<h2 id="tip">Tip</h2>
+<ol>
+<li>二分是真的快，log的。</li>
+<li>差分是真的快，O(1)的。</li>
+</ol>
+<h2 id="code">Code</h2>
+<pre><code class="language-cpp">
+#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#define N 1000001
+using namespace std;  //标准开头
+int n,m;
+int a[N],f[N];
+int d[N],s[N],t[N];
+int res[N];
+int l,r,mid;
+bool sl(int x){
+	for(int i=1;i&lt;=n;i++) f[i]=a[i]-a[i-1],res[i]=a[i];   //差分
+	for(int i=1;i&lt;=x;i++){
+		f[s[i]]-=d[i];
+		f[t[i]+1]+=d[i];
+	}
+	for(int i=1;i&lt;=n;i++){
+		res[i]=f[i]+res[i-1];
+		if(res[i]&lt;0) return false;
+	}
+	return true;
+}
+int main()
+{
+	scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+	for(int i=1;i&lt;=n;i++) scanf(&quot;%d&quot;,&amp;a[i]);
+	for(int i=1;i&lt;=m;i++) scanf(&quot;%d%d%d&quot;,&amp;d[i],&amp;s[i],&amp;t[i]);
+	l=1;r=m;
+	if(sl(m)){printf(&quot;0&quot;);return 0;}
+	while(l&lt;r){
+		mid=(l+r)/2;
+		if(sl(mid)) l=mid+1;
+		else r=mid;
+	}
+	printf(&quot;-1\n%d&quot;,l);
+	return 0;
+}
+</code></pre>
 
-    </p>
-    <div class="row">
-      <a href="https://Kite-chaser.github.io/post/zheng-chu" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://Kite-chaser.github.io/post/shu-de-chong-xin">树的重心</a>
-    </h2>
-    <p class="article-meta">
-      2019-08-19
-      
-        <a href="https://Kite-chaser.github.io/tag/kCU-ep_Aq" class="badge secondary">
-          笔记
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge success">
-          OI
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <h2 id="概念">概念</h2>
-<p>树的重心也叫树的质心。对于一棵树n个节点的无根树，找到一个点，使得把树变成以该点为根的有根树时，最大子树的结点数最小。换句话说，删除这个点后最大连通块（一定是树）的结点数最小。</p>
-
-    </p>
-    <div class="row">
-      <a href="https://Kite-chaser.github.io/post/shu-de-chong-xin" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://Kite-chaser.github.io/post/kruskal">Kruskal</a>
-    </h2>
-    <p class="article-meta">
-      2019-08-19
-      
-        <a href="https://Kite-chaser.github.io/tag/kCU-ep_Aq" class="badge secondary">
-          笔记
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="badge secondary">
-          图论
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge secondary">
-          OI
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <h2 id="rt">RT</h2>
-<p>Kruskal是一种用于建立最小生成树(MST)的算法，同理的还有<a href="https://kite-chaser.github.io/post/prim/">Prim</a>算法。与Kruskal算法相关的还有并查集，也就是说Kruskal的实现需要并查集（<a href="https://kite-chaser.github.io/post/bing-cha-ji/">可参考蒟蒻的OI笔记</a>）。</p>
-
-    </p>
-    <div class="row">
-      <a href="https://Kite-chaser.github.io/post/kruskal" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://Kite-chaser.github.io/post/prim">Prim</a>
-    </h2>
-    <p class="article-meta">
-      2019-08-19
-      
-        <a href="https://Kite-chaser.github.io/tag/kCU-ep_Aq" class="badge secondary">
-          笔记
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="badge ">
-          图论
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge warning">
-          OI
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <h2 id="rt">RT</h2>
-<p>Prim算法主要应用于建立最小生成树（MST），同理的还有<a href="https://kite-chaser.github.io/post/kruskal/">Kruskal</a>算法。</p>
-
-    </p>
-    <div class="row">
-      <a href="https://Kite-chaser.github.io/post/prim" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-
+            </div>
+          </article>
         </div>
-        <div class="row flex-edges">
-  
-  
-</div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://Kite-chaser.github.io/post/p2014-xuan-ke">
+                <h3 class="post-title">
+                  P2014 选课
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+          
+            <div class="paper" data-aos="fade-in">
+              <div id="gitalk-container"></div>
+            </div>
+          
 
+          
+        
       </div>
+
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
     <img src="https://Kite-chaser.github.io/images/avatar.png?v=1568432899672" class="no-responsive avatar">
@@ -344,11 +328,11 @@
     </div>
     <div class="row">
       
-        <a href="https://Kite-chaser.github.io/tag/Q6VC_f0jg" class="badge ">
+        <a href="https://Kite-chaser.github.io/tag/Q6VC_f0jg" class="badge warning">
           二分答案
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge warning">
+        <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge success">
           题解
         </a>
       
@@ -360,15 +344,15 @@
           树形DP
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/BCIKttOve" class="badge success">
+        <a href="https://Kite-chaser.github.io/tag/BCIKttOve" class="badge warning">
           动态规划，DP
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/kCU-ep_Aq" class="badge secondary">
+        <a href="https://Kite-chaser.github.io/tag/kCU-ep_Aq" class="badge ">
           笔记
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="badge secondary">
+        <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="badge warning">
           图论
         </a>
       
@@ -376,11 +360,11 @@
           单调队列
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/2kgafuTx9" class="badge secondary">
+        <a href="https://Kite-chaser.github.io/tag/2kgafuTx9" class="badge ">
           线段树
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/ksq4_sfEo" class="badge secondary">
+        <a href="https://Kite-chaser.github.io/tag/ksq4_sfEo" class="badge warning">
           并查集
         </a>
       
@@ -390,6 +374,7 @@
     Powered by Hve Notes | <a class="rss" href="https://Kite-chaser.github.io/atom.xml" target="_blank">RSS</a>
   </div>
 </div>
+
 
     </div>
 
@@ -402,6 +387,29 @@ AOS.init();
 hljs.initHighlightingOnLoad()
 
 </script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '761ba32522ad16d2134b',
+        clientSecret: 'd5634ea03ca976d589a06f88c4e9fb23c928e5f9',
+        repo: 'Kite-chaser.github.io',
+        owner: 'Kite-chaser',
+        admin: ['Kite-chaser'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
 
 
 
