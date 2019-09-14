@@ -7,7 +7,7 @@
 <meta name="description" content="This is my blog.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1568450352323">
+<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1568450526294">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
@@ -99,15 +99,15 @@
             <p class="article-meta">
               2019-09-14
               
-                <a href="https://Kite-chaser.github.io/tag/Q6VC_f0jg" class="badge secondary">
+                <a href="https://Kite-chaser.github.io/tag/Q6VC_f0jg" class="badge success">
                   二分答案
                 </a>
               
-                <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge success">
+                <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge warning">
                   题解
                 </a>
               
-                <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge success">
+                <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge ">
                   OI
                 </a>
               
@@ -124,7 +124,7 @@
 <li>给定m个区间[L_i,R_i]；</li>
 <li>选出一个参数W；</li>
 <li>对于一个区间[L_i,R_i]，计算矿石在这个区间上的检验值Y_i：<br>
-<img src="https://cdn.luogu.com.cn/upload/image_hosting/jja14mqr.png" alt=""><br>
+<img src="https://Kite-chaser.github.io/post-images/1568450521669.png" alt=""><br>
 这批矿产的检验结果Y为各个区间的检验值之和。即：Y_1+Y_2...+Y_m<br>
 若这批矿产的检验结果与所给标准值S相差太多，就需要再去检验另一批矿产。小T不想费时间去检验另一批矿产，所以他想通过调整参数W 的值，让检验结果尽可能的靠近标准值S，即使得S-Y的绝对值最小。请你帮忙求出这个最小值。</li>
 </ol>
@@ -132,16 +132,18 @@
 <p><a href="https://www.luogu.org/problem/P1314">原题链接</a></p>
 </blockquote>
 <h2 id="slove">Slove</h2>
-<p><strong>一,二分</strong><br>
-在每个区间内，只有w[]大于W的，才能被选上。<br>
+<h3 id="一-二分">一 二分</h3>
+<p>在每个区间内，只有w[]大于W的，才能被选上。<br>
 所以W减小，被选入的矿石增多，Y增加；反之Y减小。<br>
 条件：</p>
 <ul>
 <li>Y&gt;S,增大W，减小Y，以使|Y-S|减小。</li>
 <li>Y&lt;S,减小W，增大Y，以使|Y-S|减小。</li>
-<li>Y=S，完美。<br>
-<strong>二，前缀和</strong><br>
-使用前缀和以减少区间修改的时间。</li>
+<li>Y=S，完美。</li>
+</ul>
+<h3 id="二-前缀和">二 前缀和</h3>
+<p>使用前缀和以减少区间修改的时间。</p>
+<ul>
 <li>w[]&gt;=W,sum1[i]=sum1[i-1]+1,sum2[i]=sum2[i-1]+v[i],sum1表示公式中前者，sum2表示后者。</li>
 <li>w[]&lt;W,sum1[i]=sum1[i-1],sum2[i]=sum2[i-1]。</li>
 </ul>
@@ -230,7 +232,7 @@ int main()
 
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
-    <img src="https://Kite-chaser.github.io/images/avatar.png?v=1568450352323" class="no-responsive avatar">
+    <img src="https://Kite-chaser.github.io/images/avatar.png?v=1568450526294" class="no-responsive avatar">
     <div class="text-muted">This is my blog.</div>
     <div class="social-container">
       
@@ -354,19 +356,19 @@ int main()
           二分答案
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge secondary">
+        <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge ">
           题解
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge secondary">
+        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge ">
           OI
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/Mh3k_Hqut" class="badge success">
+        <a href="https://Kite-chaser.github.io/tag/Mh3k_Hqut" class="badge secondary">
           树形DP
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/BCIKttOve" class="badge ">
+        <a href="https://Kite-chaser.github.io/tag/BCIKttOve" class="badge success">
           动态规划，DP
         </a>
       
@@ -378,15 +380,15 @@ int main()
           图论
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/92gh9uu1i" class="badge ">
+        <a href="https://Kite-chaser.github.io/tag/92gh9uu1i" class="badge success">
           单调队列
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/2kgafuTx9" class="badge ">
+        <a href="https://Kite-chaser.github.io/tag/2kgafuTx9" class="badge warning">
           线段树
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/ksq4_sfEo" class="badge warning">
+        <a href="https://Kite-chaser.github.io/tag/ksq4_sfEo" class="badge ">
           并查集
         </a>
       
