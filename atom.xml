@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Kite-chaser.github.io</id>
     <title>Kite-chaser</title>
-    <updated>2019-09-21T08:23:38.385Z</updated>
+    <updated>2019-09-21T09:58:11.998Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Kite-chaser.github.io"/>
     <link rel="self" href="https://Kite-chaser.github.io/atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://Kite-chaser.github.io/images/avatar.png</logo>
     <icon>https://Kite-chaser.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Kite-chaser</rights>
+    <entry>
+        <title type="html"><![CDATA[P1270 “访问”美术馆]]></title>
+        <id>https://Kite-chaser.github.io/post/p1270-fang-wen-mei-zhu-guan</id>
+        <link href="https://Kite-chaser.github.io/post/p1270-fang-wen-mei-zhu-guan">
+        </link>
+        <updated>2019-09-21T09:45:36.000Z</updated>
+        <summary type="html"><![CDATA[<p>我肝了好久……</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>我肝了好久……</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[P1314 聪明的质监员]]></title>
         <id>https://Kite-chaser.github.io/post/p1314-cong-ming-de-zhi-jian-yuan</id>
@@ -41,17 +52,6 @@
         <summary type="html"><![CDATA[<p>这道题使我对树形DP有了新认识。</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>这道题使我对树形DP有了新认识。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[整除]]></title>
-        <id>https://Kite-chaser.github.io/post/zheng-chu</id>
-        <link href="https://Kite-chaser.github.io/post/zheng-chu">
-        </link>
-        <updated>2019-09-14T00:25:49.000Z</updated>
-        <summary type="html"><![CDATA[<p>只是一点关于整除的性质而已。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>只是一点关于整除的性质而已。</p>
 ]]></content>
     </entry>
 </feed>

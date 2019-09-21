@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>树形DP | Kite-chaser</title>
+<title>P1270 “访问”美术馆 | Kite-chaser</title>
 <meta name="description" content="This is my blog.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -15,6 +15,12 @@
 <link rel="stylesheet" href="https://Kite-chaser.github.io/styles/main.css">
 
 
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
@@ -23,6 +29,7 @@
 
   </head>
   <body>
+  
     <nav class="navbar border fixed split-nav">
   <div class="nav-brand">
     <h3><a href="https://Kite-chaser.github.io">Kite-chaser</a></h3>
@@ -87,90 +94,140 @@
     <div id="top" class="row site">
       <div class="sm-12 md-8 col">
         <div class="paper">
-          <h2 class="current-tag">标签: 树形DP</h2>
-          
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://Kite-chaser.github.io/post/p1270-fang-wen-mei-zhu-guan">P1270 “访问”美术馆</a>
-    </h2>
-    <p class="article-meta">
-      2019-09-21
-      
-        <a href="https://Kite-chaser.github.io/tag/Mh3k_Hqut" class="badge warning">
-          树形DP
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/BCIKttOve" class="badge warning">
-          动态规划，DP
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge secondary">
-          题解
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge warning">
-          OI
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>我肝了好久……</p>
+          <article class="article">
+            <h1>P1270 “访问”美术馆</h1>
+            <p class="article-meta">
+              2019-09-21
+              
+                <a href="https://Kite-chaser.github.io/tag/Mh3k_Hqut" class="badge secondary">
+                  树形DP
+                </a>
+              
+                <a href="https://Kite-chaser.github.io/tag/BCIKttOve" class="badge secondary">
+                  动态规划，DP
+                </a>
+              
+                <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge success">
+                  题解
+                </a>
+              
+                <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge success">
+                  OI
+                </a>
+              
+            </p>
+            
+              <img src="https://Kite-chaser.github.io/post-images/p1270-fang-wen-mei-zhu-guan.jpg" alt="P1270 “访问”美术馆">
+            
+            <div class="post-content">
+              <p>我肝了好久……</p>
+<!--more-->
+<h2 id="题目描述">题目描述</h2>
+<p>经过数月的精心准备，Peer Brelstet，一个出了名的盗画者，准备开始他的下一个行动。艺术馆的结构，每条走廊要么分叉为两条走廊，要么通向一个展览室。Peer知道每个展室里藏画的数量，并且他精确测量了通过每条走廊的时间。由于经验老到，他拿下一幅画需要5秒的时间。你的任务是编一个程序，计算在警察赶来之前，他最多能偷到多少幅画。<br>
+<img src="https://Kite-chaser.github.io/post-images/1569059240907.png" alt=""><br>
+样例的图……</p>
+<blockquote>
+<p><a href="https://www.luogu.org/problem/P1270">原题链接</a></p>
+</blockquote>
+<h2 id="slove">Slove</h2>
+<p>mon[i]到节点i的用时<br>
+<s>十年DP推方程</s></p>
+<ol>
+<li>设计状态：d[i][j]，以i为根节点，取画j副时的最少用时。</li>
+<li>边界：d[i][j]=j*5,(i为展室，0&lt;=j&lt;=该展室画数）</li>
+<li>转移方程：d[u][j]=max(d[u][j],d[u][j-k]+d[v][k]+mon[v]).（u到v有边；j为u的最大画数）</li>
+</ol>
+<h2 id="code">Code</h2>
+<pre><code class="language-cpp">
+#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#define N 1010
+using namespace std;
+int s;
+int tree[N*10];
+int mon[N],vl[N],cnt;
+int d[N][N];
+int sz[N],sum;
+int first[N],nxt[N],to[N],len;
+void add(int u,int v){
+	to[++len]=v;
+	nxt[len]=first[u];
+	first[u]=len;
+}
+void infs(int u){
+	mon[u]=mon[u]*2;
+	if(vl[u]){
+		sum+=vl[u];
+		for(int i=0;i&lt;=vl[u];i++) d[u][i]=i*5;
+		return ;
+	}
+	scanf(&quot;%d%d&quot;,&amp;mon[u*2],&amp;vl[u*2]);
+	add(u,u*2);infs(u*2);
+	scanf(&quot;%d%d&quot;,&amp;mon[u*2+1],&amp;vl[u*2+1]);
+	add(u,u*2+1),infs(u*2+1);
+}
+void dfs(int u){
+	if(vl[u]){
+		sz[u]=vl[u];
+		return ;
+	}
+	for(int i=first[u];i!=-1;i=nxt[i]){
+		dfs(to[i]);
+		sz[u]+=sz[to[i]];
+		for(int j=sz[u];j&gt;=0;j--){
+			for(int k=min(j,sz[to[i]]);k&gt;=0;k--) d[u][j]=min(d[u][j],d[u][j-k]+d[to[i]][k]+mon[to[i]]);
+		}
+	}
+}
+int main()
+{
+	memset(first,-1,sizeof(first));
+	for(int i=0;i&lt;=1001;i++) for(int j=1;j&lt;=1001;j++) d[i][j]=30000;
+	scanf(&quot;%d&quot;,&amp;s);
+	s--;
+	add(0,1);
+	scanf(&quot;%d%d&quot;,&amp;mon[1],&amp;vl[1]);
+	infs(1);
+	dfs(0);
+	for(int i=sum;i&gt;=0;i--){
+		if(d[0][i]&lt;s){
+			printf(&quot;%d&quot;,i);
+			return 0;
+		}
+	}
+	return 0;
+}
+</code></pre>
 
-    </p>
-    <div class="row">
-      <a href="https://Kite-chaser.github.io/post/p1270-fang-wen-mei-zhu-guan" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://Kite-chaser.github.io/post/p2014-xuan-ke">P2014 选课</a>
-    </h2>
-    <p class="article-meta">
-      2019-09-14
-      
-        <a href="https://Kite-chaser.github.io/tag/Mh3k_Hqut" class="badge secondary">
-          树形DP
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/BCIKttOve" class="badge secondary">
-          动态规划，DP
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge warning">
-          题解
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge secondary">
-          OI
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>这道题使我对树形DP有了新认识。</p>
-
-    </p>
-    <div class="row">
-      <a href="https://Kite-chaser.github.io/post/p2014-xuan-ke" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-
+            </div>
+          </article>
         </div>
-        <div class="row flex-edges">
-  
-  
-</div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://Kite-chaser.github.io/post/p1314-cong-ming-de-zhi-jian-yuan">
+                <h3 class="post-title">
+                  P1314 聪明的质监员
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+          
+            <div class="paper" data-aos="fade-in">
+              <div id="gitalk-container"></div>
+            </div>
+          
 
+          
+        
       </div>
+
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
     <img src="https://Kite-chaser.github.io/images/avatar.png?v=1569059890183" class="no-responsive avatar">
@@ -295,7 +352,7 @@
     </div>
     <div class="row">
       
-        <a href="https://Kite-chaser.github.io/tag/Mh3k_Hqut" class="badge secondary">
+        <a href="https://Kite-chaser.github.io/tag/Mh3k_Hqut" class="badge success">
           树形DP
         </a>
       
@@ -303,7 +360,7 @@
           动态规划，DP
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge warning">
+        <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge success">
           题解
         </a>
       
@@ -311,19 +368,19 @@
           OI
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/Q6VC_f0jg" class="badge success">
+        <a href="https://Kite-chaser.github.io/tag/Q6VC_f0jg" class="badge ">
           二分答案
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/kCU-ep_Aq" class="badge success">
+        <a href="https://Kite-chaser.github.io/tag/kCU-ep_Aq" class="badge ">
           笔记
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="badge warning">
+        <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="badge success">
           图论
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/92gh9uu1i" class="badge ">
+        <a href="https://Kite-chaser.github.io/tag/92gh9uu1i" class="badge warning">
           单调队列
         </a>
       
@@ -331,7 +388,7 @@
           线段树
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/ksq4_sfEo" class="badge secondary">
+        <a href="https://Kite-chaser.github.io/tag/ksq4_sfEo" class="badge warning">
           并查集
         </a>
       
@@ -341,6 +398,7 @@
     Powered by Hve Notes | <a class="rss" href="https://Kite-chaser.github.io/atom.xml" target="_blank">RSS</a>
   </div>
 </div>
+
 
     </div>
 
@@ -353,6 +411,29 @@ AOS.init();
 hljs.initHighlightingOnLoad()
 
 </script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '761ba32522ad16d2134b',
+        clientSecret: 'd5634ea03ca976d589a06f88c4e9fb23c928e5f9',
+        repo: 'Kite-chaser.github.io',
+        owner: 'Kite-chaser',
+        admin: ['Kite-chaser'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
 
 
 
