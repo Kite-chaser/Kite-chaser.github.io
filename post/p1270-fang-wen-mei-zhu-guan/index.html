@@ -7,7 +7,7 @@
 <meta name="description" content="This is my blog.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1569059890183">
+<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1569149567199">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
@@ -103,15 +103,15 @@
                   树形DP
                 </a>
               
-                <a href="https://Kite-chaser.github.io/tag/BCIKttOve" class="badge secondary">
+                <a href="https://Kite-chaser.github.io/tag/BCIKttOve" class="badge ">
                   动态规划，DP
                 </a>
               
-                <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge success">
+                <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge ">
                   题解
                 </a>
               
-                <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge success">
+                <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge secondary">
                   OI
                 </a>
               
@@ -130,16 +130,17 @@
 <p><a href="https://www.luogu.org/problem/P1270">原题链接</a></p>
 </blockquote>
 <h2 id="slove">Slove</h2>
-<p>mon[i]到节点i的用时<br>
+<p>树形DP-树形背包<br>
+mon[i]到节点i的用时<br>
 <s>十年DP推方程</s></p>
 <ol>
 <li>设计状态：d[i][j]，以i为根节点，取画j副时的最少用时。</li>
 <li>边界：d[i][j]=j*5,(i为展室，0&lt;=j&lt;=该展室画数）</li>
 <li>转移方程：d[u][j]=max(d[u][j],d[u][j-k]+d[v][k]+mon[v]).（u到v有边；j为u的最大画数）</li>
+<li>按照最大画幅，倒序枚举，用时低于S的就是答案。</li>
 </ol>
 <h2 id="code">Code</h2>
-<pre><code class="language-cpp">
-#include&lt;iostream&gt;
+<pre><code class="language-cpp">#include&lt;iostream&gt;
 #include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #define N 1010
@@ -230,7 +231,7 @@ int main()
 
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
-    <img src="https://Kite-chaser.github.io/images/avatar.png?v=1569059890183" class="no-responsive avatar">
+    <img src="https://Kite-chaser.github.io/images/avatar.png?v=1569149567199" class="no-responsive avatar">
     <div class="text-muted">This is my blog.</div>
     <div class="social-container">
       
@@ -352,39 +353,39 @@ int main()
     </div>
     <div class="row">
       
-        <a href="https://Kite-chaser.github.io/tag/Mh3k_Hqut" class="badge success">
+        <a href="https://Kite-chaser.github.io/tag/Mh3k_Hqut" class="badge secondary">
           树形DP
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/BCIKttOve" class="badge secondary">
+        <a href="https://Kite-chaser.github.io/tag/BCIKttOve" class="badge warning">
           动态规划，DP
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge success">
+        <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge warning">
           题解
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge secondary">
+        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge warning">
           OI
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/Q6VC_f0jg" class="badge ">
+        <a href="https://Kite-chaser.github.io/tag/Q6VC_f0jg" class="badge success">
           二分答案
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/kCU-ep_Aq" class="badge ">
+        <a href="https://Kite-chaser.github.io/tag/kCU-ep_Aq" class="badge warning">
           笔记
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="badge success">
+        <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="badge secondary">
           图论
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/92gh9uu1i" class="badge warning">
+        <a href="https://Kite-chaser.github.io/tag/92gh9uu1i" class="badge ">
           单调队列
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/2kgafuTx9" class="badge secondary">
+        <a href="https://Kite-chaser.github.io/tag/2kgafuTx9" class="badge success">
           线段树
         </a>
       
