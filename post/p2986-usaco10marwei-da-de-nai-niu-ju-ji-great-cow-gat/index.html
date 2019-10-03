@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>P1194 买礼物 | Kite-chaser</title>
+<title>P2986 [USACO10MAR]伟大的奶牛聚集Great Cow Gat… | Kite-chaser</title>
 <meta name="description" content="This is my blog.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -95,95 +95,121 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>P1194 买礼物</h1>
+            <h1>P2986 [USACO10MAR]伟大的奶牛聚集Great Cow Gat…</h1>
             <p class="article-meta">
-              2019-08-19
+              2019-10-03
               
-                <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge success">
+                <a href="https://Kite-chaser.github.io/tag/Mh3k_Hqut" class="badge success">
+                  树形DP
+                </a>
+              
+                <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge secondary">
                   题解
                 </a>
               
-                <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="badge success">
-                  图论
-                </a>
-              
-                <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge warning">
+                <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge ">
                   OI
                 </a>
               
             </p>
             
-              <img src="https://Kite-chaser.github.io/post-images/p1194-mai-li-wu.jpg" alt="P1194 买礼物">
+              <img src="https://Kite-chaser.github.io/post-images/p2986-usaco10marwei-da-de-nai-niu-ju-ji-great-cow-gat.jpg" alt="P2986 [USACO10MAR]伟大的奶牛聚集Great Cow Gat…">
             
             <div class="post-content">
-              <h4 id="题目描述">题目描述</h4>
-<p>又到了一年一度的明明生日了，明明想要买B样东西，巧的是，这B样东西价格都是A元。</p>
+              <p>话说描述下面一大坨是什么东西……</p>
 <!--more-->
-<p>但是，商店老板说最近有促销活动，也就是：</p>
-<p>如果你买了第I样东西，再买第J样，那么就可以只花K I,J元，更巧的是，K I,J竟然等于K J,I。</p>
-<p>现在明明想知道，他最少要花多少钱。</p>
-<blockquote>
-<p><a href="https://www.luogu.org/problem/P1194">原题链接</a></p>
-</blockquote>
-<h3 id="solve">Solve</h3>
-<p>用<a href="https://kite-chaser.github.io/post/kruskal">Kruskal</a>建立最小生成树（MST）。</p>
-<p>1.将每件物品视作一个节点，物品之间的优惠或费用为边的权值。</p>
-<p>2 . <strong>设置一个序号为零的节点（精髓所在）</strong> ， 此点直接连接的节点即为通过花费a元直接购买的物品。</p>
-<p>3.每一样物品都可通过直接花费a元来购买，所以从节点零向每一个节点连接一条权值为a的边。</p>
-<p>4.正常建边，正常Kruskal</p>
-<h3 id="tips">Tips</h3>
-<p>如果每个优惠都<s>太实惠</s>太小了，会导致没有物品通过直接购买的方式取得么？</p>
-<p>不会的，Kruskal是不会放过一条边的，一定会将节点零加入的。</p>
-<h3 id="code">Code</h3>
-<pre><code class="language-cpp">
-#include&lt;iostream&gt;
+<h2 id="题目描述">题目描述</h2>
+<p>Bessie is planning the annual Great Cow Gathering for cows all across the country and, of course, she would like to choose the most convenient location for the gathering to take place.</p>
+<p>Bessie正在计划一年一度的奶牛大集会，来自全国各地的奶牛将来参加这一次集会。当然，她会选择最方便的地点来举办这次集会。</p>
+<p>Each cow lives in one of N (1 &lt;= N &lt;= 100,000) different barns (conveniently numbered 1..N) which are connected by N-1 roads in such a way that it is possible to get from any barn to any other barn via the roads. Road i connects barns A_i and B_i (1 &lt;= A_i &lt;= N; 1 &lt;= B_i &lt;= N) and has length L_i (1 &lt;= L_i &lt;= 1,000). The Great Cow Gathering can be held at any one of these N barns. Moreover, barn i has C_i (0 &lt;= C_i &lt;= 1,000) cows living in it.</p>
+<p>每个奶牛居住在 N(1&lt;=N&lt;=100,000) 个农场中的一个，这些农场由N-1条道路连接，并且从任意一个农场都能够到达另外一个农场。道路i连接农场A_i和B_i(1 &lt;= A_i &lt;=N; 1 &lt;= B_i &lt;= N),长度为L_i(1 &lt;= L_i &lt;= 1,000)。集会可以在N个农场中的任意一个举行。另外，每个牛棚中居住者C_i(0 &lt;= C_i &lt;= 1,000)只奶牛。</p>
+<p>When choosing the barn in which to hold the Cow Gathering, Bessie wishes to maximize the convenience (which is to say minimize the inconvenience) of the chosen location. The inconvenience of choosing barn X for the gathering is the sum of the distances all of the cows need to travel to reach barn X (i.e., if the distance from barn i to barn X is 20, then the travel distance is C_i*20). Help Bessie choose the most convenient location for the Great Cow Gathering.</p>
+<p>在选择集会的地点的时候，Bessie希望最大化方便的程度(也就是最小化不方便程度)。比如选择第X个农场作为集会地点，它的不方便程度是其它牛棚中每只奶牛去参加集会所走的路程之和，(比如，农场i到达农场X的距离是20，那么总路程就是C_i*20)。帮助Bessie找出最方便的地点来举行大集会。</p>
+<p>Consider a country with five barns with [various capacities] connected by various roads of varying lengths. In this set of barns, neither barn 3 nor barn 4 houses any cows.</p>
+<p>1 3 4 5</p>
+<p>@--1--@--3--@--3--@[2]</p>
+<p>[1] |</p>
+<p>2 | @[1] 2 Bessie can hold the Gathering in any of five barns; here is the table of inconveniences calculated for each possible location:</p>
+<p>Gather ----- Inconvenience ------</p>
+<p>Location B1 B2 B3 B4 B5 Total</p>
+<p>1 0 3 0 0 14 17</p>
+<p>2 3 0 0 0 16 19</p>
+<p>3 1 2 0 0 12 15</p>
+<p>4 4 5 0 0 6 15</p>
+<p>5 7 8 0 0 0 15</p>
+<p>If Bessie holds the gathering in barn 1, then the inconveniences from each barn are:</p>
+<p>Barn 1 0 -- no travel time there!</p>
+<p>Barn 2 3 -- total travel distance is 2+1=3 x 1 cow = 3 Barn 3 0 -- no cows there!</p>
+<p>Barn 4 0 -- no cows there!</p>
+<p>Barn 5 14 -- total travel distance is 3+3+1=7 x 2 cows = 14 So the total inconvenience is 17.</p>
+<p>The best possible convenience is 15, achievable at by holding the Gathering at barns 3, 4, or 5.</p>
+<h2 id="slove">Slove</h2>
+<p>简单点说就是用树的重心求解。<br>
+类似于这种树上到一点然后求最小价值的题大多是树的重心。<br>
+也就是所求的这一点。<br>
+有关树的重心，见蒟蒻的<a href="https://kite-chaser.github.io/post/shu-de-chong-xin/">笔记</a>。<br>
+然后从树的重心，求到各点的路径长度和代价即可。</p>
+<h2 id="code">Code</h2>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
 #include&lt;cstdio&gt;
-#include&lt;algorithm&gt;
-using namespace std;  //标准开头
-const int N=1000;
-int a,b;
-struct note{
-	int u,r,w;
-}d[N*N];  //每条边的信息，u,r——端点，w——权值
-int f[N];  //f[i]表示节点i的父节点
-int num,cnt,ans;  //cnt——边数，ans——答案
-int e,r;
-bool cmp(const note &amp;x,const note &amp;y){  //排序
-	return x.w&lt;y.w;
+#include&lt;cstring&gt;
+#define ll long long
+#define N 100001
+using namespace std;
+ll n;
+ll maxn=1000000000000000000,ans;
+ll cnt,sum;
+ll c[N];
+ll x,y,z;
+ll dis[N],d[N];  //dis-从树的重心到节点的路径长度
+ll first[N*2],nxt[N*2],to[N*2],w[N*2],len;
+void add(ll u,ll v,ll z){
+	to[++len]=v;
+	w[len]=z;
+	nxt[len]=first[u];
+	first[u]=len;
 }
-int find(int s){
-	if(s!=f[s]) f[s]=find(f[s]);
-	return f[s];
+void dp(ll s,ll fa){
+	d[s]=c[s];
+	ll res=0;
+	for(ll i=first[s];i!=-1;i=nxt[i]){
+		if(to[i]==fa) continue;
+		dp(to[i],s);
+		d[s]+=d[to[i]];
+		res=max(res,d[to[i]]);
+	}
+	res=max(res,sum-d[s]);
+	if(res&lt;maxn){
+		maxn=res;
+		cnt=s;
+	}
+}
+void dfs(ll s,ll fa){
+	for(ll i=first[s];i!=-1;i=nxt[i]){
+		if(to[i]==fa) continue;
+		dis[to[i]]=dis[s]+w[i];
+		dfs(to[i],s);
+	}
 }
 int main()
 {
-	cin&gt;&gt;a&gt;&gt;b;
-	for(int i=0;i&lt;=b;i++) f[i]=i;
-	for(int i=1;i&lt;=b;i++){
-		d[++cnt].u=0;
-		d[cnt].r=i;
-		d[cnt].w=a;
+	memset(first,-1,sizeof(first));
+	scanf(&quot;%lld&quot;,&amp;n);
+	for(ll i=1;i&lt;=n;i++){
+		scanf(&quot;%lld&quot;,&amp;c[i]);sum+=c[i];
 	}
-	for(int i=1;i&lt;=b;i++){
-		for(int j=1;j&lt;=b;j++){
-			cin&gt;&gt;num;
-			if(num!=0){
-				d[++cnt].u=i;
-				d[cnt].r=j;
-				d[cnt].w=num;
-			}
-		}
+	for(ll i=1;i&lt;n;i++){
+		scanf(&quot;%lld%lld%lld&quot;,&amp;x,&amp;y,&amp;z);
+		add(x,y,z);
+		add(y,x,z);
 	}
-	sort(d+1,d+cnt+1,cmp);
-	for(int i=1;i&lt;=cnt;i++){
-		e=find(d[i].u);
-		r=find(d[i].r);
-		if(e!=r){
-			ans+=d[i].w;
-			f[r]=e;
-		}
+	dp(1,1);
+	dis[cnt]=0;
+	dfs(cnt,cnt);
+	for(ll i=1;i&lt;=n;i++){
+		ans+=dis[i]*c[i];
 	}
-	cout&lt;&lt;ans;
+	printf(&quot;%lld&quot;,ans);
 	return 0;
 }
 </code></pre>
@@ -197,9 +223,9 @@ int main()
               <div class="next">
                 下一篇
               </div>
-              <a href="https://Kite-chaser.github.io/post/p2323-hnoi2006gong-lu-xiu-jian-wen-ti">
+              <a href="https://Kite-chaser.github.io/post/p1270-fang-wen-mei-zhu-guan">
                 <h3 class="post-title">
-                  P2323 [HNOI2006]公路修建问题
+                  P1270 “访问”美术馆
                 </h3>
               </a>
             </div>
@@ -342,19 +368,19 @@ int main()
     </div>
     <div class="row">
       
-        <a href="https://Kite-chaser.github.io/tag/Mh3k_Hqut" class="badge secondary">
+        <a href="https://Kite-chaser.github.io/tag/Mh3k_Hqut" class="badge ">
           树形DP
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge ">
+        <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge secondary">
           题解
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge secondary">
+        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge ">
           OI
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/BCIKttOve" class="badge success">
+        <a href="https://Kite-chaser.github.io/tag/BCIKttOve" class="badge secondary">
           动态规划，DP
         </a>
       
@@ -370,15 +396,15 @@ int main()
           图论
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/92gh9uu1i" class="badge warning">
+        <a href="https://Kite-chaser.github.io/tag/92gh9uu1i" class="badge ">
           单调队列
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/2kgafuTx9" class="badge secondary">
+        <a href="https://Kite-chaser.github.io/tag/2kgafuTx9" class="badge ">
           线段树
         </a>
       
-        <a href="https://Kite-chaser.github.io/tag/ksq4_sfEo" class="badge warning">
+        <a href="https://Kite-chaser.github.io/tag/ksq4_sfEo" class="badge ">
           并查集
         </a>
       
