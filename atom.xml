@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Kite-chaser.github.io</id>
     <title>Kite-chaser</title>
-    <updated>2019-10-06T09:35:55.414Z</updated>
+    <updated>2019-10-07T08:27:38.717Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Kite-chaser.github.io"/>
     <link rel="self" href="https://Kite-chaser.github.io/atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://Kite-chaser.github.io/images/avatar.png</logo>
     <icon>https://Kite-chaser.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Kite-chaser</rights>
+    <entry>
+        <title type="html"><![CDATA[P3870 [TJOI2009]开关]]></title>
+        <id>https://Kite-chaser.github.io/post/p3870-tjoi2009kai-guan</id>
+        <link href="https://Kite-chaser.github.io/post/p3870-tjoi2009kai-guan">
+        </link>
+        <updated>2019-10-07T08:08:35.000Z</updated>
+        <summary type="html"><![CDATA[<p>分块是一种优雅的暴力。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>分块是一种优雅的暴力。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[P2986 [USACO10MAR]伟大的奶牛聚集Great Cow Gat…]]></title>
         <id>https://Kite-chaser.github.io/post/p2986-usaco10marwei-da-de-nai-niu-ju-ji-great-cow-gat</id>
@@ -41,17 +52,6 @@
         <summary type="html"><![CDATA[<p>我感受到了memset的力量。</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>我感受到了memset的力量。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[P1083 借教室]]></title>
-        <id>https://Kite-chaser.github.io/post/p1083-jie-jiao-shi</id>
-        <link href="https://Kite-chaser.github.io/post/p1083-jie-jiao-shi">
-        </link>
-        <updated>2019-09-14T03:34:21.000Z</updated>
-        <summary type="html"><![CDATA[<p>二分答案是真的妙。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>二分答案是真的妙。</p>
 ]]></content>
     </entry>
 </feed>
