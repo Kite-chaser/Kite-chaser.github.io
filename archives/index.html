@@ -1,406 +1,417 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
- <head>
-   <meta charset="utf-8" />
-  <title>Kite-chaser</title>
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-  <link rel="stylesheet" href="https://Kite-chaser.github.io/styles/main.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-   <script src="https://cdn.staticfile.org/highlight.js/9.15.9/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
- </head>
- <body>
-         <div class="sidebar animated fadeInDown">
-   <div class="logo-title">
-    <div class="title">
-     <img src="https://Kite-chaser.github.io/images/avatar.png?v=1572010311524" style="width:127px;" />
+<html>
+  <head>
+    
+<meta charset="utf-8" >
 
-     <div class="description">
-      <p>This is my blog.</p>
-     </div>
+<title>Kite-chaser</title>
+<meta name="description" content="This is my blog.">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico">
+<link rel="stylesheet" href="https://Kite-chaser.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://Kite-chaser.github.io">
+        <img class="avatar" src="https://Kite-chaser.github.io/images/avatar.png" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://Kite-chaser.github.io">
+        <h1 class="site-title">Kite-chaser</h1>
+      </a>
     </div>
-   </div>
-   <ul class="social-links">
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-   </ul>
-   <div class="footer">
-    <div class="by_farbox">
-   Powered by Hve Notes
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
     </div>
-    
-
-    </div>
-   </div>
   </div>
-  <div class="main">
-          <div class="page-top animated fadeInDown">
-    <div class="nav">
+</div>
 
-     <li><a  href="/">首页</a></li>
-
-     <li><a  href="/archives">归档</a></li>
-
-     <li><a  href="/tags">标签</a></li>
-
-     <li><a  href="https://Kite-chaser.github.io/post/guan-yu/">关于</a></li>
-
-     <li><a  href="https://Kite-chaser.github.io/post/you-lian/">友链</a></li>
-
-
-    </div>
-    <div class="information">
-     <div class="back_btn">
-      <li><a class="fa fa-chevron-left" onclick="window.history.go(-1)" style="display:none;"> </a></li>
-     </div>
-    </div>
-   </div>
-   <div class="autopagerize_page_element">
-    <div class="content">
-     <div class="archive animated fadeInDown">
-      <ul class="list-with-title">
-       <div class="archive">
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
       
-        <div class="listing-title">
-                2019
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://Kite-chaser.github.io/post/guan-yu/" class="menu purple-link">
+            关于
+          </a>
+        
+      
+        
+          <a href="https://Kite-chaser.github.io/post/you-lian/" class="menu purple-link">
+            友链
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+        <div class="content-container">
+          
+          
+
+<div class="archives-container">
+  
+    <h2 class="year">2019</h2>
+    
+      
+        <article class="post">
+          <a href="https://Kite-chaser.github.io/post/p3870-tjoi2009kai-guan">
+            <h2 class="post-title">
+              P3870 [TJOI2009]开关
+              <small>2019-10-07</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="https://Kite-chaser.github.io/post/p2986-usaco10marwei-da-de-nai-niu-ju-ji-great-cow-gat">
+            <h2 class="post-title">
+              P2986 [USACO10MAR]伟大的奶牛聚集Great Cow Gat…
+              <small>2019-10-03</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="https://Kite-chaser.github.io/post/p1270-fang-wen-mei-zhu-guan">
+            <h2 class="post-title">
+              P1270 “访问”美术馆
+              <small>2019-09-21</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="https://Kite-chaser.github.io/post/p1314-cong-ming-de-zhi-jian-yuan">
+            <h2 class="post-title">
+              P1314 聪明的质监员
+              <small>2019-09-14</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="https://Kite-chaser.github.io/post/p1083-jie-jiao-shi">
+            <h2 class="post-title">
+              P1083 借教室
+              <small>2019-09-14</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="https://Kite-chaser.github.io/post/p2014-xuan-ke">
+            <h2 class="post-title">
+              P2014 选课
+              <small>2019-09-14</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="https://Kite-chaser.github.io/post/zheng-chu">
+            <h2 class="post-title">
+              整除
+              <small>2019-09-14</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="https://Kite-chaser.github.io/post/uva11324-the-largest-clique">
+            <h2 class="post-title">
+              UVA11324 The Largest Clique
+              <small>2019-09-11</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="https://Kite-chaser.github.io/post/qiang-lian-tong-fen-liang">
+            <h2 class="post-title">
+              强连通分量
+              <small>2019-09-03</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="https://Kite-chaser.github.io/post/zui-da-du-li-ji">
+            <h2 class="post-title">
+              最大独立集
+              <small>2019-09-03</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="https://Kite-chaser.github.io/post/dong-tai-gui-hua-zhong-de-bei-bao-wen-ti">
+            <h2 class="post-title">
+              动态规划中的背包问题
+              <small>2019-08-19</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="https://Kite-chaser.github.io/post/shu-lun">
+            <h2 class="post-title">
+              数论
+              <small>2019-08-19</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="https://Kite-chaser.github.io/post/p1491-ji-he-wei-zhi">
+            <h2 class="post-title">
+              P1491 集合位置 
+              <small>2019-08-19</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="https://Kite-chaser.github.io/post/p2829-da-tao-chi">
+            <h2 class="post-title">
+              P2829 大逃离
+              <small>2019-08-19</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="https://Kite-chaser.github.io/post/p2866-usaco06novzao-gao-de-yi-tian-bad-hair-day">
+            <h2 class="post-title">
+              P2866 [USACO06NOV]糟糕的一天Bad Hair Day
+              <small>2019-08-19</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="https://Kite-chaser.github.io/post/p1395-hui-yi">
+            <h2 class="post-title">
+              P1395 【会议】
+              <small>2019-08-19</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="https://Kite-chaser.github.io/post/shu-de-chong-xin">
+            <h2 class="post-title">
+              树的重心
+              <small>2019-08-19</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="https://Kite-chaser.github.io/post/p1907-she-ji-dao-lu">
+            <h2 class="post-title">
+              P1907 设计道路
+              <small>2019-08-19</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="https://Kite-chaser.github.io/post/p1194-mai-li-wu">
+            <h2 class="post-title">
+              P1194 买礼物
+              <small>2019-08-19</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="https://Kite-chaser.github.io/post/p2323-hnoi2006gong-lu-xiu-jian-wen-ti">
+            <h2 class="post-title">
+              P2323 [HNOI2006]公路修建问题
+              <small>2019-08-19</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="https://Kite-chaser.github.io/post/kruskal">
+            <h2 class="post-title">
+              Kruskal
+              <small>2019-08-19</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="https://Kite-chaser.github.io/post/prim">
+            <h2 class="post-title">
+              Prim
+              <small>2019-08-19</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="https://Kite-chaser.github.io/post/p3088-usaco13novji-nai-niu-crowded-cows">
+            <h2 class="post-title">
+              P3088 [USACO13NOV]挤奶牛Crowded Cows
+              <small>2019-08-18</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="https://Kite-chaser.github.io/post/p4879-ycz-de-mei-zi">
+            <h2 class="post-title">
+              P4879 ycz的妹子
+              <small>2019-08-18</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="https://Kite-chaser.github.io/post/p1330-feng-suo-yang-guang-da-xue">
+            <h2 class="post-title">
+              P1330 封锁阳光大学
+              <small>2019-08-18</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="https://Kite-chaser.github.io/post/bing-cha-ji">
+            <h2 class="post-title">
+              并查集
+              <small>2019-08-18</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="https://Kite-chaser.github.io/post/zui-xiao-zhi-pei-ji">
+            <h2 class="post-title">
+              最小支配集
+              <small>2019-08-18</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+  
+</div>
+
+
         </div>
 
-        <ul class="listing">
+        <div class="site-footer">
+  <div class="slogan">This is my blog.</div>
+  Powered by Hve Notes
+</div>
 
-                
-                             
-         <div class="listing-item">
-          <div class="listing-post">
-           <a href="https://Kite-chaser.github.io/post/p3870-tjoi2009kai-guan" title="P3870 [TJOI2009]开关">P3870 [TJOI2009]开关</a>
-           <div class="post-time">
-            <span class="date">2019-10-07 </span>
-           </div>
-          </div>
-         </div>
-         
-         
-                             
-         <div class="listing-item">
-          <div class="listing-post">
-           <a href="https://Kite-chaser.github.io/post/p2986-usaco10marwei-da-de-nai-niu-ju-ji-great-cow-gat" title="P2986 [USACO10MAR]伟大的奶牛聚集Great Cow Gat…">P2986 [USACO10MAR]伟大的奶牛聚集Great Cow Gat…</a>
-           <div class="post-time">
-            <span class="date">2019-10-03 </span>
-           </div>
-          </div>
-         </div>
-         
-         
-                             
-         <div class="listing-item">
-          <div class="listing-post">
-           <a href="https://Kite-chaser.github.io/post/p1270-fang-wen-mei-zhu-guan" title="P1270 “访问”美术馆">P1270 “访问”美术馆</a>
-           <div class="post-time">
-            <span class="date">2019-09-21 </span>
-           </div>
-          </div>
-         </div>
-         
-         
-                             
-         <div class="listing-item">
-          <div class="listing-post">
-           <a href="https://Kite-chaser.github.io/post/p1314-cong-ming-de-zhi-jian-yuan" title="P1314 聪明的质监员">P1314 聪明的质监员</a>
-           <div class="post-time">
-            <span class="date">2019-09-14 </span>
-           </div>
-          </div>
-         </div>
-         
-         
-                             
-         <div class="listing-item">
-          <div class="listing-post">
-           <a href="https://Kite-chaser.github.io/post/p1083-jie-jiao-shi" title="P1083 借教室">P1083 借教室</a>
-           <div class="post-time">
-            <span class="date">2019-09-14 </span>
-           </div>
-          </div>
-         </div>
-         
-         
-                             
-         <div class="listing-item">
-          <div class="listing-post">
-           <a href="https://Kite-chaser.github.io/post/p2014-xuan-ke" title="P2014 选课">P2014 选课</a>
-           <div class="post-time">
-            <span class="date">2019-09-14 </span>
-           </div>
-          </div>
-         </div>
-         
-         
-                             
-         <div class="listing-item">
-          <div class="listing-post">
-           <a href="https://Kite-chaser.github.io/post/zheng-chu" title="整除">整除</a>
-           <div class="post-time">
-            <span class="date">2019-09-14 </span>
-           </div>
-          </div>
-         </div>
-         
-         
-                             
-         <div class="listing-item">
-          <div class="listing-post">
-           <a href="https://Kite-chaser.github.io/post/uva11324-the-largest-clique" title="UVA11324 The Largest Clique">UVA11324 The Largest Clique</a>
-           <div class="post-time">
-            <span class="date">2019-09-11 </span>
-           </div>
-          </div>
-         </div>
-         
-         
-                             
-         <div class="listing-item">
-          <div class="listing-post">
-           <a href="https://Kite-chaser.github.io/post/qiang-lian-tong-fen-liang" title="强连通分量">强连通分量</a>
-           <div class="post-time">
-            <span class="date">2019-09-03 </span>
-           </div>
-          </div>
-         </div>
-         
-         
-                             
-         <div class="listing-item">
-          <div class="listing-post">
-           <a href="https://Kite-chaser.github.io/post/zui-da-du-li-ji" title="最大独立集">最大独立集</a>
-           <div class="post-time">
-            <span class="date">2019-09-03 </span>
-           </div>
-          </div>
-         </div>
-         
-         
-                             
-         <div class="listing-item">
-          <div class="listing-post">
-           <a href="https://Kite-chaser.github.io/post/dong-tai-gui-hua-zhong-de-bei-bao-wen-ti" title="动态规划中的背包问题">动态规划中的背包问题</a>
-           <div class="post-time">
-            <span class="date">2019-08-19 </span>
-           </div>
-          </div>
-         </div>
-         
-         
-                             
-         <div class="listing-item">
-          <div class="listing-post">
-           <a href="https://Kite-chaser.github.io/post/shu-lun" title="数论">数论</a>
-           <div class="post-time">
-            <span class="date">2019-08-19 </span>
-           </div>
-          </div>
-         </div>
-         
-         
-                             
-         <div class="listing-item">
-          <div class="listing-post">
-           <a href="https://Kite-chaser.github.io/post/p1491-ji-he-wei-zhi" title="P1491 集合位置 ">P1491 集合位置 </a>
-           <div class="post-time">
-            <span class="date">2019-08-19 </span>
-           </div>
-          </div>
-         </div>
-         
-         
-                             
-         <div class="listing-item">
-          <div class="listing-post">
-           <a href="https://Kite-chaser.github.io/post/p2829-da-tao-chi" title="P2829 大逃离">P2829 大逃离</a>
-           <div class="post-time">
-            <span class="date">2019-08-19 </span>
-           </div>
-          </div>
-         </div>
-         
-         
-                             
-         <div class="listing-item">
-          <div class="listing-post">
-           <a href="https://Kite-chaser.github.io/post/p2866-usaco06novzao-gao-de-yi-tian-bad-hair-day" title="P2866 [USACO06NOV]糟糕的一天Bad Hair Day">P2866 [USACO06NOV]糟糕的一天Bad Hair Day</a>
-           <div class="post-time">
-            <span class="date">2019-08-19 </span>
-           </div>
-          </div>
-         </div>
-         
-         
-                             
-         <div class="listing-item">
-          <div class="listing-post">
-           <a href="https://Kite-chaser.github.io/post/p1395-hui-yi" title="P1395 【会议】">P1395 【会议】</a>
-           <div class="post-time">
-            <span class="date">2019-08-19 </span>
-           </div>
-          </div>
-         </div>
-         
-         
-                             
-         <div class="listing-item">
-          <div class="listing-post">
-           <a href="https://Kite-chaser.github.io/post/shu-de-chong-xin" title="树的重心">树的重心</a>
-           <div class="post-time">
-            <span class="date">2019-08-19 </span>
-           </div>
-          </div>
-         </div>
-         
-         
-                             
-         <div class="listing-item">
-          <div class="listing-post">
-           <a href="https://Kite-chaser.github.io/post/p1907-she-ji-dao-lu" title="P1907 设计道路">P1907 设计道路</a>
-           <div class="post-time">
-            <span class="date">2019-08-19 </span>
-           </div>
-          </div>
-         </div>
-         
-         
-                             
-         <div class="listing-item">
-          <div class="listing-post">
-           <a href="https://Kite-chaser.github.io/post/p1194-mai-li-wu" title="P1194 买礼物">P1194 买礼物</a>
-           <div class="post-time">
-            <span class="date">2019-08-19 </span>
-           </div>
-          </div>
-         </div>
-         
-         
-                             
-         <div class="listing-item">
-          <div class="listing-post">
-           <a href="https://Kite-chaser.github.io/post/p2323-hnoi2006gong-lu-xiu-jian-wen-ti" title="P2323 [HNOI2006]公路修建问题">P2323 [HNOI2006]公路修建问题</a>
-           <div class="post-time">
-            <span class="date">2019-08-19 </span>
-           </div>
-          </div>
-         </div>
-         
-         
-                             
-         <div class="listing-item">
-          <div class="listing-post">
-           <a href="https://Kite-chaser.github.io/post/kruskal" title="Kruskal">Kruskal</a>
-           <div class="post-time">
-            <span class="date">2019-08-19 </span>
-           </div>
-          </div>
-         </div>
-         
-         
-                             
-         <div class="listing-item">
-          <div class="listing-post">
-           <a href="https://Kite-chaser.github.io/post/prim" title="Prim">Prim</a>
-           <div class="post-time">
-            <span class="date">2019-08-19 </span>
-           </div>
-          </div>
-         </div>
-         
-         
-                             
-         <div class="listing-item">
-          <div class="listing-post">
-           <a href="https://Kite-chaser.github.io/post/p3088-usaco13novji-nai-niu-crowded-cows" title="P3088 [USACO13NOV]挤奶牛Crowded Cows">P3088 [USACO13NOV]挤奶牛Crowded Cows</a>
-           <div class="post-time">
-            <span class="date">2019-08-18 </span>
-           </div>
-          </div>
-         </div>
-         
-         
-                             
-         <div class="listing-item">
-          <div class="listing-post">
-           <a href="https://Kite-chaser.github.io/post/p4879-ycz-de-mei-zi" title="P4879 ycz的妹子">P4879 ycz的妹子</a>
-           <div class="post-time">
-            <span class="date">2019-08-18 </span>
-           </div>
-          </div>
-         </div>
-         
-         
-                             
-         <div class="listing-item">
-          <div class="listing-post">
-           <a href="https://Kite-chaser.github.io/post/p1330-feng-suo-yang-guang-da-xue" title="P1330 封锁阳光大学">P1330 封锁阳光大学</a>
-           <div class="post-time">
-            <span class="date">2019-08-18 </span>
-           </div>
-          </div>
-         </div>
-         
-         
-                             
-         <div class="listing-item">
-          <div class="listing-post">
-           <a href="https://Kite-chaser.github.io/post/bing-cha-ji" title="并查集">并查集</a>
-           <div class="post-time">
-            <span class="date">2019-08-18 </span>
-           </div>
-          </div>
-         </div>
-         
-         
-                             
-         <div class="listing-item">
-          <div class="listing-post">
-           <a href="https://Kite-chaser.github.io/post/zui-xiao-zhi-pei-ji" title="最小支配集">最小支配集</a>
-           <div class="post-time">
-            <span class="date">2019-08-18 </span>
-           </div>
-          </div>
-         </div>
-         
-         
-        </ul>
-        	
-       </div>
-       <div class="pagination">
-        <ul class="clearfix"></ul>
-       </div>
-      </ul>
-     </div>
+
+      </div>
+      <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
     </div>
-   </div>
-  </div>
-   <script src="https://Kite-chaser.github.io/media/scripts/jquery.js"></script>
-  <script src="https://Kite-chaser.github.io/media/scripts/jquery-migrate-1.2.1.min.js"></script>
-  <script src="https://Kite-chaser.github.io/media/scripts/jquery.appear.js"></script>
-
-
- </body>
+  </body>
 </html>

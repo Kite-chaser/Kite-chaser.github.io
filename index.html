@@ -1,361 +1,587 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
- <head>
-     <meta charset="utf-8" />
-  <title>Kite-chaser</title>
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-  <link rel="stylesheet" href="https://Kite-chaser.github.io/styles/main.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-   <script src="https://cdn.staticfile.org/highlight.js/9.15.9/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
- </head>
- <body>
-     <div class="sidebar animated fadeInDown">
-   <div class="logo-title">
-    <div class="title">
-     <img src="https://Kite-chaser.github.io/images/avatar.png?v=1572010311524" style="width:127px;" />
 
-     <div class="description">
-      <p>This is my blog.</p>
-     </div>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>Kite-chaser</title>
+<meta name="description" content="This is my blog.">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico">
+<link rel="stylesheet" href="https://Kite-chaser.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://Kite-chaser.github.io">
+        <img class="avatar" src="https://Kite-chaser.github.io/images/avatar.png" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://Kite-chaser.github.io">
+        <h1 class="site-title">Kite-chaser</h1>
+      </a>
     </div>
-   </div>
-   <ul class="social-links">
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-   </ul>
-   <div class="footer">
-    <div class="by_farbox">
-   Powered by Hve Notes
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
     </div>
-    
-
-    </div>
-   </div>
   </div>
-  <div class="main">
-      <div class="page-top animated fadeInDown">
-    <div class="nav">
+</div>
 
-     <li><a  href="/">首页</a></li>
-
-     <li><a  href="/archives">归档</a></li>
-
-     <li><a  href="/tags">标签</a></li>
-
-     <li><a  href="https://Kite-chaser.github.io/post/guan-yu/">关于</a></li>
-
-     <li><a  href="https://Kite-chaser.github.io/post/you-lian/">友链</a></li>
-
-
-    </div>
-    <div class="information">
-     <div class="back_btn">
-      <li><a class="fa fa-chevron-left" onclick="window.history.go(-1)" style="display:none;"> </a></li>
-     </div>
-    </div>
-   </div>
-   <div class="autopagerize_page_element">
-    <div class="content">
-              
-     <div class="post animated fadeInDown">
-      <div class="post-title">
-       <h3><a href="https://Kite-chaser.github.io/post/p3870-tjoi2009kai-guan">P3870 [TJOI2009]开关</a></h3>
-      </div>
-      <div class="post-content">
-       <p><p>分块是一种优雅的暴力。</p>
-</p>
-      </div>
-      <div class="post-footer">
-       <div class="meta">
-        <div class="info">
-         <i class="fa fa-sun-o"></i>
-         <span class="date">2019-10-07</span>
-         <i class="fa fa-tag"></i>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/jU7dm_aQ_" title="分块">分块 </a>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/fgReGJsqm" title="题解">题解 </a>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/BsZO4xN8u" title="OI">OI </a>
-         
-        </div>
-       </div>
-      </div>
-     </div>
-       
-     <div class="post animated fadeInDown">
-      <div class="post-title">
-       <h3><a href="https://Kite-chaser.github.io/post/p2986-usaco10marwei-da-de-nai-niu-ju-ji-great-cow-gat">P2986 [USACO10MAR]伟大的奶牛聚集Great Cow Gat…</a></h3>
-      </div>
-      <div class="post-content">
-       <p><p>话说描述下面一大坨是什么东西……</p>
-</p>
-      </div>
-      <div class="post-footer">
-       <div class="meta">
-        <div class="info">
-         <i class="fa fa-sun-o"></i>
-         <span class="date">2019-10-03</span>
-         <i class="fa fa-tag"></i>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/Mh3k_Hqut" title="树形DP">树形DP </a>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/fgReGJsqm" title="题解">题解 </a>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/BsZO4xN8u" title="OI">OI </a>
-         
-        </div>
-       </div>
-      </div>
-     </div>
-       
-     <div class="post animated fadeInDown">
-      <div class="post-title">
-       <h3><a href="https://Kite-chaser.github.io/post/p1270-fang-wen-mei-zhu-guan">P1270 “访问”美术馆</a></h3>
-      </div>
-      <div class="post-content">
-       <p><p>我肝了好久……</p>
-</p>
-      </div>
-      <div class="post-footer">
-       <div class="meta">
-        <div class="info">
-         <i class="fa fa-sun-o"></i>
-         <span class="date">2019-09-21</span>
-         <i class="fa fa-tag"></i>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/Mh3k_Hqut" title="树形DP">树形DP </a>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/BCIKttOve" title="动态规划，DP">动态规划，DP </a>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/fgReGJsqm" title="题解">题解 </a>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/BsZO4xN8u" title="OI">OI </a>
-         
-        </div>
-       </div>
-      </div>
-     </div>
-       
-     <div class="post animated fadeInDown">
-      <div class="post-title">
-       <h3><a href="https://Kite-chaser.github.io/post/p1314-cong-ming-de-zhi-jian-yuan">P1314 聪明的质监员</a></h3>
-      </div>
-      <div class="post-content">
-       <p><p>我感受到了memset的力量。</p>
-</p>
-      </div>
-      <div class="post-footer">
-       <div class="meta">
-        <div class="info">
-         <i class="fa fa-sun-o"></i>
-         <span class="date">2019-09-14</span>
-         <i class="fa fa-tag"></i>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/Q6VC_f0jg" title="二分答案">二分答案 </a>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/fgReGJsqm" title="题解">题解 </a>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/BsZO4xN8u" title="OI">OI </a>
-         
-        </div>
-       </div>
-      </div>
-     </div>
-       
-     <div class="post animated fadeInDown">
-      <div class="post-title">
-       <h3><a href="https://Kite-chaser.github.io/post/p1083-jie-jiao-shi">P1083 借教室</a></h3>
-      </div>
-      <div class="post-content">
-       <p><p>二分答案是真的妙。</p>
-</p>
-      </div>
-      <div class="post-footer">
-       <div class="meta">
-        <div class="info">
-         <i class="fa fa-sun-o"></i>
-         <span class="date">2019-09-14</span>
-         <i class="fa fa-tag"></i>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/Q6VC_f0jg" title="二分答案">二分答案 </a>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/fgReGJsqm" title="题解">题解 </a>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/BsZO4xN8u" title="OI">OI </a>
-         
-        </div>
-       </div>
-      </div>
-     </div>
-       
-     <div class="post animated fadeInDown">
-      <div class="post-title">
-       <h3><a href="https://Kite-chaser.github.io/post/p2014-xuan-ke">P2014 选课</a></h3>
-      </div>
-      <div class="post-content">
-       <p><p>这道题使我对树形DP有了新认识。</p>
-</p>
-      </div>
-      <div class="post-footer">
-       <div class="meta">
-        <div class="info">
-         <i class="fa fa-sun-o"></i>
-         <span class="date">2019-09-14</span>
-         <i class="fa fa-tag"></i>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/Mh3k_Hqut" title="树形DP">树形DP </a>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/BCIKttOve" title="动态规划，DP">动态规划，DP </a>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/fgReGJsqm" title="题解">题解 </a>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/BsZO4xN8u" title="OI">OI </a>
-         
-        </div>
-       </div>
-      </div>
-     </div>
-       
-     <div class="post animated fadeInDown">
-      <div class="post-title">
-       <h3><a href="https://Kite-chaser.github.io/post/zheng-chu">整除</a></h3>
-      </div>
-      <div class="post-content">
-       <p><p>只是一点关于整除的性质而已。</p>
-</p>
-      </div>
-      <div class="post-footer">
-       <div class="meta">
-        <div class="info">
-         <i class="fa fa-sun-o"></i>
-         <span class="date">2019-09-14</span>
-         <i class="fa fa-tag"></i>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/kCU-ep_Aq" title="笔记">笔记 </a>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/BsZO4xN8u" title="OI">OI </a>
-         
-        </div>
-       </div>
-      </div>
-     </div>
-       
-     <div class="post animated fadeInDown">
-      <div class="post-title">
-       <h3><a href="https://Kite-chaser.github.io/post/uva11324-the-largest-clique">UVA11324 The Largest Clique</a></h3>
-      </div>
-      <div class="post-content">
-       <p><p>这道题很迷，为什么呢？因为题面的封面很迷。</p>
-</p>
-      </div>
-      <div class="post-footer">
-       <div class="meta">
-        <div class="info">
-         <i class="fa fa-sun-o"></i>
-         <span class="date">2019-09-11</span>
-         <i class="fa fa-tag"></i>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/BCIKttOve" title="动态规划，DP">动态规划，DP </a>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/fgReGJsqm" title="题解">题解 </a>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/nQBg2kv-6" title="图论">图论 </a>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/BsZO4xN8u" title="OI">OI </a>
-         
-        </div>
-       </div>
-      </div>
-     </div>
-       
-     <div class="post animated fadeInDown">
-      <div class="post-title">
-       <h3><a href="https://Kite-chaser.github.io/post/qiang-lian-tong-fen-liang">强连通分量</a></h3>
-      </div>
-      <div class="post-content">
-       <p><p>tarjan真的不是一种算法。</p>
-</p>
-      </div>
-      <div class="post-footer">
-       <div class="meta">
-        <div class="info">
-         <i class="fa fa-sun-o"></i>
-         <span class="date">2019-09-03</span>
-         <i class="fa fa-tag"></i>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/nQBg2kv-6" title="图论">图论 </a>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/BsZO4xN8u" title="OI">OI </a>
-         
-        </div>
-       </div>
-      </div>
-     </div>
-       
-     <div class="post animated fadeInDown">
-      <div class="post-title">
-       <h3><a href="https://Kite-chaser.github.io/post/zui-da-du-li-ji">最大独立集</a></h3>
-      </div>
-      <div class="post-content">
-       <p><p>最大独立集可以算是一种树形DP。</p>
-</p>
-      </div>
-      <div class="post-footer">
-       <div class="meta">
-        <div class="info">
-         <i class="fa fa-sun-o"></i>
-         <span class="date">2019-09-03</span>
-         <i class="fa fa-tag"></i>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/BCIKttOve" title="动态规划，DP">动态规划，DP </a>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/nQBg2kv-6" title="图论">图论 </a>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/BsZO4xN8u" title="OI">OI </a>
-         
-        </div>
-       </div>
-      </div>
-     </div>
-     
-     <div class="pagination">
-      <ul class="clearfix">
-            
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
         
-       <li class="next pagbuttons"><a class="btn" role="navigation" href="https://Kite-chaser.github.io/page/2/">下一页</a></li>
-       
-
-      </ul>
-     </div>
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://Kite-chaser.github.io/post/guan-yu/" class="menu purple-link">
+            关于
+          </a>
+        
+      
+        
+          <a href="https://Kite-chaser.github.io/post/you-lian/" class="menu purple-link">
+            友链
+          </a>
+        
+      
     </div>
-   </div>
   </div>
-  <script src="https://Kite-chaser.github.io/media/scripts/jquery.js"></script>
-  <script src="https://Kite-chaser.github.io/media/scripts/jquery-migrate-1.2.1.min.js"></script>
-  <script src="https://Kite-chaser.github.io/media/scripts/jquery.appear.js"></script>
+</transition>
 
 
- </body>
+      <div class="content-container">
+        
+        
+<section class="post-item">
+    <div class="content">
+      <a href="https://Kite-chaser.github.io/post/p3870-tjoi2009kai-guan">
+        <h2 class="post-title">P3870 [TJOI2009]开关</h2>
+      </a>
+      <div class="post-abstract">
+        <p>分块是一种优雅的暴力。</p>
+
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2019-10-07</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="https://Kite-chaser.github.io/tag/jU7dm_aQ_">
+                分块
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Kite-chaser.github.io/tag/fgReGJsqm">
+                题解
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u">
+                OI
+                
+              </a>
+            
+          </span>
+        
+      </div>
+    </div>
+    
+      <a href="https://Kite-chaser.github.io/post/p3870-tjoi2009kai-guan">
+        <div class="feature-container" style="background-image: url('https://Kite-chaser.github.io/post-images/p3870-tjoi2009kai-guan.png')">
+        </div>
+      </a>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
+      <a href="https://Kite-chaser.github.io/post/p2986-usaco10marwei-da-de-nai-niu-ju-ji-great-cow-gat">
+        <h2 class="post-title">P2986 [USACO10MAR]伟大的奶牛聚集Great Cow Gat…</h2>
+      </a>
+      <div class="post-abstract">
+        <p>话说描述下面一大坨是什么东西……</p>
+
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2019-10-03</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="https://Kite-chaser.github.io/tag/Mh3k_Hqut">
+                树形DP
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Kite-chaser.github.io/tag/fgReGJsqm">
+                题解
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u">
+                OI
+                
+              </a>
+            
+          </span>
+        
+      </div>
+    </div>
+    
+      <a href="https://Kite-chaser.github.io/post/p2986-usaco10marwei-da-de-nai-niu-ju-ji-great-cow-gat">
+        <div class="feature-container" style="background-image: url('https://Kite-chaser.github.io/post-images/p2986-usaco10marwei-da-de-nai-niu-ju-ji-great-cow-gat.jpg')">
+        </div>
+      </a>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
+      <a href="https://Kite-chaser.github.io/post/p1270-fang-wen-mei-zhu-guan">
+        <h2 class="post-title">P1270 “访问”美术馆</h2>
+      </a>
+      <div class="post-abstract">
+        <p>我肝了好久……</p>
+
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2019-09-21</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="https://Kite-chaser.github.io/tag/Mh3k_Hqut">
+                树形DP
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Kite-chaser.github.io/tag/BCIKttOve">
+                动态规划，DP
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Kite-chaser.github.io/tag/fgReGJsqm">
+                题解
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u">
+                OI
+                
+              </a>
+            
+          </span>
+        
+      </div>
+    </div>
+    
+      <a href="https://Kite-chaser.github.io/post/p1270-fang-wen-mei-zhu-guan">
+        <div class="feature-container" style="background-image: url('https://Kite-chaser.github.io/post-images/p1270-fang-wen-mei-zhu-guan.jpg')">
+        </div>
+      </a>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
+      <a href="https://Kite-chaser.github.io/post/p1314-cong-ming-de-zhi-jian-yuan">
+        <h2 class="post-title">P1314 聪明的质监员</h2>
+      </a>
+      <div class="post-abstract">
+        <p>我感受到了memset的力量。</p>
+
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2019-09-14</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="https://Kite-chaser.github.io/tag/Q6VC_f0jg">
+                二分答案
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Kite-chaser.github.io/tag/fgReGJsqm">
+                题解
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u">
+                OI
+                
+              </a>
+            
+          </span>
+        
+      </div>
+    </div>
+    
+      <a href="https://Kite-chaser.github.io/post/p1314-cong-ming-de-zhi-jian-yuan">
+        <div class="feature-container" style="background-image: url('https://Kite-chaser.github.io/post-images/p1314-cong-ming-de-zhi-jian-yuan.jpg')">
+        </div>
+      </a>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
+      <a href="https://Kite-chaser.github.io/post/p1083-jie-jiao-shi">
+        <h2 class="post-title">P1083 借教室</h2>
+      </a>
+      <div class="post-abstract">
+        <p>二分答案是真的妙。</p>
+
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2019-09-14</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="https://Kite-chaser.github.io/tag/Q6VC_f0jg">
+                二分答案
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Kite-chaser.github.io/tag/fgReGJsqm">
+                题解
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u">
+                OI
+                
+              </a>
+            
+          </span>
+        
+      </div>
+    </div>
+    
+      <a href="https://Kite-chaser.github.io/post/p1083-jie-jiao-shi">
+        <div class="feature-container" style="background-image: url('https://Kite-chaser.github.io/post-images/p1083-jie-jiao-shi.png')">
+        </div>
+      </a>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
+      <a href="https://Kite-chaser.github.io/post/p2014-xuan-ke">
+        <h2 class="post-title">P2014 选课</h2>
+      </a>
+      <div class="post-abstract">
+        <p>这道题使我对树形DP有了新认识。</p>
+
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2019-09-14</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="https://Kite-chaser.github.io/tag/Mh3k_Hqut">
+                树形DP
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Kite-chaser.github.io/tag/BCIKttOve">
+                动态规划，DP
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Kite-chaser.github.io/tag/fgReGJsqm">
+                题解
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u">
+                OI
+                
+              </a>
+            
+          </span>
+        
+      </div>
+    </div>
+    
+      <a href="https://Kite-chaser.github.io/post/p2014-xuan-ke">
+        <div class="feature-container" style="background-image: url('https://Kite-chaser.github.io/post-images/p2014-xuan-ke.jpg')">
+        </div>
+      </a>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
+      <a href="https://Kite-chaser.github.io/post/zheng-chu">
+        <h2 class="post-title">整除</h2>
+      </a>
+      <div class="post-abstract">
+        <p>只是一点关于整除的性质而已。</p>
+
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2019-09-14</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="https://Kite-chaser.github.io/tag/kCU-ep_Aq">
+                笔记
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u">
+                OI
+                
+              </a>
+            
+          </span>
+        
+      </div>
+    </div>
+    
+      <a href="https://Kite-chaser.github.io/post/zheng-chu">
+        <div class="feature-container" style="background-image: url('https://Kite-chaser.github.io/post-images/zheng-chu.jpg')">
+        </div>
+      </a>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
+      <a href="https://Kite-chaser.github.io/post/uva11324-the-largest-clique">
+        <h2 class="post-title">UVA11324 The Largest Clique</h2>
+      </a>
+      <div class="post-abstract">
+        <p>这道题很迷，为什么呢？因为题面的封面很迷。</p>
+
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2019-09-11</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="https://Kite-chaser.github.io/tag/BCIKttOve">
+                动态规划，DP
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Kite-chaser.github.io/tag/fgReGJsqm">
+                题解
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6">
+                图论
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u">
+                OI
+                
+              </a>
+            
+          </span>
+        
+      </div>
+    </div>
+    
+      <a href="https://Kite-chaser.github.io/post/uva11324-the-largest-clique">
+        <div class="feature-container" style="background-image: url('https://Kite-chaser.github.io/post-images/uva11324-the-largest-clique.jpg')">
+        </div>
+      </a>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
+      <a href="https://Kite-chaser.github.io/post/qiang-lian-tong-fen-liang">
+        <h2 class="post-title">强连通分量</h2>
+      </a>
+      <div class="post-abstract">
+        <p>tarjan真的不是一种算法。</p>
+
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2019-09-03</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6">
+                图论
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u">
+                OI
+                
+              </a>
+            
+          </span>
+        
+      </div>
+    </div>
+    
+      <a href="https://Kite-chaser.github.io/post/qiang-lian-tong-fen-liang">
+        <div class="feature-container" style="background-image: url('https://Kite-chaser.github.io/post-images/qiang-lian-tong-fen-liang.jpg')">
+        </div>
+      </a>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
+      <a href="https://Kite-chaser.github.io/post/zui-da-du-li-ji">
+        <h2 class="post-title">最大独立集</h2>
+      </a>
+      <div class="post-abstract">
+        <p>最大独立集可以算是一种树形DP。</p>
+
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2019-09-03</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="https://Kite-chaser.github.io/tag/BCIKttOve">
+                动态规划，DP
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6">
+                图论
+                
+                  ，
+                
+              </a>
+            
+              <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u">
+                OI
+                
+              </a>
+            
+          </span>
+        
+      </div>
+    </div>
+    
+      <a href="https://Kite-chaser.github.io/post/zui-da-du-li-ji">
+        <div class="feature-container" style="background-image: url('https://Kite-chaser.github.io/post-images/zui-da-du-li-ji.png')">
+        </div>
+      </a>
+    
+  </section>
+
+
+<div class="pagination-container">
+  
+  
+    <a href="https://Kite-chaser.github.io/page/2/" class="next">下一页 <i class="icon-arrow-ios-forward-outline"></i></a>
+  
+</div>
+
+
+      </div>
+
+      <div class="site-footer">
+  <div class="slogan">This is my blog.</div>
+  Powered by Hve Notes
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
 </html>
