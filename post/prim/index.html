@@ -1,17 +1,17 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>Prim | Kite-chaser</title>
 <meta name="description" content="This is my blog.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1572006967627">
 
-<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://Kite-chaser.github.io/styles/main.css">
 
 
@@ -21,104 +21,102 @@
 
   
 
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 
   </head>
   <body>
-    <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="https://Kite-chaser.github.io">
-        <img class="avatar" src="https://Kite-chaser.github.io/images/avatar.png" alt="" width="32px" height="32px">
-      </a>
-      <a href="https://Kite-chaser.github.io">
-        <h1 class="site-title">Kite-chaser</h1>
-      </a>
-    </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://Kite-chaser.github.io">Kite-chaser</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="https://Kite-chaser.github.io/post/guan-yu/" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="https://Kite-chaser.github.io/post/you-lian/" class="menu">
+                友链
+              </a>
+            
+          </li>
+        
+      </ul>
     </div>
   </div>
-</div>
+</nav>
 
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
-      
-        
-          <a href="/" class="menu purple-link">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="menu purple-link">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="menu purple-link">
-            标签
-          </a>
-        
-      
-        
-          <a href="https://Kite-chaser.github.io/post/guan-yu/" class="menu purple-link">
-            关于
-          </a>
-        
-      
-        
-          <a href="https://Kite-chaser.github.io/post/you-lian/" class="menu purple-link">
-            友链
-          </a>
-        
-      
-    </div>
-  </div>
-</transition>
-
-
-      <div class="content-container">
-        <div class="post-detail">
-          <h2 class="post-title">Prim</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2019-08-19</span>
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>Prim</h1>
+            <p class="article-meta">
+              2019-08-19
+              
+                <a href="https://Kite-chaser.github.io/tag/kCU-ep_Aq" class="badge ">
+                  笔记
+                </a>
+              
+                <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="badge secondary">
+                  图论
+                </a>
+              
+                <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge warning">
+                  OI
+                </a>
+              
+            </p>
             
-              <span>
-                <i class="icon-pricetags-outline"></i>
-                
-                  <a href="https://Kite-chaser.github.io/tag/kCU-ep_Aq">
-                    笔记
-                    
-                      ，
-                    
-                  </a>
-                
-                  <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6">
-                    图论
-                    
-                      ，
-                    
-                  </a>
-                
-                  <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u">
-                    OI
-                    
-                  </a>
-                
-              </span>
+              <img src="https://Kite-chaser.github.io/post-images/prim.jpg" alt="Prim">
             
-          </div>
-          <div class="post-content">
-            <h2 id="rt">RT</h2>
+            <div class="post-content">
+              <h2 id="rt">RT</h2>
 <p>Prim算法主要应用于建立最小生成树（MST），同理的还有<a href="https://kite-chaser.github.io/post/kruskal/">Kruskal</a>算法。</p>
 <!--more-->
 <h2 id="思想">思想</h2>
@@ -189,50 +187,228 @@ int main()
 <h2 id="相关题目">相关题目</h2>
 <p><a href="https://www.luogu.org/fe/problem/P3366">P3366【模板】最小生成树</a></p>
 
-          </div>
+            </div>
+          </article>
         </div>
-
-        
-          <div class="next-post">
-            <a class="purple-link" href="https://Kite-chaser.github.io/post/p3088-usaco13novji-nai-niu-crowded-cows">
-              <h3 class="post-title">
-                下一篇：P3088 [USACO13NOV]挤奶牛Crowded Cows
-              </h3>
-            </a>
-          </div>
+        <div class="paper" data-aos="fade-in">
           
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://Kite-chaser.github.io/post/p3088-usaco13novji-nai-niu-crowded-cows">
+                <h3 class="post-title">
+                  P3088 [USACO13NOV]挤奶牛Crowded Cows
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+          
+            <div class="paper" data-aos="fade-in">
+              <div id="gitalk-container"></div>
+            </div>
+          
+
+          
+        
       </div>
 
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://Kite-chaser.github.io/images/avatar.png?v=1572006967627" class="no-responsive avatar">
+    <div class="text-muted">This is my blog.</div>
+    <div class="social-container">
       
         
-          <div id="gitalk-container"></div>
-        
-
+      
         
       
-
-      <div class="site-footer">
-  <div class="slogan">This is my blog.</div>
-  Powered by Hve Notes
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/p3870-tjoi2009kai-guan">P3870 [TJOI2009]开关</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/p2986-usaco10marwei-da-de-nai-niu-ju-ji-great-cow-gat">P2986 [USACO10MAR]伟大的奶牛聚集Great Cow Gat…</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/p1270-fang-wen-mei-zhu-guan">P1270 “访问”美术馆</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/p1314-cong-ming-de-zhi-jian-yuan">P1314 聪明的质监员</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/p1083-jie-jiao-shi">P1083 借教室</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/p2014-xuan-ke">P2014 选课</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/zheng-chu">整除</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/uva11324-the-largest-clique">UVA11324 The Largest Clique</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/qiang-lian-tong-fen-liang">强连通分量</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/zui-da-du-li-ji">最大独立集</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://Kite-chaser.github.io/tag/jU7dm_aQ_" class="badge ">
+          分块
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge secondary">
+          题解
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge success">
+          OI
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/Mh3k_Hqut" class="badge secondary">
+          树形DP
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/BCIKttOve" class="badge warning">
+          动态规划，DP
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/Q6VC_f0jg" class="badge secondary">
+          二分答案
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/kCU-ep_Aq" class="badge secondary">
+          笔记
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="badge secondary">
+          图论
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/92gh9uu1i" class="badge secondary">
+          单调队列
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/2kgafuTx9" class="badge secondary">
+          线段树
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/ksq4_sfEo" class="badge secondary">
+          并查集
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by Hve Notes | <a class="rss" href="https://Kite-chaser.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
 </div>
 
 
     </div>
-    <script type="application/javascript">
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
 
 hljs.initHighlightingOnLoad()
-
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
 
 </script>
 
 
-  
+
   
     <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
     <script>
@@ -243,7 +419,7 @@ var app = new Vue({
         repo: 'Kite-chaser.github.io',
         owner: 'Kite-chaser',
         admin: ['Kite-chaser'],
-        id: location.pathname,      // Ensure uniqueness and length less than 50
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
         distractionFreeMode: false  // Facebook-like distraction free mode
       })
 
