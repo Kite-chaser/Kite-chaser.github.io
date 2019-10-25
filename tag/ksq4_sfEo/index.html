@@ -1,122 +1,325 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
- <head>
-    <meta charset="utf-8" />
-  <title>并查集 | Kite-chaser</title>
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-  <link rel="stylesheet" href="https://Kite-chaser.github.io/styles/main.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-   <script src="https://cdn.staticfile.org/highlight.js/9.15.9/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
- </head>
- <body>
-     <div class="sidebar animated fadeInDown">
-   <div class="logo-title">
-    <div class="title">
-     <img src="https://Kite-chaser.github.io/images/avatar.png?v=1572008582275" style="width:127px;" />
+<html>
+  <head>
+    <meta charset="utf-8" >
 
-     <div class="description">
-      <p>This is my blog.</p>
-     </div>
-    </div>
-   </div>
-   <ul class="social-links">
+<title>并查集 | Kite-chaser</title>
+<meta name="description" content="This is my blog.">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1572009132720">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://Kite-chaser.github.io/styles/main.css">
 
 
-    
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
-    
 
-    
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-    
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-   </ul>
-   <div class="footer">
-    <div class="by_farbox">
-   Powered by Hve Notes
-    </div>
-    
-
-    </div>
-   </div>
+  </head>
+  <body>
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://Kite-chaser.github.io">Kite-chaser</a></h3>
   </div>
-  <div class="main">
-      <div class="page-top animated fadeInDown">
-    <div class="nav">
-
-     <li><a  href="/">首页</a></li>
-
-     <li><a  href="/archives">归档</a></li>
-
-     <li><a  href="/tags">标签</a></li>
-
-     <li><a  href="https://Kite-chaser.github.io/post/guan-yu/">关于</a></li>
-
-     <li><a  href="https://Kite-chaser.github.io/post/you-lian/">友链</a></li>
-
-
-    </div>
-    <div class="information">
-     <div class="back_btn">
-      <li><a class="fa fa-chevron-left" onclick="window.history.go(-1)" style="display:none;"> </a></li>
-     </div>
-    </div>
-   </div>
-   <div class="autopagerize_page_element">
-    <div class="content">
-              
-     <div class="post animated fadeInDown">
-      <div class="post-title">
-       <h3><a href="https://Kite-chaser.github.io/post/bing-cha-ji">并查集</a></h3>
-      </div>
-      <div class="post-content">
-       <p><h1 id="rt">RT</h1>
-<p>并查集是一种树型的数据结构，用于处理一些不相交集合的合并及查询问题，常常在使用中以森林来表示（一般用数组实现）。</p>
-</p>
-      </div>
-      <div class="post-footer">
-       <div class="meta">
-        <div class="info">
-         <i class="fa fa-sun-o"></i>
-         <span class="date">2019-08-18</span>
-         <i class="fa fa-tag"></i>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/ksq4_sfEo" title="并查集">并查集 </a>
-         
-         <a class="tag" href="https://Kite-chaser.github.io/tag/BsZO4xN8u" title="OI">OI </a>
-         
-        </div>
-       </div>
-      </div>
-     </div>
-     
-     <div class="pagination">
-      <ul class="clearfix">
-            
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
         
-
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="https://Kite-chaser.github.io/post/guan-yu/" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="https://Kite-chaser.github.io/post/you-lian/" class="menu">
+                友链
+              </a>
+            
+          </li>
+        
       </ul>
-     </div>
     </div>
-   </div>
   </div>
-  <script src="https://Kite-chaser.github.io/media/scripts/jquery.js"></script>
-  <script src="https://Kite-chaser.github.io/media/scripts/jquery-migrate-1.2.1.min.js"></script>
-  <script src="https://Kite-chaser.github.io/media/scripts/jquery.appear.js"></script>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <h2 class="current-tag">标签: 并查集</h2>
+          
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://Kite-chaser.github.io/post/bing-cha-ji">并查集</a>
+    </h2>
+    <p class="article-meta">
+      2019-08-18
+      
+        <a href="https://Kite-chaser.github.io/tag/ksq4_sfEo" class="badge secondary">
+          并查集
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge ">
+          OI
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <h1 id="rt">RT</h1>
+<p>并查集是一种树型的数据结构，用于处理一些不相交集合的合并及查询问题，常常在使用中以森林来表示（一般用数组实现）。</p>
+
+    </p>
+    <div class="row">
+      <a href="https://Kite-chaser.github.io/post/bing-cha-ji" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
 
 
- </body>
+        </div>
+        <div class="row flex-edges">
+  
+  
+</div>
+
+      </div>
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://Kite-chaser.github.io/images/avatar.png?v=1572009132720" class="no-responsive avatar">
+    <div class="text-muted">This is my blog.</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/p3870-tjoi2009kai-guan">P3870 [TJOI2009]开关</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/p2986-usaco10marwei-da-de-nai-niu-ju-ji-great-cow-gat">P2986 [USACO10MAR]伟大的奶牛聚集Great Cow Gat…</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/p1270-fang-wen-mei-zhu-guan">P1270 “访问”美术馆</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/p1314-cong-ming-de-zhi-jian-yuan">P1314 聪明的质监员</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/p1083-jie-jiao-shi">P1083 借教室</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/p2014-xuan-ke">P2014 选课</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/zheng-chu">整除</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/uva11324-the-largest-clique">UVA11324 The Largest Clique</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/qiang-lian-tong-fen-liang">强连通分量</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://Kite-chaser.github.io/post/zui-da-du-li-ji">最大独立集</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://Kite-chaser.github.io/tag/jU7dm_aQ_" class="badge success">
+          分块
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge warning">
+          题解
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge ">
+          OI
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/Mh3k_Hqut" class="badge secondary">
+          树形DP
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/BCIKttOve" class="badge secondary">
+          动态规划，DP
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/Q6VC_f0jg" class="badge warning">
+          二分答案
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/kCU-ep_Aq" class="badge secondary">
+          笔记
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="badge secondary">
+          图论
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/92gh9uu1i" class="badge secondary">
+          单调队列
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/2kgafuTx9" class="badge ">
+          线段树
+        </a>
+      
+        <a href="https://Kite-chaser.github.io/tag/ksq4_sfEo" class="badge success">
+          并查集
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by Hve Notes | <a class="rss" href="https://Kite-chaser.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
 </html>
