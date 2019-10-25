@@ -1,616 +1,631 @@
-<!DOCTYPE html>
+
 <html>
-  <head>
-    <meta charset="utf-8" >
-
-<title>Kite-chaser</title>
-<meta name="description" content="This is my blog.">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico?v=1572009132720">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-<link rel="stylesheet" href="https://Kite-chaser.github.io/styles/main.css">
-
-
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-
-
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
+<head lang="zh">
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+        <meta content="yes" name="apple-mobile-web-app-capable"/>
+        <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+        <meta content="telephone=no" name="format-detection"/>
+        <meta name="renderer" content="webkit">
+    <title>Kite-chaser</title>
+<link href="https://Kite-chaser.github.io/styles/main.css" type="text/css" rel="stylesheet"/>
+<script type="text/javascript" src="https://Kite-chaser.github.io/media/scripts/jquery.js"></script>
+<script type="text/javascript" src="https://Kite-chaser.github.io/media/scripts/basic.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
 
   </head>
+
   <body>
-    <nav class="navbar border fixed split-nav">
-  <div class="nav-brand">
-    <h3><a href="https://Kite-chaser.github.io">Kite-chaser</a></h3>
-  </div>
-  <div class="collapsible">
-    <input id="collapsible1" type="checkbox" name="collapsible1">
-    <button>
-      <label for="collapsible1">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-      </label>
-    </button>
-    <div class="collapsible-body">
-      <ul class="inline">
-        
-          <li>
-            
-              <a href="/" class="menu">
-                首页
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/archives" class="menu">
-                归档
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/tags" class="menu">
-                标签
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="https://Kite-chaser.github.io/post/guan-yu/" class="menu">
-                关于
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="https://Kite-chaser.github.io/post/you-lian/" class="menu">
-                友链
-              </a>
-            
-          </li>
-        
+    <div class="header">
+      <div class="logo_title">
+		  
+        <div class="title animated fadeInDown"><img src="https://Kite-chaser.github.io/images/avatar.png?v=1572009997512"/>
+
+          <h1 title="Kite-chaser" class="weaklink"><a href="/">Kite-chaser</a>
+
+          </h1>
+
+          <div class="navbar weaklink">
+            <div class="normal_nav">
+
+<div class="bitcron_nav_container">
+
+
+  <div class="bitcron_nav">
+    <div class="mixed_site_nav_wrap site_nav_wrap">
+		
+      <ul class="mixed_site_nav site_nav sm sm-base">
+ 
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/" class="selected active current nav__item" >首页</a>
+
+  </li>
+ 
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/archives" class="selected active current nav__item" >归档</a>
+
+  </li>
+ 
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/tags" class="selected active current nav__item" >标签</a>
+
+  </li>
+ 
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="https://Kite-chaser.github.io/post/guan-yu/" class="selected active current nav__item" >关于</a>
+
+  </li>
+ 
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="https://Kite-chaser.github.io/post/you-lian/" class="selected active current nav__item" >友链</a>
+
+  </li>
+ 
+
       </ul>
+
+      <div class="clear clear_nav_inline_end"></div>
+
     </div>
+
   </div>
-</nav>
 
 
-    <div id="top" class="row site">
-      <div class="sm-12 md-8 col">
-        <div class="paper">
-          
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://Kite-chaser.github.io/post/dong-tai-gui-hua-zhong-de-bei-bao-wen-ti">动态规划中的背包问题</a>
-    </h2>
-    <p class="article-meta">
-      2019-08-19
-      
-        <a href="https://Kite-chaser.github.io/tag/BCIKttOve" class="badge ">
-          动态规划，DP
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge success">
-          OI
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>~~众所周知，DP从入门到放弃。~~其实还是继续借用学姐的课件。因为蒟蒻的我啥也不会。</p>
 
-    </p>
-    <div class="row">
-      <a href="https://Kite-chaser.github.io/post/dong-tai-gui-hua-zhong-de-bei-bao-wen-ti" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
+  <div class="clear clear_nav_end"></div>
 
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://Kite-chaser.github.io/post/shu-lun">数论</a>
-    </h2>
-    <p class="article-meta">
-      2019-08-19
-      
-    </p>
-    <p class="text-lead">
-      <p>其实所有内容都是我们可爱的学姐lcr教授的，我只是借用了一下而已。~~话说学OI的竟然还有学姐。~~不知道为什么我的部分LaTeX废了，所以只能抠图了。</p>
+</div>
 
-    </p>
-    <div class="row">
-      <a href="https://Kite-chaser.github.io/post/shu-lun" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
+            </div>
 
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://Kite-chaser.github.io/post/p1491-ji-he-wei-zhi">P1491 集合位置 </a>
-    </h2>
-    <p class="article-meta">
-      2019-08-19
-      
-        <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge secondary">
-          题解
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="badge success">
-          图论
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge success">
-          OI
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <h4 id="题目描述">题目描述</h4>
-<p>每次有大的活动，大家都要在一起“聚一聚”，不管是去好乐迪，还是避风塘，或者汤姆熊，大家都要玩的痛快。</p>
+            <div class="hamberger"><i class="fa fa-bars"></i>
+<i class="fa fa-times"></i>
 
-    </p>
-    <div class="row">
-      <a href="https://Kite-chaser.github.io/post/p1491-ji-he-wei-zhi" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
+            </div>
 
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://Kite-chaser.github.io/post/p2829-da-tao-chi">P2829 大逃离</a>
-    </h2>
-    <p class="article-meta">
-      2019-08-19
-      
-        <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge secondary">
-          题解
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="badge secondary">
-          图论
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge success">
-          OI
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <h4 id="题目背景">题目背景</h4>
-<p>zrz走进了一个奇葩的迷宫，他发现自己迷路了，想逃出来，他好不容易数完了所有的路，累的快晕了，只好叫你帮忙咯。</p>
-
-    </p>
-    <div class="row">
-      <a href="https://Kite-chaser.github.io/post/p2829-da-tao-chi" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://Kite-chaser.github.io/post/p2866-usaco06novzao-gao-de-yi-tian-bad-hair-day">P2866 [USACO06NOV]糟糕的一天Bad Hair Day</a>
-    </h2>
-    <p class="article-meta">
-      2019-08-19
-      
-        <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge secondary">
-          题解
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge warning">
-          OI
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>不会打数学公式，只能扣图了……</p>
-
-    </p>
-    <div class="row">
-      <a href="https://Kite-chaser.github.io/post/p2866-usaco06novzao-gao-de-yi-tian-bad-hair-day" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://Kite-chaser.github.io/post/p1395-hui-yi">P1395 【会议】</a>
-    </h2>
-    <p class="article-meta">
-      2019-08-19
-      
-        <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge secondary">
-          题解
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="badge success">
-          图论
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge secondary">
-          OI
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <h4 id="题目描述">题目描述</h4>
-<p>有一个村庄居住着n个村民，有n-1条路径使得这n个村民的家联通，每条路径的长度都为1。</p>
-
-    </p>
-    <div class="row">
-      <a href="https://Kite-chaser.github.io/post/p1395-hui-yi" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://Kite-chaser.github.io/post/shu-de-chong-xin">树的重心</a>
-    </h2>
-    <p class="article-meta">
-      2019-08-19
-      
-        <a href="https://Kite-chaser.github.io/tag/kCU-ep_Aq" class="badge ">
-          笔记
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge ">
-          OI
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <h2 id="概念">概念</h2>
-<p>树的重心也叫树的质心。对于一棵树n个节点的无根树，找到一个点，使得把树变成以该点为根的有根树时，最大子树的结点数最小。换句话说，删除这个点后最大连通块（一定是树）的结点数最小。</p>
-
-    </p>
-    <div class="row">
-      <a href="https://Kite-chaser.github.io/post/shu-de-chong-xin" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://Kite-chaser.github.io/post/p1907-she-ji-dao-lu">P1907 设计道路</a>
-    </h2>
-    <p class="article-meta">
-      2019-08-19
-      
-        <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge success">
-          题解
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="badge ">
-          图论
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge secondary">
-          OI
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <h4 id="题目描述">题目描述</h4>
-<p>Caesar远征高卢回来后，对你大加赞赏，他亲自来到Genoa视察。</p>
-
-    </p>
-    <div class="row">
-      <a href="https://Kite-chaser.github.io/post/p1907-she-ji-dao-lu" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://Kite-chaser.github.io/post/p1194-mai-li-wu">P1194 买礼物</a>
-    </h2>
-    <p class="article-meta">
-      2019-08-19
-      
-        <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge warning">
-          题解
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="badge secondary">
-          图论
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge secondary">
-          OI
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <h4 id="题目描述">题目描述</h4>
-<p>又到了一年一度的明明生日了，明明想要买B样东西，巧的是，这B样东西价格都是A元。</p>
-
-    </p>
-    <div class="row">
-      <a href="https://Kite-chaser.github.io/post/p1194-mai-li-wu" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://Kite-chaser.github.io/post/p2323-hnoi2006gong-lu-xiu-jian-wen-ti">P2323 [HNOI2006]公路修建问题</a>
-    </h2>
-    <p class="article-meta">
-      2019-08-19
-      
-        <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge secondary">
-          题解
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="badge success">
-          图论
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge secondary">
-          OI
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>其实我只是为了不让文字显示太多才写的摘要。</p>
-
-    </p>
-    <div class="row">
-      <a href="https://Kite-chaser.github.io/post/p2323-hnoi2006gong-lu-xiu-jian-wen-ti" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
+          </div>
 
         </div>
-        
-        <div class="row flex-edges">
-  
-    <a href="https://Kite-chaser.github.io/" class="paper-btn">
-      上一页
-    </a>
-  
-  
-    <a href="https://Kite-chaser.github.io/page/3/" class="paper-btn">
-      下一页
-    </a>
-  
+
+      </div>
+
+      <div class="hidden_nav animated fadeInDown">
+
+<div class="bitcron_nav_container">
+
+
+  <div class="bitcron_nav">
+    <div class="mixed_site_nav_wrap site_nav_wrap">
+      <ul class="mixed_site_nav site_nav sm sm-base">
+		  
+	
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/" class="selected active current nav__item" >首页</a>
+
+  </li>
+
+
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/archives" class="selected active current nav__item" >归档</a>
+
+  </li>
+
+
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/tags" class="selected active current nav__item" >标签</a>
+
+  </li>
+
+
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="https://Kite-chaser.github.io/post/guan-yu/" class="selected active current nav__item" >关于</a>
+
+  </li>
+
+
+  <li><a id="d2ef19af68cc211e98f8a0242ac110003" href="https://Kite-chaser.github.io/post/you-lian/" class="selected active current nav__item" >友链</a>
+
+  </li>
+
+
+
+
+
+      </ul>
+
+      <div class="clear clear_nav_inline_end"></div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="clear clear_nav_end"></div>
+
 </div>
 
       </div>
-      
-      <div class="sm-12 md-4 col sidebar">
-  <div class="paper info-container">
-    <img src="https://Kite-chaser.github.io/images/avatar.png?v=1572009132720" class="no-responsive avatar">
-    <div class="text-muted">This is my blog.</div>
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
+
     </div>
+
+
+    <div class="main">
+      <div class="main-inner">
+
+<div class="content">
+
+
+
+
+
+
+  <div class="post_list" >
+
+	
+<div class="post">
+  <div class="post_title weaklink">
+    <h2><a href="https://Kite-chaser.github.io/post/dong-tai-gui-hua-zhong-de-bei-bao-wen-ti" >动态规划中的背包问题</a>
+    </h2>
   </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      最新文章
+  <div class="post_content markdown"><div class="p_part"><p><p>~~众所周知，DP从入门到放弃。~~其实还是继续借用学姐的课件。因为蒟蒻的我啥也不会。</p>
+</p></div></div>
+  <div class="post_footer">
+    <div class="info weaklink"><i class="fa fa-clock-o"></i>
+<span class="date_info">2019-08-19</span>
+
+<i class="fa fa-bookmark-o"></i>
+	
+<span class="tags_info weaklink">
+	
+	<a href="https://Kite-chaser.github.io/tag/BCIKttOve" class="tag">动态规划，DP</a>
+
+
+	<a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="tag">OI</a>
+
+
+
+</span>
+
+
     </div>
-    <div class="row">
-      <ul>
-        
-          
-            <li>
-              <a href="https://Kite-chaser.github.io/post/p3870-tjoi2009kai-guan">P3870 [TJOI2009]开关</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Kite-chaser.github.io/post/p2986-usaco10marwei-da-de-nai-niu-ju-ji-great-cow-gat">P2986 [USACO10MAR]伟大的奶牛聚集Great Cow Gat…</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Kite-chaser.github.io/post/p1270-fang-wen-mei-zhu-guan">P1270 “访问”美术馆</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Kite-chaser.github.io/post/p1314-cong-ming-de-zhi-jian-yuan">P1314 聪明的质监员</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Kite-chaser.github.io/post/p1083-jie-jiao-shi">P1083 借教室</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Kite-chaser.github.io/post/p2014-xuan-ke">P2014 选课</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Kite-chaser.github.io/post/zheng-chu">整除</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Kite-chaser.github.io/post/uva11324-the-largest-clique">UVA11324 The Largest Clique</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Kite-chaser.github.io/post/qiang-lian-tong-fen-liang">强连通分量</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Kite-chaser.github.io/post/zui-da-du-li-ji">最大独立集</a>
-            </li>
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      </ul>
-    </div>
+
   </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      标签列表
-    </div>
-    <div class="row">
-      
-        <a href="https://Kite-chaser.github.io/tag/jU7dm_aQ_" class="badge ">
-          分块
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="badge secondary">
-          题解
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="badge secondary">
-          OI
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/Mh3k_Hqut" class="badge warning">
-          树形DP
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/BCIKttOve" class="badge warning">
-          动态规划，DP
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/Q6VC_f0jg" class="badge secondary">
-          二分答案
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/kCU-ep_Aq" class="badge warning">
-          笔记
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="badge secondary">
-          图论
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/92gh9uu1i" class="badge success">
-          单调队列
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/2kgafuTx9" class="badge warning">
-          线段树
-        </a>
-      
-        <a href="https://Kite-chaser.github.io/tag/ksq4_sfEo" class="badge secondary">
-          并查集
-        </a>
-      
-    </div>
+
+</div>
+	
+
+	
+<div class="post">
+  <div class="post_title weaklink">
+    <h2><a href="https://Kite-chaser.github.io/post/shu-lun" >数论</a>
+    </h2>
   </div>
-  <div class="paper">
-    Powered by Hve Notes | <a class="rss" href="https://Kite-chaser.github.io/atom.xml" target="_blank">RSS</a>
+  <div class="post_content markdown"><div class="p_part"><p><p>其实所有内容都是我们可爱的学姐lcr教授的，我只是借用了一下而已。~~话说学OI的竟然还有学姐。~~不知道为什么我的部分LaTeX废了，所以只能抠图了。</p>
+</p></div></div>
+  <div class="post_footer">
+    <div class="info weaklink"><i class="fa fa-clock-o"></i>
+<span class="date_info">2019-08-19</span>
+
+<i class="fa fa-bookmark-o"></i>
+	
+<span class="tags_info weaklink">
+	
+
+</span>
+
+
+    </div>
+
+  </div>
+
+</div>
+	
+
+	
+<div class="post">
+  <div class="post_title weaklink">
+    <h2><a href="https://Kite-chaser.github.io/post/p1491-ji-he-wei-zhi" >P1491 集合位置 </a>
+    </h2>
+  </div>
+  <div class="post_content markdown"><div class="p_part"><p><h4 id="题目描述">题目描述</h4>
+<p>每次有大的活动，大家都要在一起“聚一聚”，不管是去好乐迪，还是避风塘，或者汤姆熊，大家都要玩的痛快。</p>
+</p></div></div>
+  <div class="post_footer">
+    <div class="info weaklink"><i class="fa fa-clock-o"></i>
+<span class="date_info">2019-08-19</span>
+
+<i class="fa fa-bookmark-o"></i>
+	
+<span class="tags_info weaklink">
+	
+	<a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="tag">题解</a>
+
+
+	<a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="tag">图论</a>
+
+
+	<a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="tag">OI</a>
+
+
+
+</span>
+
+
+    </div>
+
+  </div>
+
+</div>
+	
+
+	
+<div class="post">
+  <div class="post_title weaklink">
+    <h2><a href="https://Kite-chaser.github.io/post/p2829-da-tao-chi" >P2829 大逃离</a>
+    </h2>
+  </div>
+  <div class="post_content markdown"><div class="p_part"><p><h4 id="题目背景">题目背景</h4>
+<p>zrz走进了一个奇葩的迷宫，他发现自己迷路了，想逃出来，他好不容易数完了所有的路，累的快晕了，只好叫你帮忙咯。</p>
+</p></div></div>
+  <div class="post_footer">
+    <div class="info weaklink"><i class="fa fa-clock-o"></i>
+<span class="date_info">2019-08-19</span>
+
+<i class="fa fa-bookmark-o"></i>
+	
+<span class="tags_info weaklink">
+	
+	<a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="tag">题解</a>
+
+
+	<a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="tag">图论</a>
+
+
+	<a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="tag">OI</a>
+
+
+
+</span>
+
+
+    </div>
+
+  </div>
+
+</div>
+	
+
+	
+<div class="post">
+  <div class="post_title weaklink">
+    <h2><a href="https://Kite-chaser.github.io/post/p2866-usaco06novzao-gao-de-yi-tian-bad-hair-day" >P2866 [USACO06NOV]糟糕的一天Bad Hair Day</a>
+    </h2>
+  </div>
+  <div class="post_content markdown"><div class="p_part"><p><p>不会打数学公式，只能扣图了……</p>
+</p></div></div>
+  <div class="post_footer">
+    <div class="info weaklink"><i class="fa fa-clock-o"></i>
+<span class="date_info">2019-08-19</span>
+
+<i class="fa fa-bookmark-o"></i>
+	
+<span class="tags_info weaklink">
+	
+	<a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="tag">题解</a>
+
+
+	<a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="tag">OI</a>
+
+
+
+</span>
+
+
+    </div>
+
+  </div>
+
+</div>
+	
+
+	
+<div class="post">
+  <div class="post_title weaklink">
+    <h2><a href="https://Kite-chaser.github.io/post/p1395-hui-yi" >P1395 【会议】</a>
+    </h2>
+  </div>
+  <div class="post_content markdown"><div class="p_part"><p><h4 id="题目描述">题目描述</h4>
+<p>有一个村庄居住着n个村民，有n-1条路径使得这n个村民的家联通，每条路径的长度都为1。</p>
+</p></div></div>
+  <div class="post_footer">
+    <div class="info weaklink"><i class="fa fa-clock-o"></i>
+<span class="date_info">2019-08-19</span>
+
+<i class="fa fa-bookmark-o"></i>
+	
+<span class="tags_info weaklink">
+	
+	<a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="tag">题解</a>
+
+
+	<a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="tag">图论</a>
+
+
+	<a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="tag">OI</a>
+
+
+
+</span>
+
+
+    </div>
+
+  </div>
+
+</div>
+	
+
+	
+<div class="post">
+  <div class="post_title weaklink">
+    <h2><a href="https://Kite-chaser.github.io/post/shu-de-chong-xin" >树的重心</a>
+    </h2>
+  </div>
+  <div class="post_content markdown"><div class="p_part"><p><h2 id="概念">概念</h2>
+<p>树的重心也叫树的质心。对于一棵树n个节点的无根树，找到一个点，使得把树变成以该点为根的有根树时，最大子树的结点数最小。换句话说，删除这个点后最大连通块（一定是树）的结点数最小。</p>
+</p></div></div>
+  <div class="post_footer">
+    <div class="info weaklink"><i class="fa fa-clock-o"></i>
+<span class="date_info">2019-08-19</span>
+
+<i class="fa fa-bookmark-o"></i>
+	
+<span class="tags_info weaklink">
+	
+	<a href="https://Kite-chaser.github.io/tag/kCU-ep_Aq" class="tag">笔记</a>
+
+
+	<a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="tag">OI</a>
+
+
+
+</span>
+
+
+    </div>
+
+  </div>
+
+</div>
+	
+
+	
+<div class="post">
+  <div class="post_title weaklink">
+    <h2><a href="https://Kite-chaser.github.io/post/p1907-she-ji-dao-lu" >P1907 设计道路</a>
+    </h2>
+  </div>
+  <div class="post_content markdown"><div class="p_part"><p><h4 id="题目描述">题目描述</h4>
+<p>Caesar远征高卢回来后，对你大加赞赏，他亲自来到Genoa视察。</p>
+</p></div></div>
+  <div class="post_footer">
+    <div class="info weaklink"><i class="fa fa-clock-o"></i>
+<span class="date_info">2019-08-19</span>
+
+<i class="fa fa-bookmark-o"></i>
+	
+<span class="tags_info weaklink">
+	
+	<a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="tag">题解</a>
+
+
+	<a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="tag">图论</a>
+
+
+	<a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="tag">OI</a>
+
+
+
+</span>
+
+
+    </div>
+
+  </div>
+
+</div>
+	
+
+	
+<div class="post">
+  <div class="post_title weaklink">
+    <h2><a href="https://Kite-chaser.github.io/post/p1194-mai-li-wu" >P1194 买礼物</a>
+    </h2>
+  </div>
+  <div class="post_content markdown"><div class="p_part"><p><h4 id="题目描述">题目描述</h4>
+<p>又到了一年一度的明明生日了，明明想要买B样东西，巧的是，这B样东西价格都是A元。</p>
+</p></div></div>
+  <div class="post_footer">
+    <div class="info weaklink"><i class="fa fa-clock-o"></i>
+<span class="date_info">2019-08-19</span>
+
+<i class="fa fa-bookmark-o"></i>
+	
+<span class="tags_info weaklink">
+	
+	<a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="tag">题解</a>
+
+
+	<a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="tag">图论</a>
+
+
+	<a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="tag">OI</a>
+
+
+
+</span>
+
+
+    </div>
+
+  </div>
+
+</div>
+	
+
+	
+<div class="post">
+  <div class="post_title weaklink">
+    <h2><a href="https://Kite-chaser.github.io/post/p2323-hnoi2006gong-lu-xiu-jian-wen-ti" >P2323 [HNOI2006]公路修建问题</a>
+    </h2>
+  </div>
+  <div class="post_content markdown"><div class="p_part"><p><p>其实我只是为了不让文字显示太多才写的摘要。</p>
+</p></div></div>
+  <div class="post_footer">
+    <div class="info weaklink"><i class="fa fa-clock-o"></i>
+<span class="date_info">2019-08-19</span>
+
+<i class="fa fa-bookmark-o"></i>
+	
+<span class="tags_info weaklink">
+	
+	<a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="tag">题解</a>
+
+
+	<a href="https://Kite-chaser.github.io/tag/nQBg2kv-6" class="tag">图论</a>
+
+
+	<a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="tag">OI</a>
+
+
+
+</span>
+
+
+    </div>
+
+  </div>
+
+</div>
+	
+	
+
+<div class="paginator pager pagination" >
+	
+  <div class="paginator_container pagination_container">
+	  
+	    
+	  <a href="https://Kite-chaser.github.io/"  class="btn pre newer-posts newer_posts"> Newer Posts </a>
+										
+										
+	  
+	  <a href="https://Kite-chaser.github.io/page/3/"  class="btn next older-posts older_posts"> Older Posts </a>
+
+
+
+
+    <div style="clear:both;height:0;"></div>
+
+
+  </div>
+
+</div>
+
+
+
   </div>
 </div>
 
+
+
+      </div>
+
     </div>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
-<script type="application/javascript">
+    <div class="footer">
+<link href="https://Kite-chaser.github.io/styles/main.css" type="text/css" rel="stylesheet"/><div class="site_footer_wrap"><div class="site_footer">
 
-AOS.init();
+      <div class="mysocials"><div class="my_socials">
+		   
+			   
+    
+			   
+    
+			   
+    
+			   
+    
+</div><link href="https://Kite-chaser.github.io/styles/main.css" type="text/css" rel="stylesheet"/>
 
-hljs.initHighlightingOnLoad()
+      </div>
 
+      <div class="copyright">Powered by Hve Notes
+      </div>
+
+</div></div>
+
+    </div>
+
+
+<style type="text/css">a.back_to_top {
+    text-decoration: none;
+    position: fixed;
+    bottom: 40px;
+    right: 30px;
+    background: #f0f0f0;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    line-height: 36px;
+    font-size: 18px;
+    text-align: center;
+    transition-duration: .5s;
+    transition-propety: background-color;
+    display: none;
+}
+
+a.back_to_top span {
+    color: #888;
+}
+
+a.back_to_top:hover {
+    cursor: pointer;
+    background: #dfdfdf;
+}
+
+a.back_to_top:hover span {
+    color: #555;
+}
+
+@media print, screen and (max-width: 580px) {
+    .back_to_top {
+        display: none !important;
+    }
+}
+
+
+
+</style><a id="back_to_top" href="#" class="back_to_top"><span>△</span>
+</a>
+<script type="text/javascript" src="https://Kite-chaser.github.io/media/scripts/jquery.js"></script>
+
+<script>$(document).ready((function(_this) {
+  return function() {
+    var bt;
+    bt = $('#back_to_top');
+    if ($(document).width() > 480) {
+      $(window).scroll(function() {
+        var st;
+        st = $(window).scrollTop();
+        if (st > 30) {
+          return bt.css('display', 'block');
+        } else {
+          return bt.css('display', 'none');
+        }
+      });
+      return bt.click(function() {
+        $('body,html').animate({
+          scrollTop: 0
+        }, 800);
+        return false;
+      });
+    }
+  };
+})(this));
 </script>
 
+</body>
 
-
-
-  </body>
 </html>
