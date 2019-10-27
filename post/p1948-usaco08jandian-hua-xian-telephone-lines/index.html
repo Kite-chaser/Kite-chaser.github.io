@@ -5,7 +5,7 @@
     
 <meta charset="utf-8" >
 
-<title>分层图 | Kite-chaser</title>
+<title>P1948 [USACO08JAN]电话线Telephone Lines | Kite-chaser</title>
 <meta name="description" content="This is my blog.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -88,7 +88,7 @@
 
       <div class="content-container">
         <div class="post-detail">
-          <h2 class="post-title">分层图</h2>
+          <h2 class="post-title">P1948 [USACO08JAN]电话线Telephone Lines</h2>
           <div class="post-info post-detail-info">
             <span><i class="icon-calendar-outline"></i> 2019-10-27</span>
             
@@ -109,8 +109,15 @@
                     
                   </a>
                 
-                  <a href="https://Kite-chaser.github.io/tag/kCU-ep_Aq">
-                    笔记
+                  <a href="https://Kite-chaser.github.io/tag/Q6VC_f0jg">
+                    二分答案
+                    
+                      ，
+                    
+                  </a>
+                
+                  <a href="https://Kite-chaser.github.io/tag/fgReGJsqm">
+                    题解
                     
                       ，
                     
@@ -132,52 +139,50 @@
             
           </div>
           <div class="post-content">
-            <p>黑科技。</p>
-<!-- more -->
-<h2 id="前言">前言</h2>
-<p>分层图就是一种上层可以到达下层，而下层不可以到达上层的图。<br>
-其实重要的是一种构图方法。<br>
-<img src="https://Kite-chaser.github.io/post-images/1572143056945.png" alt=""><br>
-如图，黑色的边就是一层图，蓝色的边就是上层连向下层的图。</p>
-<h2 id="eg1">EG1</h2>
-<h3 id="p2939-usaco09feb改造路revamping-trails"><a href="https://www.luogu.org/problem/P2939">P2939 [USACO09FEB]改造路Revamping Trails</a></h3>
-<h3 id="题目描述">题目描述</h3>
-<p>Farmer John dutifully checks on the cows every day. He traverses some of the M (1 &lt;= M &lt;= 50,000) trails conveniently numbered 1..M from pasture 1 all the way out to pasture N (a journey which is always possible for trail maps given in the test data). The N (1 &lt;= N &lt;= 10,000) pastures conveniently numbered 1..N on Farmer John's farm are currently connected by bidirectional dirt trails. Each trail i connects pastures P1_i and P2_i (1 &lt;= P1_i &lt;= N; 1 &lt;= P2_i &lt;= N) and requires T_i (1 &lt;= T_i &lt;= 1,000,000) units of time to traverse.</p>
-<p>He wants to revamp some of the trails on his farm to save time on his long journey. Specifically, he will choose K (1 &lt;= K &lt;= 20) trails to turn into highways, which will effectively reduce the trail's traversal time to 0. Help FJ decide which trails to revamp to minimize the resulting time of getting from pasture 1 to N.</p>
-<p>TIME LIMIT: 2 seconds</p>
-<h3 id="题意翻译">题意翻译</h3>
-<p>约翰一共有N)个牧场.由M条布满尘埃的小径连接.小径可 以双向通行.每天早上约翰从牧场1出发到牧场N去给奶牛检查身体.</p>
-<p>通过每条小径都需要消耗一定的时间.约翰打算升级其中K条小径，使之成为高 速公路.在高速公路上的通行几乎是瞬间完成的，所以高速公路的通行时间为0.</p>
-<p>请帮助约翰决定对哪些小径进行升级，使他每天从1号牧场到第N号牧场所花的时间最短</p>
-<h3 id="solve">Solve</h3>
-<p>枚举每个边设零，然后跑最短路？k=1可能还可以，但是k&lt;=20，直接毙命。<br>
-分层图于是闪亮登场。其实这道题还可以用动态规划做，但是在这里我们只讨论分层图（<s>其实是蒟蒻不会啦</s>）<br>
-升级k条路径，就分k+1层图。第一层就是原图，每一层图内的点和边权都跟原图一样。但是层与层之间的边的边权为零。上层的u点连向下层的v点，边权为零，就相当于升级了这条小径，经过k层跑最短路到达n点，就相当于经过了已经升级了k条边的最短路。<br>
-不一定要升级k条边，所以取每层图的最小代价。</p>
-<h4 id="建图">建图</h4>
-<pre><code class="language-cpp">for(int i=1;i&lt;=m;i++){
-	scanf(&quot;%d%d%d&quot;,&amp;u,&amp;v,&amp;w);
-	add(u,v,w);add(v,u,w);
-	for(int j=1;j&lt;=k;j++){
-		add(u+j*n,v+j*n,w);
-		add(v+j*n,u+j*n,w);
-		add(u+(j-1)*n,v+j*n,0);
-		add(v+(j-1)*n,u+j*n,0);//当然无向图需要双向
-	}
-}
-</code></pre>
-<p><strong>tip:分层图重要的是构造图的方法,最短路的话，随便啦。但是还是说一句“SPFA死了”</strong></p>
-<h3 id="code">Code</h3>
+            <h2 id="题目描述">题目描述</h2>
+<p>Farmer John wants to set up a telephone line at his farm. Unfortunately, the phone company is uncooperative, so he needs to pay for some of the cables required to connect his farm to the phone system.</p>
+<p>There are N (1 ≤ N ≤ 1,000) forlorn telephone poles conveniently numbered 1..N that are scattered around Farmer John's property; no cables connect any them. A total of P (1 ≤ P ≤ 10,000) pairs of poles can be connected by a cable; the rest are too far apart.</p>
+<p>The i-th cable can connect the two distinct poles Ai and Bi, with length Li (1 ≤ Li ≤ 1,000,000) units if used. The input data set never names any {Ai, Bi} pair more than once. Pole 1 is already connected to the phone system, and pole N is at the farm. Poles 1 and N need to be connected by a path of cables; the rest of the poles might be used or might not be used.</p>
+<p>As it turns out, the phone company is willing to provide Farmer John with K (0 ≤ K &lt; N) lengths of cable for free. Beyond that he will have to pay a price equal to the length of the longest remaining cable he requires (each pair of poles is connected with a separate cable), or 0 if he does not need any additional cables.</p>
+<p>Determine the minimum amount that Farmer John must pay.</p>
+<p>多年以后，笨笨长大了，成为了电话线布置师。由于地震使得某市的电话线全部损坏，笨笨是负责接到震中市的负责人。该市周围分布着N(1&lt;=N&lt;=1000)根据1……n顺序编号的废弃的电话线杆，任意两根线杆之间没有电话线连接，一共有p(1&lt;=p&lt;=10000)对电话杆可以拉电话线。其他的由于地震使得无法连接。</p>
+<p>第i对电线杆的两个端点分别是ai,bi，它们的距离为li(1&lt;=li&lt;=1000000)。数据中每对(ai,bi)只出现一次。编号为1的电话杆已经接入了全国的电话网络，整个市的电话线全都连到了编号N的电话线杆上。也就是说，笨笨的任务仅仅是找一条将1号和N号电线杆连起来的路径，其余的电话杆并不一定要连入电话网络。</p>
+<p>电信公司决定支援灾区免费为此市连接k对由笨笨指定的电话线杆，对于此外的那些电话线，需要为它们付费，总费用决定于其中最长的电话线的长度(每根电话线仅连接一对电话线杆)。如果需要连接的电话线杆不超过k对，那么支出为0.</p>
+<p>请你计算一下，将电话线引导震中市最少需要在电话线上花多少钱？</p>
+<blockquote>
+<p><a href="https://www.luogu.org/problem/P1948">原题链接</a></p>
+</blockquote>
+<h2 id="solve">Solve</h2>
+<p>一眼，这不就是分层图裸题吗？但是这个范围。<br>
+虽然我没试过，但是这个范围会GG。于是我放弃了分层图。（其实有心的同学可以试一试。<br>
+那么仔细分析一下这道题，发现求解的不是最小总代价，而是最小代价。而且这个代价是具有单调性的。<br>
+也就是说，一个最小代价为x的可行情况，那么大于x的情况也可行。<br>
+这就很明白了，二分答案。二分最小代价。<br>
+那如何判断呢？想一想，拿当然是最短路惹。DJ，SPFA，乃至BFS都可以。<br>
+我个人比较喜欢DJ。</p>
+<p>众所周知<br>
+<img src="https://Kite-chaser.github.io/post-images/1572183195997.png" alt=""><br>
+其实这个题，SPFA也可以啦。<br>
+解法也就出来了。<br>
+二分答案+DJ/SPFA</p>
+<ul>
+<li>大于mid的边权设为1，小于等于mid的权值设为0。</li>
+<li>跑最短路。</li>
+<li>如果dis[n]&lt;=k的话就是可行的情况。</li>
+</ul>
+<h2 id="code">Code</h2>
 <pre><code class="language-cpp">#include&lt;iostream&gt;
 #include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;queue&gt;
-#define N 10000000
+#define N 100000
 using namespace std;
-int n,m,k,ans;
-int u,v,w;
+int n,m,k;
+int l=0,r=100000,mid,ans=-1;
 int dis[N];
+int u,v,w;
 int head[N],len;
+bool vis[N];
 struct note{
 	int to,vl,nxt;
 }eg[N];
@@ -188,7 +193,6 @@ struct node{
 	}
 };
 priority_queue&lt;node&gt; q;
-bool vis[N];
 void add(int u,int v,int w){
 	len++;
 	eg[len].to=v;
@@ -196,23 +200,26 @@ void add(int u,int v,int w){
 	eg[len].nxt=head[u];
 	head[u]=len;
 }
-void dj(){
+bool dj(int s){
 	memset(dis,0x3f,sizeof(dis));
-	dis[1]=0;
-	q.push((node){1,0});
+	dis[1]=0;q.push((node){1,0});
 	while(!q.empty()){
 		int e=q.top().u;
 		q.pop();
-		if(vis[e]) continue;
-		vis[e]=true;
+		vis[e]=false;
 		for(int i=head[e];i;i=eg[i].nxt){
 			int v=eg[i].to;
-			if(dis[v]&gt;dis[e]+eg[i].vl){
-				dis[v]=dis[e]+eg[i].vl;
-				if(!vis[v]) q.push((node){v,dis[v]});
+			int dist;
+			if(eg[i].vl&gt;s) dist=1;
+			else dist=0;
+			if(dis[v]&gt;dis[e]+dist){
+				dis[v]=dis[e]+dist;
+				if(!vis[v]) vis[v]=true,q.push((node){v,dis[v]});
 			}
 		}
 	}
+	if(dis[n]&lt;=k) return true;
+	else return false;
 }
 int main()
 {
@@ -220,39 +227,31 @@ int main()
 	for(int i=1;i&lt;=m;i++){
 		scanf(&quot;%d%d%d&quot;,&amp;u,&amp;v,&amp;w);
 		add(u,v,w);add(v,u,w);
-		for(int j=1;j&lt;=k;j++){
-			add(u+j*n,v+j*n,w);
-			add(v+j*n,u+j*n,w);
-			add(u+(j-1)*n,v+j*n,0);
-			add(v+(j-1)*n,u+j*n,0);
-		}
+		r=max(r,w);
 	}
-	dj();
-	ans=dis[n];
-	for(int i=1;i&lt;=k;i++) ans=min(ans,dis[n+i*n]);
+	while(l&lt;=r){
+		int mid=(l+r)&gt;&gt;1;
+		if(dj(mid)){
+			r=mid-1;
+			ans=mid;
+		}
+		else l=mid+1;
+	}
 	printf(&quot;%d&quot;,ans);
 	return 0;
 }
 </code></pre>
 <h2 id="后言">后言</h2>
-<p>这个方法真的很适合图中优化几次边权然后求最小代价的题。</p>
-<h2 id="画外音">画外音</h2>
-<p>数据过大的话，分层图可能就GG了。而这个时候就该用其他的方法惹。</p>
-<h2 id="相关题目">相关题目</h2>
-<p><a href="https://www.luogu.org/problem/P4822">P4822 [BJWC2012]冻结</a><br>
-<a href="https://www.luogu.org/problem/P4568">P4568 [JLOI2011]飞行路线</a></p>
-<h2 id="关于">关于</h2>
-<p>[例图取自]（https://www.luogu.org/blog/xiaohou/fen-ceng-tu）<br>
-封面不是啦。</p>
+<p>答案单调的二分莽就完了。</p>
 
           </div>
         </div>
 
         
           <div class="next-post">
-            <a class="purple-link" href="https://Kite-chaser.github.io/post/p3870-tjoi2009kai-guan">
+            <a class="purple-link" href="https://Kite-chaser.github.io/post/chai-fen-yue-shu">
               <h3 class="post-title">
-                下一篇：P3870 [TJOI2009]开关
+                下一篇：差分约束
               </h3>
             </a>
           </div>
