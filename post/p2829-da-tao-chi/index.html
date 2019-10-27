@@ -1,90 +1,124 @@
+
 <!DOCTYPE html>
-<html lang="zh-CN">
- <head>
-     <meta charset="utf-8" />
-  <title>P2829 大逃离 | Kite-chaser</title>
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-  <link rel="stylesheet" href="https://Kite-chaser.github.io/styles/main.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-   <script src="https://cdn.staticfile.org/highlight.js/9.15.9/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
- </head>
- <body>
-     <div class="sidebar animated fadeInDown">
-   <div class="logo-title">
-    <div class="title">
-     <img src="https://Kite-chaser.github.io/images/avatar.png?v=1572172912241" style="width:127px;" />
+<html>
+  <head>
+    
+<meta charset="utf-8" >
 
-     <h3 title=""><a href="/">xdh</a></h3>
+<title>P2829 大逃离 | Kite-chaser</title>
+<meta name="description" content="This is my blog.">
 
-     <div class="description">
-      <p>This is my blog.</p>
-     </div>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico">
+<link rel="stylesheet" href="https://Kite-chaser.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://Kite-chaser.github.io">
+        <img class="avatar" src="https://Kite-chaser.github.io/images/avatar.png" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://Kite-chaser.github.io">
+        <h1 class="site-title">Kite-chaser</h1>
+      </a>
     </div>
-   </div>
-   <ul class="social-links">
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-   </ul>
-   <div class="footer">
-    <div class="by_farbox">
-   Powered by Gridea
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
     </div>
-    
-
-    </div>
-   </div>
   </div>
-  <div class="main">
-     <div class="page-top animated fadeInDown">
-    <div class="nav">
-    
-     <li><a  href="/">首页</a></li>
+</div>
 
-     <li><a  href="/archives">归档</a></li>
-
-     <li><a  href="/tags">标签</a></li>
-
-     <li><a  href="https://Kite-chaser.github.io/post/guan-yu/">关于</a></li>
-
-     <li><a  href="https://Kite-chaser.github.io/post/you-lian/">友链</a></li>
-
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://Kite-chaser.github.io/post/guan-yu/" class="menu purple-link">
+            关于
+          </a>
+        
+      
+        
+          <a href="https://Kite-chaser.github.io/post/you-lian/" class="menu purple-link">
+            友链
+          </a>
+        
+      
     </div>
-    <div class="information">
-     <div class="back_btn">
-      <li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li>
-     </div>
-    </div>
-   </div>
-   <div class="autopagerize_page_element">
-    <div class="content">
-     <div class="post-page">
-      <div class="post animated fadeInDown">
-       <div class="post-title">
-        <h3><a>P2829 大逃离</a></h3>
-       </div>
-       <div class="post-content">
-        <h4 id="题目背景">题目背景</h4>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          <h2 class="post-title">P2829 大逃离</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2019-08-19</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://Kite-chaser.github.io/tag/fgReGJsqm">
+                    题解
+                    
+                      ，
+                    
+                  </a>
+                
+                  <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6">
+                    图论
+                    
+                      ，
+                    
+                  </a>
+                
+                  <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u">
+                    OI
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <h4 id="题目背景">题目背景</h4>
 <p>zrz走进了一个奇葩的迷宫，他发现自己迷路了，想逃出来，他好不容易数完了所有的路，累的快晕了，只好叫你帮忙咯。</p>
 <!--more-->
 <h4 id="题目描述">题目描述</h4>
@@ -174,79 +208,73 @@ int main()
 }
 </code></pre>
 
-       </div>
-       <div class="post-footer">
-        <div class="meta">
-         <div class="info">
-          <i class="fa fa-sun-o"></i>
-          <span class="date">2019-08-19</span>
-          <i class="fa fa-tag"></i>
-          
-          <a class="tag" href="https://Kite-chaser.github.io/tag/fgReGJsqm" title="题解">题解 </a>
-          
-          <a class="tag" href="https://Kite-chaser.github.io/tag/nQBg2kv-6" title="图论">图论 </a>
-          
-          <a class="tag" href="https://Kite-chaser.github.io/tag/BsZO4xN8u" title="OI">OI </a>
-          
-         </div>
+          </div>
         </div>
-       </div>
-      </div>
-      <div class="share">
-       <div class="evernote">
-        <a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a>
-       </div>
-       <div class="weibo">
-        <a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a>
-       </div>
-       <div class="twitter">
-        <a class="fa fa-twitter" href="http://twitter.com/home?status=,https://Kite-chaser.github.io/post/p2829-da-tao-chi,;"></a>
-       </div>
-      </div>
-      <div class="pagination">
-       <ul class="clearfix">
 
-        <li class="pre pagbuttons"><a class="btn" role="navigation" href="https://Kite-chaser.github.io/post/p1491-ji-he-wei-zhi" title="P1491 集合位置 ">上一篇</a></li>
-         
         
-        <li class="next pagbuttons"><a class="btn" role="navigation" href="https://Kite-chaser.github.io/post/p2866-usaco06novzao-gao-de-yi-tian-bad-hair-day" title=" P2866 [USACO06NOV]糟糕的一天Bad Hair Day">下一篇</a></li>
-        
-       </ul>
-      </div>
-        
+          <div class="next-post">
+            <a class="purple-link" href="https://Kite-chaser.github.io/post/p2866-usaco06novzao-gao-de-yi-tian-bad-hair-day">
+              <h3 class="post-title">
+                下一篇：P2866 [USACO06NOV]糟糕的一天Bad Hair Day
+              </h3>
+            </a>
+          </div>
           
-            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+      </div>
 
-<div id="gitalk-container"></div>
+      
+        
+          <div id="gitalk-container"></div>
+        
 
-<script>
+        
+      
 
-  var gitalk = new Gitalk({
-    clientID: '761ba32522ad16d2134b',
-    clientSecret: 'd5634ea03ca976d589a06f88c4e9fb23c928e5f9',
-    repo: 'Kite-chaser.github.io',
-    owner: 'Kite-chaser',
-    admin: ['Kite-chaser'],
-    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
-    distractionFreeMode: false  // Facebook-like distraction free mode
-  })
+      <div class="site-footer">
+  <div class="slogan">This is my blog.</div>
+  Powered by Gridea
+</div>
 
-  gitalk.render('gitalk-container')
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
 
 </script>
 
-          
-          
-        
-     </div>
-    </div>
-   </div>
-  </div>
-  <script src="https://Kite-chaser.github.io/media/scripts/jquery.js"></script>
-  <script src="https://Kite-chaser.github.io/media/scripts/jquery-migrate-1.2.1.min.js"></script>
-  <script src="https://Kite-chaser.github.io/media/scripts/jquery.appear.js"></script>
+
+  
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '761ba32522ad16d2134b',
+        clientSecret: 'd5634ea03ca976d589a06f88c4e9fb23c928e5f9',
+        repo: 'Kite-chaser.github.io',
+        owner: 'Kite-chaser',
+        admin: ['Kite-chaser'],
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
 
 
- </body>
+
+
+  </body>
 </html>
