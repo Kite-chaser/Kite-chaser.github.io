@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Kite-chaser.github.io</id>
     <title>Kite-chaser</title>
-    <updated>2019-10-27T10:56:35.184Z</updated>
+    <updated>2019-10-27T11:47:14.087Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Kite-chaser.github.io"/>
     <link rel="self" href="https://Kite-chaser.github.io/atom.xml"/>
@@ -10,6 +10,110 @@
     <logo>https://Kite-chaser.github.io/images/avatar.png</logo>
     <icon>https://Kite-chaser.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Kite-chaser</rights>
+    <entry>
+        <title type="html"><![CDATA[差分约束]]></title>
+        <id>https://Kite-chaser.github.io/post/chai-fen-yue-shu</id>
+        <link href="https://Kite-chaser.github.io/post/chai-fen-yue-shu">
+        </link>
+        <updated>2019-10-27T11:16:11.000Z</updated>
+        <summary type="html"><![CDATA[<p>图论真的是博大精深。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>图论真的是博大精深。</p>
+<!--more-->
+<h2 id="前言">前言</h2>
+<p>如果一个系统由n个变量和m个约束条件组成，形成m个形如ai-aj≤k的不等式(i,j∈[1,n],k为常数),则称其为差分约束系统(system of difference constraints)。亦即，差分约束系统是求解关于一组变量的特殊不等式组的方法。<br>
+求解差分约束系统，可以转化成图论的单源最短路径（或最长路径）问题。</p>
+<h2 id="正文">正文</h2>
+<p>观察xj-xi&lt;=bk，会发现它类似最短路中的三角不等式d[v]&lt;=d[u]+w[u,v]，即d[v]-d[u]&lt;=w[u,v]。因此，以每个变量xi为结点，对于约束条件xj-xi&lt;=bk，连接一条边(i,j)，边权为bk。我们再增加一个源点s,s与所有定点相连，边权均为0。对这个图，以s为源点运行Bellman-ford算法（或SPFA算法），最终{d[ i]}即为一组可行解。<br>
+例：d[x]-d[y]&gt;=Z<br>
+如果想连边后求最长路 那么将不等式变形为这种形式 d[x]&gt;=d[y]+z y---x连一条权值为z的边<br>
+求最短路则变形成d[y]&lt;=d[x]-z x---y连一条权值为-z的边。<br>
+如果是别的不等式，也可以根据情况变形。<br>
+为什么一定要用SPFA呢，因为这个系统可能无解。当最长路出现正环的时候或最短路出现负环的时候，这个系统就无解惹。其实，最长最短都差不多，视情况而定。</p>
+<h2 id="eg">EG</h2>
+<h3 id="p1993-小k的农场"><a href="https://www.luogu.org/problem/P1993">P1993 小K的农场</a></h3>
+<h3 id="题目描述">题目描述</h3>
+<p>小K在MC里面建立很多很多的农场，总共n个，以至于他自己都忘记了每个农场中种植作物的具体数量了，他只记得一些含糊的信息（共m个），以下列三种形式描述：</p>
+<ul>
+<li>农场a比农场b至少多种植了c个单位的作物，</li>
+<li>农场a比农场b至多多种植了c个单位的作物，</li>
+<li>农场a与农场b种植的作物数一样多。</li>
+</ul>
+<p>但是，由于小K的记忆有些偏差，所以他想要知道存不存在一种情况，使得农场的种植作物数量与他记忆中的所有信息吻合。</p>
+<h3 id="solve">Solve</h3>
+<p>建图，求最长路。</p>
+<ul>
+<li>a-b&gt;=c,从b向a建一条边权为c的边。</li>
+<li>a-b&lt;=c等于b-a&lt;=-c,从a向b建一条边权为-c的边。</li>
+<li>a=b，等于a-b&gt;=0或b-a&gt;=0，双向建边，权值为0。<br>
+每种情况分析完毕。<br>
+超级源点为0。向每一个点建一条权值为0的边。<br>
+SPFA跑最长路。</li>
+</ul>
+<h3 id="code">Code</h3>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+using namespace std;
+const int maxn=23333333;
+const int N=50005;
+int n,m;
+int num,x,y,z;
+int first[N],nxt[N],to[N],dist[N],len;
+int cnt[N],dis[N];
+bool vis[N];
+inline int read(){
+    int k=0,f=1;
+    char ch=getchar();
+    while(ch&lt;'0'||ch&gt;'9'){
+        if(ch=='-')
+            f=-1;
+        ch=getchar();
+    }
+    while(ch&gt;='0'&amp;&amp;ch&lt;='9'){
+        k=(k&lt;&lt;1)+(k&lt;&lt;3)+(ch^48);
+        ch=getchar();
+    }
+    return k*f;
+}
+void add(int u,int v,int w){
+	to[++len]=v;
+	dist[len]=w;
+	nxt[len]=first[u];
+	first[u]=len;
+}
+bool spfa(int u){
+	vis[u]=1;
+	for(int i=first[u];i!=-1;i=nxt[i]){
+		if(dis[to[i]]&lt;dis[u]+dist[i]){
+			dis[to[i]]=dis[u]+dist[i];
+			if(vis[to[i]]) return 0;
+			if(!spfa(to[i])) return 0;
+		}
+	}
+	vis[u]=0;
+	return 1;
+}
+int main()
+{
+	memset(first,-1,sizeof(first));
+	n=read();m=read();
+	for(int i=1;i&lt;=m;i++){
+		num=read();x=read();y=read();
+		if(num==1) z=read(),add(y,x,z);
+		else if(num==2) z=read(),add(x,y,-z);
+		else if(num==3) add(x,y,0),add(y,x,0);
+	}
+	for(int i=1;i&lt;=n;i++) add(0,i,0),dis[i]=-maxn;;
+	if(spfa(0)) printf(&quot;Yes&quot;);
+	else printf(&quot;No&quot;);
+	return 0;
+} 
+</code></pre>
+<h2 id="后言">后言</h2>
+<p>由此观之，许多看似后无头绪的题，其实可以用图论解决。就好像有指向性的状态可以用DAG建模。然后用相应的图论方法解决。所以OI题也要注意建模。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[分层图]]></title>
         <id>https://Kite-chaser.github.io/post/fen-ceng-tu</id>
@@ -814,61 +918,6 @@ int main()
    return 0;
 } 
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[强连通分量]]></title>
-        <id>https://Kite-chaser.github.io/post/qiang-lian-tong-fen-liang</id>
-        <link href="https://Kite-chaser.github.io/post/qiang-lian-tong-fen-liang">
-        </link>
-        <updated>2019-09-03T09:19:34.000Z</updated>
-        <summary type="html"><![CDATA[<p>tarjan真的不是一种算法。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>tarjan真的不是一种算法。</p>
-<!--more-->
-<h3 id="前言">前言</h3>
-<p>tarjan是一个计算机科学家，以LCA、强连通分量等算法闻名。所以tarjan发明的算法统称tarjan算法。</p>
-<h3 id="强连通分量strongly-connected-components">强连通分量(strongly connected components)</h3>
-<p>在有向图G中，如果两个顶点间至少存在一条路径，称两个顶点<strong>强连通</strong>。如果有向图G的每两个顶点都强连通，称G是一个<strong>强连通图</strong>。非强连通图有向图的极大强连通子图，称为<strong>强连通分量</strong>。</p>
-<h4 id="slove">Slove</h4>
-<ol>
-<li>对整张图进行dfs，用一个栈维护dfs到的所有点，再记录一下每个点是否在栈里。</li>
-<li>每个点维护两个信息：dfn表示dfs到这个点的顺序，low表示这个点能沿着非树边回到的dfn最小的点的dfn。</li>
-<li>一开始令low[u]=dfn[u]，并将u压入栈。</li>
-<li>到点u时，枚举出边(u,v)，如果没有访问到，就继续dfs点v，然后 low[u]=min(low[u],low[v])。</li>
-<li>否则，如果v当前在栈里，就令low[u]=min(low[u],dfn[v])。</li>
-<li>当u的出边枚举完时，如果low[u]=dfn[u]，就说明找到了一个强连通分量，弹栈直到弹出点u为止，这些点构成一个强连通分量。</li>
-</ol>
-<h4 id="code">Code</h4>
-<pre><code class="language-cpp">
-void tanjan(int s){
-	dfn[s]=low[s]=++sum;
-	st.push(s);  //stack&lt;int&gt; st
-	vis[s]=true;  //是否入栈
-	for(int i=first[s];i!=-1;i=next[i]){  //邻接表
-		if(!dfn[to[i]]){  //to[i]-v
-			tanjan(to[i]);
-			low[s]=min(low[s],low[to[i]]);
-		}
-		else if(vis[to[i]]) low[s]=min(low[s],dfn[to[i]]);
-	}
-	if(dfn[s]==low[s]){
-		int cur;
-		cnt++;  //强连通分量编号
-		do{
-			cur=st.top();
-			fis[cur]=cnt;
-			vis[cur]=false;
-			st.pop();
-		}while(cur!=s);
-	}
-}
-</code></pre>
-<h4 id="相关题目">相关题目</h4>
-<p><a href="https://www.luogu.org/problem/P2341">P2341 [HAOI2006]受欢迎的牛|【模板】强连通分量</a> //其实这题原先不是模板<br>
-<a href="https://www.luogu.org/problem/P2746">P2746 [USACO5.3]校园网Network of Schools</a></p>
-<h4 id="此外">此外</h4>
-<p>蒟蒻并不会证明此解的正确性。</p>
 ]]></content>
     </entry>
 </feed>

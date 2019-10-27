@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>差分约束 | Kite-chaser</title>
+<meta name="description" content="This is my blog.">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="shortcut icon" href="https://Kite-chaser.github.io/favicon.ico">
+<link rel="stylesheet" href="https://Kite-chaser.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://Kite-chaser.github.io">
+        <img class="avatar" src="https://Kite-chaser.github.io/images/avatar.png" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://Kite-chaser.github.io">
+        <h1 class="site-title">Kite-chaser</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://Kite-chaser.github.io/post/guan-yu/" class="menu purple-link">
+            关于
+          </a>
+        
+      
+        
+          <a href="https://Kite-chaser.github.io/post/you-lian/" class="menu purple-link">
+            友链
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          <h2 class="post-title">差分约束</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2019-10-27</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://Kite-chaser.github.io/tag/hPbxNQedN">
+                    差分约束
+                    
+                      ，
+                    
+                  </a>
+                
+                  <a href="https://Kite-chaser.github.io/tag/kCU-ep_Aq">
+                    笔记
+                    
+                      ，
+                    
+                  </a>
+                
+                  <a href="https://Kite-chaser.github.io/tag/nQBg2kv-6">
+                    图论
+                    
+                      ，
+                    
+                  </a>
+                
+                  <a href="https://Kite-chaser.github.io/tag/BsZO4xN8u">
+                    OI
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <p>图论真的是博大精深。</p>
+<!--more-->
+<h2 id="前言">前言</h2>
+<p>如果一个系统由n个变量和m个约束条件组成，形成m个形如ai-aj≤k的不等式(i,j∈[1,n],k为常数),则称其为差分约束系统(system of difference constraints)。亦即，差分约束系统是求解关于一组变量的特殊不等式组的方法。<br>
+求解差分约束系统，可以转化成图论的单源最短路径（或最长路径）问题。</p>
+<h2 id="正文">正文</h2>
+<p>观察xj-xi&lt;=bk，会发现它类似最短路中的三角不等式d[v]&lt;=d[u]+w[u,v]，即d[v]-d[u]&lt;=w[u,v]。因此，以每个变量xi为结点，对于约束条件xj-xi&lt;=bk，连接一条边(i,j)，边权为bk。我们再增加一个源点s,s与所有定点相连，边权均为0。对这个图，以s为源点运行Bellman-ford算法（或SPFA算法），最终{d[ i]}即为一组可行解。<br>
+例：d[x]-d[y]&gt;=Z<br>
+如果想连边后求最长路 那么将不等式变形为这种形式 d[x]&gt;=d[y]+z y---x连一条权值为z的边<br>
+求最短路则变形成d[y]&lt;=d[x]-z x---y连一条权值为-z的边。<br>
+如果是别的不等式，也可以根据情况变形。<br>
+为什么一定要用SPFA呢，因为这个系统可能无解。当最长路出现正环的时候或最短路出现负环的时候，这个系统就无解惹。其实，最长最短都差不多，视情况而定。</p>
+<h2 id="eg">EG</h2>
+<h3 id="p1993-小k的农场"><a href="https://www.luogu.org/problem/P1993">P1993 小K的农场</a></h3>
+<h3 id="题目描述">题目描述</h3>
+<p>小K在MC里面建立很多很多的农场，总共n个，以至于他自己都忘记了每个农场中种植作物的具体数量了，他只记得一些含糊的信息（共m个），以下列三种形式描述：</p>
+<ul>
+<li>农场a比农场b至少多种植了c个单位的作物，</li>
+<li>农场a比农场b至多多种植了c个单位的作物，</li>
+<li>农场a与农场b种植的作物数一样多。</li>
+</ul>
+<p>但是，由于小K的记忆有些偏差，所以他想要知道存不存在一种情况，使得农场的种植作物数量与他记忆中的所有信息吻合。</p>
+<h3 id="solve">Solve</h3>
+<p>建图，求最长路。</p>
+<ul>
+<li>a-b&gt;=c,从b向a建一条边权为c的边。</li>
+<li>a-b&lt;=c等于b-a&lt;=-c,从a向b建一条边权为-c的边。</li>
+<li>a=b，等于a-b&gt;=0或b-a&gt;=0，双向建边，权值为0。<br>
+每种情况分析完毕。<br>
+超级源点为0。向每一个点建一条权值为0的边。<br>
+SPFA跑最长路。</li>
+</ul>
+<h3 id="code">Code</h3>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+using namespace std;
+const int maxn=23333333;
+const int N=50005;
+int n,m;
+int num,x,y,z;
+int first[N],nxt[N],to[N],dist[N],len;
+int cnt[N],dis[N];
+bool vis[N];
+inline int read(){
+    int k=0,f=1;
+    char ch=getchar();
+    while(ch&lt;'0'||ch&gt;'9'){
+        if(ch=='-')
+            f=-1;
+        ch=getchar();
+    }
+    while(ch&gt;='0'&amp;&amp;ch&lt;='9'){
+        k=(k&lt;&lt;1)+(k&lt;&lt;3)+(ch^48);
+        ch=getchar();
+    }
+    return k*f;
+}
+void add(int u,int v,int w){
+	to[++len]=v;
+	dist[len]=w;
+	nxt[len]=first[u];
+	first[u]=len;
+}
+bool spfa(int u){
+	vis[u]=1;
+	for(int i=first[u];i!=-1;i=nxt[i]){
+		if(dis[to[i]]&lt;dis[u]+dist[i]){
+			dis[to[i]]=dis[u]+dist[i];
+			if(vis[to[i]]) return 0;
+			if(!spfa(to[i])) return 0;
+		}
+	}
+	vis[u]=0;
+	return 1;
+}
+int main()
+{
+	memset(first,-1,sizeof(first));
+	n=read();m=read();
+	for(int i=1;i&lt;=m;i++){
+		num=read();x=read();y=read();
+		if(num==1) z=read(),add(y,x,z);
+		else if(num==2) z=read(),add(x,y,-z);
+		else if(num==3) add(x,y,0),add(y,x,0);
+	}
+	for(int i=1;i&lt;=n;i++) add(0,i,0),dis[i]=-maxn;;
+	if(spfa(0)) printf(&quot;Yes&quot;);
+	else printf(&quot;No&quot;);
+	return 0;
+} 
+</code></pre>
+<h2 id="后言">后言</h2>
+<p>由此观之，许多看似后无头绪的题，其实可以用图论解决。就好像有指向性的状态可以用DAG建模。然后用相应的图论方法解决。所以OI题也要注意建模。</p>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://Kite-chaser.github.io/post/fen-ceng-tu">
+              <h3 class="post-title">
+                下一篇：分层图
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+        
+          <div id="gitalk-container"></div>
+        
+
+        
+      
+
+      <div class="site-footer">
+  <div class="slogan">This is my blog.</div>
+  Powered by Gridea
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '761ba32522ad16d2134b',
+        clientSecret: 'd5634ea03ca976d589a06f88c4e9fb23c928e5f9',
+        repo: 'Kite-chaser.github.io',
+        owner: 'Kite-chaser',
+        admin: ['Kite-chaser'],
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
