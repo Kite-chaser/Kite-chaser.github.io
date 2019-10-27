@@ -13,7 +13,7 @@
      <div class="sidebar animated fadeInDown">
    <div class="logo-title">
     <div class="title">
-     <img src="https://Kite-chaser.github.io/images/avatar.png?v=1572139632524" style="width:127px;" />
+     <img src="https://Kite-chaser.github.io/images/avatar.png?v=1572140669240" style="width:127px;" />
 
      <div class="description">
       <p>This is my blog.</p>
@@ -95,7 +95,7 @@
 <p>先任选一个结点作为根节点，把无根树变成有根树，然后设d(i)表示以i为根的子树的结点的个数。不难发现d(i)=∑d(j)+1，j∈s（i）。s（i）为i结点的所有儿子结点的编号的集合。程序也十分简单：只需要DFS一次，在无根树有根数的同时计算即可，连记忆化都不需要——因为本来就没有重复计算。<br>
 那么，删除结点i后，最大的连通块有多少个呢？结点i的子树中最大有max{d（j）}个结点，i的“上方子树”中有n-d（i）个结点，<br>
 如图9-13。这样，在动态规划的过程中就可以找出树的重心了。</p>
-<p><img src="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike72%2C5%2C5%2C72%2C24/sign=39255736d033c895b2739029b07a1895/242dd42a2834349b353a4e24c0ea15ce36d3be56.jpg" alt=""></p>
+<figure data-type="image" tabindex="1"><img src="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike72%2C5%2C5%2C72%2C24/sign=39255736d033c895b2739029b07a1895/242dd42a2834349b353a4e24c0ea15ce36d3be56.jpg" alt=""></figure>
 <h2 id="tips">Tips</h2>
 <p>树的重点可以说是树的平衡点，其使以它为根的树中所有的子树的节点数相近。</p>
 <h2 id="code">Code</h2>

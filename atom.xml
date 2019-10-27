@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Kite-chaser.github.io</id>
     <title>Kite-chaser</title>
-    <updated>2019-10-27T01:29:25.874Z</updated>
+    <updated>2019-10-27T01:44:32.005Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Kite-chaser.github.io"/>
     <link rel="self" href="https://Kite-chaser.github.io/atom.xml"/>
@@ -19,6 +19,103 @@
         <summary type="html"><![CDATA[<p>分块是一种优雅的暴力。</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>分块是一种优雅的暴力。</p>
+<!--more-->
+<h2 id="题目描述">题目描述</h2>
+<p>现有N（2 ≤ N ≤ 100000）盏灯排成一排，从左到右依次编号为：1，2，......，N。然后依次执行M（1 ≤ M ≤ 100000）项操作，操作分为两种：第一种操作指定一个区间[a, b]，然后改变编号在这个区间内的灯的状态（把开着的灯关上，关着的灯打开），第二种操作是指定一个区间[a, b]，要求你输出这个区间内有多少盏灯是打开的。灯在初始时都是关着的。</p>
+<blockquote>
+<p><a href="https://www.luogu.org/problem/P3870">原题链接</a></p>
+</blockquote>
+<h2 id="slove">Slove</h2>
+<ol>
+<li>将n盏灯的状态分块。1表示开着，0表示关着。</li>
+<li>tg[]表示每个块的修改状态。</li>
+<li>通过“^”操作快速修改。</li>
+</ol>
+<h2 id="code">Code</h2>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cmath&gt;
+#define N 100001
+using namespace std;
+int n,m;
+int t;
+int ans;
+int cnt,x,y;
+struct note{
+	int l,r,sum;
+}d[N];
+int num[N],tg[N];
+int ln[N];
+void ch(int l,int r){
+	if(ln[l]==ln[r]){
+		for(int i=l;i&lt;=r;i++){
+			d[ln[i]].sum-=(num[i]^tg[ln[i]]);
+			num[i]=1-num[i];
+			d[ln[i]].sum+=(num[i]^tg[ln[i]]);
+		}
+	}
+	else{
+		for(int i=l;i&lt;=d[ln[l]].r;i++){
+			d[ln[i]].sum-=(num[i]^tg[ln[i]]);
+			num[i]=1-num[i];
+			d[ln[i]].sum+=(num[i]^tg[ln[i]]);
+		}
+		for(int i=d[ln[r]].l;i&lt;=r;i++){
+			d[ln[i]].sum-=(num[i]^tg[ln[i]]);
+			num[i]=1-num[i];
+			d[ln[i]].sum+=(num[i]^tg[ln[i]]);
+		}
+		for(int i=ln[l]+1;i&lt;=ln[r]-1;i++){
+			tg[i]=1-tg[i];
+			d[i].sum=(d[i].r-d[i].l+1)-d[i].sum;
+		}
+	}
+}
+int qu(int l,int r){
+	if(ln[l]==ln[r]){
+		for(int i=l;i&lt;=r;i++) ans+=(num[i]^tg[ln[i]]);
+		return ans;
+	}
+	else{
+		for(int i=l;i&lt;=d[ln[l]].r;i++) ans+=(num[i]^tg[ln[l]]);
+		for(int i=d[ln[r]].l;i&lt;=r;i++) ans+=(num[i]^tg[ln[r]]);
+		for(int i=ln[l]+1;i&lt;=ln[r]-1;i++){
+			ans+=d[i].sum;
+		}
+		return ans;
+	}
+}
+int main()
+{
+	scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+	t=sqrt(n);
+	for(int i=1;i&lt;=t;i++){
+		d[i].l=(i-1)*t+1;
+		d[i].r=i*t;
+	}
+	if(d[t].r&lt;n){
+		t++;
+		d[t].l=d[t-1].r+1;
+		d[t].r=n;
+	}
+	int s=1;
+	for(int i=1;i&lt;=n;i++){
+		if(d[s].r&lt;i) s++;
+		ln[i]=s;
+	}
+	for(int i=1;i&lt;=m;i++){
+		scanf(&quot;%d%d%d&quot;,&amp;cnt,&amp;x,&amp;y);
+		if(cnt){
+			ans=0;
+			printf(&quot;%d\n&quot;,qu(x,y));
+		}
+		else ch(x,y);
+	}
+	return 0; 
+}
+</code></pre>
+<h2 id="关于分块">关于分块</h2>
+<p>没有学过分块的朋友可以康康hzw大神的<a href="http://hzwer.com/8053.html">分块九讲</a></p>
 ]]></content>
     </entry>
     <entry>
@@ -30,6 +127,105 @@
         <summary type="html"><![CDATA[<p>话说描述下面一大坨是什么东西……</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>话说描述下面一大坨是什么东西……</p>
+<!--more-->
+<h2 id="题目描述">题目描述</h2>
+<p>Bessie is planning the annual Great Cow Gathering for cows all across the country and, of course, she would like to choose the most convenient location for the gathering to take place.</p>
+<p>Bessie正在计划一年一度的奶牛大集会，来自全国各地的奶牛将来参加这一次集会。当然，她会选择最方便的地点来举办这次集会。</p>
+<p>Each cow lives in one of N (1 &lt;= N &lt;= 100,000) different barns (conveniently numbered 1..N) which are connected by N-1 roads in such a way that it is possible to get from any barn to any other barn via the roads. Road i connects barns A_i and B_i (1 &lt;= A_i &lt;= N; 1 &lt;= B_i &lt;= N) and has length L_i (1 &lt;= L_i &lt;= 1,000). The Great Cow Gathering can be held at any one of these N barns. Moreover, barn i has C_i (0 &lt;= C_i &lt;= 1,000) cows living in it.</p>
+<p>每个奶牛居住在 N(1&lt;=N&lt;=100,000) 个农场中的一个，这些农场由N-1条道路连接，并且从任意一个农场都能够到达另外一个农场。道路i连接农场A_i和B_i(1 &lt;= A_i &lt;=N; 1 &lt;= B_i &lt;= N),长度为L_i(1 &lt;= L_i &lt;= 1,000)。集会可以在N个农场中的任意一个举行。另外，每个牛棚中居住者C_i(0 &lt;= C_i &lt;= 1,000)只奶牛。</p>
+<p>When choosing the barn in which to hold the Cow Gathering, Bessie wishes to maximize the convenience (which is to say minimize the inconvenience) of the chosen location. The inconvenience of choosing barn X for the gathering is the sum of the distances all of the cows need to travel to reach barn X (i.e., if the distance from barn i to barn X is 20, then the travel distance is C_i*20). Help Bessie choose the most convenient location for the Great Cow Gathering.</p>
+<p>在选择集会的地点的时候，Bessie希望最大化方便的程度(也就是最小化不方便程度)。比如选择第X个农场作为集会地点，它的不方便程度是其它牛棚中每只奶牛去参加集会所走的路程之和，(比如，农场i到达农场X的距离是20，那么总路程就是C_i*20)。帮助Bessie找出最方便的地点来举行大集会。</p>
+<p>Consider a country with five barns with [various capacities] connected by various roads of varying lengths. In this set of barns, neither barn 3 nor barn 4 houses any cows.</p>
+<p>1 3 4 5</p>
+<p>@--1--@--3--@--3--@[2]</p>
+<p>[1] |</p>
+<p>2 | @[1] 2 Bessie can hold the Gathering in any of five barns; here is the table of inconveniences calculated for each possible location:</p>
+<p>Gather ----- Inconvenience ------</p>
+<p>Location B1 B2 B3 B4 B5 Total</p>
+<p>1 0 3 0 0 14 17</p>
+<p>2 3 0 0 0 16 19</p>
+<p>3 1 2 0 0 12 15</p>
+<p>4 4 5 0 0 6 15</p>
+<p>5 7 8 0 0 0 15</p>
+<p>If Bessie holds the gathering in barn 1, then the inconveniences from each barn are:</p>
+<p>Barn 1 0 -- no travel time there!</p>
+<p>Barn 2 3 -- total travel distance is 2+1=3 x 1 cow = 3 Barn 3 0 -- no cows there!</p>
+<p>Barn 4 0 -- no cows there!</p>
+<p>Barn 5 14 -- total travel distance is 3+3+1=7 x 2 cows = 14 So the total inconvenience is 17.</p>
+<p>The best possible convenience is 15, achievable at by holding the Gathering at barns 3, 4, or 5.</p>
+<blockquote>
+<p><a href="https://www.luogu.org/problem/P2986">原题链接</a></p>
+</blockquote>
+<h2 id="slove">Slove</h2>
+<p>简单点说就是用树的重心求解。<br>
+类似于这种树上到一点然后求最小价值的题大多是树的重心。<br>
+也就是所求的这一点。<br>
+有关树的重心，见蒟蒻的<a href="https://kite-chaser.github.io/post/shu-de-chong-xin/">笔记</a>。<br>
+然后从树的重心，求到各点的路径长度和代价即可。</p>
+<h2 id="code">Code</h2>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#define ll long long
+#define N 100001
+using namespace std;
+ll n;
+ll maxn=1000000000000000000,ans;
+ll cnt,sum;
+ll c[N];
+ll x,y,z;
+ll dis[N],d[N];  //dis-从树的重心到节点的路径长度
+ll first[N*2],nxt[N*2],to[N*2],w[N*2],len;
+void add(ll u,ll v,ll z){
+	to[++len]=v;
+	w[len]=z;
+	nxt[len]=first[u];
+	first[u]=len;
+}
+void dp(ll s,ll fa){
+	d[s]=c[s];
+	ll res=0;
+	for(ll i=first[s];i!=-1;i=nxt[i]){
+		if(to[i]==fa) continue;
+		dp(to[i],s);
+		d[s]+=d[to[i]];
+		res=max(res,d[to[i]]);
+	}
+	res=max(res,sum-d[s]);
+	if(res&lt;maxn){
+		maxn=res;
+		cnt=s;
+	}
+}
+void dfs(ll s,ll fa){
+	for(ll i=first[s];i!=-1;i=nxt[i]){
+		if(to[i]==fa) continue;
+		dis[to[i]]=dis[s]+w[i];
+		dfs(to[i],s);
+	}
+}
+int main()
+{
+	memset(first,-1,sizeof(first));
+	scanf(&quot;%lld&quot;,&amp;n);
+	for(ll i=1;i&lt;=n;i++){
+		scanf(&quot;%lld&quot;,&amp;c[i]);sum+=c[i];
+	}
+	for(ll i=1;i&lt;n;i++){
+		scanf(&quot;%lld%lld%lld&quot;,&amp;x,&amp;y,&amp;z);
+		add(x,y,z);
+		add(y,x,z);
+	}
+	dp(1,1);
+	dis[cnt]=0;
+	dfs(cnt,cnt);
+	for(ll i=1;i&lt;=n;i++){
+		ans+=dis[i]*c[i];
+	}
+	printf(&quot;%lld&quot;,ans);
+	return 0;
+}
+</code></pre>
 ]]></content>
     </entry>
     <entry>
@@ -41,6 +237,85 @@
         <summary type="html"><![CDATA[<p>我肝了好久……</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>我肝了好久……</p>
+<!--more-->
+<h2 id="题目描述">题目描述</h2>
+<p>经过数月的精心准备，Peer Brelstet，一个出了名的盗画者，准备开始他的下一个行动。艺术馆的结构，每条走廊要么分叉为两条走廊，要么通向一个展览室。Peer知道每个展室里藏画的数量，并且他精确测量了通过每条走廊的时间。由于经验老到，他拿下一幅画需要5秒的时间。你的任务是编一个程序，计算在警察赶来之前，他最多能偷到多少幅画。<br>
+<img src="https://Kite-chaser.github.io/post-images/1569059240907.png" alt=""><br>
+样例的图……</p>
+<blockquote>
+<p><a href="https://www.luogu.org/problem/P1270">原题链接</a></p>
+</blockquote>
+<h2 id="slove">Slove</h2>
+<p>树形DP-树形背包<br>
+mon[i]到节点i的用时<br>
+<s>十年DP推方程</s></p>
+<ol>
+<li>设计状态：d[i][j]，以i为根节点，取画j副时的最少用时。</li>
+<li>边界：d[i][j]=j*5,(i为展室，0&lt;=j&lt;=该展室画数）</li>
+<li>转移方程：d[u][j]=min(d[u][j],d[u][j-k]+d[v][k]+mon[v]).（u到v有边；j为u的最大画数）</li>
+<li>按照最大画幅，倒序枚举，用时低于S的就是答案。</li>
+</ol>
+<h2 id="code">Code</h2>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#define N 1010
+using namespace std;
+int s;
+int tree[N*10];
+int mon[N],vl[N],cnt;
+int d[N][N];
+int sz[N],sum;
+int first[N],nxt[N],to[N],len;
+void add(int u,int v){
+	to[++len]=v;
+	nxt[len]=first[u];
+	first[u]=len;
+}
+void infs(int u){
+	mon[u]=mon[u]*2;
+	if(vl[u]){
+		sum+=vl[u];
+		for(int i=0;i&lt;=vl[u];i++) d[u][i]=i*5;
+		return ;
+	}
+	scanf(&quot;%d%d&quot;,&amp;mon[u*2],&amp;vl[u*2]);
+	add(u,u*2);infs(u*2);
+	scanf(&quot;%d%d&quot;,&amp;mon[u*2+1],&amp;vl[u*2+1]);
+	add(u,u*2+1),infs(u*2+1);
+}
+void dfs(int u){
+	if(vl[u]){
+		sz[u]=vl[u];
+		return ;
+	}
+	for(int i=first[u];i!=-1;i=nxt[i]){
+		dfs(to[i]);
+		sz[u]+=sz[to[i]];
+		for(int j=sz[u];j&gt;=0;j--){
+			for(int k=min(j,sz[to[i]]);k&gt;=0;k--) d[u][j]=min(d[u][j],d[u][j-k]+d[to[i]][k]+mon[to[i]]);
+		}
+	}
+}
+int main()
+{
+	memset(first,-1,sizeof(first));
+	for(int i=0;i&lt;=1001;i++) for(int j=1;j&lt;=1001;j++) d[i][j]=30000;
+	scanf(&quot;%d&quot;,&amp;s);
+	s--;
+	add(0,1);
+	scanf(&quot;%d%d&quot;,&amp;mon[1],&amp;vl[1]);
+	infs(1);
+	dfs(0);
+	for(int i=sum;i&gt;=0;i--){
+		if(d[0][i]&lt;s){
+			printf(&quot;%d&quot;,i);
+			return 0;
+		}
+	}
+	return 0;
+}
+</code></pre>
 ]]></content>
     </entry>
     <entry>
@@ -52,6 +327,484 @@
         <summary type="html"><![CDATA[<p>我感受到了memset的力量。</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>我感受到了memset的力量。</p>
+<!--more-->
+<h2 id="题目描述">题目描述</h2>
+<p>小T 是一名质量监督员，最近负责检验一批矿产的质量。这批矿产共有n个矿石，从1到n 逐一编号，每个矿石都有自己的重量 w_i 以及价值v_i。检验矿产的流程是：</p>
+<ol>
+<li>给定m个区间[L_i,R_i]；</li>
+<li>选出一个参数W；</li>
+<li>对于一个区间[L_i,R_i]，计算矿石在这个区间上的检验值Y_i：<br>
+<img src="https://Kite-chaser.github.io/post-images/1568450521669.png" alt=""><br>
+这批矿产的检验结果Y为各个区间的检验值之和。即：Y_1+Y_2...+Y_m<br>
+若这批矿产的检验结果与所给标准值S相差太多，就需要再去检验另一批矿产。小T不想费时间去检验另一批矿产，所以他想通过调整参数W 的值，让检验结果尽可能的靠近标准值S，即使得S-Y的绝对值最小。请你帮忙求出这个最小值。</li>
+</ol>
+<blockquote>
+<p><a href="https://www.luogu.org/problem/P1314">原题链接</a></p>
+</blockquote>
+<h2 id="slove">Slove</h2>
+<h3 id="一-二分">一 二分</h3>
+<p>在每个区间内，只有w[]大于W的，才能被选上。<br>
+所以W减小，被选入的矿石增多，Y增加；反之Y减小。<br>
+条件：</p>
+<ul>
+<li>Y&gt;S,增大W，减小Y，以使|Y-S|减小。</li>
+<li>Y&lt;S,减小W，增大Y，以使|Y-S|减小。</li>
+<li>Y=S，完美。</li>
+</ul>
+<h3 id="二-前缀和">二 前缀和</h3>
+<p>使用前缀和以减少区间修改的时间。</p>
+<ul>
+<li>w[]&gt;=W,sum1[i]=sum1[i-1]+1,sum2[i]=sum2[i-1]+v[i],sum1表示公式中前者，sum2表示后者。</li>
+<li>w[]&lt;W,sum1[i]=sum1[i-1],sum2[i]=sum2[i-1]。</li>
+</ul>
+<h2 id="tip">Tip</h2>
+<ol>
+<li>答案初始值一定要设的非常大。</li>
+<li>不开longlong见祖宗。</li>
+</ol>
+<h2 id="code">Code</h2>
+<pre><code class="language-cpp">
+#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;cmath&gt;
+#define N 200010
+#define ll long long
+using namespace std;
+ll n,m,k;
+ll W;
+ll ans=999999999999999999,num;
+ll l=1,r,mid;
+ll s[N],t[N];
+ll sum1[N],sum2[N];
+ll w[N],v[N];
+bool sl(ll cnt){
+	ll num=0;
+	memset(sum1,0,sizeof(sum1));
+	memset(sum2,0,sizeof(sum2));
+	for(ll i=1;i&lt;=n;i++){
+		if(w[i]&gt;=cnt) sum1[i]=sum1[i-1]+1,sum2[i]=sum2[i-1]+v[i];
+		else sum1[i]=sum1[i-1],sum2[i]=sum2[i-1];
+	}
+	for(ll i=1;i&lt;=m;i++){
+		num+=(sum1[t[i]]-sum1[s[i]-1])*(sum2[t[i]]-sum2[s[i]-1]);
+	}
+	if(num&gt;k){
+		ans=min(ans,num-k);
+		return false;
+	}
+	ans=min(ans,k-num);
+	return true;
+}
+int main()
+{
+	scanf(&quot;%lld%lld%lld&quot;,&amp;n,&amp;m,&amp;k);
+	for(ll i=1;i&lt;=n;i++) scanf(&quot;%lld%lld&quot;,&amp;w[i],&amp;v[i]),r=max(r,w[i]);
+	for(ll i=1;i&lt;=m;i++) scanf(&quot;%lld%lld&quot;,&amp;s[i],&amp;t[i]);
+	r+=2;
+	while(l&lt;r){
+		mid=(l+r)/2;
+		if(sl(mid)) r=mid;
+		else l=mid+1;
+	}
+	printf(&quot;%lld&quot;,ans);
+	return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[P1083 借教室]]></title>
+        <id>https://Kite-chaser.github.io/post/p1083-jie-jiao-shi</id>
+        <link href="https://Kite-chaser.github.io/post/p1083-jie-jiao-shi">
+        </link>
+        <updated>2019-09-14T03:34:21.000Z</updated>
+        <summary type="html"><![CDATA[<p>二分答案是真的妙。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>二分答案是真的妙。</p>
+<!--more-->
+<h2 id="题目描述">题目描述</h2>
+<p>在大学期间，经常需要租借教室。大到院系举办活动，小到学习小组自习讨论，都需要向学校申请借教室。教室的大小功能不同，借教室人的身份不同，借教室的手续也不一样。<br>
+面对海量租借教室的信息，我们自然希望编程解决这个问题。<br>
+我们需要处理接下来n天的借教室信息，其中第i天学校有r_i个教室可供租借。共有m份订单，每份订单用三个正整数描述，分别为d_j,s_j,t_j表示某租借者需要从第s_j天到第t_j天租借教室（包括第s_j天和第t_j天），每天需要租借d_j个教室。<br>
+我们假定，租借者对教室的大小、地点没有要求。即对于每份订单，我们只需要每天提供d_j个教室，而它们具体是哪些教室，每天是否是相同的教室则不用考虑。</p>
+<p>借教室的原则是先到先得，也就是说我们要按照订单的先后顺序依次为每份订单分配教室。如果在分配的过程中遇到一份订单无法完全满足，则需要停止教室的分配，通知当前申请人修改订单。这里的无法满足指从第s_j 天到第t_j天中有至少一天剩余的教室数量不足d_j个。</p>
+<p>现在我们需要知道，是否会有订单无法完全满足。如果有，需要通知哪一个申请人修改订单。</p>
+<blockquote>
+<p><a href="https://www.luogu.org/problem/P1083">原题链接</a></p>
+</blockquote>
+<h2 id="slove">Slove</h2>
+<p>简简单单的二分。<br>
+二分天数。<br>
+可以的话取右区间。<br>
+不可以的话取左区间。<br>
+对于区间修改，使用差分就好啦。</p>
+<h2 id="tip">Tip</h2>
+<ol>
+<li>二分是真的快，log的。</li>
+<li>差分是真的快，O(1)的。</li>
+</ol>
+<h2 id="code">Code</h2>
+<pre><code class="language-cpp">
+#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#define N 1000001
+using namespace std;  //标准开头
+int n,m;
+int a[N],f[N];
+int d[N],s[N],t[N];
+int res[N];
+int l,r,mid;
+bool sl(int x){
+	for(int i=1;i&lt;=n;i++) f[i]=a[i]-a[i-1],res[i]=a[i];   //差分
+	for(int i=1;i&lt;=x;i++){
+		f[s[i]]-=d[i];
+		f[t[i]+1]+=d[i];
+	}
+	for(int i=1;i&lt;=n;i++){
+		res[i]=f[i]+res[i-1];
+		if(res[i]&lt;0) return false;
+	}
+	return true;
+}
+int main()
+{
+	scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+	for(int i=1;i&lt;=n;i++) scanf(&quot;%d&quot;,&amp;a[i]);
+	for(int i=1;i&lt;=m;i++) scanf(&quot;%d%d%d&quot;,&amp;d[i],&amp;s[i],&amp;t[i]);
+	l=1;r=m;
+	if(sl(m)){printf(&quot;0&quot;);return 0;}
+	while(l&lt;r){
+		mid=(l+r)/2;
+		if(sl(mid)) l=mid+1;
+		else r=mid;
+	}
+	printf(&quot;-1\n%d&quot;,l);
+	return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[P2014 选课]]></title>
+        <id>https://Kite-chaser.github.io/post/p2014-xuan-ke</id>
+        <link href="https://Kite-chaser.github.io/post/p2014-xuan-ke">
+        </link>
+        <updated>2019-09-14T02:59:29.000Z</updated>
+        <summary type="html"><![CDATA[<p>这道题使我对树形DP有了新认识。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>这道题使我对树形DP有了新认识。</p>
+<!--more-->
+<h2 id="题目描述">题目描述</h2>
+<p>在大学里每个学生，为了达到一定的学分，必须从很多课程里选择一些课程来学习，在课程里有些课程必须在某些课程之前学习，如高等数学总是在其它课程之前学习。现在有N门功课，每门课有个学分，每门课有一门或没有直接先修课（若课程a是课程b的先修课即只有学完了课程a，才能学习课程b）。一个学生要从这些课程里选择M门课程学习，问他能获得的最大学分是多少？</p>
+<blockquote>
+<p><a href="https://www.luogu.org/problem/P2014">原题链接</a></p>
+</blockquote>
+<h2 id="slove">Slove</h2>
+<p>每门课有一门或没有直接先修课，说明所有课程节点构成的图一定是树。<br>
+所以树形DP莽就完了。</p>
+<p>d[i][j]表示以i为根节点的子树包含j个节点（不含根节点）时最大价值。<br>
+sz[i]表示以i为根节点的子树的节点数。<br>
+u为父节点，v为u的子节点。<br>
+对于以i为根节点的子树，d值来自两部分，一棵子树的值（d[v][k]）和其他子树的值(d[u][j-k-1])的和。因为j里面实际不包含节点v，所以再-1。<br>
+则转移方程为d[u][j]=max(d[u][j],d[u][j-k-1]+d[v][k]+s[v])，j&lt;=sz[i],k&lt;=sz[v]。</p>
+<h2 id="tip">Tip</h2>
+<ol>
+<li>没有直接先修课的，建立节点0为虚根，作为他们的父节点。</li>
+<li>这是树形背包。</li>
+</ol>
+<h2 id="code">Code</h2>
+<pre><code class="language-cpp">
+#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#define N 400
+using namespace std;
+int n,m;
+int k[N],s[N];
+int d[N][N];
+int sz[N];
+int first[N],nxt[N],to[N],len;
+void add(int u,int v){
+   to[++len]=v;
+   nxt[len]=first[u];
+   first[u]=len;
+}
+void dfs(int u){
+   sz[u]=1;
+   for(int i=first[u];i!=-1;i=nxt[i]){
+   	dfs(to[i]);
+   	sz[u]+=sz[to[i]];
+   	for(int j=min(m,sz[u]);j&gt;=0;j--){
+   		for(int k=min(j-1,sz[to[i]]);k&gt;=0;k--) d[u][j]=max(d[u][j],d[u][j-k-1]+d[to[i]][k]+s[to[i]]);
+   	}
+   }
+}
+int main()
+{
+   memset(first,-1,sizeof(first));
+   scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+   for(int i=1;i&lt;=n;i++){
+   	scanf(&quot;%d%d&quot;,&amp;k[i],&amp;s[i]);
+   	add(k[i],i);
+   }
+   dfs(0);
+   printf(&quot;%d&quot;,d[0][m]);
+   return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[整除]]></title>
+        <id>https://Kite-chaser.github.io/post/zheng-chu</id>
+        <link href="https://Kite-chaser.github.io/post/zheng-chu">
+        </link>
+        <updated>2019-09-14T00:25:49.000Z</updated>
+        <summary type="html"><![CDATA[<p>只是一点关于整除的性质而已。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>只是一点关于整除的性质而已。</p>
+<!--more-->
+<p>设a是非零整数，b是整数。如果存在一个整数q，使得b=a*q，那么就说b可被a整除，记作a|吧，且称b是a的倍数，a是b的约数（因子）。<br>
+例如3|12，21|63。整除具有以下性质：</p>
+<ol>
+<li>如果a|b且b|c，那么a|c。</li>
+<li>a|b且a|c等价于对任意的整数x和y，有a|（b<em>x+c</em>y）。</li>
+<li>设m≠0，那么a|b等价于（m<em>a）|（m</em>b）。</li>
+<li>设整数x和y满足下式：a<em>x+b</em>y=1，且a|n、b|n，那么（a<em>b）|n。<br>
+证明：因为a|n且b|n<br>
+据性质3得：（a</em>b）|（b<em>n）且（a</em>b）|（a<em>n）<br>
+据性质2得：（a</em>b）|（a<em>n</em>x+b<em>n</em>y）<br>
+其中：a<em>n</em>x+b<em>n</em>y=n*（a<em>x+b</em>y）=n<em>1=n<br>
+所以（a</em>b）|n</li>
+<li>若b=q*d+c，那么d|b得充要条件是d|c。</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[UVA11324 The Largest Clique]]></title>
+        <id>https://Kite-chaser.github.io/post/uva11324-the-largest-clique</id>
+        <link href="https://Kite-chaser.github.io/post/uva11324-the-largest-clique">
+        </link>
+        <updated>2019-09-11T11:52:12.000Z</updated>
+        <summary type="html"><![CDATA[<p>这道题很迷，为什么呢？因为题面的封面很迷。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>这道题很迷，为什么呢？因为题面的封面很迷。</p>
+<!--more-->
+<h2 id="题目描述">题目描述</h2>
+<p>给你一张有向图 G，求一个结点数最大的结点集，使得该结点集中的任意两个结点 u 和 v 满足：要么 u 可以达 v，要么 v 可以达 u（u,v相互可达也行）。</p>
+<blockquote>
+<p><a href="https://www.luogu.org/problem/UVA11324">原题链接</a></p>
+</blockquote>
+<h2 id="slove">Slove</h2>
+<p>其实这个题就是个裸题，适宜初学tarjan的练习。<br>
+强连通分量（tarjan）+缩点+DAG，DP。</p>
+<ol>
+<li>tarjan强连通分量缩点。</li>
+<li>DAG上跑DP。</li>
+</ol>
+<h2 id="code">Code</h2>
+<pre><code class="language-cpp">
+#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;stack&gt;
+#define N 500001
+using namespace std;  //标准开头
+int t;
+int n,m;  //t，n，m同题
+int u,v;  //同题
+int x[N],y[N];  //数组存边
+int dis[N];  //dis[i]-从强连通分量节点为i最多能到节点数
+int st[N],num;  //st-栈
+int dfn[N],low[N],sz[N],cnt,sum;
+int first1[N],first2[N],nxt1[N],nxt2[N],to1[N],to2[N],len1,len2,fis[N];  //邻接表
+//fis[i]-节点i所在的强连通分量编号
+bool vis[N]; //是否在栈中
+bool mis[N];  //缩点后的点，是否有前驱
+void add1(int u,int v){
+   to1[++len1]=v;
+   nxt1[len1]=first1[u];
+   first1[u]=len1;
+}
+void add2(int u,int v){  //缩点邻接表
+   to2[++len2]=v;
+   nxt2[len2]=first2[u];
+   first2[u]=len2;
+}
+void tarjan(int s){
+   dfn[s]=low[s]=++sum;
+   st[++num]=s;
+   vis[s]=true;
+   for(int i=first1[s];i!=-1;i=nxt1[i]){
+   	if(!dfn[to1[i]]){
+   		tarjan(to1[i]);
+   		low[s]=min(low[s],low[to1[i]]);
+   	}
+   	else if(vis[to1[i]]) low[s]=min(low[s],dfn[to1[i]]);
+   }
+   if(dfn[s]==low[s]){
+   	int cur;
+   	cnt++;
+   	do{
+   		cur=st[num];
+   		sz[cnt]++;
+   		vis[cur]=false;
+   		fis[cur]=cnt;
+   		num--;
+   	}while(cur!=s);
+   }
+}
+int dp(int s){
+   if(dis[s]) return dis[s];
+   dis[s]+=sz[s];
+   int ans=0;
+   for(int i=first2[s];i!=-1;i=nxt2[i]) ans=max(ans,dp(to2[i]));
+   dis[s]+=ans;
+   return dis[s];
+}
+int main()
+{
+   scanf(&quot;%d&quot;,&amp;t);
+   while(t--){
+   	len1=len2=num=cnt=sum=0;
+   	scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+   	for(int i=1;i&lt;=n;i++){
+   		dfn[i]=low[i]=sz[i]=dis[i]=0;
+   		first1[i]=first2[i]=-1;
+   		vis[i]=false;
+   		mis[i]=false;
+   		st[i]=0;
+   	}
+   	for(int i=1;i&lt;=m;i++){
+   		scanf(&quot;%d%d&quot;,&amp;u,&amp;v);
+   		add1(u,v);
+   		x[i]=u;
+   		y[i]=v;
+   	}
+   	for(int i=1;i&lt;=n;i++) if(!dfn[i]) tarjan(i);
+   	for(int i=1;i&lt;=m;i++){
+   		if(fis[x[i]]!=fis[y[i]]) add2(fis[x[i]],fis[y[i]]),mis[fis[y[i]]]=true;
+   	}
+   	int maxn=0;
+   	for(int i=1;i&lt;=cnt;i++) if(!mis[i]) dp(i),maxn=max(maxn,dis[i]);
+   	printf(&quot;%d\n&quot;,maxn);
+   }
+   return 0;
+} 
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[强连通分量]]></title>
+        <id>https://Kite-chaser.github.io/post/qiang-lian-tong-fen-liang</id>
+        <link href="https://Kite-chaser.github.io/post/qiang-lian-tong-fen-liang">
+        </link>
+        <updated>2019-09-03T09:19:34.000Z</updated>
+        <summary type="html"><![CDATA[<p>tarjan真的不是一种算法。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>tarjan真的不是一种算法。</p>
+<!--more-->
+<h3 id="前言">前言</h3>
+<p>tarjan是一个计算机科学家，以LCA、强连通分量等算法闻名。所以tarjan发明的算法统称tarjan算法。</p>
+<h3 id="强连通分量strongly-connected-components">强连通分量(strongly connected components)</h3>
+<p>在有向图G中，如果两个顶点间至少存在一条路径，称两个顶点<strong>强连通</strong>。如果有向图G的每两个顶点都强连通，称G是一个<strong>强连通图</strong>。非强连通图有向图的极大强连通子图，称为<strong>强连通分量</strong>。</p>
+<h4 id="slove">Slove</h4>
+<ol>
+<li>对整张图进行dfs，用一个栈维护dfs到的所有点，再记录一下每个点是否在栈里。</li>
+<li>每个点维护两个信息：dfn表示dfs到这个点的顺序，low表示这个点能沿着非树边回到的dfn最小的点的dfn。</li>
+<li>一开始令low[u]=dfn[u]，并将u压入栈。</li>
+<li>到点u时，枚举出边(u,v)，如果没有访问到，就继续dfs点v，然后 low[u]=min(low[u],low[v])。</li>
+<li>否则，如果v当前在栈里，就令low[u]=min(low[u],dfn[v])。</li>
+<li>当u的出边枚举完时，如果low[u]=dfn[u]，就说明找到了一个强连通分量，弹栈直到弹出点u为止，这些点构成一个强连通分量。</li>
+</ol>
+<h4 id="code">Code</h4>
+<pre><code class="language-cpp">
+void tanjan(int s){
+	dfn[s]=low[s]=++sum;
+	st.push(s);  //stack&lt;int&gt; st
+	vis[s]=true;  //是否入栈
+	for(int i=first[s];i!=-1;i=next[i]){  //邻接表
+		if(!dfn[to[i]]){  //to[i]-v
+			tanjan(to[i]);
+			low[s]=min(low[s],low[to[i]]);
+		}
+		else if(vis[to[i]]) low[s]=min(low[s],dfn[to[i]]);
+	}
+	if(dfn[s]==low[s]){
+		int cur;
+		cnt++;  //强连通分量编号
+		do{
+			cur=st.top();
+			fis[cur]=cnt;
+			vis[cur]=false;
+			st.pop();
+		}while(cur!=s);
+	}
+}
+</code></pre>
+<h4 id="相关题目">相关题目</h4>
+<p><a href="https://www.luogu.org/problem/P2341">P2341 [HAOI2006]受欢迎的牛|【模板】强连通分量</a> //其实这题原先不是模板<br>
+<a href="https://www.luogu.org/problem/P2746">P2746 [USACO5.3]校园网Network of Schools</a></p>
+<h4 id="此外">此外</h4>
+<p>蒟蒻并不会证明此解的正确性。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[最大独立集]]></title>
+        <id>https://Kite-chaser.github.io/post/zui-da-du-li-ji</id>
+        <link href="https://Kite-chaser.github.io/post/zui-da-du-li-ji">
+        </link>
+        <updated>2019-09-03T08:46:58.000Z</updated>
+        <summary type="html"><![CDATA[<p>最大独立集可以算是一种树形DP。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>最大独立集可以算是一种树形DP。</p>
+<!--more-->
+<h3 id="最大独立集mismaximum-independent-set">最大独立集（MIS,maximum independent set）</h3>
+<p>独立集是指图 G 中两两互不相邻的顶点构成的集合。任意有关图中团的性质都能很自然的转述成独立集的性质。一般而言，寻找图的最大团是 NP 困难的，从而寻找图的最大独立集也是 N-P 困难的。但是，对于二部图的情形，有多项式时间算法找出图的最大独立集。<br>
+简单说，就是从图中找出最多的点，使得他们都互不相邻。既然是树形DP，大多数情况都是在树上跑DP。但是实际情况中，点都是有点权的。所以又是最大权独立集。</p>
+<h4 id="例题">例题</h4>
+<blockquote>
+<p>有一棵n个点的树，点有点权，求一个点的独立集，使独立集的点权之和最大。<br>
+<s>简单的不能再简单，直观的不能再直观。</s></p>
+</blockquote>
+<h4 id="slove">Slove</h4>
+<ol>
+<li>设r[i]为i的点权，d[i]为以i为根节点的MIS，s[i]为i的所有儿子节点的d[]的总和，gs[i]为i的所有孙子节点的d[]总和。d[i]=max(r[i]+gs[t],s[t]);</li>
+<li>以一号节点为根节点，进行dfs，用dfn[]记录dfs序。</li>
+<li>从dfn[]的倒序枚举，进行更新。答案就是d[1]。</li>
+</ol>
+<h4 id="code">Code</h4>
+<pre><code class="language-cpp">
+int r[],d[],s[],gs[],fa[],dfn[];
+int sum;  //dfn[]的数组大小
+void dfs(int s,int f){
+	fa[s]=f;
+	dfn[++sum]=s;
+	for(int i=first[s];i!=-1;i=next[i]) if(to[i]!=f) dfs(to[i],s);
+}
+void MIS(){
+	for(int i=n;i&gt;=1;i--){
+		int t=dfn[i];
+		d[t]=max(r[t]+gs[t],s[t]);
+		s[fa[t]]+=d[t];
+		gs[fa[fa[t]]]+=d[t];
+	}
+}
+int main()
+{
+	scanf(&quot;%d&quot;,&amp;n);
+	for(int i=1;i&lt;=n;i++) first[i]=-1,scanf(&quot;%d&quot;,&amp;r[i]);
+	// 建图 //这里我用的是邻接表。
+	dfs(1,0);
+	MIS();
+	printf(&quot;%d&quot;,d[1]);
+	return 0;
+}
+</code></pre>
+<h4 id="相关题目">相关题目</h4>
+<p><a href="https://www.luogu.org/problem/P1352">P1352 没有上司的舞会</a></p>
 ]]></content>
     </entry>
 </feed>
