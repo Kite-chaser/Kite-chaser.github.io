@@ -2384,9 +2384,9 @@ table {
 }
 .hljs {
   display: block;
-  padding: 0.5em;
+  padding: 1em;
   word-break: break-all;
-  line-height: 5;
+  line-height: 1.4;
   background: #f8f8f8;
 }
 .hljs,
