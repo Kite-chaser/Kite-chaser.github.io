@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Kite-chaser.github.io</id>
     <title>Kite-chaser</title>
-    <updated>2019-10-27T02:09:33.327Z</updated>
+    <updated>2019-10-27T02:59:05.652Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Kite-chaser.github.io"/>
     <link rel="self" href="https://Kite-chaser.github.io/atom.xml"/>
@@ -10,6 +10,126 @@
     <logo>https://Kite-chaser.github.io/images/avatar.png</logo>
     <icon>https://Kite-chaser.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Kite-chaser</rights>
+    <entry>
+        <title type="html"><![CDATA[分层图]]></title>
+        <id>https://Kite-chaser.github.io/post/fen-ceng-tu</id>
+        <link href="https://Kite-chaser.github.io/post/fen-ceng-tu">
+        </link>
+        <updated>2019-10-27T02:17:58.000Z</updated>
+        <summary type="html"><![CDATA[<p>黑科技。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>黑科技。</p>
+<!-- more -->
+<h2 id="前言">前言</h2>
+<p>分层图就是一种上层可以到达下层，而下层不可以到达上层的图。<br>
+其实重要的是一种构图方法。<br>
+<img src="https://Kite-chaser.github.io/post-images/1572143056945.png" alt=""><br>
+如图，黑色的边就是一层图，蓝色的边就是上层连向下层的图。</p>
+<h2 id="eg1">EG1</h2>
+<h3 id="p2939-usaco09feb改造路revamping-trails"><a href="https://www.luogu.org/problem/P2939">P2939 [USACO09FEB]改造路Revamping Trails</a></h3>
+<h3 id="题目描述">题目描述</h3>
+<p>Farmer John dutifully checks on the cows every day. He traverses some of the M (1 &lt;= M &lt;= 50,000) trails conveniently numbered 1..M from pasture 1 all the way out to pasture N (a journey which is always possible for trail maps given in the test data). The N (1 &lt;= N &lt;= 10,000) pastures conveniently numbered 1..N on Farmer John's farm are currently connected by bidirectional dirt trails. Each trail i connects pastures P1_i and P2_i (1 &lt;= P1_i &lt;= N; 1 &lt;= P2_i &lt;= N) and requires T_i (1 &lt;= T_i &lt;= 1,000,000) units of time to traverse.</p>
+<p>He wants to revamp some of the trails on his farm to save time on his long journey. Specifically, he will choose K (1 &lt;= K &lt;= 20) trails to turn into highways, which will effectively reduce the trail's traversal time to 0. Help FJ decide which trails to revamp to minimize the resulting time of getting from pasture 1 to N.</p>
+<p>TIME LIMIT: 2 seconds</p>
+<h3 id="题意翻译">题意翻译</h3>
+<p>约翰一共有N)个牧场.由M条布满尘埃的小径连接.小径可 以双向通行.每天早上约翰从牧场1出发到牧场N去给奶牛检查身体.</p>
+<p>通过每条小径都需要消耗一定的时间.约翰打算升级其中K条小径，使之成为高 速公路.在高速公路上的通行几乎是瞬间完成的，所以高速公路的通行时间为0.</p>
+<p>请帮助约翰决定对哪些小径进行升级，使他每天从1号牧场到第N号牧场所花的时间最短</p>
+<h3 id="solve">Solve</h3>
+<p>枚举每个边设零，然后跑最短路？k=1可能还可以，但是k&lt;=20，直接毙命。<br>
+分层图于是闪亮登场。其实这道题还可以用动态规划做，但是在这里我们只讨论分层图（<s>其实是蒟蒻不会啦</s>）<br>
+升级k条路径，就分k+1层图。第一层就是原图，每一层图内的点和边权都跟原图一样。但是层与层之间的边的边权为零。上层的u点连向下层的v点，边权为零，就相当于升级了这条小径，经过k层跑最短路到达n点，就相当于经过了已经升级了k条边的最短路。<br>
+不一定要升级k条边，所以取每层图的最小代价。</p>
+<h4 id="建图">建图</h4>
+<pre><code class="language-cpp">for(int i=1;i&lt;=m;i++){
+	scanf(&quot;%d%d%d&quot;,&amp;u,&amp;v,&amp;w);
+	add(u,v,w);add(v,u,w);
+	for(int j=1;j&lt;=k;j++){
+		add(u+j*n,v+j*n,w);
+		add(v+j*n,u+j*n,w);
+		add(u+(j-1)*n,v+j*n,0);
+		add(v+(j-1)*n,u+j*n,0);//当然无向图需要双向
+	}
+}
+</code></pre>
+<p><strong>tip:分层图重要的是构造图的方法,最短路的话，随便啦。但是还是说一句“SPFA死了”</strong></p>
+<h3 id="code">Code</h3>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;queue&gt;
+#define N 10000000
+using namespace std;
+int n,m,k,ans;
+int u,v,w;
+int dis[N];
+int head[N],len;
+struct note{
+	int to,vl,nxt;
+}eg[N];
+struct node{
+	int u,vl;
+	bool operator&lt;(const node &amp;a)const{
+		return a.vl&lt;vl;
+	}
+};
+priority_queue&lt;node&gt; q;
+bool vis[N];
+void add(int u,int v,int w){
+	len++;
+	eg[len].to=v;
+	eg[len].vl=w;
+	eg[len].nxt=head[u];
+	head[u]=len;
+}
+void dj(){
+	memset(dis,0x3f,sizeof(dis));
+	dis[1]=0;
+	q.push((node){1,0});
+	while(!q.empty()){
+		int e=q.top().u;
+		q.pop();
+		if(vis[e]) continue;
+		vis[e]=true;
+		for(int i=head[e];i;i=eg[i].nxt){
+			int v=eg[i].to;
+			if(dis[v]&gt;dis[e]+eg[i].vl){
+				dis[v]=dis[e]+eg[i].vl;
+				if(!vis[v]) q.push((node){v,dis[v]});
+			}
+		}
+	}
+}
+int main()
+{
+	scanf(&quot;%d%d%d&quot;,&amp;n,&amp;m,&amp;k);
+	for(int i=1;i&lt;=m;i++){
+		scanf(&quot;%d%d%d&quot;,&amp;u,&amp;v,&amp;w);
+		add(u,v,w);add(v,u,w);
+		for(int j=1;j&lt;=k;j++){
+			add(u+j*n,v+j*n,w);
+			add(v+j*n,u+j*n,w);
+			add(u+(j-1)*n,v+j*n,0);
+			add(v+(j-1)*n,u+j*n,0);
+		}
+	}
+	dj();
+	ans=dis[n];
+	for(int i=1;i&lt;=k;i++) ans=min(ans,dis[n+i*n]);
+	printf(&quot;%d&quot;,ans);
+	return 0;
+}
+</code></pre>
+<h2 id="后言">后言</h2>
+<p>这个方法真的很适合图中优化几次边权然后求最小代价的题。</p>
+<h2 id="相关题目">相关题目</h2>
+<p><a href="https://www.luogu.org/problem/P4822">P4822 [BJWC2012]冻结</a><br>
+<a href="https://www.luogu.org/problem/P4568">P4568 [JLOI2011]飞行路线</a></p>
+<h2 id="关于">关于</h2>
+<p>例图取自（https://www.luogu.org/blog/xiaohou/fen-ceng-tu）<br>
+封面不是啦。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[P3870 [TJOI2009]开关]]></title>
         <id>https://Kite-chaser.github.io/post/p3870-tjoi2009kai-guan</id>
@@ -749,62 +869,6 @@ void tanjan(int s){
 <a href="https://www.luogu.org/problem/P2746">P2746 [USACO5.3]校园网Network of Schools</a></p>
 <h4 id="此外">此外</h4>
 <p>蒟蒻并不会证明此解的正确性。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[最大独立集]]></title>
-        <id>https://Kite-chaser.github.io/post/zui-da-du-li-ji</id>
-        <link href="https://Kite-chaser.github.io/post/zui-da-du-li-ji">
-        </link>
-        <updated>2019-09-03T08:46:58.000Z</updated>
-        <summary type="html"><![CDATA[<p>最大独立集可以算是一种树形DP。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>最大独立集可以算是一种树形DP。</p>
-<!--more-->
-<h3 id="最大独立集mismaximum-independent-set">最大独立集（MIS,maximum independent set）</h3>
-<p>独立集是指图 G 中两两互不相邻的顶点构成的集合。任意有关图中团的性质都能很自然的转述成独立集的性质。一般而言，寻找图的最大团是 NP 困难的，从而寻找图的最大独立集也是 N-P 困难的。但是，对于二部图的情形，有多项式时间算法找出图的最大独立集。<br>
-简单说，就是从图中找出最多的点，使得他们都互不相邻。既然是树形DP，大多数情况都是在树上跑DP。但是实际情况中，点都是有点权的。所以又是最大权独立集。</p>
-<h4 id="例题">例题</h4>
-<blockquote>
-<p>有一棵n个点的树，点有点权，求一个点的独立集，使独立集的点权之和最大。<br>
-<s>简单的不能再简单，直观的不能再直观。</s></p>
-</blockquote>
-<h4 id="slove">Slove</h4>
-<ol>
-<li>设r[i]为i的点权，d[i]为以i为根节点的MIS，s[i]为i的所有儿子节点的d[]的总和，gs[i]为i的所有孙子节点的d[]总和。d[i]=max(r[i]+gs[t],s[t]);</li>
-<li>以一号节点为根节点，进行dfs，用dfn[]记录dfs序。</li>
-<li>从dfn[]的倒序枚举，进行更新。答案就是d[1]。</li>
-</ol>
-<h4 id="code">Code</h4>
-<pre><code class="language-cpp">
-int r[],d[],s[],gs[],fa[],dfn[];
-int sum;  //dfn[]的数组大小
-void dfs(int s,int f){
-	fa[s]=f;
-	dfn[++sum]=s;
-	for(int i=first[s];i!=-1;i=next[i]) if(to[i]!=f) dfs(to[i],s);
-}
-void MIS(){
-	for(int i=n;i&gt;=1;i--){
-		int t=dfn[i];
-		d[t]=max(r[t]+gs[t],s[t]);
-		s[fa[t]]+=d[t];
-		gs[fa[fa[t]]]+=d[t];
-	}
-}
-int main()
-{
-	scanf(&quot;%d&quot;,&amp;n);
-	for(int i=1;i&lt;=n;i++) first[i]=-1,scanf(&quot;%d&quot;,&amp;r[i]);
-	// 建图 //这里我用的是邻接表。
-	dfs(1,0);
-	MIS();
-	printf(&quot;%d&quot;,d[1]);
-	return 0;
-}
-</code></pre>
-<h4 id="相关题目">相关题目</h4>
-<p><a href="https://www.luogu.org/problem/P1352">P1352 没有上司的舞会</a></p>
 ]]></content>
     </entry>
 </feed>
