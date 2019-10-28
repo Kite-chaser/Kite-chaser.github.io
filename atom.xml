@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Kite-chaser.github.io</id>
     <title>Kite-chaser</title>
-    <updated>2019-10-28T11:59:26.226Z</updated>
+    <updated>2019-10-28T12:41:03.703Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Kite-chaser.github.io"/>
     <link rel="self" href="https://Kite-chaser.github.io/atom.xml"/>
@@ -10,6 +10,79 @@
     <logo>https://Kite-chaser.github.io/images/avatar.png</logo>
     <icon>https://Kite-chaser.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Kite-chaser</rights>
+    <entry>
+        <title type="html"><![CDATA[UVA1753 Need for Speed]]></title>
+        <id>https://Kite-chaser.github.io/post/uva1753-need-for-speed</id>
+        <link href="https://Kite-chaser.github.io/post/uva1753-need-for-speed">
+        </link>
+        <updated>2019-10-28T12:11:38.000Z</updated>
+        <summary type="html"><![CDATA[<p>OIer写代码，总会遇到几个玄学错误。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>OIer写代码，总会遇到几个玄学错误。</p>
+<!--more-->
+<h3 id="题意描述">题意描述</h3>
+<p>Winniechen有一辆车， 但是它的迈速表指针坏掉的。当度数为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span></span></span></span>的时候， 车的实际速度是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>+</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">s+c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">c</span></span></span></span>， <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">c</span></span></span></span>是一个不确定的实数（常数。现在给你一段行程，包含n个路段， 保证每个路段是均速行驶的， 每个描述有两个数字， 分别为行驶的路程<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>d</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">d_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>和迈速表的读数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>s</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">s_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。整个行程一共用了<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">t</span></span></span></span>的时间， 请确定<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">c</span></span></span></span>的值。另外请注意， 他的真实速度是永远保持在0以上的。</p>
+<h3 id="solve">Solve</h3>
+<p>首先，我们蒙一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">c</span></span></span></span>做答案。<br>
+<img src="https://Kite-chaser.github.io/post-images/1572265247371.png" alt=""><br>
+然后试一试，如果用时超过<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">t</span></span></span></span>的话，就是速度太慢了，应该给他提提速。如果小于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>的话，就是速度太快了，应该给他降一降，如果用时等于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">t</span></span></span></span>的话，bingo，恭喜你猜对了。<br>
+所以，我们惊奇的发现，这个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">c</span></span></span></span>具有“单调性”，这意味着什么？我们可以有规律地去猜。<br>
+二分答案。而判断就是用用时与<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">t</span></span></span></span>的关系。<br>
+<strong>特殊之处就在于，是实数域上的二分。</strong><br>
+无非就是把</p>
+<pre><code class="language-cpp">while(l&lt;=r){
+	mid=(l+r)&gt;&gt;1;
+	if(···) l=mid+1;
+	else r=mid-1; 
+} 
+</code></pre>
+<p>换成</p>
+<pre><code class="language-cpp">while(l&lt;=r-eps){
+	mid=(l+r)/2;
+	if(···) l=mid;
+	else r=mid; 
+} 
+</code></pre>
+<p>所有变量都是double类型。<strong>eps就是你想要卡的精度。</strong></p>
+<h3 id="code">Code</h3>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#define N 100000
+#define db double
+using namespace std;
+int n;
+db s[N],d[N];
+db t,sum;
+db l,r,mid,eps=1e-9;//就是这个
+bool solve(db c){
+	sum=0;
+	for(int i=1;i&lt;=n;i++){
+		if(s[i]+c&lt;=0) return true;
+		sum+=(d[i]/(s[i]+c)); 
+	}
+	if(sum&gt;t) return true;
+	else return false;
+}
+int main()
+{
+	while(scanf(&quot;%d%lf&quot;,&amp;n,&amp;t)!=EOF){//记住这个“！=EOF”
+		l=-20000000,r=20000000;
+		for(int i=1;i&lt;=n;i++) scanf(&quot;%lf%lf&quot;,&amp;d[i],&amp;s[i]);
+		for(int i=1;i&lt;=100;i++){
+			mid=(l+r)/2;
+			if(solve(mid)) l=mid;
+			else r=mid;
+		}
+		printf(&quot;%.9lf\n&quot;,l);
+	}
+}
+</code></pre>
+<h3 id="后言">后言</h3>
+<p>我原以为加不加EOF都一样的，或者是“~”取反，但是某谷给了我一个大大的耳光，我T飞了。<br>
+所以观察答案有“单调性”的话，二分莽就完了。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[P1948 [USACO08JAN]电话线Telephone Lines]]></title>
         <id>https://Kite-chaser.github.io/post/p1948-usaco08jandian-hua-xian-telephone-lines</id>
@@ -160,7 +233,8 @@ int main()
 <li>a=b，等于a-b&gt;=0或b-a&gt;=0，双向建边，权值为0。<br>
 每种情况分析完毕。<br>
 超级源点为0。向每一个点建一条权值为0的边。<br>
-SPFA跑最长路。</li>
+SPFA跑最长路。<br>
+<strong>一种玄学优化方式，用DFS优化SPFA，直接跑SPFA会T飞的。</strong></li>
 </ul>
 <h3 id="code">Code</h3>
 <pre><code class="language-cpp">#include&lt;iostream&gt;
@@ -342,7 +416,7 @@ int main()
 }
 </code></pre>
 <h2 id="后言">后言</h2>
-<p>这个方法真的很适合图中优化几次边权然后求最小代价的题。</p>
+<p>这个方法真的很适合图中优化几次边权然后求最小代价的题。话说这个题的数组范围是我二分出来的，一个个试出来的20000000太大，5000000太小。GG。</p>
 <h2 id="画外音">画外音</h2>
 <p>数据过大的话，分层图可能就GG了。而这个时候就该用其他的方法惹。</p>
 <h2 id="相关题目">相关题目</h2>
@@ -897,32 +971,6 @@ int main()
    return 0;
 }
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[整除]]></title>
-        <id>https://Kite-chaser.github.io/post/zheng-chu</id>
-        <link href="https://Kite-chaser.github.io/post/zheng-chu">
-        </link>
-        <updated>2019-09-14T00:25:49.000Z</updated>
-        <summary type="html"><![CDATA[<p>只是一点关于整除的性质而已。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>只是一点关于整除的性质而已。</p>
-<!--more-->
-<p>设a是非零整数，b是整数。如果存在一个整数q，使得b=a*q，那么就说b可被a整除，记作a|吧，且称b是a的倍数，a是b的约数（因子）。<br>
-例如3|12，21|63。整除具有以下性质：</p>
-<ol>
-<li>如果a|b且b|c，那么a|c。</li>
-<li>a|b且a|c等价于对任意的整数x和y，有a|（b<em>x+c</em>y）。</li>
-<li>设m≠0，那么a|b等价于（m<em>a）|（m</em>b）。</li>
-<li>设整数x和y满足下式：a<em>x+b</em>y=1，且a|n、b|n，那么（a<em>b）|n。<br>
-证明：因为a|n且b|n<br>
-据性质3得：（a</em>b）|（b<em>n）且（a</em>b）|（a<em>n）<br>
-据性质2得：（a</em>b）|（a<em>n</em>x+b<em>n</em>y）<br>
-其中：a<em>n</em>x+b<em>n</em>y=n*（a<em>x+b</em>y）=n<em>1=n<br>
-所以（a</em>b）|n</li>
-<li>若b=q*d+c，那么d|b得充要条件是d|c。</li>
-</ol>
 ]]></content>
     </entry>
 </feed>

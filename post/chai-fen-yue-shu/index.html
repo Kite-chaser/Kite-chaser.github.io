@@ -379,7 +379,8 @@ function change(){
 <li>a=b，等于a-b&gt;=0或b-a&gt;=0，双向建边，权值为0。<br>
 每种情况分析完毕。<br>
 超级源点为0。向每一个点建一条权值为0的边。<br>
-SPFA跑最长路。</li>
+SPFA跑最长路。<br>
+<strong>一种玄学优化方式，用DFS优化SPFA，直接跑SPFA会T飞的。</strong></li>
 </ul>
 <h3 id="code">Code</h3>
 <pre><code class="language-cpp">#include&lt;iostream&gt;
@@ -574,8 +575,12 @@ $("img").each( (i,o) => {
 			   
     
 			   
+<a href="https://github.com/" title="github"><i class="fa fa-github"></i></a>
+
     
 			   
+<a href="3062637319@qq.com" title="envelope"><i class="fa fa-envelope"></i></a>
+
     
 			   
     
