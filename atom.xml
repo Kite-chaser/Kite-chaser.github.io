@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Kite-chaser.github.io</id>
     <title>Kite-chaser</title>
-    <updated>2019-10-29T11:24:32.102Z</updated>
+    <updated>2019-10-29T11:50:33.791Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Kite-chaser.github.io"/>
     <link rel="self" href="https://Kite-chaser.github.io/atom.xml"/>
@@ -10,6 +10,80 @@
     <logo>https://Kite-chaser.github.io/images/avatar.png</logo>
     <icon>https://Kite-chaser.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Kite-chaser</rights>
+    <entry>
+        <title type="html"><![CDATA[P4588 [TJOI2018]数学计算]]></title>
+        <id>https://Kite-chaser.github.io/post/p4588-tjoi2018shu-xue-ji-suan</id>
+        <link href="https://Kite-chaser.github.io/post/p4588-tjoi2018shu-xue-ji-suan">
+        </link>
+        <updated>2019-10-29T11:26:21.000Z</updated>
+        <summary type="html"><![CDATA[<p>这真的是道线段树……</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>这真的是道线段树……</p>
+<!--more-->
+<h3 id="题目描述">题目描述</h3>
+<p>小豆现在有一个数x，初始值为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>.小豆有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Q</mi></mrow><annotation encoding="application/x-tex">Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">Q</span></span></span></span>次操作，操作有两种类型:</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mi>m</mi><mo>:</mo><mi>x</mi><mo>=</mo><mi>x</mi><mo>×</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">1m:x=x\times m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> 输出 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>%mod;</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mi>p</mi><mi>o</mi><mi>s</mi><mo>:</mo><mi>x</mi><mo>=</mo><mi>x</mi><mi mathvariant="normal">/</mi></mrow><annotation encoding="application/x-tex">2pos:x=x/</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">2</span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">x</span><span class="mord">/</span></span></span></span>第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>o</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">pos</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span></span></span></span>次操作所乘的数（保证第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>o</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">pos</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span></span></span></span>次操作一定为类型<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>,对于每一个类型<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>的操作至多会被除一次）输出<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x%mod</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>;</p>
+<blockquote>
+<p><a href="https://www.luogu.org/problem/P4588">P4588 [TJOI2018]数学计算</a></p>
+</blockquote>
+<h3 id="solve">Solve</h3>
+<p>说实话，一开始我是真没看出来这是道线段树。<br>
+以每一个时间节点作为叶子节点，，初始值都是1，区间求乘。</p>
+<ul>
+<li>1操作就是在相应的时间节点，修改为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>。</li>
+<li>2操作就是在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>o</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">pos</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span></span></span></span>位置修改为1.</li>
+</ul>
+<h3 id="code">Code</h3>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#define N 100010
+#define ll long long
+using namespace std;
+ll t;
+ll Q,mod;
+ll st[N],cnt;
+struct note{
+	ll l,r,num;
+}d[N*4];
+ll op,pos;
+void build(ll k,ll x,ll y){
+	d[k].l=x;d[k].r=y;d[k].num=1; 
+	if(x==y) return ;
+	build(k*2,x,(x+y)/2);
+	build(k*2+1,(x+y)/2+1,y);
+}
+void revise(ll k,ll x,ll z){
+	if(d[k].l==d[k].r){
+		d[k].num=z%mod;
+		return ;
+	}
+	ll mid=(d[k].l+d[k].r)/2;
+	if(x&lt;=mid) revise(k*2,x,z);
+	else revise(k*2+1,x,z);
+	d[k].num=(d[k*2].num*d[k*2+1].num)%mod;
+}
+int main()
+{
+	scanf(&quot;%lld&quot;,&amp;t);
+	while(t--){
+		scanf(&quot;%lld%lld&quot;,&amp;Q,&amp;mod);
+		build(1,1,Q);
+		for(ll i=1;i&lt;=Q;i++){
+			scanf(&quot;%lld%lld&quot;,&amp;op,&amp;pos);
+			if(op==1) revise(1,i,pos);
+			else revise(1,pos,1);
+			printf(&quot;%lld\n&quot;,d[1].num);
+		}
+	}
+	return 0;
+}
+</code></pre>
+<h3 id="后言">后言</h3>
+<p>话说有大佬说，这个题不用建树，直接莽就行。<s>可是不建树还是线段树吗？🙃</s></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[神奇的图]]></title>
         <id>https://Kite-chaser.github.io/post/shen-qi-de-tu</id>
@@ -836,79 +910,6 @@ int main()
 		else l=mid+1;
 	}
 	printf(&quot;%lld&quot;,ans);
-	return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[P1083 借教室]]></title>
-        <id>https://Kite-chaser.github.io/post/p1083-jie-jiao-shi</id>
-        <link href="https://Kite-chaser.github.io/post/p1083-jie-jiao-shi">
-        </link>
-        <updated>2019-09-14T03:34:21.000Z</updated>
-        <summary type="html"><![CDATA[<p>二分答案是真的妙。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>二分答案是真的妙。</p>
-<!--more-->
-<h2 id="题目描述">题目描述</h2>
-<p>在大学期间，经常需要租借教室。大到院系举办活动，小到学习小组自习讨论，都需要向学校申请借教室。教室的大小功能不同，借教室人的身份不同，借教室的手续也不一样。<br>
-面对海量租借教室的信息，我们自然希望编程解决这个问题。<br>
-我们需要处理接下来n天的借教室信息，其中第i天学校有r_i个教室可供租借。共有m份订单，每份订单用三个正整数描述，分别为d_j,s_j,t_j表示某租借者需要从第s_j天到第t_j天租借教室（包括第s_j天和第t_j天），每天需要租借d_j个教室。<br>
-我们假定，租借者对教室的大小、地点没有要求。即对于每份订单，我们只需要每天提供d_j个教室，而它们具体是哪些教室，每天是否是相同的教室则不用考虑。</p>
-<p>借教室的原则是先到先得，也就是说我们要按照订单的先后顺序依次为每份订单分配教室。如果在分配的过程中遇到一份订单无法完全满足，则需要停止教室的分配，通知当前申请人修改订单。这里的无法满足指从第s_j 天到第t_j天中有至少一天剩余的教室数量不足d_j个。</p>
-<p>现在我们需要知道，是否会有订单无法完全满足。如果有，需要通知哪一个申请人修改订单。</p>
-<blockquote>
-<p><a href="https://www.luogu.org/problem/P1083">原题链接</a></p>
-</blockquote>
-<h2 id="slove">Slove</h2>
-<p>简简单单的二分。<br>
-二分天数。<br>
-可以的话取右区间。<br>
-不可以的话取左区间。<br>
-对于区间修改，使用差分就好啦。</p>
-<h2 id="tip">Tip</h2>
-<ol>
-<li>二分是真的快，log的。</li>
-<li>差分是真的快，O(1)的。</li>
-</ol>
-<h2 id="code">Code</h2>
-<pre><code class="language-cpp">
-#include&lt;iostream&gt;
-#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#define N 1000001
-using namespace std;  //标准开头
-int n,m;
-int a[N],f[N];
-int d[N],s[N],t[N];
-int res[N];
-int l,r,mid;
-bool sl(int x){
-	for(int i=1;i&lt;=n;i++) f[i]=a[i]-a[i-1],res[i]=a[i];   //差分
-	for(int i=1;i&lt;=x;i++){
-		f[s[i]]-=d[i];
-		f[t[i]+1]+=d[i];
-	}
-	for(int i=1;i&lt;=n;i++){
-		res[i]=f[i]+res[i-1];
-		if(res[i]&lt;0) return false;
-	}
-	return true;
-}
-int main()
-{
-	scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
-	for(int i=1;i&lt;=n;i++) scanf(&quot;%d&quot;,&amp;a[i]);
-	for(int i=1;i&lt;=m;i++) scanf(&quot;%d%d%d&quot;,&amp;d[i],&amp;s[i],&amp;t[i]);
-	l=1;r=m;
-	if(sl(m)){printf(&quot;0&quot;);return 0;}
-	while(l&lt;r){
-		mid=(l+r)/2;
-		if(sl(mid)) l=mid+1;
-		else r=mid;
-	}
-	printf(&quot;-1\n%d&quot;,l);
 	return 0;
 }
 </code></pre>
