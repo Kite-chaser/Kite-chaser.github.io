@@ -351,6 +351,9 @@ function change(){
 <!--more-->
 <h3 id="题意描述">题意描述</h3>
 <p>Winniechen有一辆车， 但是它的迈速表指针坏掉的。当度数为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span></span></span></span>的时候， 车的实际速度是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>+</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">s+c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">c</span></span></span></span>， <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">c</span></span></span></span>是一个不确定的实数（常数。现在给你一段行程，包含n个路段， 保证每个路段是均速行驶的， 每个描述有两个数字， 分别为行驶的路程<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>d</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">d_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>和迈速表的读数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>s</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">s_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。整个行程一共用了<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">t</span></span></span></span>的时间， 请确定<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">c</span></span></span></span>的值。另外请注意， 他的真实速度是永远保持在0以上的。</p>
+<blockquote>
+<p><a href="https://www.luogu.org/problem/UVA1753">原题链接</a></p>
+</blockquote>
 <h3 id="solve">Solve</h3>
 <p>首先，我们蒙一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">c</span></span></span></span>做答案。<br>
 <img src="https://Kite-chaser.github.io/post-images/1572265247371.png" alt=""><br>
@@ -387,7 +390,7 @@ db l,r,mid,eps=1e-9;//就是这个
 bool solve(db c){
 	sum=0;
 	for(int i=1;i&lt;=n;i++){
-		if(s[i]+c&lt;=0) return true;
+		if(s[i]+c&lt;=0) return true;//如果速度小于0的话就跟就GG了
 		sum+=(d[i]/(s[i]+c)); 
 	}
 	if(sum&gt;t) return true;
@@ -460,6 +463,15 @@ $("img").each( (i,o) => {
 
 
 
+          <div style="float:left;text-align:left;color:#ccc;font-size:18px;width:50%;">
+            上一篇
+            <a href="https://Kite-chaser.github.io/post/shen-qi-de-tu">
+              <h3 class="post-title">
+                神奇的图
+              </h3>
+            </a>
+          </div>
+
 </div>
 
 <div class="doc_comments">
@@ -523,11 +535,11 @@ $("img").each( (i,o) => {
 			   
     
 			   
-<a href="https://github.com/" title="github"><i class="fa fa-github"></i></a>
+<a href="https://github.com/Kite-chaser" title="github"><i class="fa fa-github"></i></a>
 
     
 			   
-<a href="3062637319@qq.com" title="envelope"><i class="fa fa-envelope"></i></a>
+<a href="https://mail.qq.com/cgi-bin/frame_html?sid=Oj3FzO8eFpostgBd&amp;r=3b021ffe8da94bd1ed0efc5a082b53bd" title="envelope"><i class="fa fa-envelope"></i></a>
 
     
 			   

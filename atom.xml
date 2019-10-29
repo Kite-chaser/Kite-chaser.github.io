@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Kite-chaser.github.io</id>
     <title>Kite-chaser</title>
-    <updated>2019-10-28T12:41:03.703Z</updated>
+    <updated>2019-10-29T11:24:32.102Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Kite-chaser.github.io"/>
     <link rel="self" href="https://Kite-chaser.github.io/atom.xml"/>
@@ -10,6 +10,15 @@
     <logo>https://Kite-chaser.github.io/images/avatar.png</logo>
     <icon>https://Kite-chaser.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Kite-chaser</rights>
+    <entry>
+        <title type="html"><![CDATA[神奇的图]]></title>
+        <id>https://Kite-chaser.github.io/post/shen-qi-de-tu</id>
+        <link href="https://Kite-chaser.github.io/post/shen-qi-de-tu">
+        </link>
+        <updated>2019-10-29T11:22:01.000Z</updated>
+        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://Kite-chaser.github.io/post-images/1572348146460.jpg" alt=""></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[UVA1753 Need for Speed]]></title>
         <id>https://Kite-chaser.github.io/post/uva1753-need-for-speed</id>
@@ -22,6 +31,9 @@
 <!--more-->
 <h3 id="题意描述">题意描述</h3>
 <p>Winniechen有一辆车， 但是它的迈速表指针坏掉的。当度数为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span></span></span></span>的时候， 车的实际速度是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>+</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">s+c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">c</span></span></span></span>， <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">c</span></span></span></span>是一个不确定的实数（常数。现在给你一段行程，包含n个路段， 保证每个路段是均速行驶的， 每个描述有两个数字， 分别为行驶的路程<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>d</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">d_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>和迈速表的读数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>s</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">s_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。整个行程一共用了<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">t</span></span></span></span>的时间， 请确定<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">c</span></span></span></span>的值。另外请注意， 他的真实速度是永远保持在0以上的。</p>
+<blockquote>
+<p><a href="https://www.luogu.org/problem/UVA1753">原题链接</a></p>
+</blockquote>
 <h3 id="solve">Solve</h3>
 <p>首先，我们蒙一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">c</span></span></span></span>做答案。<br>
 <img src="https://Kite-chaser.github.io/post-images/1572265247371.png" alt=""><br>
@@ -58,7 +70,7 @@ db l,r,mid,eps=1e-9;//就是这个
 bool solve(db c){
 	sum=0;
 	for(int i=1;i&lt;=n;i++){
-		if(s[i]+c&lt;=0) return true;
+		if(s[i]+c&lt;=0) return true;//如果速度小于0的话就跟就GG了
 		sum+=(d[i]/(s[i]+c)); 
 	}
 	if(sum&gt;t) return true;
@@ -780,8 +792,7 @@ int main()
 <li>不开longlong见祖宗。</li>
 </ol>
 <h2 id="code">Code</h2>
-<pre><code class="language-cpp">
-#include&lt;iostream&gt;
+<pre><code class="language-cpp">#include&lt;iostream&gt;
 #include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;cmath&gt;
@@ -899,76 +910,6 @@ int main()
 	}
 	printf(&quot;-1\n%d&quot;,l);
 	return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[P2014 选课]]></title>
-        <id>https://Kite-chaser.github.io/post/p2014-xuan-ke</id>
-        <link href="https://Kite-chaser.github.io/post/p2014-xuan-ke">
-        </link>
-        <updated>2019-09-14T02:59:29.000Z</updated>
-        <summary type="html"><![CDATA[<p>这道题使我对树形DP有了新认识。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>这道题使我对树形DP有了新认识。</p>
-<!--more-->
-<h2 id="题目描述">题目描述</h2>
-<p>在大学里每个学生，为了达到一定的学分，必须从很多课程里选择一些课程来学习，在课程里有些课程必须在某些课程之前学习，如高等数学总是在其它课程之前学习。现在有N门功课，每门课有个学分，每门课有一门或没有直接先修课（若课程a是课程b的先修课即只有学完了课程a，才能学习课程b）。一个学生要从这些课程里选择M门课程学习，问他能获得的最大学分是多少？</p>
-<blockquote>
-<p><a href="https://www.luogu.org/problem/P2014">原题链接</a></p>
-</blockquote>
-<h2 id="slove">Slove</h2>
-<p>每门课有一门或没有直接先修课，说明所有课程节点构成的图一定是树。<br>
-所以树形DP莽就完了。</p>
-<p>d[i][j]表示以i为根节点的子树包含j个节点（不含根节点）时最大价值。<br>
-sz[i]表示以i为根节点的子树的节点数。<br>
-u为父节点，v为u的子节点。<br>
-对于以i为根节点的子树，d值来自两部分，一棵子树的值（d[v][k]）和其他子树的值(d[u][j-k-1])的和。因为j里面实际不包含节点v，所以再-1。<br>
-则转移方程为d[u][j]=max(d[u][j],d[u][j-k-1]+d[v][k]+s[v])，j&lt;=sz[i],k&lt;=sz[v]。</p>
-<h2 id="tip">Tip</h2>
-<ol>
-<li>没有直接先修课的，建立节点0为虚根，作为他们的父节点。</li>
-<li>这是树形背包。</li>
-</ol>
-<h2 id="code">Code</h2>
-<pre><code class="language-cpp">
-#include&lt;iostream&gt;
-#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#define N 400
-using namespace std;
-int n,m;
-int k[N],s[N];
-int d[N][N];
-int sz[N];
-int first[N],nxt[N],to[N],len;
-void add(int u,int v){
-   to[++len]=v;
-   nxt[len]=first[u];
-   first[u]=len;
-}
-void dfs(int u){
-   sz[u]=1;
-   for(int i=first[u];i!=-1;i=nxt[i]){
-   	dfs(to[i]);
-   	sz[u]+=sz[to[i]];
-   	for(int j=min(m,sz[u]);j&gt;=0;j--){
-   		for(int k=min(j-1,sz[to[i]]);k&gt;=0;k--) d[u][j]=max(d[u][j],d[u][j-k-1]+d[to[i]][k]+s[to[i]]);
-   	}
-   }
-}
-int main()
-{
-   memset(first,-1,sizeof(first));
-   scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
-   for(int i=1;i&lt;=n;i++){
-   	scanf(&quot;%d%d&quot;,&amp;k[i],&amp;s[i]);
-   	add(k[i],i);
-   }
-   dfs(0);
-   printf(&quot;%d&quot;,d[0][m]);
-   return 0;
 }
 </code></pre>
 ]]></content>
