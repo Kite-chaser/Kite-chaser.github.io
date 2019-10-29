@@ -9,7 +9,7 @@
 <meta name="description" content="This is my blog.">
 <meta http-equiv="Access-Control-Allow-Origin" content="*">
 
-<title>P4588 [TJOI2018]数学计算 | Kite-chaser</title>
+<title>P2845 [USACO15DEC]Switching on the Lights 开关灯 | Kite-chaser</title>
 <link href="https://Kite-chaser.github.io/styles/main.css" type="text/css" rel="stylesheet"/>
 <link rel="stylesheet" href="//cdn.bootcss.com/KaTeX/0.10.2/katex.min.css"/>
 <script src="//cdn.bootcss.com/KaTeX/0.10.2/katex.min.js"></script>
@@ -262,7 +262,7 @@ var r = 0;
 
 <div class="post">
   <div class="post_title sm_margin">
-    <h2><a>P4588 [TJOI2018]数学计算</a>
+    <h2><a>P2845 [USACO15DEC]Switching on the Lights 开关灯</a>
 
 
 
@@ -317,23 +317,21 @@ function change(){
 <i class="fa fa-bookmark-o"></i>
 <span class="tags_info weaklink">
 	
-	<a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="tag">题解</a>
+	<a href="https://Kite-chaser.github.io/tag/cH_l0_leV" class="tag">广度优先搜索，BFS</a>
 
-	<a href="https://Kite-chaser.github.io/tag/2kgafuTx9" class="tag">线段树</a>
+	<a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="tag">题解</a>
 
 	<a href="https://Kite-chaser.github.io/tag/BsZO4xN8u" class="tag">OI</a>
 
 
 </span>
-<span>3 min read</span>
+<span>4 min read</span>
 &nbsp
 &nbsp
 <i class="fa fa-share"></i>
-<a title="QR code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://Kite-chaser.github.io/post/p4588-tjoi2018shu-xue-ji-suan"><i class="fa fa-qrcode"></i></a>
-<a title="qq share" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://Kite-chaser.github.io/post/p4588-tjoi2018shu-xue-ji-suan&sharesource=qzone&title=P4588 [TJOI2018]数学计算&pics=https://blog.blinkstar.cn/images/avatar.png&summary=&lt;p&gt;这真的是道线段树……&lt;/p&gt;
-"><i class="fa fa-qq"></i></a>
-<a title="weibo share" target="_blank" href="https://service.weibo.com/share/share.php?url=https://Kite-chaser.github.io/post/p4588-tjoi2018shu-xue-ji-suan&sharesource=weibo&title=P4588 [TJOI2018]数学计算 + " - " + &lt;p&gt;这真的是道线段树……&lt;/p&gt;
-&pic="https://blog.blinkstar.cn/images/avatar.png"><i class="fa fa-weibo"></i></a>
+<a title="QR code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://Kite-chaser.github.io/post/p2845-usaco15decswitching-on-the-lights-kai-guan-deng"><i class="fa fa-qrcode"></i></a>
+<a title="qq share" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://Kite-chaser.github.io/post/p2845-usaco15decswitching-on-the-lights-kai-guan-deng&sharesource=qzone&title=P2845 [USACO15DEC]Switching on the Lights 开关灯&pics=https://blog.blinkstar.cn/images/avatar.png&summary="><i class="fa fa-qq"></i></a>
+<a title="weibo share" target="_blank" href="https://service.weibo.com/share/share.php?url=https://Kite-chaser.github.io/post/p2845-usaco15decswitching-on-the-lights-kai-guan-deng&sharesource=weibo&title=P2845 [USACO15DEC]Switching on the Lights 开关灯 + " - " + &pic="https://blog.blinkstar.cn/images/avatar.png"><i class="fa fa-weibo"></i></a>
 &nbsp
 &nbsp
 <a id="daxiao" href="javascript:void(0);" onclick="change();" title="调整字体大小"><i class="fa fa-font"></i></a>
@@ -347,70 +345,87 @@ function change(){
   &nbsp
   <img id="mememe" src="//source.unsplash.com/800x400/?arts,weather">
     <div name="show" id="show">
-	<p class="md_block"><span class="md_line md_line_start md_line_end"><p>这真的是道线段树……</p>
-<!--more-->
+	<p class="md_block"><span class="md_line md_line_start md_line_end"><h3 id="题目背景">题目背景</h3>
+<p>来源：usaco-2015-dec</p>
+<p>Farm John 最近新建了一批巨大的牛棚。这些牛棚构成了一个N*N的矩形网络。（1&lt;n&lt;100)</p>
+<p>然而bessie十分怕黑，他想计算可以把多少个牛棚的灯打开。</p>
 <h3 id="题目描述">题目描述</h3>
-<p>小豆现在有一个数x，初始值为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>.小豆有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Q</mi></mrow><annotation encoding="application/x-tex">Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">Q</span></span></span></span>次操作，操作有两种类型:</p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mi>m</mi><mo>:</mo><mi>x</mi><mo>=</mo><mi>x</mi><mo>×</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">1m:x=x\times m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> 输出 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>%mod;</p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mi>p</mi><mi>o</mi><mi>s</mi><mo>:</mo><mi>x</mi><mo>=</mo><mi>x</mi><mi mathvariant="normal">/</mi></mrow><annotation encoding="application/x-tex">2pos:x=x/</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">2</span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">x</span><span class="mord">/</span></span></span></span>第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>o</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">pos</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span></span></span></span>次操作所乘的数（保证第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>o</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">pos</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span></span></span></span>次操作一定为类型<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>,对于每一个类型<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>的操作至多会被除一次）输出<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x%mod</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>;</p>
+<p>有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mo>∗</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">N*N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span>个房间，组成了一张<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mo>∗</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">N*N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span>的网格图，Bessie一开始位于左上角(1,1)，并且只能上下左右行走。</p>
+<p>一开始，只有(1,1)这个房间的灯是亮着的，Bessie只能在亮着灯的房间里活动。</p>
+<p>有另外M条信息，每条信息包含四个数a,b,c,d，表示房间(a,b)里有房间(c,d)的灯的开关。</p>
+<p>请计算出最多有多少个房间的灯可以被打开</p>
+<h3 id="说明提示">说明/提示</h3>
+<p>这里，如果你看得懂英文的话，这里有样例的说明。</p>
+<p>Here, Bessie can use the switch in (1,1)to turn on lights in (1,2)and (1,3). She can then walk to (1,3)and turn on the lights in (2,1)，from which she can turn on the lights in (2,2). The switch in (2,3)is inaccessible to her, being in an unlit room. She can therefore illuminate at most 5 rooms.</p>
+<h3 id="手动机翻">手动机翻</h3>
+<p>在这里，贝茜可以使用 （1，1） 中的开关打开 （1，2） 和 （1，3） 中的灯。然后，她可以步行到（1，3）并打开（2，1）中的灯，从中她可以打开灯（2，2）。她无法进入（2，3）的开关，她住在一间没有照明的房间里。因此，她最多能照亮5个房间。</p>
 <blockquote>
-<p><a href="https://www.luogu.org/problem/P4588">P4588 [TJOI2018]数学计算</a></p>
+<p><a href="https://www.luogu.org/record/25920729">P2845 [USACO15DEC]Switching on the Lights 开关灯</a></p>
 </blockquote>
 <h3 id="solve">Solve</h3>
-<p>说实话，一开始我是真没看出来这是道线段树。<br>
-以每一个时间节点作为叶子节点，，初始值都是1，区间求乘。</p>
-<ul>
-<li>1操作就是在相应的时间节点，修改为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>。</li>
-<li>2操作就是在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>o</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">pos</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span></span></span></span>位置修改为1.</li>
-</ul>
+<p>BFS莽就完了。<br>
+就是得注意不是找几个房间可以走到，而是可以开几个房间的灯。</p>
 <h3 id="code">Code</h3>
 <pre><code class="language-cpp">#include&lt;iostream&gt;
 #include&lt;cstdio&gt;
 #include&lt;cstring&gt;
-#define N 100010
-#define ll long long
+#include&lt;vector&gt;
+#include&lt;queue&gt;
+#define N 1000
 using namespace std;
-ll t;
-ll Q,mod;
-ll st[N],cnt;
+int n,m,ans;
+int x1,y1,x2,y2;
+int dx[4]={-1,0,1,0};
+int dy[4]={0,1,0,-1};
 struct note{
-	ll l,r,num;
-}d[N*4];
-ll op,pos;
-void build(ll k,ll x,ll y){
-	d[k].l=x;d[k].r=y;d[k].num=1; 
-	if(x==y) return ;
-	build(k*2,x,(x+y)/2);
-	build(k*2+1,(x+y)/2+1,y);
-}
-void revise(ll k,ll x,ll z){
-	if(d[k].l==d[k].r){
-		d[k].num=z%mod;
-		return ;
+	int x,y;
+};
+vector&lt;note&gt; g[N][N];
+queue&lt;note&gt; q;
+bool vis[N][N],fis[N][N];//vis是否房间开灯，fis是否被走到
+void bfs(){
+	q.push((note){1,1});vis[1][1]=true;fis[1][1]=true;ans=1;
+	while(!q.empty()){
+		note e=q.front();
+		q.pop();
+		int x=e.x,y=e.y;
+		for(int i=0;i&lt;g[x][y].size();i++){
+			int xx=g[x][y][i].x,yy=g[x][y][i].y;
+			if(!vis[xx][yy]){
+				vis[xx][yy]=true;
+				ans++;
+			}
+			if((fis[xx-1][yy]||fis[xx][yy+1]||fis[xx+1][yy]||fis[xx][yy-1])&amp;&amp;!fis[xx][yy]) fis[xx][yy]=true,q.push((note){xx,yy});
+		}
+		for(int i=0;i&lt;4;i++){
+			int xx=x+dx[i],yy=y+dy[i];
+			if(!fis[xx][yy]&amp;&amp;vis[xx][yy]){
+				fis[xx][yy]=true;
+				q.push((note){xx,yy});
+			}
+		}
 	}
-	ll mid=(d[k].l+d[k].r)/2;
-	if(x&lt;=mid) revise(k*2,x,z);
-	else revise(k*2+1,x,z);
-	d[k].num=(d[k*2].num*d[k*2+1].num)%mod;
 }
 int main()
 {
-	scanf(&quot;%lld&quot;,&amp;t);
-	while(t--){
-		scanf(&quot;%lld%lld&quot;,&amp;Q,&amp;mod);
-		build(1,1,Q);
-		for(ll i=1;i&lt;=Q;i++){
-			scanf(&quot;%lld%lld&quot;,&amp;op,&amp;pos);
-			if(op==1) revise(1,i,pos);
-			else revise(1,pos,1);
-			printf(&quot;%lld\n&quot;,d[1].num);
-		}
+	scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+	for(int i=1;i&lt;=m;i++){
+		scanf(&quot;%d%d%d%d&quot;,&amp;x1,&amp;y1,&amp;x2,&amp;y2);
+		g[x1][y1].push_back((note){x2,y2});
 	}
+	bfs();
+	printf(&quot;%d&quot;,ans);
 	return 0;
 }
 </code></pre>
 <h3 id="后言">后言</h3>
-<p>话说有大佬说，这个题不用建树，直接莽就行。<s>可是不建树还是线段树吗？🙃</s></p>
+<p>附带一段神奇编译。</p>
+<blockquote>
+<p>/tmp/tmpv278mza7/src: 在函数‘void bfs()’中:<br>
+/tmp/tmpv278mza7/src:24:16: 警告：comparison of integer expressions of different signedness: ‘int’ and ‘std::vector<note>::size_type’ {aka ‘long unsigned int’}    [-Wsign-compare]<br>
+for(int i=0;i&lt;g[x][y].size();i++){<br>
+<sub>^</sub>~~~~~~~~~~~~~</p>
+</blockquote>
 </span></p></div>
 	<br>
 	<hr>
@@ -452,23 +467,14 @@ $("img").each( (i,o) => {
 
           <div style="float:right;text-align:right;color:#ccc;font-size:18px;width:50%;">
             下一篇
-            <a href="https://Kite-chaser.github.io/post/shen-qi-de-tu">
+            <a href="https://Kite-chaser.github.io/post/p4588-tjoi2018shu-xue-ji-suan">
               <h3 class="post-title">
-                神奇的图
+                P4588 [TJOI2018]数学计算
               </h3>
             </a>
           </div>
 
 
-
-          <div style="float:left;text-align:left;color:#ccc;font-size:18px;width:50%;">
-            上一篇
-            <a href="https://Kite-chaser.github.io/post/p2845-usaco15decswitching-on-the-lights-kai-guan-deng">
-              <h3 class="post-title">
-                P2845 [USACO15DEC]Switching on the Lights 开关灯
-              </h3>
-            </a>
-          </div>
 
 </div>
 
@@ -508,7 +514,10 @@ $("img").each( (i,o) => {
 <ul>
 <li>
 <ul>
+<li><a href="#%E9%A2%98%E7%9B%AE%E8%83%8C%E6%99%AF">题目背景</a></li>
 <li><a href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0">题目描述</a></li>
+<li><a href="#%E8%AF%B4%E6%98%8E%E6%8F%90%E7%A4%BA">说明/提示</a></li>
+<li><a href="#%E6%89%8B%E5%8A%A8%E6%9C%BA%E7%BF%BB">手动机翻</a></li>
 <li><a href="#solve">Solve</a></li>
 <li><a href="#code">Code</a></li>
 <li><a href="#%E5%90%8E%E8%A8%80">后言</a></li>
