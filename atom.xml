@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Kite-chaser.github.io</id>
     <title>Kite-chaser</title>
-    <updated>2019-10-29T12:28:50.469Z</updated>
+    <updated>2019-10-30T13:51:29.940Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Kite-chaser.github.io"/>
     <link rel="self" href="https://Kite-chaser.github.io/atom.xml"/>
@@ -10,6 +10,44 @@
     <logo>https://Kite-chaser.github.io/images/avatar.png</logo>
     <icon>https://Kite-chaser.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Kite-chaser</rights>
+    <entry>
+        <title type="html"><![CDATA[论GCD的玄学使用]]></title>
+        <id>https://Kite-chaser.github.io/post/lun-gcd-de-xuan-xue-shi-yong</id>
+        <link href="https://Kite-chaser.github.io/post/lun-gcd-de-xuan-xue-shi-yong">
+        </link>
+        <updated>2019-10-30T13:49:58.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="前言">前言</h3>
+<p>欧几里德算法又称辗转相除法是指用于计算两个正整数a，b的最大公约数。应用领域有数学和计算机两个方面。计算公式gcd(a,b) = gcd(b,a mod b)。</p>
+<p>这是gcd的本职工作，代码也比较简单，证明就不再多解释。</p>
+<h4 id="code">Code</h4>
+<pre><code class="language-cpp">int gcd(int a,int b){
+	return b?gcd(b,a%b):a;
+}
+</code></pre>
+<h3 id="正文">正文</h3>
+<p>接下来本文要讲的，才是gcd的<s>正确</s>打开方式。</p>
+<p>OIer经常遇到这样的问题，就是如何判断在一个平面直角坐标系中或近似于平面直角坐标系中，判断两点之间有无其他整数点（横坐标和纵坐标都为整数的点），甚至让你求出具体个数。</p>
+<p>比如这道例题。</p>
+<h3 id="eg">EG</h3>
+<h4 id="p1447-noi2010能量采集"><a href="https://www.luogu.org/problem/P1447">P1447 [NOI2010]能量采集</a></h4>
+<h4 id="题目描述">题目描述</h4>
+<p>栋栋有一块长方形的地，他在地上种了一种能量植物，这种植物可以采集太阳光的能量。在这些植物采集能量后，栋栋再使用一个能量汇集机器把这些植物采集到的能量汇集到一起。</p>
+<p>栋栋的植物种得非常整齐，一共有n列，每列有m棵，植物的横竖间距都一样，因此对于每一棵植物，栋栋可以用一个坐标(x, y)来表示，其中x的范围是1至n，表示是在第x列，y的范围是1至m，表示是在第x列的第y棵。</p>
+<p>由于能量汇集机器较大，不便移动，栋栋将它放在了一个角上，坐标正好是(0, 0)。</p>
+<p>能量汇集机器在汇集的过程中有一定的能量损失。如果一棵植物与能量汇集机器连接而成的线段上有k棵植物，则能 量的损失为2k + 1。例如，当能量汇集机器收集坐标为(2, 4)的植物时，由于连接线段上存在一棵植物(1, 2)，会产生3的能量损失。注意，如果一棵植物与能量汇集机器连接的线段上没有植物，则能量损失为1。现在要计算总的能量损失。</p>
+<p>下面给出了一个能量采集的例子，其中n = 5，m = 4，一共有20棵植物，在每棵植物上标明了能量汇集机器收集它的能量时产生的能量损失。</p>
+<p>————————————分割线—————————————————————————————</p>
+<p>一般来说，大多数写题解的人，会直接告诉你这个奇怪的结论。</p>
+<p><strong>一个点（x,y）到原点之间的整数点个数即为gcd（x，y），包括（x,y)不包括原点，也就是k+1。</strong></p>
+<p>之前我试了试之后发现这竟然是对的，但是不知道为什么是对的。翻遍有关的题解和资料都没有详细的解释。于是秉着<s>万丈高楼平地起，成功只能靠自己</s>认真的原则，就自己探求了一下，终于探求到其中的一点奥秘，与大家分享下。</p>
+<p>其实也不是多么高深的东西。</p>
+<p>首先，将一个整数点（x，y）看作一个直角三角形或是一个矩形，边长为x和y。称他为三角形或矩形（x，y）。</p>
+<p>然后，设gcd（x，y）=d，那么三角形（x/d，y/d）也是直角边为整数的三角形。</p>
+<p>那么，x和y分别乘上d分之一，d分之二……直到d分之d。这其中所有的三角形的直角边边长都是整数，对应到平面直角坐标系上就是d个点，这一点可以<s>性感</s>感性理解一下，或想想三角形的相似，就可以明白了。</p>
+<p>所以，<strong>一个点（x,y）到原点之间的整数点个数即为gcd（x，y），包括（x,y)不包括原点，也就是k+1。</strong></p>
+<p>这样再去分析类似的题目，就不会那么难搞了，<s>也能看懂题解了。</s></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[P2845 [USACO15DEC]Switching on the Lights 开关灯]]></title>
         <id>https://Kite-chaser.github.io/post/p2845-usaco15decswitching-on-the-lights-kai-guan-deng</id>
@@ -815,96 +853,6 @@ int main()
 		ans+=dis[i]*c[i];
 	}
 	printf(&quot;%lld&quot;,ans);
-	return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[P1270 “访问”美术馆]]></title>
-        <id>https://Kite-chaser.github.io/post/p1270-fang-wen-mei-zhu-guan</id>
-        <link href="https://Kite-chaser.github.io/post/p1270-fang-wen-mei-zhu-guan">
-        </link>
-        <updated>2019-09-21T09:45:36.000Z</updated>
-        <summary type="html"><![CDATA[<p>我肝了好久……</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>我肝了好久……</p>
-<!--more-->
-<h2 id="题目描述">题目描述</h2>
-<p>经过数月的精心准备，Peer Brelstet，一个出了名的盗画者，准备开始他的下一个行动。艺术馆的结构，每条走廊要么分叉为两条走廊，要么通向一个展览室。Peer知道每个展室里藏画的数量，并且他精确测量了通过每条走廊的时间。由于经验老到，他拿下一幅画需要5秒的时间。你的任务是编一个程序，计算在警察赶来之前，他最多能偷到多少幅画。<br>
-<img src="https://Kite-chaser.github.io/post-images/1569059240907.png" alt=""><br>
-样例的图……</p>
-<blockquote>
-<p><a href="https://www.luogu.org/problem/P1270">原题链接</a></p>
-</blockquote>
-<h2 id="slove">Slove</h2>
-<p>树形DP-树形背包<br>
-mon[i]到节点i的用时<br>
-<s>十年DP推方程</s></p>
-<ol>
-<li>设计状态：d[i][j]，以i为根节点，取画j副时的最少用时。</li>
-<li>边界：d[i][j]=j*5,(i为展室，0&lt;=j&lt;=该展室画数）</li>
-<li>转移方程：d[u][j]=min(d[u][j],d[u][j-k]+d[v][k]+mon[v]).（u到v有边；j为u的最大画数）</li>
-<li>按照最大画幅，倒序枚举，用时低于S的就是答案。</li>
-</ol>
-<h2 id="code">Code</h2>
-<pre><code class="language-cpp">#include&lt;iostream&gt;
-#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#define N 1010
-using namespace std;
-int s;
-int tree[N*10];
-int mon[N],vl[N],cnt;
-int d[N][N];
-int sz[N],sum;
-int first[N],nxt[N],to[N],len;
-void add(int u,int v){
-	to[++len]=v;
-	nxt[len]=first[u];
-	first[u]=len;
-}
-void infs(int u){
-	mon[u]=mon[u]*2;
-	if(vl[u]){
-		sum+=vl[u];
-		for(int i=0;i&lt;=vl[u];i++) d[u][i]=i*5;
-		return ;
-	}
-	scanf(&quot;%d%d&quot;,&amp;mon[u*2],&amp;vl[u*2]);
-	add(u,u*2);infs(u*2);
-	scanf(&quot;%d%d&quot;,&amp;mon[u*2+1],&amp;vl[u*2+1]);
-	add(u,u*2+1),infs(u*2+1);
-}
-void dfs(int u){
-	if(vl[u]){
-		sz[u]=vl[u];
-		return ;
-	}
-	for(int i=first[u];i!=-1;i=nxt[i]){
-		dfs(to[i]);
-		sz[u]+=sz[to[i]];
-		for(int j=sz[u];j&gt;=0;j--){
-			for(int k=min(j,sz[to[i]]);k&gt;=0;k--) d[u][j]=min(d[u][j],d[u][j-k]+d[to[i]][k]+mon[to[i]]);
-		}
-	}
-}
-int main()
-{
-	memset(first,-1,sizeof(first));
-	for(int i=0;i&lt;=1001;i++) for(int j=1;j&lt;=1001;j++) d[i][j]=30000;
-	scanf(&quot;%d&quot;,&amp;s);
-	s--;
-	add(0,1);
-	scanf(&quot;%d%d&quot;,&amp;mon[1],&amp;vl[1]);
-	infs(1);
-	dfs(0);
-	for(int i=sum;i&gt;=0;i--){
-		if(d[0][i]&lt;s){
-			printf(&quot;%d&quot;,i);
-			return 0;
-		}
-	}
 	return 0;
 }
 </code></pre>
