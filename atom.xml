@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Kite-chaser.github.io</id>
     <title>Kite-chaser</title>
-    <updated>2019-10-31T10:57:01.336Z</updated>
+    <updated>2019-10-31T11:01:33.243Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Kite-chaser.github.io"/>
     <link rel="self" href="https://Kite-chaser.github.io/atom.xml"/>
@@ -562,7 +562,8 @@ int main()
 每种情况分析完毕。<br>
 超级源点为0。向每一个点建一条权值为0的边。<br>
 SPFA跑最长路。<br>
-<strong>一种玄学优化方式，用DFS优化SPFA，直接跑SPFA会T飞的。</strong></li>
+<strong>一种玄学优化方式，用DFS优化SPFA，直接跑SPFA会T飞的。</strong><br>
+<strong>在判负环中可以用DFS或用栈代替队列来优化SPFA，但是在没有负环的情况请小心使用。</strong></li>
 </ul>
 <h3 id="code">Code</h3>
 <pre><code class="language-cpp">#include&lt;iostream&gt;
