@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Kite-chaser.github.io</id>
     <title>Kite-chaser</title>
-    <updated>2019-10-30T13:55:35.209Z</updated>
+    <updated>2019-10-31T10:57:01.336Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Kite-chaser.github.io"/>
     <link rel="self" href="https://Kite-chaser.github.io/atom.xml"/>
@@ -10,6 +10,121 @@
     <logo>https://Kite-chaser.github.io/images/avatar.png</logo>
     <icon>https://Kite-chaser.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Kite-chaser</rights>
+    <entry>
+        <title type="html"><![CDATA[离散化]]></title>
+        <id>https://Kite-chaser.github.io/post/chi-san-hua</id>
+        <link href="https://Kite-chaser.github.io/post/chi-san-hua">
+        </link>
+        <updated>2019-10-31T10:56:04.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="前言">前言</h3>
+<p>离散化是程序设计中一个常用的技巧，它可以有效的降低时间复杂度。其基本思想就是在众多可能的情况中，只考虑需要用的值。离散化可以改进一个低效的算法，甚至实现根本不可能实现的算法。要掌握这个思想，必须从大量的题目中理解此方法的特点。例如，在建造线段树空间不够的情况下，可以考虑离散化。</p>
+<h3 id="正文">正文</h3>
+<p>离散化的使用在OI中使用十分广泛，主要用于数据的处理，那么他到底是个什么东西呢？</p>
+<p>通俗的说，离散化是在不改变数据相对大小的条件下，对数据进行相应的缩小，将无穷大集合中的若干个元素映射为有限集合以便于统计。</p>
+<p>假设问题涉及int范围内的n个整数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> ~ <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">a_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>,这n个整数可能有重复，去重以后共有m个整数。我们要把每个整数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>用一个1~m之间的整数代替，并且保持大小顺序不变，即如果<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>x小于（或等于、大于），那么代替<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>的整数也小于（或等于、大于）代替<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">a_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>的整数。</p>
+<p>例如：</p>
+<p>原数据：1,999,100000,15；处理后：1,3,4,2；</p>
+<p>原数据：{100,200}，{20,50000}，{1,400}；</p>
+<p>处理后：{3,4}，{2,6}，{1,5}；</p>
+<p>离散化也是各种排序算法的一个应用。</p>
+<p>离散化的思路也十分简单， 先排序，再删除重复元素，最后就是索引元素离散化后对应的值。</p>
+<h4 id="code">Code</h4>
+<pre><code class="language-cpp">void discrete(){// 或用STL中的unique
+    sort(a+1,a+n+1);
+    for(int i=1;i&lt;=n;i++){
+        if(i==1||a[i]!=a[i-1]) b[++m]=a[i];
+	}
+}
+int query(int x){//查询x映射为1~m之间那个整数
+	return lower_bound(b+1,b+m+1,x)-b;
+}
+</code></pre>
+<h3 id="关于lower_bound">关于lower_bound</h3>
+<p>查找不小于x的元素中最小的一个，并返回指向该元素的迭代器（可以简单的理解为位置？）</p>
+<h3 id="后言">后言</h3>
+<p>生活中的“离散化”的例子还有很多，比如某一中的班级名单，按照学生的成绩排个序，然后从一号开始标，班级内的序号也就是班级内的排名。这也就避免了成绩的差距过大，比如我友链中那几个强者和我这样的菜鸡。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[P1955 [NOI2015]程序自动分析]]></title>
+        <id>https://Kite-chaser.github.io/post/p1955-noi2015cheng-xu-zi-dong-fen-xi</id>
+        <link href="https://Kite-chaser.github.io/post/p1955-noi2015cheng-xu-zi-dong-fen-xi">
+        </link>
+        <updated>2019-10-31T10:53:06.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="题目描述">题目描述</h3>
+<p>在实现程序自动分析的过程中，常常需要判定一些约束条件是否能被同时满足。</p>
+<p>考虑一个约束满足问题的简化版本：假设x1,x2,x3...代表程序中出现的变量，给定n个形如xi=xj或xi≠xj的变量相等/不等的约束条件，请判定是否可以分别为每一个变量赋予恰当的值，使得上述所有约束条件同时被满足。例如，一个问题中的约束条件为：x1=x2,x2=x3,x3=x4,x4≠x1，这些约束条件显然是不可能同时被满足的，因此这个问题应判定为不可被满足。</p>
+<p>现在给出一些约束满足问题，请分别对它们进行判定。</p>
+<blockquote>
+<p><a href="https://www.luogu.org/problem/P1955">原题链接</a></p>
+</blockquote>
+<h3 id="solve">Solve</h3>
+<p>简单点说，就是用并查集莽就完了。</p>
+<p>用每个x做节点，然后，先检查等于的情况，将其中的x合并到一个集合中，最后检查不等于的情况，如果在一个集合内就是“NO”，如果都不在一个集合内就是“YES”。</p>
+<p>但是有趣的是x的范围是10e9的，这要是做数组下标，那么一大堆MLE和CE都等着你，当场毙命。</p>
+<p>于是我们理性的分析分析，虽然范围大，但是每次最多有2*n个数字不同，所以你懂我意思吧。</p>
+<p>离散化。</p>
+<p>数据问题解决了，面前就是一马平川，莽！<strong>注意是多组数据，记得重置。</strong></p>
+<h3 id="code">Code</h3>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+#define N 2100000
+using namespace std;
+int t,n;
+int fa[N];
+int num[N],cnt,len1,len2,op,b[N];
+int x,y,z;
+bool flag;
+struct note{
+	int u,v,w;
+}d[N];
+int find(int s){
+	if(fa[s]!=s) fa[s]=find(fa[s]);
+	return fa[s];
+}
+int query(int s){
+	return lower_bound(b+1,b+op+1,s)-b;
+}
+int main()
+{
+	scanf(&quot;%d&quot;,&amp;t);
+	while(t--){
+		scanf(&quot;%d&quot;,&amp;n);
+		cnt=0;op=0;len1=0;len2=n+1;flag=false;
+		for(int i=1;i&lt;=2*n;i++) fa[i]=i;
+		for(int i=1;i&lt;=n;i++){
+			scanf(&quot;%d%d%d&quot;,&amp;x,&amp;y,&amp;z);
+			num[++cnt]=x; 
+			num[++cnt]=y;
+			if(z) d[++len1].u=x,d[len1].v=y,d[len1].w=z;
+			else d[--len2].u=x,d[len2].v=y,d[len2].w=z;
+            //两个“指针”，两边放。
+		}
+		sort(num+1,num+1+cnt);
+		for(int i=1;i&lt;=cnt;i++){
+			if(i==1||num[i]!=num[i-1]) b[++op]=num[i];
+		}
+		for(int i=1;i&lt;=n;i++)d[i].u=query(d[i].u),d[i].v=query(d[i].v); 
+		for(int i=1;i&lt;=n;i++){
+			int e=find(d[i].u),r=find(d[i].v);
+			if(d[i].w){
+				if(e!=r) fa[r]=e;
+			}
+			else{
+				if(e==r){flag=true;printf(&quot;NO\n&quot;);break;}
+			}
+		}
+		if(!flag) printf(&quot;YES\n&quot;);
+	}
+	return 0;
+}
+</code></pre>
+<h3 id="后言">后言</h3>
+<p>小心用map，反正我的死了。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[论GCD的玄学使用]]></title>
         <id>https://Kite-chaser.github.io/post/lun-gcd-de-xuan-xue-shi-yong</id>
@@ -638,224 +753,6 @@ int main()
 <h2 id="关于">关于</h2>
 <p>[例图取自]（https://www.luogu.org/blog/xiaohou/fen-ceng-tu）<br>
 封面不是啦。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[P3870 [TJOI2009]开关]]></title>
-        <id>https://Kite-chaser.github.io/post/p3870-tjoi2009kai-guan</id>
-        <link href="https://Kite-chaser.github.io/post/p3870-tjoi2009kai-guan">
-        </link>
-        <updated>2019-10-07T08:08:35.000Z</updated>
-        <summary type="html"><![CDATA[<p>分块是一种优雅的暴力。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>分块是一种优雅的暴力。</p>
-<!--more-->
-<h2 id="题目描述">题目描述</h2>
-<p>现有N（2 ≤ N ≤ 100000）盏灯排成一排，从左到右依次编号为：1，2，......，N。然后依次执行M（1 ≤ M ≤ 100000）项操作，操作分为两种：第一种操作指定一个区间[a, b]，然后改变编号在这个区间内的灯的状态（把开着的灯关上，关着的灯打开），第二种操作是指定一个区间[a, b]，要求你输出这个区间内有多少盏灯是打开的。灯在初始时都是关着的。</p>
-<blockquote>
-<p><a href="https://www.luogu.org/problem/P3870">原题链接</a></p>
-</blockquote>
-<h2 id="slove">Slove</h2>
-<ol>
-<li>将n盏灯的状态分块。1表示开着，0表示关着。</li>
-<li>tg[]表示每个块的修改状态。</li>
-<li>通过“^”操作快速修改。</li>
-</ol>
-<h2 id="code">Code</h2>
-<pre><code class="language-cpp">#include&lt;iostream&gt;
-#include&lt;cstdio&gt;
-#include&lt;cmath&gt;
-#define N 100001
-using namespace std;
-int n,m;
-int t;
-int ans;
-int cnt,x,y;
-struct note{
-	int l,r,sum;
-}d[N];
-int num[N],tg[N];
-int ln[N];
-void ch(int l,int r){
-	if(ln[l]==ln[r]){
-		for(int i=l;i&lt;=r;i++){
-			d[ln[i]].sum-=(num[i]^tg[ln[i]]);
-			num[i]=1-num[i];
-			d[ln[i]].sum+=(num[i]^tg[ln[i]]);
-		}
-	}
-	else{
-		for(int i=l;i&lt;=d[ln[l]].r;i++){
-			d[ln[i]].sum-=(num[i]^tg[ln[i]]);
-			num[i]=1-num[i];
-			d[ln[i]].sum+=(num[i]^tg[ln[i]]);
-		}
-		for(int i=d[ln[r]].l;i&lt;=r;i++){
-			d[ln[i]].sum-=(num[i]^tg[ln[i]]);
-			num[i]=1-num[i];
-			d[ln[i]].sum+=(num[i]^tg[ln[i]]);
-		}
-		for(int i=ln[l]+1;i&lt;=ln[r]-1;i++){
-			tg[i]=1-tg[i];
-			d[i].sum=(d[i].r-d[i].l+1)-d[i].sum;
-		}
-	}
-}
-int qu(int l,int r){
-	if(ln[l]==ln[r]){
-		for(int i=l;i&lt;=r;i++) ans+=(num[i]^tg[ln[i]]);
-		return ans;
-	}
-	else{
-		for(int i=l;i&lt;=d[ln[l]].r;i++) ans+=(num[i]^tg[ln[l]]);
-		for(int i=d[ln[r]].l;i&lt;=r;i++) ans+=(num[i]^tg[ln[r]]);
-		for(int i=ln[l]+1;i&lt;=ln[r]-1;i++){
-			ans+=d[i].sum;
-		}
-		return ans;
-	}
-}
-int main()
-{
-	scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
-	t=sqrt(n);
-	for(int i=1;i&lt;=t;i++){
-		d[i].l=(i-1)*t+1;
-		d[i].r=i*t;
-	}
-	if(d[t].r&lt;n){
-		t++;
-		d[t].l=d[t-1].r+1;
-		d[t].r=n;
-	}
-	int s=1;
-	for(int i=1;i&lt;=n;i++){
-		if(d[s].r&lt;i) s++;
-		ln[i]=s;
-	}
-	for(int i=1;i&lt;=m;i++){
-		scanf(&quot;%d%d%d&quot;,&amp;cnt,&amp;x,&amp;y);
-		if(cnt){
-			ans=0;
-			printf(&quot;%d\n&quot;,qu(x,y));
-		}
-		else ch(x,y);
-	}
-	return 0; 
-}
-</code></pre>
-<h2 id="关于分块">关于分块</h2>
-<p>没有学过分块的朋友可以康康hzw大神的<a href="http://hzwer.com/8053.html">分块九讲</a></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[P2986 [USACO10MAR]伟大的奶牛聚集Great Cow Gat…]]></title>
-        <id>https://Kite-chaser.github.io/post/p2986-usaco10marwei-da-de-nai-niu-ju-ji-great-cow-gat</id>
-        <link href="https://Kite-chaser.github.io/post/p2986-usaco10marwei-da-de-nai-niu-ju-ji-great-cow-gat">
-        </link>
-        <updated>2019-10-03T10:08:28.000Z</updated>
-        <summary type="html"><![CDATA[<p>话说描述下面一大坨是什么东西……</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>话说描述下面一大坨是什么东西……</p>
-<!--more-->
-<h2 id="题目描述">题目描述</h2>
-<p>Bessie is planning the annual Great Cow Gathering for cows all across the country and, of course, she would like to choose the most convenient location for the gathering to take place.</p>
-<p>Bessie正在计划一年一度的奶牛大集会，来自全国各地的奶牛将来参加这一次集会。当然，她会选择最方便的地点来举办这次集会。</p>
-<p>Each cow lives in one of N (1 &lt;= N &lt;= 100,000) different barns (conveniently numbered 1..N) which are connected by N-1 roads in such a way that it is possible to get from any barn to any other barn via the roads. Road i connects barns A_i and B_i (1 &lt;= A_i &lt;= N; 1 &lt;= B_i &lt;= N) and has length L_i (1 &lt;= L_i &lt;= 1,000). The Great Cow Gathering can be held at any one of these N barns. Moreover, barn i has C_i (0 &lt;= C_i &lt;= 1,000) cows living in it.</p>
-<p>每个奶牛居住在 N(1&lt;=N&lt;=100,000) 个农场中的一个，这些农场由N-1条道路连接，并且从任意一个农场都能够到达另外一个农场。道路i连接农场A_i和B_i(1 &lt;= A_i &lt;=N; 1 &lt;= B_i &lt;= N),长度为L_i(1 &lt;= L_i &lt;= 1,000)。集会可以在N个农场中的任意一个举行。另外，每个牛棚中居住者C_i(0 &lt;= C_i &lt;= 1,000)只奶牛。</p>
-<p>When choosing the barn in which to hold the Cow Gathering, Bessie wishes to maximize the convenience (which is to say minimize the inconvenience) of the chosen location. The inconvenience of choosing barn X for the gathering is the sum of the distances all of the cows need to travel to reach barn X (i.e., if the distance from barn i to barn X is 20, then the travel distance is C_i*20). Help Bessie choose the most convenient location for the Great Cow Gathering.</p>
-<p>在选择集会的地点的时候，Bessie希望最大化方便的程度(也就是最小化不方便程度)。比如选择第X个农场作为集会地点，它的不方便程度是其它牛棚中每只奶牛去参加集会所走的路程之和，(比如，农场i到达农场X的距离是20，那么总路程就是C_i*20)。帮助Bessie找出最方便的地点来举行大集会。</p>
-<p>Consider a country with five barns with [various capacities] connected by various roads of varying lengths. In this set of barns, neither barn 3 nor barn 4 houses any cows.</p>
-<p>1 3 4 5</p>
-<p>@--1--@--3--@--3--@[2]</p>
-<p>[1] |</p>
-<p>2 | @[1] 2 Bessie can hold the Gathering in any of five barns; here is the table of inconveniences calculated for each possible location:</p>
-<p>Gather ----- Inconvenience ------</p>
-<p>Location B1 B2 B3 B4 B5 Total</p>
-<p>1 0 3 0 0 14 17</p>
-<p>2 3 0 0 0 16 19</p>
-<p>3 1 2 0 0 12 15</p>
-<p>4 4 5 0 0 6 15</p>
-<p>5 7 8 0 0 0 15</p>
-<p>If Bessie holds the gathering in barn 1, then the inconveniences from each barn are:</p>
-<p>Barn 1 0 -- no travel time there!</p>
-<p>Barn 2 3 -- total travel distance is 2+1=3 x 1 cow = 3 Barn 3 0 -- no cows there!</p>
-<p>Barn 4 0 -- no cows there!</p>
-<p>Barn 5 14 -- total travel distance is 3+3+1=7 x 2 cows = 14 So the total inconvenience is 17.</p>
-<p>The best possible convenience is 15, achievable at by holding the Gathering at barns 3, 4, or 5.</p>
-<blockquote>
-<p><a href="https://www.luogu.org/problem/P2986">原题链接</a></p>
-</blockquote>
-<h2 id="slove">Slove</h2>
-<p>简单点说就是用树的重心求解。<br>
-类似于这种树上到一点然后求最小价值的题大多是树的重心。<br>
-也就是所求的这一点。<br>
-有关树的重心，见蒟蒻的<a href="https://kite-chaser.github.io/post/shu-de-chong-xin/">笔记</a>。<br>
-然后从树的重心，求到各点的路径长度和代价即可。</p>
-<h2 id="code">Code</h2>
-<pre><code class="language-cpp">#include&lt;iostream&gt;
-#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#define ll long long
-#define N 100001
-using namespace std;
-ll n;
-ll maxn=1000000000000000000,ans;
-ll cnt,sum;
-ll c[N];
-ll x,y,z;
-ll dis[N],d[N];  //dis-从树的重心到节点的路径长度
-ll first[N*2],nxt[N*2],to[N*2],w[N*2],len;
-void add(ll u,ll v,ll z){
-	to[++len]=v;
-	w[len]=z;
-	nxt[len]=first[u];
-	first[u]=len;
-}
-void dp(ll s,ll fa){
-	d[s]=c[s];
-	ll res=0;
-	for(ll i=first[s];i!=-1;i=nxt[i]){
-		if(to[i]==fa) continue;
-		dp(to[i],s);
-		d[s]+=d[to[i]];
-		res=max(res,d[to[i]]);
-	}
-	res=max(res,sum-d[s]);
-	if(res&lt;maxn){
-		maxn=res;
-		cnt=s;
-	}
-}
-void dfs(ll s,ll fa){
-	for(ll i=first[s];i!=-1;i=nxt[i]){
-		if(to[i]==fa) continue;
-		dis[to[i]]=dis[s]+w[i];
-		dfs(to[i],s);
-	}
-}
-int main()
-{
-	memset(first,-1,sizeof(first));
-	scanf(&quot;%lld&quot;,&amp;n);
-	for(ll i=1;i&lt;=n;i++){
-		scanf(&quot;%lld&quot;,&amp;c[i]);sum+=c[i];
-	}
-	for(ll i=1;i&lt;n;i++){
-		scanf(&quot;%lld%lld%lld&quot;,&amp;x,&amp;y,&amp;z);
-		add(x,y,z);
-		add(y,x,z);
-	}
-	dp(1,1);
-	dis[cnt]=0;
-	dfs(cnt,cnt);
-	for(ll i=1;i&lt;=n;i++){
-		ans+=dis[i]*c[i];
-	}
-	printf(&quot;%lld&quot;,ans);
-	return 0;
-}
-</code></pre>
 ]]></content>
     </entry>
 </feed>
