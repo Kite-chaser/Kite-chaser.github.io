@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Kite-chaser.github.io</id>
     <title>Kite-chaser</title>
-    <updated>2019-10-31T11:02:27.225Z</updated>
+    <updated>2019-10-31T11:03:33.753Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Kite-chaser.github.io"/>
     <link rel="self" href="https://Kite-chaser.github.io/atom.xml"/>
@@ -63,7 +63,7 @@ int query(int x){//查询x映射为1~m之间那个整数
 <p>用每个x做节点，然后，先检查等于的情况，将其中的x合并到一个集合中，最后检查不等于的情况，如果在一个集合内就是“NO”，如果都不在一个集合内就是“YES”。</p>
 <p>但是有趣的是x的范围是10e9的，这要是做数组下标，那么一大堆MLE和CE都等着你，当场毙命。</p>
 <p>于是我们理性的分析分析，虽然范围大，但是每次最多有2*n个数字不同，所以你懂我意思吧。</p>
-<p>离散化。</p>
+<p><a href="https://kite-chaser.github.io/post/chi-san-hua">离散化</a>。</p>
 <p>数据问题解决了，面前就是一马平川，莽！<strong>注意是多组数据，记得重置。</strong></p>
 <h3 id="code">Code</h3>
 <pre><code class="language-cpp">#include&lt;iostream&gt;
