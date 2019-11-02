@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Kite-chaser.github.io</id>
     <title>Kite-chaser</title>
-    <updated>2019-11-02T02:43:50.073Z</updated>
+    <updated>2019-11-02T03:05:57.789Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Kite-chaser.github.io"/>
     <link rel="self" href="https://Kite-chaser.github.io/atom.xml"/>
@@ -10,6 +10,68 @@
     <logo>https://Kite-chaser.github.io/images/avatar.png</logo>
     <icon>https://Kite-chaser.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Kite-chaser</rights>
+    <entry>
+        <title type="html"><![CDATA[P2114 [NOI2014]起床困难综合症]]></title>
+        <id>https://Kite-chaser.github.io/post/p2114-noi2014qi-chuang-kun-nan-zong-he-zheng</id>
+        <link href="https://Kite-chaser.github.io/post/p2114-noi2014qi-chuang-kun-nan-zong-he-zheng">
+        </link>
+        <updated>2019-11-02T02:46:19.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="题目描述">题目描述</h3>
+<p>21世纪，许多人得了一种奇怪的病：起床困难综合症，其临床表现为：起床难，起床后精神不佳。作为一名青春阳光好少年，atm一直坚持与起床困难综合症作斗争。通过研究相关文献，他找到了该病的发病原因： 在深邃的太平洋海底中，出现了一条名为drd的巨龙，它掌握着睡眠之精髓，能随意延长大家的睡眠时间。 正是由于drd的活动，起床困难综合症愈演愈烈， 以惊人的速度在世界上传播。为了彻底消灭这种病，atm决定前往海底，消灭这条恶龙。历经千辛万苦，atm终于来到了drd所在的地方，准备与其展开艰苦卓绝的战斗。drd有着十分特殊的技能，他的防御战线能够使用一定的运算来改变他受到的伤害。具体说来，drd的防御战线由n扇防御门组成。每扇防御门包括一个运算op和一个参数t，其中运算一定是OR,XOR,AND中的一种，参数则一定为非负整数。如果还未通过防御门时攻击力为x，则其通过这扇防御门后攻击力将变为x op t。最终drd受到的伤害为对方初始攻击力x依次经过所有n扇防御门后转变得到的攻击力。</p>
+<p>由于atm水平有限，他的初始攻击力只能为0到m之间的一个整数（即他的初始攻击力只能在 0, 1, … , m中任选，但在通过防御门之后的攻击力不受m的限制）。为了节省体力，他希望通过选择合适的初始攻击力使得他的攻击能让drd受到最大的伤害，请你帮他计算一下，他的一次攻击最多能使drd受到多少伤害。</p>
+<blockquote>
+<p><a href="https://www.luogu.org/problem/P2114">原题链接</a></p>
+</blockquote>
+<h3 id="solve">Solve</h3>
+<p>首先，我们肯定得先知道<a href="https://baike.baidu.com/item/%E9%80%BB%E8%BE%91%E6%88%96/10993689">或</a>、<a href="https://baike.baidu.com/item/%E9%80%BB%E8%BE%91%E5%BC%82%E6%88%96">异或</a><br>
+、<a href="https://baike.baidu.com/item/%E9%80%BB%E8%BE%91%E4%B8%8E/10993695">与</a>是什么意思。要不然就GG了。<br>
+然后，这些都是位运算，也就是说，最后的结果只与x和操作有关，而结果的每一位只与x对应的位置上的值有关。位运算是二进制下的运算，所以状态十分简单，1或0。所以，我们可以从高位到低位，依次考虑x的每一位填0或填1。<br>
+填1可行的情况：</p>
+<ul>
+<li>填了之后加上之前的不会大于m。</li>
+<li>k位初值经过n个运算后，还等于初值。</li>
+</ul>
+<p>否则还是填0更优。确定每一位后，自然可以得到ans的值。</p>
+<h3 id="code">Code</h3>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#define N 100005
+using namespace std;
+int n,m,vl,ans;
+pair&lt;string , int &gt; a[N];
+char s[10];
+int x;
+int check(int bit,int now){
+	for(int i=1;i&lt;=n;i++){
+		x=a[i].second&gt;&gt;bit&amp;1;
+		if(a[i].first==&quot;AND&quot;) now&amp;=x;
+		else if(a[i].first==&quot;OR&quot;) now|=x;
+		else now^=x;
+	}
+	return now;
+}
+int main()
+{
+	scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+	for(int i=1;i&lt;=n;i++){
+		scanf(&quot;%s%d&quot;,s,&amp;x);
+		a[i]=make_pair(s,x);
+	}
+	for(int bit=29;bit&gt;=0;bit--){
+		int res0=check(bit,0);
+		int res1=check(bit,1);
+		if(vl+(1&lt;&lt;bit)&lt;=m&amp;&amp;res0&lt;res1) vl+=1&lt;&lt;bit,ans+=res1&lt;&lt;bit;
+		else ans+=res0&lt;&lt;bit;
+	}
+	printf(&quot;%d&quot;,ans);
+	return 0;
+}
+</code></pre>
+<h3 id="后言">后言</h3>
+<p>白嫖蓝书。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[P1072 Hankson 的趣味题]]></title>
         <id>https://Kite-chaser.github.io/post/p1072-hankson-de-qu-wei-ti</id>
@@ -587,117 +649,6 @@ int main()
 </code></pre>
 <h2 id="后言">后言</h2>
 <p>答案单调的二分莽就完了。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[差分约束]]></title>
-        <id>https://Kite-chaser.github.io/post/chai-fen-yue-shu</id>
-        <link href="https://Kite-chaser.github.io/post/chai-fen-yue-shu">
-        </link>
-        <updated>2019-10-27T11:16:11.000Z</updated>
-        <summary type="html"><![CDATA[<p>图论真的是博大精深。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>图论真的是博大精深。</p>
-<!--more-->
-<h2 id="前言">前言</h2>
-<p>如果一个系统由n个变量和m个约束条件组成，形成m个形如ai-aj≤k的不等式(i,j∈[1,n],k为常数),则称其为差分约束系统(system of difference constraints)。亦即，差分约束系统是求解关于一组变量的特殊不等式组的方法。<br>
-求解差分约束系统，可以转化成图论的单源最短路径（或最长路径）问题。</p>
-<h2 id="正文">正文</h2>
-<p>观察xj-xi&lt;=bk，会发现它类似最短路中的三角不等式d[v]&lt;=d[u]+w[u,v]，即d[v]-d[u]&lt;=w[u,v]。因此，以每个变量xi为结点，对于约束条件xj-xi&lt;=bk，连接一条边(i,j)，边权为bk。我们再增加一个源点s,s与所有定点相连，边权均为0。对这个图，以s为源点运行Bellman-ford算法（或SPFA算法），最终{d[ i]}即为一组可行解。<br>
-例：d[x]-d[y]&gt;=Z<br>
-如果想连边后求最长路 那么将不等式变形为这种形式 d[x]&gt;=d[y]+z y---x连一条权值为z的边<br>
-求最短路则变形成d[y]&lt;=d[x]-z x---y连一条权值为-z的边。<br>
-如果是别的不等式，也可以根据情况变形。<br>
-为什么一定要用SPFA呢，因为这个系统可能无解。当最长路出现正环的时候或最短路出现负环的时候，这个系统就无解惹。其实，最长最短都差不多，视情况而定。</p>
-<h2 id="eg">EG</h2>
-<h3 id="p1993-小k的农场"><a href="https://www.luogu.org/problem/P1993">P1993 小K的农场</a></h3>
-<h3 id="题目描述">题目描述</h3>
-<p>小K在MC里面建立很多很多的农场，总共n个，以至于他自己都忘记了每个农场中种植作物的具体数量了，他只记得一些含糊的信息（共m个），以下列三种形式描述：</p>
-<ul>
-<li>农场a比农场b至少多种植了c个单位的作物，</li>
-<li>农场a比农场b至多多种植了c个单位的作物，</li>
-<li>农场a与农场b种植的作物数一样多。</li>
-</ul>
-<p>但是，由于小K的记忆有些偏差，所以他想要知道存不存在一种情况，使得农场的种植作物数量与他记忆中的所有信息吻合。</p>
-<h3 id="solve">Solve</h3>
-<p>建图，求最长路。</p>
-<ul>
-<li>a-b&gt;=c,从b向a建一条边权为c的边。</li>
-<li>a-b&lt;=c等于b-a&lt;=-c,从a向b建一条边权为-c的边。</li>
-<li>a=b，等于a-b&gt;=0或b-a&gt;=0，双向建边，权值为0。<br>
-每种情况分析完毕。<br>
-超级源点为0。向每一个点建一条权值为0的边。<br>
-SPFA跑最长路。<br>
-<strong>一种玄学优化方式，用DFS优化SPFA，直接跑SPFA会T飞的。</strong><br>
-<strong>在判负环中可以用DFS或用栈代替队列来优化SPFA，但是在没有负环的情况请小心使用。</strong></li>
-</ul>
-<h3 id="code">Code</h3>
-<pre><code class="language-cpp">#include&lt;iostream&gt;
-#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-using namespace std;
-const int maxn=23333333;
-const int N=50005;
-int n,m;
-int num,x,y,z;
-int first[N],nxt[N],to[N],dist[N],len;
-int cnt[N],dis[N];
-bool vis[N];
-inline int read(){
-    int k=0,f=1;
-    char ch=getchar();
-    while(ch&lt;'0'||ch&gt;'9'){
-        if(ch=='-')
-            f=-1;
-        ch=getchar();
-    }
-    while(ch&gt;='0'&amp;&amp;ch&lt;='9'){
-        k=(k&lt;&lt;1)+(k&lt;&lt;3)+(ch^48);
-        ch=getchar();
-    }
-    return k*f;
-}
-void add(int u,int v,int w){
-	to[++len]=v;
-	dist[len]=w;
-	nxt[len]=first[u];
-	first[u]=len;
-}
-bool spfa(int u){
-	vis[u]=1;
-	for(int i=first[u];i!=-1;i=nxt[i]){
-		if(dis[to[i]]&lt;dis[u]+dist[i]){
-			dis[to[i]]=dis[u]+dist[i];
-			if(vis[to[i]]) return 0;
-			if(!spfa(to[i])) return 0;
-		}
-	}
-	vis[u]=0;
-	return 1;
-}
-int main()
-{
-	memset(first,-1,sizeof(first));
-	n=read();m=read();
-	for(int i=1;i&lt;=m;i++){
-		num=read();x=read();y=read();
-		if(num==1) z=read(),add(y,x,z);
-		else if(num==2) z=read(),add(x,y,-z);
-		else if(num==3) add(x,y,0),add(y,x,0);
-	}
-	for(int i=1;i&lt;=n;i++) add(0,i,0),dis[i]=-maxn;;
-	if(spfa(0)) printf(&quot;Yes&quot;);
-	else printf(&quot;No&quot;);
-	return 0;
-} 
-</code></pre>
-<h2 id="后言">后言</h2>
-<p>由此观之，许多看似后无头绪的题，其实可以用图论解决。就好像有指向性的状态可以用DAG建模。然后用相应的图论方法解决。所以OI题也要注意建模。</p>
-<h2 id="相关例题">相关例题</h2>
-<p><a href="https://www.luogu.org/problem/P2294">P2294 [HNOI2005]狡猾的商人</a><br>
-<a href="https://www.luogu.org/problem/P3275">P3275 [SCOI2011]糖果</a><br>
-<a href="https://www.luogu.org/problem/P3084">P3084 [USACO13OPEN]照片Photo</a><br>
-<a href="https://www.luogu.org/problem/P4878">P4878 [USACO05DEC] 布局</a></p>
 ]]></content>
     </entry>
 </feed>
