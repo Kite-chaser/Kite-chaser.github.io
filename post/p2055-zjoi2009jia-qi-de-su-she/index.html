@@ -9,7 +9,7 @@
 <meta name="description" content="This is my blog.">
 <meta http-equiv="Access-Control-Allow-Origin" content="*">
 
-<title>P2114 [NOI2014]起床困难综合症 | Kite-chaser</title>
+<title>P2055 [ZJOI2009]假期的宿舍 | Kite-chaser</title>
 <link href="https://Kite-chaser.github.io/styles/main.css" type="text/css" rel="stylesheet"/>
 <link rel="stylesheet" href="//cdn.bootcss.com/KaTeX/0.10.2/katex.min.css"/>
 <script src="//cdn.bootcss.com/KaTeX/0.10.2/katex.min.js"></script>
@@ -262,7 +262,7 @@ var r = 0;
 
 <div class="post">
   <div class="post_title sm_margin">
-    <h2><a>P2114 [NOI2014]起床困难综合症</a>
+    <h2><a>P2055 [ZJOI2009]假期的宿舍</a>
 
 
 
@@ -317,7 +317,11 @@ function change(){
 <i class="fa fa-bookmark-o"></i>
 <span class="tags_info weaklink">
 	
-	<a href="https://Kite-chaser.github.io/tag/ohQfj3pGS" class="tag">位运算</a>
+	<a href="https://Kite-chaser.github.io/tag/-pcA7jfkU" class="tag">匈牙利算法</a>
+
+	<a href="https://Kite-chaser.github.io/tag/9XOZ-K5lS" class="tag">最大匹配</a>
+
+	<a href="https://Kite-chaser.github.io/tag/P_lZc4r4o" class="tag">二分图</a>
 
 	<a href="https://Kite-chaser.github.io/tag/fgReGJsqm" class="tag">题解</a>
 
@@ -325,13 +329,15 @@ function change(){
 
 
 </span>
-<span>4 min read</span>
+<span>3 min read</span>
 &nbsp
 &nbsp
 <i class="fa fa-share"></i>
-<a title="QR code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://Kite-chaser.github.io/post/p2114-noi2014qi-chuang-kun-nan-zong-he-zheng"><i class="fa fa-qrcode"></i></a>
-<a title="qq share" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://Kite-chaser.github.io/post/p2114-noi2014qi-chuang-kun-nan-zong-he-zheng&sharesource=qzone&title=P2114 [NOI2014]起床困难综合症&pics=https://blog.blinkstar.cn/images/avatar.png&summary="><i class="fa fa-qq"></i></a>
-<a title="weibo share" target="_blank" href="https://service.weibo.com/share/share.php?url=https://Kite-chaser.github.io/post/p2114-noi2014qi-chuang-kun-nan-zong-he-zheng&sharesource=weibo&title=P2114 [NOI2014]起床困难综合症 + " - " + &pic="https://blog.blinkstar.cn/images/avatar.png"><i class="fa fa-weibo"></i></a>
+<a title="QR code" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://Kite-chaser.github.io/post/p2055-zjoi2009jia-qi-de-su-she"><i class="fa fa-qrcode"></i></a>
+<a title="qq share" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://Kite-chaser.github.io/post/p2055-zjoi2009jia-qi-de-su-she&sharesource=qzone&title=P2055 [ZJOI2009]假期的宿舍&pics=https://blog.blinkstar.cn/images/avatar.png&summary=&lt;p&gt;二分图水题&lt;/p&gt;
+"><i class="fa fa-qq"></i></a>
+<a title="weibo share" target="_blank" href="https://service.weibo.com/share/share.php?url=https://Kite-chaser.github.io/post/p2055-zjoi2009jia-qi-de-su-she&sharesource=weibo&title=P2055 [ZJOI2009]假期的宿舍 + " - " + &lt;p&gt;二分图水题&lt;/p&gt;
+&pic="https://blog.blinkstar.cn/images/avatar.png"><i class="fa fa-weibo"></i></a>
 &nbsp
 &nbsp
 <a id="daxiao" href="javascript:void(0);" onclick="change();" title="调整字体大小"><i class="fa fa-font"></i></a>
@@ -345,60 +351,89 @@ function change(){
   &nbsp
   <img id="mememe" src="//source.unsplash.com/800x400/?arts,weather">
     <div name="show" id="show">
-	<p class="md_block"><span class="md_line md_line_start md_line_end"><h3 id="题目描述">题目描述</h3>
-<p>21世纪，许多人得了一种奇怪的病：起床困难综合症，其临床表现为：起床难，起床后精神不佳。作为一名青春阳光好少年，atm一直坚持与起床困难综合症作斗争。通过研究相关文献，他找到了该病的发病原因： 在深邃的太平洋海底中，出现了一条名为drd的巨龙，它掌握着睡眠之精髓，能随意延长大家的睡眠时间。 正是由于drd的活动，起床困难综合症愈演愈烈， 以惊人的速度在世界上传播。为了彻底消灭这种病，atm决定前往海底，消灭这条恶龙。历经千辛万苦，atm终于来到了drd所在的地方，准备与其展开艰苦卓绝的战斗。drd有着十分特殊的技能，他的防御战线能够使用一定的运算来改变他受到的伤害。具体说来，drd的防御战线由n扇防御门组成。每扇防御门包括一个运算op和一个参数t，其中运算一定是OR,XOR,AND中的一种，参数则一定为非负整数。如果还未通过防御门时攻击力为x，则其通过这扇防御门后攻击力将变为x op t。最终drd受到的伤害为对方初始攻击力x依次经过所有n扇防御门后转变得到的攻击力。</p>
-<p>由于atm水平有限，他的初始攻击力只能为0到m之间的一个整数（即他的初始攻击力只能在 0, 1, … , m中任选，但在通过防御门之后的攻击力不受m的限制）。为了节省体力，他希望通过选择合适的初始攻击力使得他的攻击能让drd受到最大的伤害，请你帮他计算一下，他的一次攻击最多能使drd受到多少伤害。</p>
+	<p class="md_block"><span class="md_line md_line_start md_line_end"><p>二分图水题</p>
+<!--more-->
+<h3 id="题目描述">题目描述</h3>
+<p>学校放假了……有些同学回家了，而有些同学则有以前的好朋友来探访，那么住宿就是一个问题。</p>
+<p>比如 A 和 B 都是学校的学生，A 要回家，而 C 来看B，C 与 A 不认识。我们假设每个人只能睡和自己直接认识的人的床。那么一个解决方案就是 B 睡 A 的床而 C 睡 B 的床。而实际情况可能非常复杂，有的人可能认识好多在校学生，在校学生之间也不一定都互相认识。</p>
+<p>我们已知一共有 n 个人，并且知道其中每个人是不是本校学生，也知道每个本校学生是否回家。问是否存在一个方案使得所有不回家的本校学生和来看他们的其他人都有地方住。</p>
 <blockquote>
-<p><a href="https://www.luogu.org/problem/P2114">原题链接</a></p>
+<p><a href="https://www.luogu.org/problem/P2055">原题链接</a></p>
 </blockquote>
 <h3 id="solve">Solve</h3>
-<p>首先，我们肯定得先知道<a href="https://baike.baidu.com/item/%E9%80%BB%E8%BE%91%E6%88%96/10993689">或</a>、<a href="https://baike.baidu.com/item/%E9%80%BB%E8%BE%91%E5%BC%82%E6%88%96">异或</a><br>
-、<a href="https://baike.baidu.com/item/%E9%80%BB%E8%BE%91%E4%B8%8E/10993695">与</a>是什么意思。要不然就GG了。<br>
-然后，这些都是位运算，也就是说，最后的结果只与x和操作有关，而结果的每一位只与x对应的位置上的值有关。位运算是二进制下的运算，所以状态十分简单，1或0。所以，我们可以从高位到低位，依次考虑x的每一位填0或填1。<br>
-填1可行的情况：</p>
-<ul>
-<li>填了之后加上之前的不会大于m。</li>
-<li>k位初值经过n个运算后，还等于初值。</li>
-</ul>
-<p>否则还是填0更优。确定每一位后，自然可以得到ans的值。</p>
+<p>首先，我们得知道二分图最大匹配和匈牙利算法。<br>
+然后，就很简单了。<br>
+建图，每个不回家在校学生可睡自己的床也可白嫖其他认识的在校学生的床，非在校学生可白嫖认识的在校学生的床。<br>
+匈牙利算法。<br>
+<strong>注意重置</strong></p>
 <h3 id="code">Code</h3>
 <pre><code class="language-cpp">#include&lt;iostream&gt;
 #include&lt;cstdio&gt;
 #include&lt;cstring&gt;
-#define N 100005
+#define N 1010
 using namespace std;
-int n,m,vl,ans;
-pair&lt;string , int &gt; a[N];
-char s[10];
-int x;
-int check(int bit,int now){
-	for(int i=1;i&lt;=n;i++){
-		x=a[i].second&gt;&gt;bit&amp;1;
-		if(a[i].first==&quot;AND&quot;) now&amp;=x;
-		else if(a[i].first==&quot;OR&quot;) now|=x;
-		else now^=x;
+int t;
+int n;
+int head[N*N],to[N*N],nxt[N*N],len;
+int sis[N],mis[N],num,hb[N];
+bool vis[N];
+void add(int u,int v){
+	to[++len]=v;
+	nxt[len]=head[u];
+	head[u]=len;
+}
+bool zm(int u){
+	for(int i=head[u];i!=-1;i=nxt[i]){
+		int v=to[i];
+		if(vis[v]) continue;
+		vis[v]=true;
+		if(!hb[v]||zm(hb[v])){
+			hb[v]=u;
+			return true;
+		}
 	}
-	return now;
+	return false;
+}
+bool check(int u){
+	memset(vis,false,sizeof(vis));
+	return zm(u);
 }
 int main()
 {
-	scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
-	for(int i=1;i&lt;=n;i++){
-		scanf(&quot;%s%d&quot;,s,&amp;x);
-		a[i]=make_pair(s,x);
+	scanf(&quot;%d&quot;,&amp;t);
+	while(t--){
+		scanf(&quot;%d&quot;,&amp;n);
+		len=0;
+		bool flag=false;
+		memset(head,-1,sizeof(head));
+		memset(hb,0,sizeof(hb));		
+		for(int i=1;i&lt;=n;i++) scanf(&quot;%d&quot;,&amp;sis[i]);
+		for(int i=1;i&lt;=n;i++){
+			scanf(&quot;%d&quot;,&amp;mis[i]);
+			if(sis[i]&amp;&amp;!mis[i]) add(i,i+n);
+		}
+		for(int i=1;i&lt;=n;i++){
+			for(int j=1;j&lt;=n;j++){
+				scanf(&quot;%d&quot;,&amp;num);
+				if(sis[i]==1&amp;&amp;mis[i]==1) continue;
+				if(num==1&amp;&amp;sis[j]==1) add(i,j+n);
+			}
+		}
+		for(int i=1;i&lt;=n;i++){
+			if(sis[i]==1&amp;&amp;mis[i]==1) continue;
+			if(!check(i)){
+				flag=true;
+				printf(&quot;T_T\n&quot;);
+				break;
+			} 
+		}
+		if(!flag) printf(&quot;^_^\n&quot;);
 	}
-	for(int bit=29;bit&gt;=0;bit--){
-		int res0=check(bit,0);
-		int res1=check(bit,1);
-		if(vl+(1&lt;&lt;bit)&lt;=m&amp;&amp;res0&lt;res1) vl+=1&lt;&lt;bit,ans+=res1&lt;&lt;bit;
-		else ans+=res0&lt;&lt;bit;
-	}
-	printf(&quot;%d&quot;,ans);
 	return 0;
 }
 </code></pre>
-<h3 id="后言">后言</h3>
-<p>白嫖蓝书。</p>
+<h3 id="后言t_t">后言T_T</h3>
+<p>蒟蒻本想写“浅谈二分图最大匹配”来着，但是水平不够，就搁浅了。T_T</p>
 </span></p></div>
 	<br>
 	<hr>
@@ -440,23 +475,14 @@ $("img").each( (i,o) => {
 
           <div style="float:right;text-align:right;color:#ccc;font-size:18px;width:50%;">
             下一篇
-            <a href="https://Kite-chaser.github.io/post/p1072-hankson-de-qu-wei-ti">
+            <a href="https://Kite-chaser.github.io/post/p2114-noi2014qi-chuang-kun-nan-zong-he-zheng">
               <h3 class="post-title">
-                P1072 Hankson 的趣味题
+                P2114 [NOI2014]起床困难综合症
               </h3>
             </a>
           </div>
 
 
-
-          <div style="float:left;text-align:left;color:#ccc;font-size:18px;width:50%;">
-            上一篇
-            <a href="https://Kite-chaser.github.io/post/p2055-zjoi2009jia-qi-de-su-she">
-              <h3 class="post-title">
-                P2055 [ZJOI2009]假期的宿舍
-              </h3>
-            </a>
-          </div>
 
 </div>
 
@@ -499,7 +525,7 @@ $("img").each( (i,o) => {
 <li><a href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0">题目描述</a></li>
 <li><a href="#solve">Solve</a></li>
 <li><a href="#code">Code</a></li>
-<li><a href="#%E5%90%8E%E8%A8%80">后言</a></li>
+<li><a href="#%E5%90%8E%E8%A8%80t_t">后言T_T</a></li>
 </ul>
 </li>
 </ul>
