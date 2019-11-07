@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Kite-chaser.github.io</id>
     <title>Kite-chaser</title>
-    <updated>2019-11-06T10:57:38.753Z</updated>
+    <updated>2019-11-07T11:16:38.553Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Kite-chaser.github.io"/>
     <link rel="self" href="https://Kite-chaser.github.io/atom.xml"/>
@@ -10,6 +10,202 @@
     <logo>https://Kite-chaser.github.io/images/avatar.png</logo>
     <icon>https://Kite-chaser.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Kite-chaser</rights>
+    <entry>
+        <title type="html"><![CDATA[ P4231 三步必杀]]></title>
+        <id>https://Kite-chaser.github.io/post/p4231-san-bu-bi-sha</id>
+        <link href="https://Kite-chaser.github.io/post/p4231-san-bu-bi-sha">
+        </link>
+        <updated>2019-11-07T11:15:18.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="题目描述">题目描述</h3>
+<p><em>N</em>个柱子排成一排，一开始每个柱子损伤度为0。</p>
+<p>接下来勇仪会进行<em>M</em>次攻击，每次攻击可以用4个参数<em>l</em>,<em>r</em>,<em>s</em>,<em>e</em>来描述：</p>
+<p>表示这次攻击作用范围为第<em>l</em>个到第<em>r</em>个之间所有的柱子(包含<em>l</em>,<em>r</em>)，对第一个柱子的伤害为<em>s</em>，对最后一个柱子的伤害为<em>e</em>。</p>
+<p>攻击产生的伤害值是一个等差数列。若<em>l</em>=1,<em>r</em>=5,<em>s</em>=2,<em>e</em>=10，则对第1~5个柱子分别产生2,4,6,8,10的伤害。</p>
+<p>鬼族们需要的是所有攻击完成之后每个柱子的损伤度。</p>
+<blockquote>
+<p><a href="https://www.luogu.org/problem/P4231">原题链接</a></p>
+</blockquote>
+<h3 id="solve">Solve</h3>
+<p>如果是区间内都增加一个相同的数值的话，那这个题就很显然了，树状数组、线段树和差分数组都可以秒切，但是此题增加的是一个等差数列，那我们怎么做呢？</p>
+<p><em>1</em>，暴力?每次询问都从l到r扫个遍？想想都不行。</p>
+<p><em>2</em>，差分？树状数组？线段树？又好像跟我们认识的不太一样。</p>
+<p>所以，就让我们打开新世界的大门，认识差分的另一面。</p>
+<p>普通的差分数组：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">a(原数组)</th>
+<th>1</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">b(差分数组)</td>
+<td>1</td>
+<td>3</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p>而联系上等差序列呢？</p>
+<table>
+<thead>
+<tr>
+<th>a（等差序列）</th>
+<th>2</th>
+<th>4</th>
+<th>6</th>
+<th>8</th>
+<th>10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>b(差分数组)</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>当然<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>b</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">b_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>不一定等于公差。看完了之后有什么想法吗？</p>
+<p>如果我们在差分一次呢？我们叫他二阶差分。</p>
+<table>
+<thead>
+<tr>
+<th>a（等差序列）</th>
+<th>2</th>
+<th>4</th>
+<th>6</th>
+<th>8</th>
+<th>10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>b（差分数组）</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>c（二阶差分）</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>通化一点</p>
+<table>
+<thead>
+<tr>
+<th>a（原数组）</th>
+<th>0</th>
+<th>0</th>
+<th>0</th>
+<th>0</th>
+<th>0</th>
+<th>0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a(加上等差序列)</td>
+<td>0</td>
+<td>s</td>
+<td>s+d</td>
+<td>e(s+2d)</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>b（差分数组）</td>
+<td>0</td>
+<td>s</td>
+<td>d</td>
+<td>d</td>
+<td>-e</td>
+<td>0</td>
+</tr>
+<tr>
+<td>c(二阶差分)</td>
+<td>0</td>
+<td>s</td>
+<td>d-s</td>
+<td>0</td>
+<td>-e-d</td>
+<td>e</td>
+</tr>
+</tbody>
+</table>
+<p><strong>s为首项，e为尾项，d为公差</strong></p>
+<p><strong>a关于b差分，如同b关于c差分</strong></p>
+<p>于是我们成功的将区间加转变为了单点加，复杂度呜呜地减。</p>
+<p>最后一次还原就好啦。</p>
+<h3 id="tip">Tip</h3>
+<p>莫得忘了开long long</p>
+<h3 id="code">Code</h3>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#define N 10000001
+#define ll long long
+using namespace std;
+ll n,m;
+ll l,r,s,e;
+ll ans1,ans2;
+ll a[N],b[N],c[N];
+inline ll read(){
+    ll x=0,f=1;
+    char ch=getchar();
+    while(ch&lt;'0'||ch&gt;'9'){
+        if(ch=='-') f=-1;
+        ch=getchar();
+    }
+    while(ch&gt;='0'&amp;&amp;ch&lt;='9'){
+        x=(x&lt;&lt;1)+(x&lt;&lt;3)+(ch^48);
+        ch=getchar();
+    }
+    return x*f;
+}
+int main()
+{
+	n=read();m=read();
+	for(ll i=1;i&lt;=m;i++){
+		l=read();r=read();s=read();e=read();
+		ll d=(e-s)/(r-l);
+		c[l]+=s;
+		c[l+1]+=(d-s);
+		c[r+1]+=(-e-d);
+		c[r+2]+=e;
+	}
+	for(ll i=1;i&lt;=n;i++){
+		b[i]=c[i]+b[i-1];
+		a[i]=b[i]+a[i-1];
+		ans1^=a[i];
+		ans2=max(ans2,a[i]);
+	}
+	printf(&quot;%lld %lld&quot;,ans1,ans2);
+	return 0;
+}
+</code></pre>
+<h3 id="关于表格">关于表格</h3>
+<p>ta死了</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[P2055 [ZJOI2009]假期的宿舍]]></title>
         <id>https://Kite-chaser.github.io/post/p2055-zjoi2009jia-qi-de-su-she</id>
@@ -554,82 +750,6 @@ int main()
         </link>
         <updated>2019-10-29T11:22:01.000Z</updated>
         <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://Kite-chaser.github.io/post-images/1572348146460.jpg" alt=""></figure>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[UVA1753 Need for Speed]]></title>
-        <id>https://Kite-chaser.github.io/post/uva1753-need-for-speed</id>
-        <link href="https://Kite-chaser.github.io/post/uva1753-need-for-speed">
-        </link>
-        <updated>2019-10-28T12:11:38.000Z</updated>
-        <summary type="html"><![CDATA[<p>OIer写代码，总会遇到几个玄学错误。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>OIer写代码，总会遇到几个玄学错误。</p>
-<!--more-->
-<h3 id="题意描述">题意描述</h3>
-<p>Winniechen有一辆车， 但是它的迈速表指针坏掉的。当度数为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span></span></span></span>的时候， 车的实际速度是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>+</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">s+c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">c</span></span></span></span>， <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">c</span></span></span></span>是一个不确定的实数（常数。现在给你一段行程，包含n个路段， 保证每个路段是均速行驶的， 每个描述有两个数字， 分别为行驶的路程<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>d</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">d_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>和迈速表的读数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>s</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">s_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。整个行程一共用了<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">t</span></span></span></span>的时间， 请确定<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">c</span></span></span></span>的值。另外请注意， 他的真实速度是永远保持在0以上的。</p>
-<blockquote>
-<p><a href="https://www.luogu.org/problem/UVA1753">原题链接</a></p>
-</blockquote>
-<h3 id="solve">Solve</h3>
-<p>首先，我们蒙一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">c</span></span></span></span>做答案。<br>
-<img src="https://Kite-chaser.github.io/post-images/1572265247371.png" alt=""><br>
-然后试一试，如果用时超过<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">t</span></span></span></span>的话，就是速度太慢了，应该给他提提速。如果小于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>的话，就是速度太快了，应该给他降一降，如果用时等于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">t</span></span></span></span>的话，bingo，恭喜你猜对了。<br>
-所以，我们惊奇的发现，这个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">c</span></span></span></span>具有“单调性”，这意味着什么？我们可以有规律地去猜。<br>
-二分答案。而判断就是用用时与<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">t</span></span></span></span>的关系。<br>
-<strong>特殊之处就在于，是实数域上的二分。</strong><br>
-无非就是把</p>
-<pre><code class="language-cpp">while(l&lt;=r){
-	mid=(l+r)&gt;&gt;1;
-	if(···) l=mid+1;
-	else r=mid-1; 
-} 
-</code></pre>
-<p>换成</p>
-<pre><code class="language-cpp">while(l&lt;=r-eps){
-	mid=(l+r)/2;
-	if(···) l=mid;
-	else r=mid; 
-} 
-</code></pre>
-<p>所有变量都是double类型。<strong>eps就是你想要卡的精度。</strong></p>
-<h3 id="code">Code</h3>
-<pre><code class="language-cpp">#include&lt;iostream&gt;
-#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#define N 100000
-#define db double
-using namespace std;
-int n;
-db s[N],d[N];
-db t,sum;
-db l,r,mid,eps=1e-9;//就是这个
-bool solve(db c){
-	sum=0;
-	for(int i=1;i&lt;=n;i++){
-		if(s[i]+c&lt;=0) return true;//如果速度小于0的话就跟就GG了
-		sum+=(d[i]/(s[i]+c)); 
-	}
-	if(sum&gt;t) return true;
-	else return false;
-}
-int main()
-{
-	while(scanf(&quot;%d%lf&quot;,&amp;n,&amp;t)!=EOF){//记住这个“！=EOF”
-		l=-20000000,r=20000000;
-		for(int i=1;i&lt;=n;i++) scanf(&quot;%lf%lf&quot;,&amp;d[i],&amp;s[i]);
-		for(int i=1;i&lt;=100;i++){
-			mid=(l+r)/2;
-			if(solve(mid)) l=mid;
-			else r=mid;
-		}
-		printf(&quot;%.9lf\n&quot;,l);
-	}
-}
-</code></pre>
-<h3 id="后言">后言</h3>
-<p>我原以为加不加EOF都一样的，或者是“~”取反，但是某谷给了我一个大大的耳光，我T飞了。<br>
-所以观察答案有“单调性”的话，二分莽就完了。</p>
 ]]></content>
     </entry>
 </feed>
