@@ -3,7 +3,7 @@
         <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
         <meta charset="utf-8">
         <meta name="referrer" content="never">
-        <title> P4231 三步必杀 | Kite-chaser</title>
+        <title>P3948 数据结构 | Kite-chaser</title>
         <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.11.1/katex.min.css">
         <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://Kite-chaser.github.io/styles/main.css">
@@ -17,7 +17,7 @@
 
     </head>
     <body class="mdui-theme-primary-purple mdui-theme-accent-purple">
-        <header class="index-img mdui-m-b-3"  style="background-image: url(https://Kite-chaser.github.io/post-images/p4231-san-bu-bi-sha.png);" >
+        <header class="index-img mdui-m-b-3"  style="background-image: url(https://Kite-chaser.github.io/post-images/p3948-shu-ju-jie-gou.jpg);" >
                           <button class="mdui-btn  mdui-btn-icon mdui-btn-dense mdui-color-theme-500 mdui-ripple yinying mdui-m-t-1 mdui-m-l-1" mdui-menu="{target: '#demo-attr-cascade'}"><i class="mdui-icon material-icons">&#xe5d2;</i></button>
                 <ul class="mdui-menu" id="demo-attr-cascade">
                 
@@ -48,199 +48,79 @@
                 <div class="mdui-row">
                         <div class="mdui-col-md-8 mdui-col-offset-md-2 ">
                          <article class="mdui-shadow-10 mdui-p-a-2 post-list">
-                           <div class="mdui-typo-display-1 mdui-m-b-3"> P4231 三步必杀</div>
+                           <div class="mdui-typo-display-1 mdui-m-b-3">P3948 数据结构</div>
                            <a  class="index-list-biaoqian ">2019-11-07</a>
                            <div class="mdui-typo mdui-m-t-3 post-neirong"><h3 id="题目描述">题目描述</h3>
-<p><em>N</em>个柱子排成一排，一开始每个柱子损伤度为0。</p>
-<p>接下来勇仪会进行<em>M</em>次攻击，每次攻击可以用4个参数<em>l</em>,<em>r</em>,<em>s</em>,<em>e</em>来描述：</p>
-<p>表示这次攻击作用范围为第<em>l</em>个到第<em>r</em>个之间所有的柱子(包含<em>l</em>,<em>r</em>)，对第一个柱子的伤害为<em>s</em>，对最后一个柱子的伤害为<em>e</em>。</p>
-<p>攻击产生的伤害值是一个等差数列。若<em>l</em>=1,<em>r</em>=5,<em>s</em>=2,<em>e</em>=10，则对第1~5个柱子分别产生2,4,6,8,10的伤害。</p>
-<p>鬼族们需要的是所有攻击完成之后每个柱子的损伤度。</p>
+<p>蒟蒻Edt把这个问题交给了你 ———— 一个精通数据结构的大犇，由于是第一题，这个题没那么难。。</p>
+<p>edt 现在对于题目进行了如下的简化：</p>
+<p>最开始的数组每个元素都是0</p>
+<p>给出nn，optopt，modmod，minmin，maxmax，modmod在int范围内</p>
+<p>操作AA，QQ</p>
+<p>AA: LL,RR,XX 表示把[l,R][l,R]这个区间加上XX</p>
+<p>（数组的从L到R的每个元素都加上X）</p>
+<p>QQ: LL,RR 表示询问[L,R][L,R]这个区间中元素T满足 min&lt;=(T*imin&lt;=(T∗i%mod)&lt;=maxmod)&lt;=max 的 T这样的数的个数（i是数组下标）</p>
+<p>（元素的值*数组下标%mod在min到max范围内）</p>
+<p>由于 edt 请来了一位非三次元的仓鼠，他帮你用延后了部分问题，将这些询问打入了混乱时空，你的询问操作不会超过1000次，不幸的是，对于延后的询问操作可能有很多次（小于1e7次），但是保证这些延后的询问操作之后不会再次有修改操作</p>
+<p>（就是在最后会有很多次询问，但不会进行修改）</p>
 <blockquote>
-<p><a href="https://www.luogu.org/problem/P4231">原题链接</a></p>
+<p><a href="https://www.luogu.org/problem/P3948">戳</a></p>
 </blockquote>
 <h3 id="solve">Solve</h3>
-<p>如果是区间内都增加一个相同的数值的话，那这个题就很显然了，树状数组、线段树和差分数组都可以秒切，但是此题增加的是一个等差数列，那我们怎么做呢？</p>
-<p><em>1</em>，暴力?每次询问都从l到r扫个遍？想想都不行。</p>
-<p><em>2</em>，差分？树状数组？线段树？又好像跟我们认识的不太一样。</p>
-<p>所以，就让我们打开新世界的大门，认识差分的另一面。</p>
-<p>普通的差分数组：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">a(原数组)</th>
-<th>1</th>
-<th>4</th>
-<th>5</th>
-<th>6</th>
-<th>9</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">b(差分数组)</td>
-<td>1</td>
-<td>3</td>
-<td>1</td>
-<td>1</td>
-<td>3</td>
-</tr>
-</tbody>
-</table>
-<p>而联系上等差序列呢？</p>
-<table>
-<thead>
-<tr>
-<th>a（等差序列）</th>
-<th>2</th>
-<th>4</th>
-<th>6</th>
-<th>8</th>
-<th>10</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>b(差分数组)</td>
-<td>2</td>
-<td>2</td>
-<td>2</td>
-<td>2</td>
-<td>2</td>
-</tr>
-</tbody>
-</table>
-<p>当然<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>b</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">b_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>不一定等于公差。看完了之后有什么想法吗？</p>
-<p>如果我们在差分一次呢？我们叫他二阶差分。</p>
-<table>
-<thead>
-<tr>
-<th>a（等差序列）</th>
-<th>2</th>
-<th>4</th>
-<th>6</th>
-<th>8</th>
-<th>10</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>b（差分数组）</td>
-<td>2</td>
-<td>2</td>
-<td>2</td>
-<td>2</td>
-<td>2</td>
-</tr>
-<tr>
-<td>c（二阶差分）</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-</tbody>
-</table>
-<p>通化一点</p>
-<table>
-<thead>
-<tr>
-<th>a（原数组）</th>
-<th>0</th>
-<th>0</th>
-<th>0</th>
-<th>0</th>
-<th>0</th>
-<th>0</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>a(加上等差序列)</td>
-<td>0</td>
-<td>s</td>
-<td>s+d</td>
-<td>e(s+2d)</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<td>b（差分数组）</td>
-<td>0</td>
-<td>s</td>
-<td>d</td>
-<td>d</td>
-<td>-e</td>
-<td>0</td>
-</tr>
-<tr>
-<td>c(二阶差分)</td>
-<td>0</td>
-<td>s</td>
-<td>d-s</td>
-<td>0</td>
-<td>-e-d</td>
-<td>e</td>
-</tr>
-</tbody>
-</table>
-<p><strong>s为首项，e为尾项，d为公差</strong></p>
-<p><strong>a关于b差分，如同b关于c差分</strong></p>
-<p>于是我们成功的将区间加转变为了单点加，复杂度呜呜地减。</p>
-<p>最后一次还原就好啦。</p>
-<h3 id="tip">Tip</h3>
-<p>莫得忘了开long long</p>
+<p>有点混乱，其实有用的话就这两句。<br>
+<strong>（数组的从L到R的每个元素都加上X）</strong>，<strong>（元素的值*数组下标%mod在min到max范围内）</strong><br>
+差分处理，对于前面的询问暴力处理。<br>
+而后面的询问用前缀和优化。</p>
 <h3 id="code">Code</h3>
 <pre><code class="language-cpp">#include&lt;iostream&gt;
 #include&lt;cstdio&gt;
 #include&lt;cstring&gt;
-#define N 10000001
+#define N 80001
 #define ll long long
 using namespace std;
-ll n,m;
-ll l,r,s,e;
-ll ans1,ans2;
-ll a[N],b[N],c[N];
-inline ll read(){
-    ll x=0,f=1;
-    char ch=getchar();
-    while(ch&lt;'0'||ch&gt;'9'){
-        if(ch=='-') f=-1;
-        ch=getchar();
-    }
-    while(ch&gt;='0'&amp;&amp;ch&lt;='9'){
-        x=(x&lt;&lt;1)+(x&lt;&lt;3)+(ch^48);
-        ch=getchar();
-    }
-    return x*f;
-}
+ll n,opt,mod,mint,maxt,final;
+ll l,r,w;
+ll a[N],sum[N];
 int main()
 {
-	n=read();m=read();
-	for(ll i=1;i&lt;=m;i++){
-		l=read();r=read();s=read();e=read();
-		ll d=(e-s)/(r-l);
-		c[l]+=s;
-		c[l+1]+=(d-s);
-		c[r+1]+=(-e-d);
-		c[r+2]+=e;
+	scanf(&quot;%lld%lld%lld%lld%lld&quot;,&amp;n,&amp;opt,&amp;mod,&amp;mint,&amp;maxt);
+	for(ll i=1;i&lt;=opt;i++){
+		char c;
+		cin&gt;&gt;c;
+		if(c=='A'){
+			scanf(&quot;%lld%lld%lld&quot;,&amp;l,&amp;r,&amp;w);
+			a[l]+=w;
+			a[r+1]-=w;
+		}
+		else{
+			scanf(&quot;%lld%lld&quot;,&amp;l,&amp;r);
+			ll now=0,ans=0;
+			for(ll j=1;j&lt;=r;j++){
+				now+=a[j];
+				if(j&gt;=l){
+					if((now*j)%mod&gt;=mint&amp;&amp;(now*j)%mod&lt;=maxt) ans++;
+				}
+			}
+			printf(&quot;%lld\n&quot;,ans);
+		}
 	}
 	for(ll i=1;i&lt;=n;i++){
-		b[i]=c[i]+b[i-1];
-		a[i]=b[i]+a[i-1];
-		ans1^=a[i];
-		ans2=max(ans2,a[i]);
+		a[i]+=a[i-1];
+		sum[i]=sum[i-1];
+		if((a[i]*i)%mod&gt;=mint&amp;&amp;(a[i]*i)%mod&lt;=maxt) sum[i]++;
 	}
-	printf(&quot;%lld %lld&quot;,ans1,ans2);
+	scanf(&quot;%lld&quot;,&amp;final);
+	for(ll i=1;i&lt;=final;i++){
+		scanf(&quot;%lld%lld&quot;,&amp;l,&amp;r);
+		printf(&quot;%lld\n&quot;,sum[r]-sum[l-1]);
+	}
 	return 0;
 }
 </code></pre>
 </div>
                               <div class="mdui-divider mdui-m-t-3"></div>
                               <div class="mdui-row-xs-2 mdui-m-t-2">
-  <div class="mdui-col"> <div class="mdui-text-left"><a href="https://Kite-chaser.github.io/post/p3948-shu-ju-jie-gou">P3948 数据结构</a></div></div>
- <div class="mdui-col"><div class="mdui-text-right "><a href="https://Kite-chaser.github.io/post/p2055-zjoi2009jia-qi-de-su-she">P2055 [ZJOI2009]假期的宿舍</a></div> </div>
+  <div class="mdui-col"> </div>
+ <div class="mdui-col"><div class="mdui-text-right "><a href="https://Kite-chaser.github.io/post/p4231-san-bu-bi-sha"> P4231 三步必杀</a></div> </div>
                                 </div>
                                 <div class="mdui-divider mdui-m-t-2"></div>
    
@@ -304,7 +184,6 @@ int main()
 <ul>
 <li><a href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0">题目描述</a></li>
 <li><a href="#solve">Solve</a></li>
-<li><a href="#tip">Tip</a></li>
 <li><a href="#code">Code</a></li>
 </ul>
 </li>

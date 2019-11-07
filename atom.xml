@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Kite-chaser.github.io</id>
     <title>Kite-chaser</title>
-    <updated>2019-11-07T11:16:58.467Z</updated>
+    <updated>2019-11-07T13:40:36.154Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Kite-chaser.github.io"/>
     <link rel="self" href="https://Kite-chaser.github.io/atom.xml"/>
@@ -10,6 +10,80 @@
     <logo>https://Kite-chaser.github.io/images/avatar.png</logo>
     <icon>https://Kite-chaser.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Kite-chaser</rights>
+    <entry>
+        <title type="html"><![CDATA[P3948 数据结构]]></title>
+        <id>https://Kite-chaser.github.io/post/p3948-shu-ju-jie-gou</id>
+        <link href="https://Kite-chaser.github.io/post/p3948-shu-ju-jie-gou">
+        </link>
+        <updated>2019-11-07T13:34:33.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="题目描述">题目描述</h3>
+<p>蒟蒻Edt把这个问题交给了你 ———— 一个精通数据结构的大犇，由于是第一题，这个题没那么难。。</p>
+<p>edt 现在对于题目进行了如下的简化：</p>
+<p>最开始的数组每个元素都是0</p>
+<p>给出nn，optopt，modmod，minmin，maxmax，modmod在int范围内</p>
+<p>操作AA，QQ</p>
+<p>AA: LL,RR,XX 表示把[l,R][l,R]这个区间加上XX</p>
+<p>（数组的从L到R的每个元素都加上X）</p>
+<p>QQ: LL,RR 表示询问[L,R][L,R]这个区间中元素T满足 min&lt;=(T*imin&lt;=(T∗i%mod)&lt;=maxmod)&lt;=max 的 T这样的数的个数（i是数组下标）</p>
+<p>（元素的值*数组下标%mod在min到max范围内）</p>
+<p>由于 edt 请来了一位非三次元的仓鼠，他帮你用延后了部分问题，将这些询问打入了混乱时空，你的询问操作不会超过1000次，不幸的是，对于延后的询问操作可能有很多次（小于1e7次），但是保证这些延后的询问操作之后不会再次有修改操作</p>
+<p>（就是在最后会有很多次询问，但不会进行修改）</p>
+<blockquote>
+<p><a href="https://www.luogu.org/problem/P3948">戳</a></p>
+</blockquote>
+<h3 id="solve">Solve</h3>
+<p>有点混乱，其实有用的话就这两句。<br>
+<strong>（数组的从L到R的每个元素都加上X）</strong>，<strong>（元素的值*数组下标%mod在min到max范围内）</strong><br>
+差分处理，对于前面的询问暴力处理。<br>
+而后面的询问用前缀和优化。</p>
+<h3 id="code">Code</h3>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#define N 80001
+#define ll long long
+using namespace std;
+ll n,opt,mod,mint,maxt,final;
+ll l,r,w;
+ll a[N],sum[N];
+int main()
+{
+	scanf(&quot;%lld%lld%lld%lld%lld&quot;,&amp;n,&amp;opt,&amp;mod,&amp;mint,&amp;maxt);
+	for(ll i=1;i&lt;=opt;i++){
+		char c;
+		cin&gt;&gt;c;
+		if(c=='A'){
+			scanf(&quot;%lld%lld%lld&quot;,&amp;l,&amp;r,&amp;w);
+			a[l]+=w;
+			a[r+1]-=w;
+		}
+		else{
+			scanf(&quot;%lld%lld&quot;,&amp;l,&amp;r);
+			ll now=0,ans=0;
+			for(ll j=1;j&lt;=r;j++){
+				now+=a[j];
+				if(j&gt;=l){
+					if((now*j)%mod&gt;=mint&amp;&amp;(now*j)%mod&lt;=maxt) ans++;
+				}
+			}
+			printf(&quot;%lld\n&quot;,ans);
+		}
+	}
+	for(ll i=1;i&lt;=n;i++){
+		a[i]+=a[i-1];
+		sum[i]=sum[i-1];
+		if((a[i]*i)%mod&gt;=mint&amp;&amp;(a[i]*i)%mod&lt;=maxt) sum[i]++;
+	}
+	scanf(&quot;%lld&quot;,&amp;final);
+	for(ll i=1;i&lt;=final;i++){
+		scanf(&quot;%lld%lld&quot;,&amp;l,&amp;r);
+		printf(&quot;%lld\n&quot;,sum[r]-sum[l-1]);
+	}
+	return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[ P4231 三步必杀]]></title>
         <id>https://Kite-chaser.github.io/post/p4231-san-bu-bi-sha</id>
@@ -739,15 +813,6 @@ int main()
 </code></pre>
 <h3 id="后言">后言</h3>
 <p>话说有大佬说，这个题不用建树，直接莽就行。<s>可是不建树还是线段树吗？🙃</s></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[神奇的图]]></title>
-        <id>https://Kite-chaser.github.io/post/shen-qi-de-tu</id>
-        <link href="https://Kite-chaser.github.io/post/shen-qi-de-tu">
-        </link>
-        <updated>2019-10-29T11:22:01.000Z</updated>
-        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://Kite-chaser.github.io/post-images/1572348146460.jpg" alt=""></figure>
 ]]></content>
     </entry>
 </feed>
