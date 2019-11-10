@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Kite-chaser.github.io</id>
     <title>Kite-chaser</title>
-    <updated>2019-11-07T13:40:36.154Z</updated>
+    <updated>2019-11-10T01:52:53.413Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Kite-chaser.github.io"/>
     <link rel="self" href="https://Kite-chaser.github.io/atom.xml"/>
@@ -20,11 +20,11 @@
 <p>蒟蒻Edt把这个问题交给了你 ———— 一个精通数据结构的大犇，由于是第一题，这个题没那么难。。</p>
 <p>edt 现在对于题目进行了如下的简化：</p>
 <p>最开始的数组每个元素都是0</p>
-<p>给出nn，optopt，modmod，minmin，maxmax，modmod在int范围内</p>
-<p>操作AA，QQ</p>
-<p>AA: LL,RR,XX 表示把[l,R][l,R]这个区间加上XX</p>
+<p>给出n，opt，mod，min，max，mod在int范围内</p>
+<p>操作A，Q</p>
+<p>A: L,R,X 表示把[l,R]这个区间加上X</p>
 <p>（数组的从L到R的每个元素都加上X）</p>
-<p>QQ: LL,RR 表示询问[L,R][L,R]这个区间中元素T满足 min&lt;=(T*imin&lt;=(T∗i%mod)&lt;=maxmod)&lt;=max 的 T这样的数的个数（i是数组下标）</p>
+<p>Q: L,R表示询问[L,R]这个区间中元素T满足 min&lt;=(T∗i%mod)&lt;=max的 T这样的数的个数（i是数组下标）</p>
 <p>（元素的值*数组下标%mod在min到max范围内）</p>
 <p>由于 edt 请来了一位非三次元的仓鼠，他帮你用延后了部分问题，将这些询问打入了混乱时空，你的询问操作不会超过1000次，不幸的是，对于延后的询问操作可能有很多次（小于1e7次），但是保证这些延后的询问操作之后不会再次有修改操作</p>
 <p>（就是在最后会有很多次询问，但不会进行修改）</p>
