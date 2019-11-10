@@ -3,7 +3,7 @@
         <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
         <meta charset="utf-8">
         <meta name="referrer" content="never">
-        <title>P3948 数据结构 | Kite-chaser</title>
+        <title>P1272 重建道路 | Kite-chaser</title>
         <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.11.1/katex.min.css">
         <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://Kite-chaser.github.io/styles/main.css">
@@ -17,7 +17,7 @@
 
     </head>
     <body class="mdui-theme-primary-purple mdui-theme-accent-purple">
-        <header class="index-img mdui-m-b-3"  style="background-image: url(https://Kite-chaser.github.io/post-images/p3948-shu-ju-jie-gou.jpg);" >
+        <header class="index-img mdui-m-b-3"  style="background-image: url(https://Kite-chaser.github.io/post-images/p1272-chong-jian-dao-lu.jpg);" >
                           <button class="mdui-btn  mdui-btn-icon mdui-btn-dense mdui-color-theme-500 mdui-ripple yinying mdui-m-t-1 mdui-m-l-1" mdui-menu="{target: '#demo-attr-cascade'}"><i class="mdui-icon material-icons">&#xe5d2;</i></button>
                 <ul class="mdui-menu" id="demo-attr-cascade">
                 
@@ -48,79 +48,78 @@
                 <div class="mdui-row">
                         <div class="mdui-col-md-8 mdui-col-offset-md-2 ">
                          <article class="mdui-shadow-10 mdui-p-a-2 post-list">
-                           <div class="mdui-typo-display-1 mdui-m-b-3">P3948 数据结构</div>
-                           <a  class="index-list-biaoqian ">2019-11-07</a>
+                           <div class="mdui-typo-display-1 mdui-m-b-3">P1272 重建道路</div>
+                           <a  class="index-list-biaoqian ">2019-11-10</a>
                            <div class="mdui-typo mdui-m-t-3 post-neirong"><h3 id="题目描述">题目描述</h3>
-<p>蒟蒻Edt把这个问题交给了你 ———— 一个精通数据结构的大犇，由于是第一题，这个题没那么难。。</p>
-<p>edt 现在对于题目进行了如下的简化：</p>
-<p>最开始的数组每个元素都是0</p>
-<p>给出n，opt，mod，min，max，mod在int范围内</p>
-<p>操作A，Q</p>
-<p>A: L,R,X 表示把[l,R]这个区间加上X</p>
-<p>（数组的从L到R的每个元素都加上X）</p>
-<p>Q: L,R表示询问[L,R]这个区间中元素T满足 min&lt;=(T∗i%mod)&lt;=max的 T这样的数的个数（i是数组下标）</p>
-<p>（元素的值*数组下标%mod在min到max范围内）</p>
-<p>由于 edt 请来了一位非三次元的仓鼠，他帮你用延后了部分问题，将这些询问打入了混乱时空，你的询问操作不会超过1000次，不幸的是，对于延后的询问操作可能有很多次（小于1e7次），但是保证这些延后的询问操作之后不会再次有修改操作</p>
-<p>（就是在最后会有很多次询问，但不会进行修改）</p>
+<p>一场可怕的地震后，人们用N个牲口棚(1≤N≤150，编号1..N)重建了农夫John的牧场。由于人们没有时间建设多余的道路，所以现在从一个牲口棚到另一个牲口棚的道路是惟一的。因此，牧场运输系统可以被构建成一棵树。John想要知道另一次地震会造成多严重的破坏。有些道路一旦被毁坏，就会使一棵含有P(1≤P≤N)个牲口棚的子树和剩余的牲口棚分离，John想知道这些道路的最小数目。</p>
 <blockquote>
-<p><a href="https://www.luogu.org/problem/P3948">戳</a></p>
+<p><a href="https://www.luogu.org/problem/P1272">戳</a></p>
 </blockquote>
 <h3 id="solve">Solve</h3>
-<p>有点混乱，其实有用的话就这两句。<br>
-<strong>（数组的从L到R的每个元素都加上X）</strong>，<strong>（元素的值*数组下标%mod在min到max范围内）</strong><br>
-差分处理，对于前面的询问暴力处理。<br>
-而后面的询问用前缀和优化。</p>
+<p>树形DP……<br>
+首先让我们设计一下状态。<br>
+那就直接点，设f[u][j]为以u为根节点的子树，保留j个节点（包括ta本身），所用最小的道路数。<br>
+<strong>初始</strong>：所有的状态都赋个极大值，然后赋f[u][1]都为子节点数目，因为ta要只剩下自己。<br>
+<strong>目标</strong>：min（f[root][p],f[u][p]+1(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mo>!</mo><mo>=</mo><mi>r</mi><mi>o</mi><mi>o</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">p!=root</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span><span class="mclose">!</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">o</span><span class="mord mathdefault">o</span><span class="mord mathdefault">t</span></span></span></span>) ) root为整棵树的根节点。<br>
++1是因为要从u的父节点除去到u的边。<br>
+<strong>转移方程</strong>：f[u][j]=min(f[u][j],f[u][j-k]+f[v][k]-1),用v来更新u，所以需要保留u到v这条边，所以+1</p>
 <h3 id="code">Code</h3>
 <pre><code class="language-cpp">#include&lt;iostream&gt;
 #include&lt;cstdio&gt;
 #include&lt;cstring&gt;
-#define N 80001
-#define ll long long
+#define N 1000
 using namespace std;
-ll n,opt,mod,mint,maxt,final;
-ll l,r,w;
-ll a[N],sum[N];
+int n,p,root,ans=10000000;
+int f[N][N],du[N],cnt[N];
+int head[N],len,to[N],nxt[N];
+int u,v;
+bool vis[N];
+void add(int u,int v){
+	to[++len]=v;
+	nxt[len]=head[u];
+	head[u]=len;
+}
+void dfs(int u){
+	cnt[u]=1;
+	f[u][1]=min(f[u][1],du[u]);
+	for(int i=head[u];i;i=nxt[i]){
+		int v=to[i];
+		dfs(v);
+		cnt[u]+=cnt[v];
+		for(int j=cnt[u];j&gt;=1;j--){
+			for(int k=1;k&lt;j;k++) f[u][j]=min(f[u][j],f[u][j-k]+f[v][k]-1);
+		}
+	}
+}
 int main()
 {
-	scanf(&quot;%lld%lld%lld%lld%lld&quot;,&amp;n,&amp;opt,&amp;mod,&amp;mint,&amp;maxt);
-	for(ll i=1;i&lt;=opt;i++){
-		char c;
-		cin&gt;&gt;c;
-		if(c=='A'){
-			scanf(&quot;%lld%lld%lld&quot;,&amp;l,&amp;r,&amp;w);
-			a[l]+=w;
-			a[r+1]-=w;
-		}
-		else{
-			scanf(&quot;%lld%lld&quot;,&amp;l,&amp;r);
-			ll now=0,ans=0;
-			for(ll j=1;j&lt;=r;j++){
-				now+=a[j];
-				if(j&gt;=l){
-					if((now*j)%mod&gt;=mint&amp;&amp;(now*j)%mod&lt;=maxt) ans++;
-				}
-			}
-			printf(&quot;%lld\n&quot;,ans);
+	scanf(&quot;%d%d&quot;,&amp;n,&amp;p);
+	for(int i=1;i&lt;n;i++){
+		scanf(&quot;%d%d&quot;,&amp;u,&amp;v);
+		add(u,v);
+		du[u]++;vis[v]=true;
+	}
+	memset(f,0x3f,sizeof(f));
+	for(int i=1;i&lt;=n;i++){
+		if(!vis[i]){
+			root=i;
+			break;
 		}
 	}
-	for(ll i=1;i&lt;=n;i++){
-		a[i]+=a[i-1];
-		sum[i]=sum[i-1];
-		if((a[i]*i)%mod&gt;=mint&amp;&amp;(a[i]*i)%mod&lt;=maxt) sum[i]++;
-	}
-	scanf(&quot;%lld&quot;,&amp;final);
-	for(ll i=1;i&lt;=final;i++){
-		scanf(&quot;%lld%lld&quot;,&amp;l,&amp;r);
-		printf(&quot;%lld\n&quot;,sum[r]-sum[l-1]);
-	}
+	dfs(root);
+	ans=f[root][p];
+	for(int i=1;i&lt;=n;i++) ans=min(ans,f[i][p]+1);
+	printf(&quot;%d&quot;,ans);
 	return 0;
 }
+
+
 </code></pre>
 </div>
                               <div class="mdui-divider mdui-m-t-3"></div>
                               <div class="mdui-row-xs-2 mdui-m-t-2">
-  <div class="mdui-col"> <div class="mdui-text-left"><a href="https://Kite-chaser.github.io/post/p1272-chong-jian-dao-lu">P1272 重建道路</a></div></div>
- <div class="mdui-col"><div class="mdui-text-right "><a href="https://Kite-chaser.github.io/post/p4231-san-bu-bi-sha"> P4231 三步必杀</a></div> </div>
+  <div class="mdui-col"> </div>
+ <div class="mdui-col"><div class="mdui-text-right "><a href="https://Kite-chaser.github.io/post/p3948-shu-ju-jie-gou">P3948 数据结构</a></div> </div>
                                 </div>
                                 <div class="mdui-divider mdui-m-t-2"></div>
    

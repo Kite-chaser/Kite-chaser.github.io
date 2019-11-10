@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Kite-chaser.github.io</id>
     <title>Kite-chaser</title>
-    <updated>2019-11-10T01:53:58.145Z</updated>
+    <updated>2019-11-10T09:58:34.206Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Kite-chaser.github.io"/>
     <link rel="self" href="https://Kite-chaser.github.io/atom.xml"/>
@@ -10,6 +10,79 @@
     <logo>https://Kite-chaser.github.io/images/avatar.png</logo>
     <icon>https://Kite-chaser.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Kite-chaser</rights>
+    <entry>
+        <title type="html"><![CDATA[P1272 重建道路]]></title>
+        <id>https://Kite-chaser.github.io/post/p1272-chong-jian-dao-lu</id>
+        <link href="https://Kite-chaser.github.io/post/p1272-chong-jian-dao-lu">
+        </link>
+        <updated>2019-11-10T09:30:53.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="题目描述">题目描述</h3>
+<p>一场可怕的地震后，人们用N个牲口棚(1≤N≤150，编号1..N)重建了农夫John的牧场。由于人们没有时间建设多余的道路，所以现在从一个牲口棚到另一个牲口棚的道路是惟一的。因此，牧场运输系统可以被构建成一棵树。John想要知道另一次地震会造成多严重的破坏。有些道路一旦被毁坏，就会使一棵含有P(1≤P≤N)个牲口棚的子树和剩余的牲口棚分离，John想知道这些道路的最小数目。</p>
+<blockquote>
+<p><a href="https://www.luogu.org/problem/P1272">戳</a></p>
+</blockquote>
+<h3 id="solve">Solve</h3>
+<p>树形DP……<br>
+首先让我们设计一下状态。<br>
+那就直接点，设f[u][j]为以u为根节点的子树，保留j个节点（包括ta本身），所用最小的道路数。<br>
+<strong>初始</strong>：所有的状态都赋个极大值，然后赋f[u][1]都为子节点数目，因为ta要只剩下自己。<br>
+<strong>目标</strong>：min（f[root][p],f[u][p]+1(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mo>!</mo><mo>=</mo><mi>r</mi><mi>o</mi><mi>o</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">p!=root</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span><span class="mclose">!</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">o</span><span class="mord mathdefault">o</span><span class="mord mathdefault">t</span></span></span></span>) ) root为整棵树的根节点。<br>
++1是因为要从u的父节点除去到u的边。<br>
+<strong>转移方程</strong>：f[u][j]=min(f[u][j],f[u][j-k]+f[v][k]-1),用v来更新u，所以需要保留u到v这条边，所以+1</p>
+<h3 id="code">Code</h3>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#define N 1000
+using namespace std;
+int n,p,root,ans=10000000;
+int f[N][N],du[N],cnt[N];
+int head[N],len,to[N],nxt[N];
+int u,v;
+bool vis[N];
+void add(int u,int v){
+	to[++len]=v;
+	nxt[len]=head[u];
+	head[u]=len;
+}
+void dfs(int u){
+	cnt[u]=1;
+	f[u][1]=min(f[u][1],du[u]);
+	for(int i=head[u];i;i=nxt[i]){
+		int v=to[i];
+		dfs(v);
+		cnt[u]+=cnt[v];
+		for(int j=cnt[u];j&gt;=1;j--){
+			for(int k=1;k&lt;j;k++) f[u][j]=min(f[u][j],f[u][j-k]+f[v][k]-1);
+		}
+	}
+}
+int main()
+{
+	scanf(&quot;%d%d&quot;,&amp;n,&amp;p);
+	for(int i=1;i&lt;n;i++){
+		scanf(&quot;%d%d&quot;,&amp;u,&amp;v);
+		add(u,v);
+		du[u]++;vis[v]=true;
+	}
+	memset(f,0x3f,sizeof(f));
+	for(int i=1;i&lt;=n;i++){
+		if(!vis[i]){
+			root=i;
+			break;
+		}
+	}
+	dfs(root);
+	ans=f[root][p];
+	for(int i=1;i&lt;=n;i++) ans=min(ans,f[i][p]+1);
+	printf(&quot;%d&quot;,ans);
+	return 0;
+}
+
+
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[P3948 数据结构]]></title>
         <id>https://Kite-chaser.github.io/post/p3948-shu-ju-jie-gou</id>
@@ -739,80 +812,6 @@ int main()
 for(int i=0;i&lt;g[x][y].size();i++){<br>
 <sub>^</sub>~~~~~~~~~~~~~</p>
 </blockquote>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[P4588 [TJOI2018]数学计算]]></title>
-        <id>https://Kite-chaser.github.io/post/p4588-tjoi2018shu-xue-ji-suan</id>
-        <link href="https://Kite-chaser.github.io/post/p4588-tjoi2018shu-xue-ji-suan">
-        </link>
-        <updated>2019-10-29T11:26:21.000Z</updated>
-        <summary type="html"><![CDATA[<p>这真的是道线段树……</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>这真的是道线段树……</p>
-<!--more-->
-<h3 id="题目描述">题目描述</h3>
-<p>小豆现在有一个数x，初始值为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>.小豆有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Q</mi></mrow><annotation encoding="application/x-tex">Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">Q</span></span></span></span>次操作，操作有两种类型:</p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mi>m</mi><mo>:</mo><mi>x</mi><mo>=</mo><mi>x</mi><mo>×</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">1m:x=x\times m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> 输出 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>%mod;</p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mi>p</mi><mi>o</mi><mi>s</mi><mo>:</mo><mi>x</mi><mo>=</mo><mi>x</mi><mi mathvariant="normal">/</mi></mrow><annotation encoding="application/x-tex">2pos:x=x/</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">2</span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">x</span><span class="mord">/</span></span></span></span>第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>o</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">pos</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span></span></span></span>次操作所乘的数（保证第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>o</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">pos</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span></span></span></span>次操作一定为类型<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>,对于每一个类型<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>的操作至多会被除一次）输出<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x%mod</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>;</p>
-<blockquote>
-<p><a href="https://www.luogu.org/problem/P4588">原题链接</a></p>
-</blockquote>
-<h3 id="solve">Solve</h3>
-<p>说实话，一开始我是真没看出来这是道线段树。<br>
-以每一个时间节点作为叶子节点，，初始值都是1，区间求乘。</p>
-<ul>
-<li>1操作就是在相应的时间节点，修改为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>。</li>
-<li>2操作就是在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>o</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">pos</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span></span></span></span>位置修改为1.</li>
-</ul>
-<h3 id="code">Code</h3>
-<pre><code class="language-cpp">#include&lt;iostream&gt;
-#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#define N 100010
-#define ll long long
-using namespace std;
-ll t;
-ll Q,mod;
-ll st[N],cnt;
-struct note{
-	ll l,r,num;
-}d[N*4];
-ll op,pos;
-void build(ll k,ll x,ll y){
-	d[k].l=x;d[k].r=y;d[k].num=1; 
-	if(x==y) return ;
-	build(k*2,x,(x+y)/2);
-	build(k*2+1,(x+y)/2+1,y);
-}
-void revise(ll k,ll x,ll z){
-	if(d[k].l==d[k].r){
-		d[k].num=z%mod;
-		return ;
-	}
-	ll mid=(d[k].l+d[k].r)/2;
-	if(x&lt;=mid) revise(k*2,x,z);
-	else revise(k*2+1,x,z);
-	d[k].num=(d[k*2].num*d[k*2+1].num)%mod;
-}
-int main()
-{
-	scanf(&quot;%lld&quot;,&amp;t);
-	while(t--){
-		scanf(&quot;%lld%lld&quot;,&amp;Q,&amp;mod);
-		build(1,1,Q);
-		for(ll i=1;i&lt;=Q;i++){
-			scanf(&quot;%lld%lld&quot;,&amp;op,&amp;pos);
-			if(op==1) revise(1,i,pos);
-			else revise(1,pos,1);
-			printf(&quot;%lld\n&quot;,d[1].num);
-		}
-	}
-	return 0;
-}
-</code></pre>
-<h3 id="后言">后言</h3>
-<p>话说有大佬说，这个题不用建树，直接莽就行。<s>可是不建树还是线段树吗？🙃</s></p>
 ]]></content>
     </entry>
 </feed>
